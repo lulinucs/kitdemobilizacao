@@ -6,12 +6,11 @@ import { filterProfiles, getPopulatedGroups, groupProfiles, validateProfiles } f
 const data = rawProfiles as ProfilesData
 
 describe('perfis para acompanhar', () => {
-  it('valida os 26 perfis sem IDs, usuários ou URLs duplicados', () => {
+  it('valida os perfis sem IDs, usuários ou URLs duplicados', () => {
     expect(validateProfiles(data)).toEqual([])
-    expect(data.perfis).toHaveLength(26)
-    expect(new Set(data.perfis.map((profile) => profile.id)).size).toBe(26)
-    expect(new Set(data.perfis.map((profile) => profile.usuario)).size).toBe(26)
-    expect(new Set(data.perfis.map((profile) => profile.url)).size).toBe(26)
+    expect(new Set(data.perfis.map((profile) => profile.id)).size).toBe(data.perfis.length)
+    expect(new Set(data.perfis.map((profile) => profile.usuario)).size).toBe(data.perfis.length)
+    expect(new Set(data.perfis.map((profile) => profile.url)).size).toBe(data.perfis.length)
   })
 
   it('busca por nome, usuário e assunto sem diferenciar acentos', () => {

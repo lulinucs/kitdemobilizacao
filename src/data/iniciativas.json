@@ -160,6 +160,35 @@
       "destaque": false
     },
     {
+      "id": "triplique-seu-voto",
+      "nome": "Triplique seu voto",
+      "descricao": "Iniciativa de mobilização para o segundo turno das eleições de 2026, que propõe ampliar a participação eleitoral por meio de grupos regionais e do contato com pessoas que não votaram no primeiro turno.",
+      "categoriaPrincipal": "nas-redes",
+      "atividades": [
+        "compartilhar",
+        "organizar"
+      ],
+      "tags": [
+        "Mobilização digital",
+        "Organização"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar iniciativa",
+          "url": "https://tripliqueseuvoto.bonde.org/",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-organizador",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
       "id": "onde-da-pra-conversar",
       "nome": "Onde Dá Pra Conversar",
       "descricao": "Ferramenta voltada a identificar lugares e oportunidades para conversas presenciais sobre as eleições e atividades nos territórios.",

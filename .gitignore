@@ -45,3 +45,6 @@ Desktop.ini
 
 # Arquivos locais
 *.local
+
+# Configurações locais do OpenAI / Codex
+.openai/

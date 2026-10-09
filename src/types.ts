@@ -54,3 +54,35 @@ export interface Filters {
   category: string
   activity: string
 }
+
+export interface FollowProfile {
+  id: string
+  nome: string
+  usuario: string
+  url: string
+  grupo: string
+  descricao?: string
+  assuntos?: string[]
+  imagem?: string
+  ativo: boolean
+  ordem?: number
+}
+
+export interface ProfileGroup {
+  id: string
+  nome: string
+  rotuloFiltro?: string
+  ordem?: number
+}
+
+export interface ProfilesData {
+  schemaVersion: number
+  titulo: string
+  descricao: string
+  orientacao: {
+    titulo: string
+    texto: string
+  }
+  grupos: ProfileGroup[]
+  perfis: FollowProfile[]
+}

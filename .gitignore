@@ -46,5 +46,12 @@ Desktop.ini
 # Arquivos locais
 *.local
 
+# Utilitários locais e sessões autenticadas
+utils/.sessions/
+utils/sessions/
+utils/session*.json
+utils/__pycache__/
+*.py[cod]
+
 # Configurações locais do OpenAI / Codex
 .openai/

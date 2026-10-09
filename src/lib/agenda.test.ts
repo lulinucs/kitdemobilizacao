@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, filterAgendaEvents, getNextEvent, getZonedDate, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, eventEndDateTime, filterAgendaEvents, getNextEvent, getWidgetEventSelection, getZonedDate, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
@@ -48,10 +48,10 @@ describe('agenda', () => {
     expect(isPastForList(event, new Date('2026-10-09T21:00:00.000Z'), data.timezone)).toBe(true)
   })
 
-  it('evento sem hora final passa no widget após o início, mas fica no dia', () => {
+  it('não presume que um evento sem hora final terminou após o início', () => {
     const event = data.eventos.find((item) => item.id === 'assembleia-ufsc-0910')!
     const afterStart = new Date('2026-10-09T15:30:00.000Z')
-    expect(isPastForWidget(event, afterStart, data.timezone)).toBe(true)
+    expect(isPastForWidget(event, afterStart, data.timezone)).toBe(false)
     expect(isPastForList(event, afterStart, data.timezone)).toBe(false)
   })
 
@@ -65,5 +65,90 @@ describe('agenda', () => {
     expect(share.url).toBe('https://exemplo.test/?view=agenda&evento=pedalula-1110')
     expect(share.text).toContain('Pedalula')
     expect(share.text).toContain('Florianópolis/SC')
+  })
+})
+
+describe('seleção do widget de próxima atividade', () => {
+  const timezone = 'America/Sao_Paulo'
+  const event = (overrides: Partial<AgendaEvent> = {}): AgendaEvent => ({
+    id: 'evento-base',
+    titulo: 'Evento base',
+    categoria: 'ato',
+    data: '2026-10-09',
+    inicio: '14:00',
+    fim: '18:00',
+    cidade: 'Florianópolis',
+    uf: 'SC',
+    local: 'Praça',
+    descricao: 'Descrição',
+    status: 'divulgado',
+    ...overrides,
+  })
+
+  it('prioriza um evento acontecendo agora entre 14h e 18h', () => {
+    const ongoing = event()
+    const future = event({ id: 'futuro', inicio: '17:00', fim: '19:00' })
+    const selection = getWidgetEventSelection([future, ongoing], new Date('2026-10-09T19:00:00.000Z'), timezone) // 16h local
+
+    expect(selection.kind).toBe('ongoing')
+    expect(selection.events.map((item) => item.id)).toEqual(['evento-base'])
+  })
+
+  it('deixa de considerar o evento em andamento exatamente às 18h', () => {
+    const atEnd = new Date('2026-10-09T21:00:00.000Z')
+    const selection = getWidgetEventSelection([event()], atEnd, timezone)
+
+    expect(selection.kind).toBe('empty')
+    expect(isEventOngoing(event(), atEnd, timezone)).toBe(false)
+  })
+
+  it('retorna todos os eventos simultâneos', () => {
+    const first = event({ id: 'primeiro', titulo: 'Primeiro' })
+    const second = event({ id: 'segundo', titulo: 'Segundo', inicio: '15:00', fim: '17:00' })
+    const selection = getWidgetEventSelection([second, first], new Date('2026-10-09T19:00:00.000Z'), timezone)
+
+    expect(selection.kind).toBe('ongoing')
+    expect(selection.events.map((item) => item.id)).toEqual(['primeiro', 'segundo'])
+  })
+
+  it('seleciona o futuro mais próximo quando nada está acontecendo', () => {
+    const later = event({ id: 'mais-tarde', inicio: '20:00', fim: '21:00' })
+    const next = event({ id: 'proximo', inicio: '19:00', fim: '20:00' })
+    const selection = getWidgetEventSelection([later, next], new Date('2026-10-09T21:00:00.000Z'), timezone) // 18h local
+
+    expect(selection.kind).toBe('upcoming')
+    expect(selection.events[0]?.id).toBe('proximo')
+  })
+
+  it('retorna vazio quando não há evento futuro', () => {
+    const selection = getWidgetEventSelection([event()], new Date('2026-10-09T22:00:00.000Z'), timezone)
+    expect(selection).toEqual({ kind: 'empty', events: [] })
+  })
+
+  it('considera em andamento um evento que atravessa a meia-noite', () => {
+    const overnight = event({ inicio: '23:00', fim: '01:00' })
+    const atHalfPastMidnight = new Date('2026-10-10T03:30:00.000Z')
+
+    expect(isEventOngoing(overnight, atHalfPastMidnight, timezone)).toBe(true)
+    expect(eventEndDateTime(overnight, timezone)?.toISOString()).toBe('2026-10-10T04:00:00.000Z')
+  })
+
+  it('não mantém como acontecendo agora um evento sem término conhecido', () => {
+    const withoutEnd = event({ fim: null })
+    const afterStart = new Date('2026-10-09T19:00:00.000Z')
+    const selection = getWidgetEventSelection([withoutEnd], afterStart, timezone)
+
+    expect(selection.kind).toBe('empty')
+    expect(isEventOngoing(withoutEnd, afterStart, timezone)).toBe(false)
+    expect(isPastForWidget(withoutEnd, new Date('2026-10-10T19:00:00.000Z'), timezone)).toBe(false)
+  })
+
+  it('respeita o conjunto previamente filtrado pela cidade', () => {
+    const floripa = event({ id: 'floripa' })
+    const recife = event({ id: 'recife', cidade: 'Recife', uf: 'PE' })
+    const cityEvents = [floripa, recife].filter((item) => item.cidade === 'Recife')
+    const selection = getWidgetEventSelection(cityEvents, new Date('2026-10-09T19:00:00.000Z'), timezone)
+
+    expect(selection.events.map((item) => item.id)).toEqual(['recife'])
   })
 })

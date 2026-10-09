@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 2,
+  "titulo": "Perfis para acompanhar",
+  "descricao": "Conheça perfis que compartilham notícias, análises, materiais e informações sobre as eleições. Siga os que te interessam, acompanhe as publicações e compartilhe conteúdos que considerar relevantes.",
+  "orientacao": {
+    "titulo": "Acompanhe, compartilhe e participe!",
+    "texto": "Siga os perfis, explore suas publicações, compartilhe informações verificadas e participe das conversas com respeito. Pequenas ações ajudam boas iniciativas a alcançar mais pessoas."
+  },
+  "grupos": [
+    {
+      "id": "partidos-liderancas",
+      "nome": "Partidos e lideranças políticas",
+      "rotuloFiltro": "Partidos e lideranças",
+      "ordem": 1
+    },
+    {
+      "id": "movimento-estudantil",
+      "nome": "Movimento estudantil",
+      "ordem": 2
+    },
+    {
+      "id": "comunicacao-midia",
+      "nome": "Comunicação e mídia independente",
+      "ordem": 3
+    },
+    {
+      "id": "mobilizacao-digital",
+      "nome": "Mobilização digital",
+      "ordem": 4
+    },
+    {
+      "id": "coletivos-movimentos",
+      "nome": "Coletivos e movimentos sociais",
+      "ordem": 5
+    },
+    {
+      "id": "movimentos-juventude",
+      "nome": "Movimentos sociais e juventude",
+      "ordem": 6
+    },
+    {
+      "id": "outros",
+      "nome": "Outros perfis",
+      "ordem": 7
+    }
+  ],
+  "perfis": [
+    {
+      "id": "lula",
+      "nome": "Lula",
+      "usuario": "lulaoficial",
+      "url": "https://www.instagram.com/lulaoficial/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Perfil público"],
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "pt-brasil",
+      "nome": "Partido dos Trabalhadores (PT)",
+      "usuario": "ptbrasil",
+      "url": "https://www.instagram.com/ptbrasil/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Partido político"],
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "pcdob",
+      "nome": "PCdoB",
+      "usuario": "pcdob_oficial",
+      "url": "https://www.instagram.com/pcdob_oficial/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Partido político"],
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "andre-janones",
+      "nome": "André Janones",
+      "usuario": "andrejanones",
+      "url": "https://www.instagram.com/andrejanones/",
+      "grupo": "partidos-liderancas",
+      "ativo": true,
+      "ordem": 4
+    },
+    {
+      "id": "psol",
+      "nome": "PSOL",
+      "usuario": "psol50",
+      "url": "https://www.instagram.com/psol50/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Atuação partidária", "Política"],
+      "ativo": true,
+      "ordem": 5
+    },
+    {
+      "id": "erika-hilton",
+      "nome": "Erika Hilton",
+      "usuario": "hilton_erika",
+      "url": "https://www.instagram.com/hilton_erika/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Direitos humanos", "Atuação parlamentar"],
+      "ativo": true,
+      "ordem": 6
+    },
+    {
+      "id": "guilherme-boulos",
+      "nome": "Guilherme Boulos",
+      "usuario": "guilhermeboulos.oficial",
+      "url": "https://www.instagram.com/guilhermeboulos.oficial/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Política", "Movimentos sociais"],
+      "ativo": true,
+      "ordem": 7
+    },
+    {
+      "id": "taliria-petrone",
+      "nome": "Talíria Petrone",
+      "usuario": "taliriapetrone",
+      "url": "https://www.instagram.com/taliriapetrone/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Direitos humanos", "Política"],
+      "ativo": true,
+      "ordem": 8
+    },
+    {
+      "id": "samia-bomfim",
+      "nome": "Sâmia Bomfim",
+      "usuario": "samiabomfim",
+      "url": "https://www.instagram.com/samiabomfim/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Política", "Direitos sociais"],
+      "ativo": true,
+      "ordem": 9
+    },
+    {
+      "id": "une",
+      "nome": "União Nacional dos Estudantes (UNE)",
+      "usuario": "uneoficial",
+      "url": "https://www.instagram.com/uneoficial/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Entidade estudantil"],
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "uee-rs",
+      "nome": "UEE-RS",
+      "usuario": "uee.rs",
+      "url": "https://www.instagram.com/uee.rs/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Entidade estudantil"],
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "ueb",
+      "nome": "UEB",
+      "usuario": "ueboficial",
+      "url": "https://www.instagram.com/ueboficial/",
+      "grupo": "movimento-estudantil",
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "midia-ninja",
+      "nome": "Mídia NINJA",
+      "usuario": "midianinja",
+      "url": "https://www.instagram.com/midianinja/",
+      "grupo": "comunicacao-midia",
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "brasil-de-fato",
+      "nome": "Brasil de Fato",
+      "usuario": "brasildefato",
+      "url": "https://www.instagram.com/brasildefato/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Notícias", "Movimentos populares", "Política"],
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "revista-forum",
+      "nome": "Revista Fórum",
+      "usuario": "revistaforum",
+      "url": "https://www.instagram.com/revistaforum/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Política", "Entrevistas", "Análises"],
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "carta-capital",
+      "nome": "CartaCapital",
+      "usuario": "cartacapital",
+      "url": "https://www.instagram.com/cartacapital/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Jornalismo", "Análises"],
+      "ativo": true,
+      "ordem": 5
+    },
+    {
+      "id": "agencia-publica",
+      "nome": "Agência Pública",
+      "usuario": "agenciapublica",
+      "url": "https://www.instagram.com/agenciapublica/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Jornalismo investigativo"],
+      "ativo": true,
+      "ordem": 6
+    },
+    {
+      "id": "the-intercept-brasil",
+      "nome": "The Intercept Brasil",
+      "usuario": "theinterceptbrasil",
+      "url": "https://www.instagram.com/theinterceptbrasil/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Investigações", "Política"],
+      "ativo": true,
+      "ordem": 7
+    },
+    {
+      "id": "alma-preta-jornalismo",
+      "nome": "Alma Preta Jornalismo",
+      "usuario": "almapretajornalismo",
+      "url": "https://www.instagram.com/almapretajornalismo/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Política", "Eleições", "Antirracismo"],
+      "ativo": true,
+      "ordem": 8
+    },
+    {
+      "id": "janones-apoio",
+      "nome": "Janones Apoio",
+      "usuario": "janones.apoio",
+      "url": "https://www.instagram.com/janones.apoio/",
+      "grupo": "mobilizacao-digital",
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "mst",
+      "nome": "MST",
+      "usuario": "mst_oficial",
+      "url": "https://www.instagram.com/mst_oficial/",
+      "grupo": "coletivos-movimentos",
+      "assuntos": ["Reforma agrária", "Organização popular"],
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "mtst",
+      "nome": "MTST",
+      "usuario": "mtstbrasil",
+      "url": "https://www.instagram.com/mtstbrasil/",
+      "grupo": "coletivos-movimentos",
+      "assuntos": ["Moradia", "Mobilizações", "Direitos sociais"],
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "cut",
+      "nome": "CUT",
+      "usuario": "cutbrasil",
+      "url": "https://www.instagram.com/cutbrasil/",
+      "grupo": "coletivos-movimentos",
+      "assuntos": ["Trabalhadores", "Sindicatos", "Direitos"],
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "levante-popular-juventude",
+      "nome": "Levante Popular da Juventude",
+      "usuario": "levantedajuventude",
+      "url": "https://www.instagram.com/levantedajuventude/",
+      "grupo": "movimentos-juventude",
+      "assuntos": ["Juventude", "Mobilização"],
+      "ativo": true,
+      "ordem": 1
+    },
+    {
+      "id": "prof-joao-saraiva",
+      "nome": "Prof. João Saraiva",
+      "usuario": "profjoaosaraiva",
+      "url": "https://www.instagram.com/profjoaosaraiva/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 1
+    }
+  ]
+}

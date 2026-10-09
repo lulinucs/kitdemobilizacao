@@ -68,6 +68,34 @@
   ],
   "iniciativas": [
     {
+      "id": "perfis-para-acompanhar",
+      "nome": "Perfis para acompanhar",
+      "descricao": "Uma seleção de perfis do Instagram para acompanhar notícias, análises, materiais e informações sobre as eleições.",
+      "categoriaPrincipal": "nas-redes",
+      "atividades": [
+        "compartilhar"
+      ],
+      "tags": [
+        "Instagram",
+        "Perfis"
+      ],
+      "links": [
+        {
+          "rotulo": "Conhecer perfis",
+          "url": "/perfis",
+          "principal": true
+        }
+      ],
+      "origem": "kit-de-mobilizacao",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
       "id": "exercito-lula",
       "nome": "Exército Lula",
       "descricao": "Canal de mobilização digital liderado por André Janones. Divulga pautas e ações coordenadas para concentrar publicações e compartilhamentos em determinados momentos.",

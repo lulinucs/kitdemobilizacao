@@ -1,4 +1,4 @@
-import { CalendarDays, Home, Menu, MessageCircle, X } from 'lucide-react'
+import { CalendarDays, Home, Menu, MessageCircle, UsersRound, X } from 'lucide-react'
 import { WHATSAPP_SUBMISSION_URL } from '../config'
 import type { Activity, Category } from '../types'
 import { ActivityFilters } from './ActivityFilters'
@@ -10,12 +10,13 @@ interface SidebarProps {
   activities: Activity[]
   category: string
   activity: string
-  currentView: 'home' | 'agenda'
+  currentView: 'home' | 'agenda' | 'profiles'
   open: boolean
   onCategory: (id: string) => void
   onActivity: (id: string) => void
   onHome: () => void
   onAgenda: () => void
+  onProfiles: () => void
   onClose: () => void
   onOpen: () => void
 }
@@ -37,6 +38,7 @@ export function Sidebar(props: SidebarProps) {
         <nav className={styles.mainNav} aria-label="Seções principais">
           <button className={props.currentView === 'home' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onHome(); props.onClose() }}><Home aria-hidden="true" size={18} />Início</button>
           <button className={props.currentView === 'agenda' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onAgenda(); props.onClose() }}><CalendarDays aria-hidden="true" size={18} />Agenda de Mobilizações</button>
+          <button className={props.currentView === 'profiles' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onProfiles(); props.onClose() }}><UsersRound aria-hidden="true" size={18} />Perfis para acompanhar</button>
           <a href={WHATSAPP_SUBMISSION_URL} target="_blank" rel="noopener noreferrer" onClick={props.onClose}><MessageCircle aria-hidden="true" size={18} />Envie sua iniciativa</a>
         </nav>
         <CategoryNav categories={props.categories} selected={props.category} onSelect={(id) => { props.onCategory(id); props.onClose() }} />

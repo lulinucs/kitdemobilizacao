@@ -39,19 +39,35 @@ export function eventDateTime(event: Pick<AgendaEvent, 'data' | 'inicio'>, timez
 
 export function eventEndDateTime(event: AgendaEvent, timezone: string): Date | null {
   if (!event.data || !event.fim) return null
-  return eventDateTime({ data: event.data, inicio: event.fim }, timezone)
+  const start = eventDateTime(event, timezone)
+  let end = eventDateTime({ data: event.data, inicio: event.fim }, timezone)
+  if (!start || !end) return null
+
+  // Um fim anterior ao início representa uma atividade que termina no dia
+  // seguinte (por exemplo, 23:00–01:00).
+  if (end.getTime() < start.getTime()) {
+    const [year, month, day] = event.data.split('-').map(Number)
+    const nextDay = new Date(Date.UTC(year, month - 1, day + 1))
+    const date = [nextDay.getUTCFullYear(), String(nextDay.getUTCMonth() + 1).padStart(2, '0'), String(nextDay.getUTCDate()).padStart(2, '0')].join('-')
+    end = eventDateTime({ data: date, inicio: event.fim }, timezone)
+  }
+  return end
 }
 
 export function isPastForWidget(event: AgendaEvent, now: Date, timezone: string): boolean {
+  const end = eventEndDateTime(event, timezone)
+  return Boolean(end && end.getTime() <= now.getTime())
+}
+
+export function isEventOngoing(event: AgendaEvent, now: Date, timezone: string): boolean {
   const start = eventDateTime(event, timezone)
-  return !start || start.getTime() <= now.getTime()
+  const end = eventEndDateTime(event, timezone)
+  if (!start || !end) return false
+  return start.getTime() <= now.getTime() && now.getTime() < end.getTime()
 }
 
 export function isPastForList(event: AgendaEvent, now: Date, timezone: string): boolean {
-  if (!event.data) return false
-  const today = getZonedDate(now, timezone)
-  if (event.data < today) return true
-  if (event.data > today) return false
+  if (event.status === 'encerrado') return true
   const end = eventEndDateTime(event, timezone)
   return end ? end.getTime() <= now.getTime() : false
 }
@@ -75,8 +91,24 @@ export function getNextEvent(events: AgendaEvent[], now: Date, timezone: string)
   return sortEvents(events, timezone).find((event) =>
     Boolean(event.data)
     && ['divulgado', 'confirmado', 'alterado'].includes(event.status)
-    && !isPastForWidget(event, now, timezone),
+    && (eventDateTime(event, timezone)?.getTime() ?? 0) > now.getTime(),
   )
+}
+
+export type WidgetEventSelection =
+  | { kind: 'ongoing'; events: AgendaEvent[] }
+  | { kind: 'upcoming'; events: [AgendaEvent] }
+  | { kind: 'empty'; events: [] }
+
+export function getWidgetEventSelection(events: AgendaEvent[], now: Date, timezone: string): WidgetEventSelection {
+  const eligible = events.filter((event) =>
+    Boolean(event.data) && ['divulgado', 'confirmado', 'alterado'].includes(event.status),
+  )
+  const ongoing = sortEvents(eligible.filter((event) => isEventOngoing(event, now, timezone)), timezone)
+  if (ongoing.length) return { kind: 'ongoing', events: ongoing }
+
+  const next = getNextEvent(eligible, now, timezone)
+  return next ? { kind: 'upcoming', events: [next] } : { kind: 'empty', events: [] }
 }
 
 export function filterAgendaEvents(events: AgendaEvent[], filters: AgendaFilters, now: Date, timezone: string): AgendaEvent[] {

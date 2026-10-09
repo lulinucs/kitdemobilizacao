@@ -57,7 +57,6 @@ export function validateDirectory(data: DirectoryData): string[] {
   const categoryIds = new Set(data.categorias.map((item) => item.id))
   const activityIds = new Set(data.atividades.map((item) => item.id))
 
-  if (data.iniciativas.length !== 11) errors.push(`Esperadas 11 iniciativas; encontradas ${data.iniciativas.length}.`)
   for (const initiative of data.iniciativas) {
     if (ids.has(initiative.id)) errors.push(`ID duplicado: ${initiative.id}`)
     ids.add(initiative.id)
@@ -66,6 +65,7 @@ export function validateDirectory(data: DirectoryData): string[] {
       if (!activityIds.has(activity)) errors.push(`Atividade inválida em ${initiative.id}: ${activity}`)
     }
     for (const link of initiative.links) {
+      if (link.url.startsWith('/')) continue
       try {
         if (new URL(link.url).protocol !== 'https:') errors.push(`URL sem HTTPS em ${initiative.id}.`)
       } catch {

@@ -40,7 +40,21 @@ describe('busca e filtros', () => {
 })
 
 describe('integridade dos dados', () => {
-  it('mantém 11 IDs únicos e URLs HTTPS', () => {
+  it('mantém IDs únicos e URLs externas HTTPS', () => {
     expect(validateDirectory(data)).toEqual([])
+    expect(new Set(data.iniciativas.map((item) => item.id)).size).toBe(data.iniciativas.length)
+  })
+
+  it('inclui Perfis para acompanhar nos dois índices independentes', () => {
+    const all = filterInitiatives(data, { query: '', category: '', activity: '' })
+    const byCategory = filterInitiatives(data, { query: '', category: 'nas-redes', activity: '' })
+    const byActivity = filterInitiatives(data, { query: '', category: '', activity: 'compartilhar' })
+    const initiative = data.iniciativas.find((item) => item.id === 'perfis-para-acompanhar')
+
+    expect(all.map((item) => item.id)).toContain('perfis-para-acompanhar')
+    expect(byCategory.map((item) => item.id)).toContain('perfis-para-acompanhar')
+    expect(byActivity.map((item) => item.id)).toContain('perfis-para-acompanhar')
+    expect(initiative?.ativo).toBe(true)
+    expect(initiative?.links).toContainEqual({ rotulo: 'Conhecer perfis', url: '/perfis', principal: true })
   })
 })

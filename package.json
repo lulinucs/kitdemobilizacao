@@ -19,11 +19,8 @@
     "vite": "latest"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "latest",
-    "@testing-library/react": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "jsdom": "latest",
     "typescript": "latest",
     "vitest": "latest"
   }

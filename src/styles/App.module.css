@@ -77,9 +77,6 @@
 :root[data-theme='dark'] .cardMeta span:first-child { color: #bce5d8; }
 .card h3 { margin: 15px 0 8px; font-size: 1.17rem; letter-spacing: -.025em; font-weight: 700; }
 .description { margin: 0; color: var(--muted); font-size: .91rem; line-height: 1.55; }
-.note { margin-top: 12px; color: var(--muted); font-size: .78rem; }
-.note summary { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-.note p { margin: 7px 0 0; padding: 9px; border-radius: 7px; background: var(--surface-muted); line-height: 1.45; }
 .cardActions { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: auto; padding-top: 19px; }
 .primaryLink { min-height: 42px; padding: 10px 13px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--on-primary); background: var(--primary); text-decoration: none; font-size: .86rem; font-weight: 700; }
 .primaryLink:hover { filter: brightness(.9); }

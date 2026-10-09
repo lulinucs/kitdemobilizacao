@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react'
-import { ArrowRight, ExternalLink, Info } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import type { Category, Initiative } from '../types'
 import styles from '../styles/App.module.css'
 
@@ -26,12 +26,6 @@ export function InitiativeCard({ initiative, category, onInternalNavigate }: Ini
       </div>
       <h3>{initiative.nome}</h3>
       <p className={styles.description}>{initiative.descricao}</p>
-      {initiative.verificacao.observacao && (
-        <details className={styles.note}>
-          <summary><Info aria-hidden="true" size={15} /> Informação a confirmar</summary>
-          <p>{initiative.verificacao.observacao}</p>
-        </details>
-      )}
       <div className={styles.cardActions}>
         <a className={styles.primaryLink} href={primary.url} target={primary.url.startsWith('/') ? undefined : '_blank'} rel={primary.url.startsWith('/') ? undefined : 'noopener noreferrer'} onClick={(event) => internalNavigate(event, primary.url)}>
           {primary.rotulo}{primary.url.startsWith('/') ? <ArrowRight aria-hidden="true" size={17} /> : <ExternalLink aria-hidden="true" size={17} />}

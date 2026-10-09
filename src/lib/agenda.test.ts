@@ -29,7 +29,8 @@ describe('agenda', () => {
   })
 
   it('aceita novas cidades sem depender de uma localização global', () => {
-    const event = { ...data.eventos[14], id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
+    const baseEvent = data.eventos.find((item) => item.id === 'pedalula-1110')!
+    const event = { ...baseEvent, id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
     const events = [...data.eventos, event]
 
     expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(['evento-recife'])
@@ -56,12 +57,13 @@ describe('agenda', () => {
   })
 
   it('evento cancelado nunca aparece como próximo', () => {
-    const event = { ...data.eventos[14], status: 'cancelado' } as AgendaEvent
+    const event = { ...data.eventos.find((item) => item.id === 'pedalula-1110')!, status: 'cancelado' } as AgendaEvent
     expect(getNextEvent([event], now, data.timezone)).toBeUndefined()
   })
 
   it('gera compartilhamento com link permanente', () => {
-    const share = buildEventShare(data.eventos[14], { origin: 'https://exemplo.test', pathname: '/' }, data.timezone)
+    const event = data.eventos.find((item) => item.id === 'pedalula-1110')!
+    const share = buildEventShare(event, { origin: 'https://exemplo.test', pathname: '/' }, data.timezone)
     expect(share.url).toBe('https://exemplo.test/?view=agenda&evento=pedalula-1110')
     expect(share.text).toContain('Pedalula')
     expect(share.text).toContain('Florianópolis/SC')

@@ -6,13 +6,14 @@ import styles from '../styles/App.module.css'
 interface NextEventWidgetProps {
   event?: AgendaEvent
   agenda: AgendaData
-  onAgenda: () => void
+  cityContext?: string
+  onAgenda: (eventId?: string) => void
 }
 
-export function NextEventWidget({ event, agenda, onAgenda }: NextEventWidgetProps) {
+export function NextEventWidget({ event, agenda, cityContext, onAgenda }: NextEventWidgetProps) {
   return (
     <aside className={styles.nextEvent} aria-labelledby="next-event-title">
-      <p className={styles.eyebrow}>AGENDA FLORIPA</p>
+      <p className={styles.eyebrow}>AGENDA DE MOBILIZAÇÕES</p>
       <h2 id="next-event-title">Próxima atividade</h2>
       {event ? (
         <>
@@ -20,11 +21,11 @@ export function NextEventWidget({ event, agenda, onAgenda }: NextEventWidgetProp
           <div className={styles.nextEventMeta}>
             <span><CalendarDays aria-hidden="true" size={16} />{formatAgendaDate(event.data!, agenda.timezone, true)}</span>
             <span><Clock3 aria-hidden="true" size={16} />{formatEventTime(event)}</span>
-            {(event.local || event.bairro) && <span><MapPin aria-hidden="true" size={16} />{[event.local, event.bairro].filter(Boolean).join(' · ')}</span>}
+            <span><MapPin aria-hidden="true" size={16} />{event.cidade}/{event.uf}{event.local ? ` · ${event.local}` : ''}</span>
           </div>
         </>
-      ) : <p className={styles.nextEventEmpty}>Nenhuma atividade futura cadastrada.</p>}
-      <button type="button" onClick={onAgenda}>Ver agenda</button>
+      ) : <p className={styles.nextEventEmpty}>Nenhuma atividade futura cadastrada{cityContext ? ` em ${cityContext}` : ''}.</p>}
+      <button type="button" onClick={() => onAgenda(event?.id)}>Ver na agenda</button>
     </aside>
   )
 }

@@ -84,10 +84,11 @@ export function filterAgendaEvents(events: AgendaEvent[], filters: AgendaFilters
   return sortEvents(events, timezone).filter((event) => {
     if (!filters.includePast && isPastForList(event, now, timezone)) return false
     if (filters.day && event.data !== filters.day) return false
-    if (filters.neighborhood && event.bairro !== filters.neighborhood) return false
+    if (filters.city && event.cidade !== filters.city) return false
+    if (filters.state && event.uf !== filters.state) return false
     if (filters.category && event.categoria !== filters.category) return false
     if (!query) return true
-    return normalizeText([event.titulo, event.local ?? '', event.endereco ?? '', event.bairro ?? '', event.descricao].join(' ')).includes(query)
+    return normalizeText([event.titulo, event.cidade, event.uf, event.local ?? '', event.endereco ?? '', event.bairro ?? '', event.descricao, event.informacoesAdicionais ?? ''].join(' ')).includes(query)
   })
 }
 
@@ -114,15 +115,15 @@ export function buildEventShare(event: AgendaEvent, locationLike: Pick<Location,
   const when = event.data ? `${formatAgendaDate(event.data, timezone, true)}, ${formatEventTime(event)}` : `data a confirmar, ${formatEventTime(event)}`
   return {
     title: event.titulo,
-    text: `${event.titulo} — ${when}${event.local ? ` — ${event.local}` : ''}`,
+    text: `${event.titulo} — ${when} — ${event.cidade}/${event.uf}${event.local ? ` — ${event.local}` : ''}`,
     url: buildEventUrl(event.id, locationLike),
   }
 }
 
-export function buildMapUrl(event: AgendaEvent, city: string, uf: string): string | null {
+export function buildMapUrl(event: AgendaEvent): string | null {
   const place = event.endereco ?? event.local
   if (!place) return null
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place}, ${city} - ${uf}`)}`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place}, ${event.cidade} - ${event.uf}`)}`
 }
 
 export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; errors: string[] } {
@@ -134,6 +135,7 @@ export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; error
     if (!event.id || ids.has(event.id)) recordErrors.push(`ID ausente ou duplicado: ${event.id || '(vazio)'}`)
     ids.add(event.id)
     if (!categoryIds.has(event.categoria)) recordErrors.push(`Categoria inválida em ${event.id}`)
+    if (!event.cidade.trim() || !/^[A-Z]{2}$/.test(event.uf)) recordErrors.push(`Localização inválida em ${event.id}`)
     if (!VALID_STATUSES.has(event.status)) recordErrors.push(`Status inválido em ${event.id}`)
     if (!TIME_PATTERN.test(event.inicio) || (event.fim && !TIME_PATTERN.test(event.fim))) recordErrors.push(`Horário inválido em ${event.id}`)
     if (event.data) {

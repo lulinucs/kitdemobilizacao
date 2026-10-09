@@ -23,9 +23,17 @@ describe('agenda', () => {
     expect(getNextEvent([data.eventos[0]], now, data.timezone)).toBeUndefined()
   })
 
-  it('combina dia, bairro, categoria e busca', () => {
-    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', neighborhood: 'Campeche', category: 'bandeiraco', includePast: true }, now, data.timezone)
+  it('combina dia, cidade, estado, categoria e busca', () => {
+    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', city: 'Florianópolis', state: 'SC', category: 'bandeiraco', includePast: true }, now, data.timezone)
     expect(result.map((event) => event.id)).toEqual(['bandeiraco-campeche-0910'])
+  })
+
+  it('aceita novas cidades sem depender de uma localização global', () => {
+    const event = { ...data.eventos[14], id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
+    const events = [...data.eventos, event]
+
+    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(['evento-recife'])
+    expect(validateAgenda({ ...data, eventos: events }).errors).toEqual([])
   })
 
   it('valida IDs únicos', () => {
@@ -56,5 +64,6 @@ describe('agenda', () => {
     const share = buildEventShare(data.eventos[14], { origin: 'https://exemplo.test', pathname: '/' }, data.timezone)
     expect(share.url).toBe('https://exemplo.test/?view=agenda&evento=pedalula-1110')
     expect(share.text).toContain('Pedalula')
+    expect(share.text).toContain('Florianópolis/SC')
   })
 })

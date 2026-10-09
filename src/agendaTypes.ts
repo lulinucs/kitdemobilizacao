@@ -21,11 +21,13 @@ export interface AgendaEvent {
   }
   inicio: string
   fim: string | null
+  cidade: string
+  uf: string
   local?: string
   endereco?: string
   bairro?: string
   descricao: string
-  participacao?: string
+  informacoesAdicionais?: string
   links?: AgendaLink[]
   status: AgendaStatus
 }
@@ -34,8 +36,6 @@ export interface AgendaData {
   schemaVersion: number
   titulo: string
   timezone: string
-  cidade: string
-  uf: string
   atualizadoEm: string
   aviso: string
   categorias: AgendaCategory[]
@@ -45,7 +45,8 @@ export interface AgendaData {
 export interface AgendaFilters {
   query: string
   day: string
-  neighborhood: string
+  city: string
+  state: string
   category: string
   includePast: boolean
 }

@@ -1,5 +1,5 @@
 import { CalendarDays, Clock3, ExternalLink, Link2, MapPin, Share2 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
 import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventTime, getDisplayStatus } from '../lib/agenda'
 import styles from '../styles/App.module.css'
@@ -35,8 +35,13 @@ function fallbackCopy(text: string) {
 
 export function AgendaEventCard({ event, agenda, categoryName, now, selected, onPermalink }: AgendaEventCardProps) {
   const [shareState, setShareState] = useState('Compartilhar')
+  const [expanded, setExpanded] = useState(Boolean(selected))
   const status = getDisplayStatus(event, now, agenda.timezone)
-  const mapUrl = buildMapUrl(event, agenda.cidade, agenda.uf)
+  const mapUrl = buildMapUrl(event)
+
+  useEffect(() => {
+    if (selected) setExpanded(true)
+  }, [selected])
 
   const share = async () => {
     const payload = buildEventShare(event, window.location, agenda.timezone)
@@ -55,7 +60,7 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, on
   }
 
   return (
-    <article className={`${styles.agendaCard} ${selected ? styles.agendaCardSelected : ''}`} id={`evento-${event.id}`}>
+    <article className={`${styles.agendaCard} ${status === 'encerrado' ? styles.agendaCardPast : ''} ${selected ? styles.agendaCardSelected : ''}`} id={`evento-${event.id}`}>
       <div className={styles.agendaCardTop}>
         <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{statusLabels[status]}</span>
         <span className={styles.agendaCategory}>{categoryName}</span>
@@ -64,17 +69,21 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, on
       <div className={styles.eventFacts}>
         <span><CalendarDays aria-hidden="true" size={16} />{event.data ? formatAgendaDate(event.data, agenda.timezone, true) : 'Data a confirmar'}</span>
         <span><Clock3 aria-hidden="true" size={16} />{formatEventTime(event)}</span>
-        {(event.local || event.endereco || event.bairro) && <span><MapPin aria-hidden="true" size={16} />{[event.local, event.endereco, event.bairro].filter(Boolean).join(' · ')}</span>}
+        <span><MapPin aria-hidden="true" size={16} /><strong>{event.cidade}/{event.uf}</strong>{event.local ? ` · ${event.local}` : ''}</span>
       </div>
-      <p>{event.descricao}</p>
-      {event.participacao && <p className={styles.participation}><strong>Participação:</strong> {event.participacao}</p>}
-      {event.recorrencia?.texto && <p className={styles.pendingNote}>{event.recorrencia.texto}. Não há recorrência presumida.</p>}
-      <div className={styles.eventActions}>
-        <button type="button" onClick={share}><Share2 aria-hidden="true" size={16} />{shareState}</button>
-        <button type="button" onClick={() => onPermalink(event.id)}><Link2 aria-hidden="true" size={16} />Link permanente</button>
-        {mapUrl && <a href={mapUrl} target="_blank" rel="noopener noreferrer"><MapPin aria-hidden="true" size={16} />Ver no mapa</a>}
-        {event.links?.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.rotulo}<ExternalLink aria-hidden="true" size={15} /></a>)}
-      </div>
+      <button className={styles.eventExpand} type="button" onClick={() => setExpanded((value) => !value)} aria-expanded={expanded}>{expanded ? 'Ocultar detalhes' : 'Ver detalhes'}</button>
+      {expanded && <div className={styles.eventDetails}>
+        <p>{event.descricao}</p>
+        {(event.endereco || event.bairro) && <p><strong>Localização:</strong> {[event.endereco, event.bairro].filter(Boolean).join(' · ')}</p>}
+        {event.informacoesAdicionais && <p><strong>Informações adicionais:</strong> {event.informacoesAdicionais}</p>}
+        {event.recorrencia?.texto && <p className={styles.pendingNote}>{event.recorrencia.texto}. Não há recorrência presumida.</p>}
+        <div className={styles.eventActions}>
+          <button type="button" onClick={share}><Share2 aria-hidden="true" size={16} />{shareState}</button>
+          <button type="button" onClick={() => onPermalink(event.id)}><Link2 aria-hidden="true" size={16} />Link permanente</button>
+          {mapUrl && <a href={mapUrl} target="_blank" rel="noopener noreferrer"><MapPin aria-hidden="true" size={16} />Ver no mapa</a>}
+          {event.links?.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.rotulo}<ExternalLink aria-hidden="true" size={15} /></a>)}
+        </div>
+      </div>}
     </article>
   )
 }

@@ -1,4 +1,5 @@
-import { CalendarDays, Home, Menu, X } from 'lucide-react'
+import { CalendarDays, Home, Menu, MessageCircle, X } from 'lucide-react'
+import { WHATSAPP_SUBMISSION_URL } from '../config'
 import type { Activity, Category } from '../types'
 import { ActivityFilters } from './ActivityFilters'
 import { CategoryNav } from './CategoryNav'
@@ -36,7 +37,8 @@ export function Sidebar(props: SidebarProps) {
         </div>
         <nav className={styles.mainNav} aria-label="Seções principais">
           <button className={props.currentView === 'home' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onHome(); props.onClose() }}><Home aria-hidden="true" size={18} />Início</button>
-          <button className={props.currentView === 'agenda' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onAgenda(); props.onClose() }}><CalendarDays aria-hidden="true" size={18} />Agenda Floripa</button>
+          <button className={props.currentView === 'agenda' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onAgenda(); props.onClose() }}><CalendarDays aria-hidden="true" size={18} />Agenda de Mobilizações</button>
+          <a href={WHATSAPP_SUBMISSION_URL} target="_blank" rel="noopener noreferrer" onClick={props.onClose}><MessageCircle aria-hidden="true" size={18} />Envie sua iniciativa</a>
         </nav>
         <CategoryNav categories={props.categories} selected={props.category} onSelect={(id) => { props.onCategory(id); props.onClose() }} />
         <ActivityFilters activities={props.activities} selected={props.activity} onSelect={(id) => { props.onActivity(id); props.onClose() }} />

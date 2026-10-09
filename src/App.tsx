@@ -5,6 +5,7 @@ import rawData from './data/iniciativas.json'
 import { ActivityFilters } from './components/ActivityFilters'
 import { AgendaPage } from './components/AgendaPage'
 import { AppShell } from './components/AppShell'
+import { ContributionCallout } from './components/ContributionCallout'
 import { EmptyState } from './components/EmptyState'
 import { InitiativeList } from './components/InitiativeList'
 import { NextEventWidget } from './components/NextEventWidget'
@@ -42,6 +43,7 @@ export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(systemTheme)
   const [menuOpen, setMenuOpen] = useState(false)
   const [routeVersion, setRouteVersion] = useState(0)
+  const [agendaCityContext, setAgendaCityContext] = useState(() => localStorage.getItem('agenda-cidade') ?? '')
   const [now] = useState(() => new Date())
   const params = useMemo(() => new URLSearchParams(window.location.search), [routeVersion])
   const currentView = params.get('view') === 'agenda' || params.has('evento') ? 'agenda' : 'home'
@@ -49,17 +51,25 @@ export default function App() {
   const directoryErrors = useMemo(() => validateDirectory(data), [])
   const agendaValidation = useMemo(() => validateAgenda(agendaSource), [])
   const agenda = useMemo(() => ({ ...agendaSource, eventos: agendaValidation.events }), [agendaValidation.events])
-  const nextEvent = useMemo(() => getNextEvent(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
+  const nextEvent = useMemo(() => getNextEvent(agenda.eventos.filter((event) => !agendaCityContext || event.cidade === agendaCityContext), now, agenda.timezone), [agenda.eventos, agenda.timezone, agendaCityContext, now])
 
   useEffect(() => {
     if (directoryErrors.length) console.error('Erros em iniciativas.json:', directoryErrors)
-    if (agendaValidation.errors.length) console.error('Registros ignorados em agenda-floripa.json:', agendaValidation.errors)
+    if (agendaValidation.errors.length) console.error('Registros ignorados na agenda de mobilizações:', agendaValidation.errors)
   }, [agendaValidation.errors, directoryErrors])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('tema', theme)
   }, [theme])
+
+  useEffect(() => {
+    if (currentView !== 'agenda') return
+    const city = params.get('cidade') ?? ''
+    setAgendaCityContext(city)
+    if (city) localStorage.setItem('agenda-cidade', city)
+    else localStorage.removeItem('agenda-cidade')
+  }, [currentView, params])
 
   useEffect(() => {
     const onPopState = () => {
@@ -105,7 +115,12 @@ export default function App() {
     setFilters({ query: '', category: '', activity: '' })
     commitUrl(new URLSearchParams())
   }
-  const goAgenda = () => commitUrl(new URLSearchParams({ view: 'agenda' }))
+  const goAgenda = (eventId?: string) => {
+    const nextParams = new URLSearchParams({ view: 'agenda' })
+    if (eventId) nextParams.set('evento', eventId)
+    if (agendaCityContext) nextParams.set('cidade', agendaCityContext)
+    commitUrl(nextParams)
+  }
   const clear = () => updateCatalog({ query: '', category: '', activity: '' })
   const selectedCategory = data.categorias.find((item) => item.id === filters.category)
   const selectedActivity = data.atividades.find((item) => item.id === filters.activity)
@@ -128,7 +143,7 @@ export default function App() {
               <Search value={filters.query} onChange={(query) => updateCatalog({ query }, true)} />
             </section>
 
-            <div className={styles.mobileNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} onAgenda={goAgenda} /></div>
+            <div className={styles.mobileNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} cityContext={agendaCityContext} onAgenda={goAgenda} /></div>
 
             <section className={styles.quickActions} aria-labelledby="quick-title">
               <div className={styles.sectionTitleRow}><div><p className={styles.eyebrow}>ATALHOS</p><h2 id="quick-title">O que você quer fazer?</h2></div></div>
@@ -146,8 +161,9 @@ export default function App() {
               </div>
               {results.length ? <InitiativeList initiatives={results} categories={data.categorias} /> : <EmptyState onClear={clear} />}
             </section>
+            <ContributionCallout />
           </div>
-          <div className={styles.desktopNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} onAgenda={goAgenda} /></div>
+          <div className={styles.desktopNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} cityContext={agendaCityContext} onAgenda={goAgenda} /></div>
         </div>
       )}
     </AppShell>

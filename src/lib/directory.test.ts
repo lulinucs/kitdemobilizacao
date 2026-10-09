@@ -26,6 +26,31 @@ describe('busca e filtros', () => {
     expect(result.map((item) => item.id)).toEqual(['lambe-brasil'])
   })
 
+  it('encontra os dois acervos nas buscas e nos filtros correspondentes', () => {
+    const din = 'drivezao-eleitoral-dinamichi'
+    const gab = 'drive-materiais-gabefelds'
+    const ids = [din, gab]
+    const filterIds = (query: string, category: string, activity: string) =>
+      filterInitiatives(data, { query, category, activity }).map((item) => item.id)
+
+    expect(filterIds('', '', '')).toEqual(expect.arrayContaining(ids))
+    expect(filterIds('', 'materiais', '')).toEqual(expect.arrayContaining(ids))
+    expect(filterIds('', '', 'imprimir')).toEqual(expect.arrayContaining(ids))
+    expect(filterIds('', '', 'compartilhar')).toEqual(expect.arrayContaining(ids))
+    expect(filterIds('', '', 'aprender')).toContain(din)
+    expect(filterIds('', '', 'aprender')).not.toContain(gab)
+    expect(filterIds('dinamichi', '', '')).toContain(din)
+    expect(filterIds('gabefelds', '', '')).toContain(gab)
+
+    expect(data.iniciativas.filter((item) => ids.includes(item.id))).toHaveLength(2)
+    expect(data.iniciativas.find((item) => item.id === din)?.links).toEqual([{
+      rotulo: 'Acessar materiais', url: 'https://drive.google.com/drive/folders/1LbYfXCnnI7-APqRltwTfp7GbAxsdbCnz', principal: true,
+    }])
+    expect(data.iniciativas.find((item) => item.id === gab)?.links).toEqual([{
+      rotulo: 'Acessar materiais', url: 'https://drive.google.com/drive/folders/1x5SOQOa8Ey47W3WRGj5PbAEWaMSKJcu0', principal: true,
+    }])
+  })
+
   it('normaliza URLs antigas com precedência para categoria', () => {
     const filters = readCatalogFilters('?categoria=materiais&atividade=acompanhar&q=cartazes')
 

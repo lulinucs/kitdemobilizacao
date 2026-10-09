@@ -276,6 +276,67 @@
       "destaque": false
     },
     {
+      "id": "drivezao-eleitoral-dinamichi",
+      "nome": "Drivezão Eleitoral da Dinamichi",
+      "descricao": "Acervo de materiais de mobilização eleitoral reunidos pela Dinamichi, com imagens, vídeos curtos, panfletos, lambe-lambes e documentos sobre estratégias de mobilização. O Drive reúne conteúdos encontrados em diferentes redes sociais e materiais organizados em pastas, incluindo artes para impressão, publicações para compartilhar e vídeos para TikTok, Kwai, Facebook e outras redes. Inclui conteúdos de diferentes origens, inclusive imagens geradas por inteligência artificial.",
+      "categoriaPrincipal": "materiais",
+      "atividades": [
+        "imprimir",
+        "compartilhar",
+        "aprender"
+      ],
+      "tags": [
+        "Pasta pública do Google Drive",
+        "Artes para impressão",
+        "Vídeos curtos"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar materiais",
+          "url": "https://drive.google.com/drive/folders/1LbYfXCnnI7-APqRltwTfp7GbAxsdbCnz",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-organizador",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
+      "id": "drive-materiais-gabefelds",
+      "nome": "Drive de Materiais do Gabefelds",
+      "descricao": "Pasta com imagens e artes de mobilização que podem ser utilizadas para produzir lambe-lambes, adesivos e outros materiais impressos, além de serem compartilhadas nas redes sociais.",
+      "categoriaPrincipal": "materiais",
+      "atividades": [
+        "imprimir",
+        "compartilhar"
+      ],
+      "tags": [
+        "Pasta pública do Google Drive",
+        "Lambe-lambes",
+        "Adesivos"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar materiais",
+          "url": "https://drive.google.com/drive/folders/1x5SOQOa8Ey47W3WRGj5PbAEWaMSKJcu0",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-organizador",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
       "id": "materiais-divulgacao-andes-sn",
       "nome": "Materiais de divulgação — ANDES-SN",
       "descricao": "Acervo de materiais de divulgação disponibilizado pelo ANDES-SN para o segundo turno de 2026, com artes para redes sociais, adesivos, faixas e panfletos voltados à defesa da democracia, dos direitos sociais e da educação pública. As pastas poderão receber novos materiais.",

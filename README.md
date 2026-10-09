@@ -1,6 +1,6 @@
-# Diretório de Mobilização
+# Kit de Mobilização
 
-Site responsivo em React + TypeScript para consultar iniciativas de mobilização política. A busca ignora acentos e maiúsculas, pode ser combinada com categoria e atividade e mantém os filtros na URL para compartilhamento.
+Acervo independente e responsivo, em React + TypeScript, para consultar iniciativas, ferramentas, materiais e agendas de mobilização para o segundo turno das eleições de 2026. O portal agrega recursos existentes e não representa uma organização ou movimento político.
 
 ## Executar localmente
 

@@ -113,8 +113,8 @@ export default function App() {
   return (
     <AppShell
       sidebar={<Sidebar categories={data.categorias} activities={data.atividades} category={filters.category} activity={filters.activity} currentView={currentView} open={menuOpen} onCategory={(category) => updateCatalog({ category })} onActivity={(activity) => updateCatalog({ activity })} onHome={goHome} onAgenda={goAgenda} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
-      header={<header className={styles.header}><div className={styles.mobileBrand}>{currentView === 'agenda' ? 'Agenda Floripa' : 'Diretório de Mobilização'}</div><ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} /></header>}
-      footer={<footer className={styles.footer}><p>Diretório independente de links e informações de terceiros. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
+      header={<header className={styles.header}><div className={styles.mobileBrand}><strong>Kit de Mobilização</strong><small>Segundo Turno · Eleições 2026</small></div><ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} /></header>}
+      footer={<footer className={styles.footer}><p>O Kit de Mobilização é um agregador independente de recursos, iniciativas e informações de terceiros. Não representa uma organização ou movimento político. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
     >
       {currentView === 'agenda' ? (
         <AgendaPage agenda={agenda} events={agenda.eventos} now={now} params={params} onUpdate={updateAgenda} />
@@ -122,9 +122,9 @@ export default function App() {
         <div className={styles.homeLayout}>
           <div className={styles.homePrimary}>
             <section className={styles.intro} aria-labelledby="page-title">
-              <p className={styles.eyebrow}>RECURSOS DE PARTICIPAÇÃO</p>
+              <p className={styles.eyebrow}>SEGUNDO TURNO · ELEIÇÕES 2026</p>
               <h1 id="page-title">Encontre uma iniciativa para participar</h1>
-              <p className={styles.lead}>Busque materiais, canais, ferramentas e guias de mobilização reunidos em um só lugar.</p>
+              <p className={styles.lead}>Um acervo independente de iniciativas, ferramentas, materiais e agendas de mobilização para o segundo turno das eleições de 2026. Tudo organizado em um só lugar para facilitar o acesso e a participação.</p>
               <Search value={filters.query} onChange={(query) => updateCatalog({ query }, true)} />
             </section>
 

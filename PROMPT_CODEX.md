@@ -1,4 +1,4 @@
-# Prompt para o Codex — Diretório de Mobilização
+# Prompt para o Codex — Kit de Mobilização
 
 Implemente um site completo e responsivo, em português brasileiro, para organizar e facilitar a descoberta de iniciativas de mobilização política. A inspiração de arquitetura de informação é o Pirataria.link: navegação lateral, índice por tópicos, busca muito evidente e leitura rápida. Não copie identidade visual, código ou marca do site de referência.
 
@@ -37,7 +37,7 @@ Implemente um site completo e responsivo, em português brasileiro, para organiz
 ## Informação e responsabilidade
 
 - Preserve linguagem informativa e descritiva, sem acrescentar chamadas persuasivas próprias ou alegações não verificadas.
-- Exiba aviso curto no rodapé: "Diretório independente de links de terceiros. Verifique informações e respeite a legislação eleitoral e as regras de uso dos espaços."
+- Exiba aviso curto no rodapé deixando claro que o Kit de Mobilização é um agregador independente de recursos e iniciativas de terceiros, não uma organização ou movimento político.
 - Em recursos para colagem de cartazes, evitar instruir afixação em locais proibidos.
 - Links que apontam para notícias ou páginas explicativas devem ser rotulados como tal, não como se fossem a ferramenta em si.
 - Sem afirmar que qualquer iniciativa é oficial, a menos que haja confirmação documental.

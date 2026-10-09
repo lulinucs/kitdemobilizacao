@@ -29,9 +29,8 @@ export function Sidebar(props: SidebarProps) {
       {props.open && <button className={styles.backdrop} type="button" onClick={props.onClose} aria-label="Fechar menu" />}
       <aside className={`${styles.sidebar} ${props.open ? styles.sidebarOpen : ''}`} aria-label="Navegação e filtros">
         <div className={styles.brandRow}>
-          <button className={styles.brand} type="button" onClick={props.onHome} aria-label="Kit de Mobilização — início">
-            <span className={styles.brandMark} aria-hidden="true"><i /><i /><i /></span>
-            <span className={styles.brandText}><strong>Kit de Mobilização</strong><small>Segundo Turno · Eleições 2026</small></span>
+          <button className={styles.brandCard} type="button" onClick={props.onHome} aria-label="Kit de Mobilização — início">
+            <img src="/logo.png" alt="Kit de Mobilização · Segundo Turno · Eleições 2026" className={styles.brandLogo} />
           </button>
           <button className={styles.closeMenu} type="button" onClick={props.onClose} aria-label="Fechar menu"><X aria-hidden="true" size={21} /></button>
         </div>

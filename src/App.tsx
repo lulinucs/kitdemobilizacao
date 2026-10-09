@@ -1,26 +1,28 @@
 import { useEffect, useMemo, useState } from 'react'
 import { X } from 'lucide-react'
+import rawAgenda from './data/agenda-floripa.json'
 import rawData from './data/iniciativas.json'
 import { ActivityFilters } from './components/ActivityFilters'
+import { AgendaPage } from './components/AgendaPage'
 import { AppShell } from './components/AppShell'
 import { EmptyState } from './components/EmptyState'
 import { InitiativeList } from './components/InitiativeList'
+import { NextEventWidget } from './components/NextEventWidget'
 import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
+import { getNextEvent, validateAgenda } from './lib/agenda'
 import { filterInitiatives, validateDirectory } from './lib/directory'
+import type { AgendaData } from './agendaTypes'
 import type { DirectoryData, Filters } from './types'
 import styles from './styles/App.module.css'
 
 const data = rawData as DirectoryData
+const agendaSource = rawAgenda as AgendaData
 
 function readFilters(): Filters {
   const params = new URLSearchParams(window.location.search)
-  return {
-    query: params.get('q') ?? '',
-    category: params.get('categoria') ?? '',
-    activity: params.get('atividade') ?? '',
-  }
+  return { query: params.get('q') ?? '', category: params.get('categoria') ?? '', activity: params.get('atividade') ?? '' }
 }
 
 function systemTheme(): 'light' | 'dark' {
@@ -33,12 +35,20 @@ export default function App() {
   const [filters, setFilters] = useState<Filters>(readFilters)
   const [theme, setTheme] = useState<'light' | 'dark'>(systemTheme)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [routeVersion, setRouteVersion] = useState(0)
+  const [now] = useState(() => new Date())
+  const params = useMemo(() => new URLSearchParams(window.location.search), [routeVersion])
+  const currentView = params.get('view') === 'agenda' || params.has('evento') ? 'agenda' : 'home'
   const results = useMemo(() => filterInitiatives(data, filters), [filters])
-  const errors = useMemo(() => validateDirectory(data), [])
+  const directoryErrors = useMemo(() => validateDirectory(data), [])
+  const agendaValidation = useMemo(() => validateAgenda(agendaSource), [])
+  const agenda = useMemo(() => ({ ...agendaSource, eventos: agendaValidation.events }), [agendaValidation.events])
+  const nextEvent = useMemo(() => getNextEvent(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
 
   useEffect(() => {
-    if (import.meta.env.DEV && errors.length) console.error('Erros em iniciativas.json:', errors)
-  }, [errors])
+    if (directoryErrors.length) console.error('Erros em iniciativas.json:', directoryErrors)
+    if (agendaValidation.errors.length) console.error('Registros ignorados em agenda-floripa.json:', agendaValidation.errors)
+  }, [agendaValidation.errors, directoryErrors])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -46,72 +56,87 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
-    const onPopState = () => setFilters(readFilters())
+    const onPopState = () => {
+      setFilters(readFilters())
+      setRouteVersion((value) => value + 1)
+    }
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  const update = (patch: Partial<Filters>, replace = false) => {
+  const commitUrl = (nextParams: URLSearchParams, replace = false) => {
+    const nextUrl = `${window.location.pathname}${nextParams.size ? `?${nextParams}` : ''}`
+    window.history[replace ? 'replaceState' : 'pushState']({}, '', nextUrl)
+    setRouteVersion((value) => value + 1)
+  }
+
+  const updateCatalog = (patch: Partial<Filters>, replace = false) => {
     const nextFilters = { ...filters, ...patch }
-    const params = new URLSearchParams()
-    if (nextFilters.category) params.set('categoria', nextFilters.category)
-    if (nextFilters.activity) params.set('atividade', nextFilters.activity)
-    if (nextFilters.query) params.set('q', nextFilters.query)
-    const nextUrl = `${window.location.pathname}${params.size ? `?${params}` : ''}`
-    window.history[replace ? 'replaceState' : 'pushState'](nextFilters, '', nextUrl)
+    const nextParams = new URLSearchParams()
+    if (nextFilters.category) nextParams.set('categoria', nextFilters.category)
+    if (nextFilters.activity) nextParams.set('atividade', nextFilters.activity)
+    if (nextFilters.query) nextParams.set('q', nextFilters.query)
+    commitUrl(nextParams, replace)
     setFilters(nextFilters)
   }
-  const clear = () => update({ query: '', category: '', activity: '' })
+
+  const updateAgenda = (patch: Record<string, string | null>, replace = false) => {
+    const nextParams = new URLSearchParams(window.location.search)
+    nextParams.set('view', 'agenda')
+    Object.entries(patch).forEach(([key, value]) => value ? nextParams.set(key, value) : nextParams.delete(key))
+    commitUrl(nextParams, replace)
+  }
+
+  const goHome = () => {
+    setFilters({ query: '', category: '', activity: '' })
+    commitUrl(new URLSearchParams())
+  }
+  const goAgenda = () => commitUrl(new URLSearchParams({ view: 'agenda' }))
+  const clear = () => updateCatalog({ query: '', category: '', activity: '' })
   const selectedCategory = data.categorias.find((item) => item.id === filters.category)
   const selectedActivity = data.atividades.find((item) => item.id === filters.activity)
 
   return (
     <AppShell
-      sidebar={<Sidebar categories={data.categorias} activities={data.atividades} category={filters.category} activity={filters.activity} open={menuOpen} onCategory={(category) => update({ category })} onActivity={(activity) => update({ activity })} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
-      header={
-        <header className={styles.header}>
-          <div className={styles.mobileBrand}>Diretório de Mobilização</div>
-          <ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
-        </header>
-      }
-      footer={
-        <footer className={styles.footer}>
-          <p>Diretório independente de links de terceiros. Verifique informações e respeite a legislação eleitoral e as regras de uso dos espaços.</p>
-          <p>Dados atualizados em 9 de outubro de 2026.</p>
-        </footer>
-      }
+      sidebar={<Sidebar categories={data.categorias} activities={data.atividades} category={filters.category} activity={filters.activity} currentView={currentView} open={menuOpen} onCategory={(category) => updateCatalog({ category })} onActivity={(activity) => updateCatalog({ activity })} onHome={goHome} onAgenda={goAgenda} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
+      header={<header className={styles.header}><div className={styles.mobileBrand}>{currentView === 'agenda' ? 'Agenda Floripa' : 'Diretório de Mobilização'}</div><ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} /></header>}
+      footer={<footer className={styles.footer}><p>Diretório independente de links e informações de terceiros. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
     >
-      <section className={styles.intro} aria-labelledby="page-title">
-        <p className={styles.eyebrow}>RECURSOS DE PARTICIPAÇÃO</p>
-        <h1 id="page-title">Encontre uma iniciativa para participar</h1>
-        <p className={styles.lead}>Busque materiais, canais, ferramentas e guias de mobilização reunidos em um só lugar.</p>
-        <Search value={filters.query} onChange={(query) => update({ query }, true)} />
-      </section>
+      {currentView === 'agenda' ? (
+        <AgendaPage agenda={agenda} events={agenda.eventos} now={now} params={params} onUpdate={updateAgenda} />
+      ) : (
+        <div className={styles.homeLayout}>
+          <div className={styles.homePrimary}>
+            <section className={styles.intro} aria-labelledby="page-title">
+              <p className={styles.eyebrow}>RECURSOS DE PARTICIPAÇÃO</p>
+              <h1 id="page-title">Encontre uma iniciativa para participar</h1>
+              <p className={styles.lead}>Busque materiais, canais, ferramentas e guias de mobilização reunidos em um só lugar.</p>
+              <Search value={filters.query} onChange={(query) => updateCatalog({ query }, true)} />
+            </section>
 
-      <section className={styles.quickActions} aria-labelledby="quick-title">
-        <div className={styles.sectionTitleRow}>
-          <div><p className={styles.eyebrow}>ATALHOS</p><h2 id="quick-title">O que você quer fazer?</h2></div>
-        </div>
-        <ActivityFilters activities={data.atividades.filter((item) => ['compartilhar', 'conversar', 'imprimir', 'organizar'].includes(item.id))} selected={filters.activity} onSelect={(activity) => update({ activity })} compact />
-      </section>
+            <div className={styles.mobileNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} onAgenda={goAgenda} /></div>
 
-      <section className={styles.results} aria-labelledby="results-title">
-        <div className={styles.resultsHeader}>
-          <div>
-            <p className={styles.eyebrow}>ÍNDICE</p>
-            <h2 id="results-title">{results.length} {results.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}</h2>
+            <section className={styles.quickActions} aria-labelledby="quick-title">
+              <div className={styles.sectionTitleRow}><div><p className={styles.eyebrow}>ATALHOS</p><h2 id="quick-title">O que você quer fazer?</h2></div></div>
+              <ActivityFilters activities={data.atividades.filter((item) => ['compartilhar', 'conversar', 'imprimir', 'organizar'].includes(item.id))} selected={filters.activity} onSelect={(activity) => updateCatalog({ activity })} compact />
+            </section>
+
+            <section className={styles.results} aria-labelledby="results-title">
+              <div className={styles.resultsHeader}>
+                <div><p className={styles.eyebrow}>ÍNDICE</p><h2 id="results-title">{results.length} {results.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}</h2></div>
+                {(filters.query || filters.category || filters.activity) && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
+              </div>
+              <div className={styles.activeFilters} aria-label="Filtros ativos">
+                {selectedCategory && <button type="button" onClick={() => updateCatalog({ category: '' })}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button>}
+                {selectedActivity && <button type="button" onClick={() => updateCatalog({ activity: '' })}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button>}
+                {filters.query && <button type="button" onClick={() => updateCatalog({ query: '' })}>Busca: “{filters.query}”<X aria-hidden="true" size={15} /></button>}
+              </div>
+              {results.length ? <InitiativeList initiatives={results} categories={data.categorias} /> : <EmptyState onClear={clear} />}
+            </section>
           </div>
-          {(filters.query || filters.category || filters.activity) && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
+          <div className={styles.desktopNextEvent}><NextEventWidget event={nextEvent} agenda={agenda} onAgenda={goAgenda} /></div>
         </div>
-
-        <div className={styles.activeFilters} aria-label="Filtros ativos">
-          {selectedCategory && <button type="button" onClick={() => update({ category: '' })}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button>}
-          {selectedActivity && <button type="button" onClick={() => update({ activity: '' })}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button>}
-          {filters.query && <button type="button" onClick={() => update({ query: '' })}>Busca: “{filters.query}”<X aria-hidden="true" size={15} /></button>}
-        </div>
-
-        {results.length ? <InitiativeList initiatives={results} categories={data.categorias} /> : <EmptyState onClear={clear} />}
-      </section>
+      )}
     </AppShell>
   )
 }

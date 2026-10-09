@@ -3,12 +3,16 @@
 .page { min-height: 100vh; margin-left: 280px; display: flex; flex-direction: column; }
 .main { width: min(100%, 1200px); margin: 0 auto; padding: 38px 46px 70px; flex: 1; }
 .brandRow { display: flex; align-items: flex-start; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--nav-text); text-decoration: none; font-weight: 700; font-size: 1.04rem; line-height: 1.15; letter-spacing: -.02em; }
+.brand { display: flex; align-items: center; gap: 12px; border: 0; padding: 0; color: var(--nav-text); background: transparent; text-decoration: none; text-align: left; cursor: pointer; font-weight: 700; font-size: 1.04rem; line-height: 1.15; letter-spacing: -.02em; }
 .brandMark { width: 38px; height: 38px; border-radius: 10px; background: var(--yellow); display: grid; align-content: center; gap: 4px; padding: 9px; }
 .brandMark i { display: block; height: 3px; border-radius: 4px; background: var(--color-petroleum); }
 .brandMark i:nth-child(2) { width: 75%; }
 .navLabel { margin: 0 0 8px 10px; color: var(--nav-muted); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.categoryNav { margin-top: 42px; }
+.mainNav { margin-top: 34px; padding-bottom: 20px; border-bottom: 1px solid rgb(255 249 237 / 14%); display: grid; gap: 6px; }
+.mainNav button { min-height: 43px; border: 0; border-radius: 9px; padding: 10px; display: flex; align-items: center; gap: 10px; color: var(--nav-muted); background: transparent; cursor: pointer; font-weight: 600; text-align: left; }
+.mainNav button:hover { color: var(--nav-text); background: rgb(255 249 237 / 10%); }
+.mainNav .mainNavActive { color: var(--color-petroleum); background: var(--yellow); }
+.categoryNav { margin-top: 28px; }
 .categoryNav button, .activityNav button { width: 100%; min-height: 42px; border: 0; border-radius: 9px; padding: 10px; display: flex; align-items: center; gap: 10px; color: var(--nav-muted); background: transparent; text-align: left; cursor: pointer; font-size: .9rem; font-weight: 500; }
 .categoryNav button:hover, .activityNav button:hover { background: rgb(255 249 237 / 10%); color: var(--nav-text); }
 .categoryNav .navActive, .activityNav .filterActive { color: var(--color-petroleum); background: var(--yellow); font-weight: 700; }
@@ -65,11 +69,94 @@
 .backdrop { display: none; }
 .srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
+.homeLayout { min-width: 0; }
+.homePrimary { min-width: 0; }
+.desktopNextEvent { display: none; }
+.mobileNextEvent { margin: 8px 0 22px; }
+.nextEvent { border: 1px solid var(--border); border-top: 5px solid var(--accent); border-radius: 14px; padding: 20px; background: var(--surface); }
+.nextEvent h2 { margin: 0; font-size: 1.25rem; }
+.nextEvent h3 { margin: 18px 0 10px; font-size: 1.08rem; line-height: 1.3; }
+.nextEventMeta { display: grid; gap: 8px; color: var(--muted); font-size: .84rem; }
+.nextEventMeta span { display: flex; align-items: flex-start; gap: 7px; }
+.nextEventMeta svg { flex: 0 0 auto; margin-top: 1px; color: var(--accent); }
+.nextEventEmpty { color: var(--muted); line-height: 1.5; }
+.nextEvent > button { width: 100%; min-height: 42px; margin-top: 18px; border: 0; border-radius: 9px; color: var(--on-primary); background: var(--primary); cursor: pointer; font-weight: 700; }
+
+.agendaPage { max-width: 1080px; margin: 0 auto; }
+.agendaHero { padding: 30px 0 24px; }
+.agendaHero h1 { max-width: 780px; margin: 0; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -.05em; }
+.agendaHero > p:last-child { max-width: 680px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
+.agendaNotice { margin-bottom: 24px; border: 1px solid color-mix(in srgb, var(--yellow) 70%, var(--border)); border-radius: 12px; padding: 13px 15px; display: flex; align-items: flex-start; gap: 10px; color: var(--text); background: var(--surface-warm); font-size: .9rem; line-height: 1.45; }
+.agendaNotice svg { flex: 0 0 auto; color: var(--accent); }
+.agendaControls { display: grid; grid-template-columns: minmax(280px, 1fr) 190px 220px; gap: 12px; align-items: end; }
+.agendaControls > label { display: grid; gap: 6px; color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .04em; }
+.agendaControls select { width: 100%; min-height: 48px; border: 1px solid var(--border); border-radius: 10px; padding: 0 34px 0 12px; color: var(--text); background: var(--surface); }
+.agendaSearch { min-height: 50px; border: 2px solid var(--color-petroleum); border-left: 6px solid var(--yellow); border-radius: 11px; padding: 0 12px; display: flex !important; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px !important; color: var(--text) !important; background: var(--surface); }
+:root[data-theme='dark'] .agendaSearch { border-color: var(--border); border-left-color: var(--yellow); }
+.agendaSearch:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 17%, transparent); }
+.agendaSearch input { min-width: 0; height: 46px; flex: 1; border: 0; outline: 0; color: var(--text); background: transparent; font-size: .93rem; }
+.agendaSearch button { border: 0; padding: 6px; color: var(--muted); background: transparent; cursor: pointer; }
+.dayPicker { display: flex; gap: 8px; margin: 18px 0; padding-bottom: 6px; overflow-x: auto; scrollbar-width: thin; }
+.dayPicker button { flex: 0 0 auto; min-height: 38px; border: 1px solid var(--border); border-radius: 999px; padding: 7px 12px; color: var(--text); background: var(--surface); cursor: pointer; font-size: .84rem; font-weight: 600; }
+.dayPicker button:hover { border-color: var(--color-green); background: var(--support-soft); }
+.dayPicker .dayActive { border-color: var(--color-petroleum); color: var(--color-petroleum); background: var(--yellow); }
+.agendaToolbar { min-height: 50px; margin-bottom: 22px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; display: flex; align-items: center; gap: 14px; }
+.agendaToolbar > div:first-child { display: flex; align-items: center; gap: 18px; margin-right: auto; }
+.pastToggle { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: .84rem; cursor: pointer; }
+.pastToggle input { width: 17px; height: 17px; accent-color: var(--accent); }
+.viewToggle { display: flex; padding: 3px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-muted); }
+.viewToggle button { min-height: 34px; border: 0; border-radius: 6px; padding: 6px 9px; display: flex; align-items: center; gap: 6px; color: var(--muted); background: transparent; cursor: pointer; font-size: .8rem; }
+.viewToggle .viewActive { color: var(--text); background: var(--surface); font-weight: 700; }
+.timeline { display: grid; gap: 34px; }
+.timelineDay > h2 { margin: 0 0 14px 86px; color: var(--accent); font-size: 1rem; text-transform: capitalize; }
+.timelineRow { position: relative; display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 18px; align-items: start; }
+.timelineRow + .timelineRow { margin-top: 13px; }
+.timelineRow::before { content: ''; position: absolute; left: 67px; top: 0; bottom: -14px; width: 2px; background: var(--border); }
+.timelineRow > time { position: relative; z-index: 1; padding-top: 18px; color: var(--accent); font-size: .88rem; font-weight: 700; }
+.timelineRow > time::after { content: ''; position: absolute; right: -24px; top: 21px; width: 10px; height: 10px; border: 3px solid var(--bg); border-radius: 50%; background: var(--accent); }
+.agendaList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.agendaCard { min-width: 0; border: 1px solid var(--border); border-radius: 14px; padding: 20px; background: var(--surface); scroll-margin-top: 100px; }
+.agendaCardSelected { border: 2px solid var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent); }
+.agendaCardTop { display: flex; flex-wrap: wrap; gap: 7px; }
+.statusBadge, .agendaCategory { border-radius: 999px; padding: 4px 8px; font-size: .7rem; font-weight: 700; }
+.statusBadge { color: var(--text); background: var(--surface-muted); }
+.agendaCategory { color: var(--color-green); background: var(--support-soft); }
+:root[data-theme='dark'] .agendaCategory { color: #bce5d8; }
+.status_confirmado { color: #155c47; background: #dcefe8; }
+.status_cancelado { color: #8b2f28; background: #f8ded9; }
+.status_alterado { color: #704f00; background: #fff0b8; }
+.status_data_pendente { color: #704f00; background: #fff0b8; }
+.status_encerrado { color: var(--muted); background: var(--surface-muted); }
+:root[data-theme='dark'] .status_confirmado { color: #d4f4e8; background: #315b4f; }
+:root[data-theme='dark'] .status_cancelado { color: #ffd8d2; background: #633a35; }
+:root[data-theme='dark'] .status_alterado, :root[data-theme='dark'] .status_data_pendente { color: #fff1bd; background: #584d29; }
+.agendaCard h3 { margin: 14px 0 10px; font-size: 1.17rem; line-height: 1.3; }
+.eventFacts { display: grid; gap: 7px; color: var(--muted); font-size: .84rem; }
+.eventFacts span { display: flex; align-items: flex-start; gap: 7px; }
+.eventFacts svg { flex: 0 0 auto; margin-top: 1px; color: var(--accent); }
+.agendaCard > p { margin: 14px 0 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+.participation strong { color: var(--text); font-weight: 700; }
+.pendingNote { padding: 10px; border-radius: 8px; background: var(--surface-warm); }
+.eventActions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+.eventActions button, .eventActions a { min-height: 36px; border: 1px solid var(--border); border-radius: 8px; padding: 7px 9px; display: inline-flex; align-items: center; gap: 6px; color: var(--text); background: var(--surface); cursor: pointer; text-decoration: none; font-size: .77rem; font-weight: 600; }
+.eventActions button:hover, .eventActions a:hover { border-color: var(--color-green); background: var(--support-soft); }
+.pendingSection { margin-top: 50px; border-top: 2px solid var(--yellow); padding-top: 24px; }
+.pendingSection h2 { margin: 0; font-size: 1.45rem; }
+.pendingSection > p { margin: 8px 0 18px; color: var(--muted); font-size: .9rem; }
+
+@media (min-width: 1250px) {
+  .homeLayout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+  .desktopNextEvent { display: block; position: sticky; top: 92px; padding-top: 30px; }
+  .mobileNextEvent { display: none; }
+}
+
 @media (max-width: 1000px) {
   .sidebar { width: 250px; }
   .page { margin-left: 250px; }
   .main { padding-left: 30px; padding-right: 30px; }
   .cardGrid { grid-template-columns: 1fr; }
+  .agendaControls { grid-template-columns: 1fr 1fr; }
+  .agendaSearch { grid-column: 1 / -1; }
 }
 
 @media (max-width: 760px) {
@@ -91,6 +178,20 @@
   .activityRow button { min-width: 150px; min-height: 70px; scroll-snap-align: start; }
   .resultsHeader { align-items: center; }
   .footer { padding: 22px 16px 30px; }
+  .agendaHero { padding-top: 20px; }
+  .agendaHero h1 { font-size: clamp(2.15rem, 10vw, 3.15rem); }
+  .agendaControls { grid-template-columns: 1fr; }
+  .agendaSearch { grid-column: auto; }
+  .agendaToolbar { align-items: flex-start; flex-wrap: wrap; }
+  .agendaToolbar > div:first-child { width: 100%; justify-content: space-between; }
+  .viewToggle { flex: 1; }
+  .viewToggle button { flex: 1; justify-content: center; }
+  .timelineDay > h2 { margin-left: 0; }
+  .timelineRow { grid-template-columns: 1fr; gap: 5px; }
+  .timelineRow::before, .timelineRow > time::after { display: none; }
+  .timelineRow > time { padding: 0 0 2px 4px; }
+  .agendaList { grid-template-columns: 1fr; }
+  .eventActions button, .eventActions a { min-height: 42px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, eventEndDateTime, filterAgendaEvents, getNextEvent, getWidgetEventSelection, getZonedDate, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventScheduleLines, formatEventTime, formatMobilizationTitle, getHighlightCityGroups, getNextEvent, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, shouldShowEditorialSpotlight, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
@@ -24,7 +24,7 @@ describe('agenda', () => {
   })
 
   it('combina dia, cidade, estado, categoria e busca', () => {
-    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', city: 'Florianópolis', state: 'SC', category: 'bandeiraco', includePast: true }, now, data.timezone)
+    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', city: 'Florianópolis', state: 'SC', category: 'bandeiraco', mobilization: '', highlight: '', includePast: true }, now, data.timezone)
     expect(result.map((event) => event.id)).toEqual(['bandeiraco-campeche-0910'])
   })
 
@@ -33,7 +33,7 @@ describe('agenda', () => {
     const event = { ...baseEvent, id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
     const events = [...data.eventos, event]
 
-    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(['evento-recife'])
+    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(['evento-recife'])
     expect(validateAgenda({ ...data, eventos: events }).errors).toEqual([])
   })
 
@@ -67,6 +67,110 @@ describe('agenda', () => {
     expect(share.url).toBe('https://exemplo.test/?view=agenda&evento=pedalula-1110')
     expect(share.text).toContain('Pedalula')
     expect(share.text).toContain('Florianópolis/SC')
+  })
+
+  it('agrupa atos da mesma mobilização apenas quando solicitado', () => {
+    const floripa = data.eventos.find((item) => item.id === 'ato-nacional-estudantes-florianopolis-1310')!
+    const recife = { ...floripa, id: 'ato-nacional-recife-1310', cidade: 'Recife', uf: 'PE', inicio: '18:30', inicioRotulo: '18h30 — concentração' }
+    const regular = data.eventos.find((item) => item.id === 'pedalula-1110')!
+
+    const grouped = groupAgendaEvents([regular, floripa, recife])
+    expect(grouped).toHaveLength(2)
+    expect(grouped[1]).toMatchObject({ kind: 'mobilization', id: 'ato-nacional-13-out-2026' })
+    if (grouped[1]?.kind === 'mobilization') expect(grouped[1].events.map((event) => event.cidade)).toEqual(['Florianópolis', 'Recife'])
+
+    expect(groupAgendaEvents([floripa, recife], false).map((item) => item.kind)).toEqual(['event', 'event'])
+  })
+
+  it('forma o título nacional e preserva o rótulo confirmado da concentração', () => {
+    const event = data.eventos.find((item) => item.id === 'ato-nacional-estudantes-florianopolis-1310')!
+    expect(formatMobilizationTitle([event], data.timezone)).toBe('Ato Nacional — 13 de outubro')
+    expect(formatEventTime(event)).toBe('17h — concentração')
+  })
+
+  it('mantém eventos sem horário no dia correto e depois dos horários conhecidos', () => {
+    const timed = data.eventos.find((item) => item.id === 'banca-ticen-0910')!
+    const unknown = data.eventos.find((item) => item.id === 'mobilizacao-estudantil-ufrpe-uabj-0910')!
+    const sorted = sortEvents([unknown, timed], data.timezone)
+
+    expect(formatEventTime(unknown)).toBe('Horário a confirmar')
+    expect(sorted.map((event) => event.id)).toEqual([timed.id, unknown.id])
+    expect(getWidgetEventSelection([unknown], now, data.timezone).kind).toBe('empty')
+  })
+
+  it('aceita atividade virtual sem cidade e permite encontrá-la pela instituição', () => {
+    const virtual: AgendaEvent = {
+      id: 'plenaria-virtual',
+      titulo: 'Plenária virtual',
+      categoria: 'plenaria',
+      data: '2026-10-13',
+      inicio: '20:00',
+      fim: null,
+      modalidade: 'virtual',
+      instituicao: 'Entidade estudantil',
+      descricao: 'Encontro virtual.',
+      status: 'confirmado',
+    }
+    const nextData = { ...data, eventos: [...data.eventos, virtual] }
+
+    expect(validateAgenda(nextData).errors).toEqual([])
+    expect(formatEventPlace(virtual)).toBe('Atividade virtual')
+    expect(filterAgendaEvents([virtual], { query: 'entidade estudantil', day: '', city: '', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone)).toEqual([virtual])
+  })
+
+  it('não associa a agenda da Mídia NINJA ao ato nacional sem confirmação explícita', () => {
+    const ninjaEvents = data.eventos.filter((event) => event.fonte?.url?.includes('midianinja.org'))
+
+    expect(ninjaEvents).toHaveLength(8)
+    expect(ninjaEvents.every((event) => event.mobilizacaoId === undefined)).toBe(true)
+    expect(data.eventos.filter((event) => event.mobilizacaoId === 'ato-nacional-13-out-2026')).toHaveLength(1)
+  })
+
+  it('filtra uma mobilização nacional sem afetar os demais filtros', () => {
+    const result = filterAgendaEvents(data.eventos, { query: '', day: '', city: '', state: '', category: '', mobilization: 'ato-nacional-13-out-2026', highlight: '', includePast: true }, now, data.timezone)
+
+    expect(result.map((event) => event.id)).toEqual(['ato-nacional-estudantes-florianopolis-1310'])
+  })
+
+  it('conta cidades únicas no destaque editorial e preserva múltiplos atos na mesma cidade', () => {
+    const floripa = data.eventos.find((event) => event.id === 'ato-nacional-estudantes-florianopolis-1310')!
+    const secondFloripa = { ...floripa, id: 'segundo-ato-floripa', inicio: null, inicioRotulo: undefined }
+    const feira = data.eventos.find((event) => event.id === 'mobilizacao-estudantil-feira-santana-1310')!
+    const groups = getHighlightCityGroups([floripa, secondFloripa, feira], 'mobilizacoes-13-out-2026', data.timezone)
+
+    expect(groups).toHaveLength(2)
+    expect(groups.find((group) => group.city === 'Florianópolis')?.events).toHaveLength(2)
+    expect(formatEventTime(secondFloripa)).toBe('Horário a confirmar')
+  })
+
+  it('exibe o destaque editorial até o fim do dia 13 no fuso local e o remove no dia seguinte', () => {
+    expect(shouldShowEditorialSpotlight(data.eventos, 'mobilizacoes-13-out-2026', '2026-10-13', new Date('2026-10-14T02:59:00.000Z'), data.timezone)).toBe(true)
+    expect(shouldShowEditorialSpotlight(data.eventos, 'mobilizacoes-13-out-2026', '2026-10-13', new Date('2026-10-14T03:00:00.000Z'), data.timezone)).toBe(false)
+  })
+
+  it('gera navegação limpa para a agenda e filtro dedicado para o destaque editorial', () => {
+    expect(createAgendaParams().toString()).toBe('view=agenda')
+    expect(createAgendaParams({ highlightId: 'mobilizacoes-13-out-2026' }).toString()).toBe('view=agenda&destaque=mobilizacoes-13-out-2026')
+    expect(createAgendaParams({ eventId: 'evento-individual' }).toString()).toBe('view=agenda&evento=evento-individual')
+  })
+
+  it('mantém destaque editorial separado de mobilizacaoId e filtra suas três cidades', () => {
+    const result = filterAgendaEvents(data.eventos, { query: '', day: '', city: '', state: '', category: '', mobilization: '', highlight: 'mobilizacoes-13-out-2026', includePast: true }, now, data.timezone)
+
+    expect(result.map((event) => event.cidade)).toEqual(['Brasília', 'Feira de Santana', 'Florianópolis'])
+    expect(result.filter((event) => event.mobilizacaoId)).toHaveLength(1)
+    expect(result.find((event) => event.cidade === 'Brasília')?.status).toBe('confirmado')
+    expect(result.find((event) => event.cidade === 'Florianópolis')?.fonte?.url).toBeUndefined()
+  })
+
+  it('formata concentração e início previsto em linhas legíveis no destaque', () => {
+    const brasilia = data.eventos.find((event) => event.cidade === 'Brasília' && event.data === '2026-10-13')!
+    const floripa = data.eventos.find((event) => event.id === 'ato-nacional-estudantes-florianopolis-1310')!
+    const unknown = { ...floripa, inicio: null, inicioRotulo: undefined }
+
+    expect(formatEventScheduleLines(brasilia)).toEqual(['Concentração às 16h', 'Início previsto às 18h'])
+    expect(formatEventScheduleLines(floripa)).toEqual(['Concentração às 17h'])
+    expect(formatEventScheduleLines(unknown)).toEqual(['Horário a confirmar'])
   })
 })
 
@@ -142,7 +246,37 @@ describe('seleção do widget de próxima atividade', () => {
 
     expect(selection.kind).toBe('empty')
     expect(isEventOngoing(withoutEnd, afterStart, timezone)).toBe(false)
-    expect(isPastForWidget(withoutEnd, new Date('2026-10-10T19:00:00.000Z'), timezone)).toBe(false)
+    expect(isPastForWidget(withoutEnd, new Date('2026-10-10T19:00:00.000Z'), timezone)).toBe(true)
+  })
+
+  it('mantém ao vivo por no mínimo uma hora mesmo sem término informado', () => {
+    const withoutEnd = event({ fim: null })
+    expect(isEventOngoing(withoutEnd, new Date('2026-10-09T17:30:00.000Z'), timezone)).toBe(true)
+    expect(isEventOngoing(withoutEnd, new Date('2026-10-09T18:00:00.000Z'), timezone)).toBe(false)
+  })
+
+  it('mantém a janela mínima de uma hora quando o término divulgado é anterior', () => {
+    const short = event({ fim: '14:30' })
+    expect(isEventOngoing(short, new Date('2026-10-09T17:45:00.000Z'), timezone)).toBe(true)
+  })
+
+  it('seleciona uma próxima atividade por localidade em ordem cronológica', () => {
+    const laterFloripa = event({ id: 'floripa-depois', data: '2026-10-10', inicio: '18:00' })
+    const firstFloripa = event({ id: 'floripa-primeiro', data: '2026-10-10', inicio: '10:00' })
+    const recife = event({ id: 'recife', data: '2026-10-10', inicio: null, fim: null, cidade: 'Recife', uf: 'PE' })
+    const groups = getUpcomingWidgetEventsByLocation([laterFloripa, recife, firstFloripa], new Date('2026-10-09T19:00:00.000Z'), timezone)
+
+    expect(groups.map((group) => group.event.id)).toEqual(['floripa-primeiro', 'recife'])
+  })
+
+  it('mostra o ato nacional como próximo antes da concentração sem mantê-lo em andamento indefinidamente', () => {
+    const nationalAct = data.eventos.find((item) => item.id === 'ato-nacional-estudantes-florianopolis-1310')!
+    const beforeStart = getWidgetEventSelection([nationalAct], new Date('2026-10-13T19:00:00.000Z'), timezone)
+    const afterStart = getWidgetEventSelection([nationalAct], new Date('2026-10-13T21:00:00.000Z'), timezone)
+
+    expect(beforeStart.kind).toBe('upcoming')
+    expect(beforeStart.events[0]?.id).toBe(nationalAct.id)
+    expect(afterStart.kind).toBe('empty')
   })
 
   it('respeita o conjunto previamente filtrado pela cidade', () => {

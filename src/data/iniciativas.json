@@ -276,6 +276,43 @@
       "destaque": false
     },
     {
+      "id": "materiais-divulgacao-andes-sn",
+      "nome": "Materiais de divulgação — ANDES-SN",
+      "descricao": "Acervo de materiais de divulgação disponibilizado pelo ANDES-SN para o segundo turno de 2026, com artes para redes sociais, adesivos, faixas e panfletos voltados à defesa da democracia, dos direitos sociais e da educação pública. As pastas poderão receber novos materiais.",
+      "categoriaPrincipal": "materiais",
+      "atividades": [
+        "imprimir",
+        "compartilhar"
+      ],
+      "tags": [
+        "Artes para redes sociais",
+        "Adesivos",
+        "Faixas",
+        "Panfletos",
+        "Educação pública"
+      ],
+      "links": [
+        {
+          "rotulo": "Abrir materiais no Google Drive",
+          "url": "https://drive.google.com/drive/folders/1qazX5vJLfERHZUrDdVnGA8Wa3cg8O5gX?hl=pt-br",
+          "principal": true
+        },
+        {
+          "rotulo": "Consultar fonte",
+          "url": "https://www.andes.org.br/conteudos/noticia/aNDES-sN-disponibiliza-materiais-de-divulgacao-em-defesa-da-democracia1",
+          "principal": false
+        }
+      ],
+      "origem": "ANDES-SN — Sindicato Nacional dos Docentes das Instituições de Ensino Superior",
+      "verificacao": {
+        "status": "verificado",
+        "verificadoEm": "2026-10-09",
+        "observacao": "Fonte publicada em 09/10/2026."
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
       "id": "geracao-lula",
       "nome": "Geração Lula",
       "descricao": "Página com recursos de comunicação e mobilização. Confira os materiais disponíveis e as condições de participação no próprio site.",

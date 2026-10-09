@@ -15,7 +15,7 @@ export function Search({ value, onChange }: SearchProps) {
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Busque por tema, recurso ou plataforma"
+        placeholder="Buscar iniciativas e materiais..."
         autoComplete="off"
       />
       {value && (

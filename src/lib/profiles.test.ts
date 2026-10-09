@@ -16,14 +16,27 @@ describe('perfis para acompanhar', () => {
   it('busca por nome, usuário e assunto sem diferenciar acentos', () => {
     expect(filterProfiles(data.perfis, 'trabalhadores').map((item) => item.id)).toEqual(['pt-brasil', 'cut'])
     expect(filterProfiles(data.perfis, '@uee.rs').map((item) => item.id)).toEqual(['uee-rs'])
-    expect(filterProfiles(data.perfis, 'entidade estudantil').map((item) => item.id)).toEqual(['une', 'uee-rs'])
+    expect(filterProfiles(data.perfis, 'entidade estudantil').map((item) => item.id)).toEqual(['une', 'uee-rs', 'uep-na-rede'])
     expect(filterProfiles(data.perfis, 'MIDIANINJA').map((item) => item.id)).toEqual(['midia-ninja'])
   })
 
   it('filtra movimento estudantil e mantém a busca dentro do grupo', () => {
-    expect(filterProfiles(data.perfis, '', 'movimento-estudantil').map((item) => item.id)).toEqual(['une', 'uee-rs', 'ueb'])
+    expect(filterProfiles(data.perfis, '', 'movimento-estudantil').map((item) => item.id)).toEqual([
+      'une',
+      'uee-rs',
+      'ueb',
+      'estudantes-com-lula-pb',
+      'uce-nas-ruas',
+      'apg-ufsc',
+      'ufsc-com-lula',
+      'uep-na-rede',
+      'dce-odijas-ufrpe',
+      'estudantes-com-lula-pe',
+      'upe-com-lula',
+      'dce-ufpe',
+    ])
     expect(filterProfiles(data.perfis, '@uee.rs', 'movimento-estudantil').map((item) => item.id)).toEqual(['uee-rs'])
-    expect(filterProfiles(data.perfis, 'lula', 'movimento-estudantil')).toEqual([])
+    expect(filterProfiles(data.perfis, 'midianinja', 'movimento-estudantil')).toEqual([])
   })
 
   it('oferece todos os grupos que agora possuem perfis ativos', () => {
@@ -60,9 +73,16 @@ describe('perfis para acompanhar', () => {
       'guilherme-boulos',
       'taliria-petrone',
       'samia-bomfim',
+      'bernardo-moreira',
+      'dani-portela',
     ])
-    expect(sections.find((section) => section.group.id === 'coletivos-movimentos')?.profiles.map((profile) => profile.id)).toEqual(['mst', 'mtst', 'cut'])
-    expect(sections.find((section) => section.group.id === 'movimentos-juventude')?.profiles.map((profile) => profile.id)).toEqual(['levante-popular-juventude'])
+    expect(sections.find((section) => section.group.id === 'coletivos-movimentos')?.profiles.map((profile) => profile.id)).toEqual(['mst', 'mtst', 'cut', 'coletivo-cria-rj'])
+    expect(sections.find((section) => section.group.id === 'movimentos-juventude')?.profiles.map((profile) => profile.id)).toEqual([
+      'levante-popular-juventude',
+      'juventude-do-lula',
+      'ujs-sc',
+      'a-coluna-35',
+    ])
   })
 
   it('oculta registros inativos e respeita a ordem configurada', () => {

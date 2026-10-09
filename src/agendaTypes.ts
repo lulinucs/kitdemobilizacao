@@ -10,24 +10,41 @@ export interface AgendaLink {
   url: string
 }
 
+export interface AgendaSource {
+  rotulo: string
+  url?: string
+}
+
+export type AgendaModality = 'presencial' | 'virtual' | 'hibrida'
+
 export interface AgendaEvent {
   id: string
   titulo: string
+  mobilizacaoId?: string
+  destaques?: string[]
   categoria: string
   data: string | null
   recorrencia?: {
     tipo: string
     texto: string
   }
-  inicio: string
+  inicio: string | null
+  inicioRotulo?: string
   fim: string | null
-  cidade: string
-  uf: string
+  cidade?: string
+  uf?: string
+  timezone?: string
+  modalidade?: AgendaModality
+  instituicao?: string
+  campus?: string
+  pontoEncontro?: string
   local?: string
   endereco?: string
   bairro?: string
   descricao: string
   informacoesAdicionais?: string
+  fonte?: AgendaSource
+  verificadoEm?: string
   links?: AgendaLink[]
   status: AgendaStatus
 }
@@ -48,6 +65,8 @@ export interface AgendaFilters {
   city: string
   state: string
   category: string
+  mobilization: string
+  highlight: string
   includePast: boolean
 }
 

@@ -1,20 +1,21 @@
-import { useEffect, useMemo, useState } from 'react'
-import { X } from 'lucide-react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { SlidersHorizontal, X } from 'lucide-react'
 import rawAgenda from './data/agenda-floripa.json'
 import rawData from './data/iniciativas.json'
 import rawProfiles from './data/perfis.json'
-import { ActivityFilters } from './components/ActivityFilters'
 import { AgendaPage } from './components/AgendaPage'
 import { AppShell } from './components/AppShell'
 import { ContributionCallout } from './components/ContributionCallout'
 import { EmptyState } from './components/EmptyState'
 import { InitiativeList } from './components/InitiativeList'
+import { EditorialMobilizationsSpotlight } from './components/EditorialMobilizationsSpotlight'
 import { NextEventWidget } from './components/NextEventWidget'
+import { ParticipationPaths } from './components/ParticipationPaths'
 import { ProfilesPage } from './components/ProfilesPage'
 import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
-import { getWidgetEventSelection, validateAgenda } from './lib/agenda'
+import { createAgendaParams, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, validateAgenda } from './lib/agenda'
 import { createCatalogSearch, filterInitiatives, readCatalogFilters, validateDirectory } from './lib/directory'
 import { validateProfiles } from './lib/profiles'
 import type { AgendaData } from './agendaTypes'
@@ -46,9 +47,14 @@ export default function App() {
   const [filters, setFilters] = useState<Filters>(readFilters)
   const [theme, setTheme] = useState<'light' | 'dark'>(systemTheme)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [catalogFiltersOpen, setCatalogFiltersOpen] = useState(() => window.innerWidth > 760)
   const [routeVersion, setRouteVersion] = useState(0)
-  const [agendaCityContext, setAgendaCityContext] = useState(() => localStorage.getItem('agenda-cidade') ?? '')
   const [now, setNow] = useState(() => new Date())
+  const resultsRef = useRef<HTMLElement>(null)
+  const pendingResultsScroll = useRef<ScrollBehavior | null>(null)
+  const initialCatalogScrollHandled = useRef(false)
+  const catalogFiltersRef = useRef(filters)
+  catalogFiltersRef.current = filters
   const params = useMemo(() => new URLSearchParams(window.location.search), [routeVersion])
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
   const currentView = currentPath === '/perfis' ? 'profiles' : params.get('view') === 'agenda' || params.has('evento') ? 'agenda' : 'home'
@@ -57,7 +63,8 @@ export default function App() {
   const profileErrors = useMemo(() => validateProfiles(profilesSource), [])
   const agendaValidation = useMemo(() => validateAgenda(agendaSource), [])
   const agenda = useMemo(() => ({ ...agendaSource, eventos: agendaValidation.events }), [agendaValidation.events])
-  const widgetSelection = useMemo(() => getWidgetEventSelection(agenda.eventos.filter((event) => !agendaCityContext || event.cidade === agendaCityContext), now, agenda.timezone), [agenda.eventos, agenda.timezone, agendaCityContext, now])
+  const widgetSelection = useMemo(() => getWidgetEventSelection(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
+  const widgetUpcomingByLocation = useMemo(() => getUpcomingWidgetEventsByLocation(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
 
   useEffect(() => {
     if (directoryErrors.length) console.error('Erros em iniciativas.json:', directoryErrors)
@@ -92,19 +99,17 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (currentView !== 'agenda') return
-    const city = params.get('cidade') ?? ''
-    setAgendaCityContext(city)
-    if (city) localStorage.setItem('agenda-cidade', city)
-    else localStorage.removeItem('agenda-cidade')
-  }, [currentView, params])
-
-  useEffect(() => {
     const onPopState = () => {
       const restoredFilters = readFilters()
       const restoredParams = new URLSearchParams(window.location.search)
       const restoredPath = window.location.pathname.replace(/\/+$/, '') || '/'
-      if (restoredPath === '/' && restoredParams.get('view') !== 'agenda' && !restoredParams.has('evento')) normalizeCatalogUrl(restoredFilters)
+      const restoredHome = restoredPath === '/' && restoredParams.get('view') !== 'agenda' && !restoredParams.has('evento')
+      if (restoredHome) {
+        normalizeCatalogUrl(restoredFilters)
+        const hadNavigationFilter = Boolean(catalogFiltersRef.current.category || catalogFiltersRef.current.activity)
+        const hasNavigationFilter = Boolean(restoredFilters.category || restoredFilters.activity)
+        if (hadNavigationFilter || hasNavigationFilter) pendingResultsScroll.current = 'auto'
+      }
       setFilters(restoredFilters)
       setRouteVersion((value) => value + 1)
     }
@@ -118,16 +123,32 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useLayoutEffect(() => {
+    if (currentView !== 'home') return
+
+    let behavior = pendingResultsScroll.current
+    if (!initialCatalogScrollHandled.current) {
+      initialCatalogScrollHandled.current = true
+      if (!behavior && (filters.category || filters.activity)) behavior = 'auto'
+    }
+    if (!behavior) return
+
+    pendingResultsScroll.current = null
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    resultsRef.current?.scrollIntoView({ behavior: reducedMotion ? 'auto' : behavior, block: 'start' })
+  }, [currentView, filters.activity, filters.category, routeVersion])
+
   const commitUrl = (nextParams: URLSearchParams, replace = false, pathname = window.location.pathname) => {
     const nextUrl = `${pathname}${nextParams.size ? `?${nextParams}` : ''}`
     window.history[replace ? 'replaceState' : 'pushState']({}, '', nextUrl)
     setRouteVersion((value) => value + 1)
   }
 
-  const updateCatalog = (patch: Partial<Filters>, replace = false) => {
+  const updateCatalog = (patch: Partial<Filters>, replace = false, scrollToResults = false) => {
     const nextFilters = { ...filters, ...patch }
     if (Object.hasOwn(patch, 'category')) nextFilters.activity = ''
     if (Object.hasOwn(patch, 'activity')) nextFilters.category = ''
+    if (scrollToResults) pendingResultsScroll.current = 'smooth'
     const nextParams = new URLSearchParams(createCatalogSearch(nextFilters))
     commitUrl(nextParams, replace, '/')
     setFilters(nextFilters)
@@ -141,27 +162,44 @@ export default function App() {
   }
 
   const goHome = () => {
+    pendingResultsScroll.current = null
     setFilters({ query: '', category: '', activity: '' })
     commitUrl(new URLSearchParams(), false, '/')
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
   }
-  const goAgenda = (eventId?: string) => {
-    const nextParams = new URLSearchParams({ view: 'agenda' })
-    if (eventId) nextParams.set('evento', eventId)
-    if (agendaCityContext) nextParams.set('cidade', agendaCityContext)
-    commitUrl(nextParams, false, '/')
+  const goAgenda = () => {
+    pendingResultsScroll.current = null
+    commitUrl(createAgendaParams(), false, '/')
+  }
+  const goAgendaEvent = (eventId: string) => {
+    pendingResultsScroll.current = null
+    commitUrl(createAgendaParams({ eventId }), false, '/')
+  }
+  const goInitiatives = () => {
+    pendingResultsScroll.current = 'smooth'
+    commitUrl(new URLSearchParams(createCatalogSearch(filters)), false, '/')
+  }
+  const goHighlight = (highlightId: string) => {
+    pendingResultsScroll.current = null
+    commitUrl(createAgendaParams({ highlightId }), false, '/')
   }
   const goProfiles = () => {
+    pendingResultsScroll.current = null
     commitUrl(new URLSearchParams(), false, '/perfis')
     window.scrollTo({ top: 0 })
   }
-  const returnToCatalog = () => commitUrl(new URLSearchParams(createCatalogSearch(filters)), true, '/')
-  const clear = () => updateCatalog({ query: '', category: '', activity: '' })
+  const returnToCatalog = () => {
+    pendingResultsScroll.current = null
+    commitUrl(new URLSearchParams(createCatalogSearch(filters)), true, '/')
+  }
+  const clear = () => updateCatalog({ query: '', category: '', activity: '' }, false, true)
   const selectedCategory = data.categorias.find((item) => item.id === filters.category)
   const selectedActivity = data.atividades.find((item) => item.id === filters.activity)
 
   return (
     <AppShell
-      sidebar={<Sidebar categories={data.categorias} activities={data.atividades} category={filters.category} activity={filters.activity} currentView={currentView} open={menuOpen} onCategory={(category) => updateCatalog({ category })} onActivity={(activity) => updateCatalog({ activity })} onHome={goHome} onAgenda={goAgenda} onProfiles={goProfiles} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
+      sidebar={<Sidebar currentView={currentView} open={menuOpen} onHome={goHome} onInitiatives={goInitiatives} onAgenda={goAgenda} onProfiles={goProfiles} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
       header={<header className={styles.header}><div className={styles.mobileBrand}><strong>Kit de Mobilização</strong><small>Segundo Turno · Eleições 2026</small></div><ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} /></header>}
       footer={<footer className={styles.footer}><p>O Kit de Mobilização é um agregador independente de recursos, iniciativas e informações de terceiros. Não representa uma organização ou movimento político. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
     >
@@ -170,36 +208,48 @@ export default function App() {
       ) : currentView === 'agenda' ? (
         <AgendaPage agenda={agenda} events={agenda.eventos} now={now} params={params} onUpdate={updateAgenda} />
       ) : (
-        <div className={styles.homeLayout}>
-          <div className={styles.homePrimary}>
-            <section className={styles.intro} aria-labelledby="page-title">
-              <p className={styles.eyebrow}>SEGUNDO TURNO · ELEIÇÕES 2026</p>
-              <h1 id="page-title">Encontre uma iniciativa para participar</h1>
-              <p className={styles.lead}>Um acervo independente de iniciativas, ferramentas, materiais e agendas de mobilização para o segundo turno das eleições de 2026. Tudo organizado em um só lugar para facilitar o acesso e a participação.</p>
-              <Search value={filters.query} onChange={(query) => updateCatalog({ query }, true)} />
-            </section>
+        <div className={styles.homePage}>
+          <section className={styles.intro} aria-labelledby="page-title">
+            <p className={styles.eyebrow}>KIT DE MOBILIZAÇÃO · ELEIÇÕES 2026</p>
+            <h1 id="page-title">Como você quer participar?</h1>
+            <p className={styles.lead}>Encontre atividades, materiais, ferramentas e informações sobre as mobilizações do segundo turno de 2026.</p>
+          </section>
 
-            <div className={styles.mobileNextEvent}><NextEventWidget selection={widgetSelection} agenda={agenda} cityContext={agendaCityContext} onAgenda={goAgenda} /></div>
+          <ParticipationPaths onAgenda={goAgenda} onCategory={(category) => updateCatalog({ category }, false, true)} onProfiles={goProfiles} />
 
-            <section className={styles.quickActions} aria-labelledby="quick-title">
-              <div className={styles.sectionTitleRow}><div><p className={styles.eyebrow}>ATALHOS</p><h2 id="quick-title">O que você quer fazer?</h2></div></div>
-              <ActivityFilters activities={data.atividades.filter((item) => ['compartilhar', 'conversar', 'imprimir', 'organizar'].includes(item.id))} selected={filters.activity} onSelect={(activity) => updateCatalog({ activity })} compact />
-            </section>
+          <section className={styles.mobilizationsSection} aria-labelledby="mobilizations-title">
+            <div className={styles.homeSectionHeading}><p className={styles.eyebrow}>AGENDA</p><h2 id="mobilizations-title">Atividades e mobilizações</h2></div>
+            <div className={styles.mobilizationsGrid}>
+              <NextEventWidget selection={widgetSelection} upcomingByLocation={widgetUpcomingByLocation} agenda={agenda} onAgenda={goAgenda} onEvent={goAgendaEvent} />
+              <EditorialMobilizationsSpotlight agenda={agenda} now={now} onOpen={goHighlight} />
+            </div>
+          </section>
 
-            <section className={styles.results} aria-labelledby="results-title">
-              <div className={styles.resultsHeader}>
-                <div><p className={styles.eyebrow}>ÍNDICE</p><h2 id="results-title">{results.length} {results.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}</h2></div>
-                {(filters.query || filters.category || filters.activity) && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
-              </div>
-              <div className={styles.activeFilters} aria-label="Filtros ativos">
-                {selectedCategory ? <button type="button" onClick={() => updateCatalog({ category: '' })}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button> : selectedActivity ? <button type="button" onClick={() => updateCatalog({ activity: '' })}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button> : null}
-                {filters.query && <button type="button" onClick={() => updateCatalog({ query: '' })}>Busca: “{filters.query}”<X aria-hidden="true" size={15} /></button>}
-              </div>
-              {results.length ? <InitiativeList initiatives={results} categories={data.categorias} onInternalNavigate={(path) => path === '/perfis' && goProfiles()} /> : <EmptyState onClear={clear} />}
-            </section>
-            <ContributionCallout />
-          </div>
-          <div className={styles.desktopNextEvent}><NextEventWidget selection={widgetSelection} agenda={agenda} cityContext={agendaCityContext} onAgenda={goAgenda} /></div>
+          <section className={styles.results} id="resultados" ref={resultsRef} aria-labelledby="results-title">
+                <div className={styles.catalogIntro}>
+                  <p className={styles.eyebrow}>CATÁLOGO</p>
+                  <h2 id="results-title">Explore as iniciativas</h2>
+                  <p>Encontre sites, ferramentas, materiais e projetos cadastrados no Kit.</p>
+                </div>
+                <Search value={filters.query} onChange={(query) => updateCatalog({ query }, true)} />
+                <div className={styles.catalogFilters}>
+                  <button className={styles.catalogFiltersToggle} type="button" aria-expanded={catalogFiltersOpen} onClick={() => setCatalogFiltersOpen((open) => !open)}><SlidersHorizontal aria-hidden="true" size={19} />Filtrar iniciativas</button>
+                  {catalogFiltersOpen && <div className={styles.catalogFilterGroups}>
+                    <fieldset><legend>Por categoria</legend><div>{data.categorias.map((category) => <button className={filters.category === category.id ? styles.catalogFilterActive : ''} type="button" aria-pressed={filters.category === category.id} onClick={() => updateCatalog({ category: filters.category === category.id ? '' : category.id }, false, true)} key={category.id}>{category.nome}</button>)}</div></fieldset>
+                    <fieldset><legend>Por objetivo</legend><div>{data.atividades.map((activity) => <button className={filters.activity === activity.id ? styles.catalogFilterActive : ''} type="button" aria-pressed={filters.activity === activity.id} onClick={() => updateCatalog({ activity: filters.activity === activity.id ? '' : activity.id }, false, true)} key={activity.id}>{activity.nome.replace('Quero ', '')}</button>)}</div></fieldset>
+                  </div>}
+                </div>
+                <div className={styles.resultsHeader}>
+                  <h3>{results.length} {results.length === 1 ? 'iniciativa encontrada' : 'iniciativas encontradas'}</h3>
+                  {(filters.query || filters.category || filters.activity) && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
+                </div>
+                <div className={styles.activeFilters} aria-label="Filtros ativos">
+                  {selectedCategory ? <button type="button" onClick={() => updateCatalog({ category: '' }, false, true)}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button> : selectedActivity ? <button type="button" onClick={() => updateCatalog({ activity: '' }, false, true)}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button> : null}
+                  {filters.query && <button type="button" onClick={() => updateCatalog({ query: '' }, false, true)}>Busca: “{filters.query}”<X aria-hidden="true" size={15} /></button>}
+                </div>
+                {results.length ? <InitiativeList initiatives={results} categories={data.categorias} onInternalNavigate={(path) => path === '/perfis' && goProfiles()} /> : <EmptyState onClear={clear} />}
+          </section>
+          <ContributionCallout />
         </div>
       )}
     </AppShell>

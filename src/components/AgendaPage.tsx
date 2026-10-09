@@ -1,7 +1,7 @@
 import { CalendarDays, Clock3, List, Search, X } from 'lucide-react'
 import { useEffect, useMemo } from 'react'
-import type { AgendaData, AgendaFilters, AgendaViewMode } from '../agendaTypes'
-import { filterAgendaEvents, formatAgendaDate, isPastForList } from '../lib/agenda'
+import type { AgendaData, AgendaEvent, AgendaFilters, AgendaViewMode } from '../agendaTypes'
+import { filterAgendaEvents, formatAgendaDate, formatMobilizationTitle, groupAgendaEvents, isPastForList } from '../lib/agenda'
 import { AgendaEventCard } from './AgendaEventCard'
 import styles from '../styles/App.module.css'
 
@@ -23,22 +23,29 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
     city: params.get('cidade') ?? '',
     state: params.get('uf') ?? '',
     category: params.get('cat_agenda') ?? '',
+    mobilization: params.get('mobilizacao') ?? '',
+    highlight: params.get('destaque') ?? '',
     includePast: params.get('anteriores') === '1' || Boolean(selectedEvent && isPastForList(selectedEvent, now, agenda.timezone)),
   }
 
-  const dated = useMemo(() => events.filter((event) => event.data), [events])
-  const pending = useMemo(() => events.filter((event) => !event.data), [events])
-  const states = useMemo(() => [...new Set(events.map((event) => event.uf))].sort(), [events])
+  const scopedEvents = useMemo(() => events.filter((event) =>
+    (!filters.mobilization || event.mobilizacaoId === filters.mobilization)
+    && (!filters.highlight || event.destaques?.includes(filters.highlight)),
+  ), [events, filters.highlight, filters.mobilization])
+  const dated = useMemo(() => scopedEvents.filter((event) => event.data), [scopedEvents])
+  const pending = useMemo(() => scopedEvents.filter((event) => !event.data), [scopedEvents])
+  const states = useMemo(() => [...new Set(scopedEvents.map((event) => event.uf).filter((state): state is string => Boolean(state)))].sort(), [scopedEvents])
   const cityOptions = useMemo(() => {
     const counts = new Map<string, { city: string; state: string; count: number }>()
-    events.filter((event) => !filters.state || event.uf === filters.state).forEach((event) => {
+    scopedEvents.filter((event) => event.cidade && (!filters.state || event.uf === filters.state)).forEach((event) => {
+      if (!event.cidade) return
       const key = `${event.uf}|${event.cidade}`
       const current = counts.get(key)
-      counts.set(key, { city: event.cidade, state: event.uf, count: (current?.count ?? 0) + 1 })
+      counts.set(key, { city: event.cidade, state: event.uf ?? '', count: (current?.count ?? 0) + 1 })
     })
     return [...counts.values()].sort((a, b) => b.count - a.count || a.city.localeCompare(b.city, 'pt-BR'))
-  }, [events, filters.state])
-  const locationEvents = events.filter((event) => (!filters.state || event.uf === filters.state) && (!filters.city || event.cidade === filters.city))
+  }, [scopedEvents, filters.state])
+  const locationEvents = scopedEvents.filter((event) => (!filters.state || event.uf === filters.state) && (!filters.city || event.cidade === filters.city))
   const categories = agenda.categorias.filter((category) => locationEvents.some((event) => event.categoria === category.id))
 
   const matchingDated = selectedEvent
@@ -53,18 +60,44 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
     .filter((event) => filters.includePast || !isPastForList(event, now, agenda.timezone))
     .map((event) => event.data!))].sort()
   const resultCount = upcomingEvents.length + pastEvents.length + filteredPending.length
-  const hasFilters = Boolean(filters.query || filters.day || filters.city || filters.state || filters.category || filters.includePast || selectedEventId)
+  const hasFilters = Boolean(filters.query || filters.day || filters.city || filters.state || filters.category || filters.mobilization || filters.highlight || filters.includePast || selectedEventId)
+  const collectionTitle = filters.highlight === 'mobilizacoes-13-out-2026'
+    ? 'Mobilizações de 13 de Outubro'
+    : filters.mobilization ? formatMobilizationTitle(scopedEvents, agenda.timezone) : ''
+  const collectionLabel = filters.highlight ? 'Destaque editorial selecionado' : 'Mobilização selecionada'
 
   useEffect(() => {
     if (!selectedEventId) return
     document.getElementById(`evento-${selectedEventId}`)?.scrollIntoView({ block: 'center' })
   }, [selectedEventId])
 
-  const clear = () => onUpdate({ evento: null, qa: null, dia: null, cidade: null, uf: null, bairro: null, cat_agenda: null, anteriores: null })
+  const clear = () => onUpdate({ evento: null, qa: null, dia: null, cidade: null, uf: null, bairro: null, cat_agenda: null, mobilizacao: null, destaque: null, anteriores: null })
   const setMode = (next: AgendaViewMode) => onUpdate({ modo: next === 'list' ? 'lista' : null })
-  const eventCard = (event: AgendaData['eventos'][number]) => (
-    <AgendaEventCard key={event.id} event={event} agenda={agenda} categoryName={agenda.categorias.find((item) => item.id === event.categoria)?.nome ?? event.categoria} now={now} selected={event.id === selectedEventId} onPermalink={(id) => onUpdate({ evento: id })} />
+  const eventCard = (event: AgendaEvent, grouped = false) => (
+    <AgendaEventCard key={event.id} event={event} agenda={agenda} categoryName={agenda.categorias.find((item) => item.id === event.categoria)?.nome ?? event.categoria} now={now} selected={event.id === selectedEventId} grouped={grouped} onPermalink={(id) => onUpdate({ evento: id })} />
   )
+  const renderEvents = (items: AgendaEvent[], timeline = false) => groupAgendaEvents(items, !filters.city && !filters.highlight).map((item) => {
+    if (item.kind === 'event') {
+      return timeline ? (
+        <div className={styles.timelineRow} key={item.event.id}>
+          <time dateTime={item.event.inicio ? `${item.event.data}T${item.event.inicio}` : item.event.data ?? undefined}>{item.event.inicio ?? 'Horário a confirmar'}</time>
+          {eventCard(item.event)}
+        </div>
+      ) : eventCard(item.event)
+    }
+
+    const cityCount = new Set(item.events.filter((event) => event.cidade).map((event) => `${event.cidade}/${event.uf ?? ''}`)).size
+    return (
+      <section className={`${styles.mobilizationGroup} ${timeline ? styles.timelineMobilization : ''}`} aria-labelledby={`mobilizacao-${item.id}`} key={item.id}>
+        <header>
+          <p className={styles.eyebrow}>MOBILIZAÇÃO NACIONAL</p>
+          <h3 id={`mobilizacao-${item.id}`}>{formatMobilizationTitle(item.events, agenda.timezone)}</h3>
+          <p>{cityCount} {cityCount === 1 ? 'cidade cadastrada' : 'cidades cadastradas'} · {item.events.length} {item.events.length === 1 ? 'atividade local' : 'atividades locais'}</p>
+        </header>
+        <div className={styles.mobilizationEventList}>{item.events.map((event) => eventCard(event, true))}</div>
+      </section>
+    )
+  })
 
   return (
     <div className={styles.agendaPage}>
@@ -78,6 +111,11 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
         <CalendarDays aria-hidden="true" size={20} />
         <span>{agenda.aviso} “Divulgado” não significa que a informação foi verificada.</span>
       </div>
+
+      {(filters.mobilization || filters.highlight) && <div className={styles.agendaCollectionFilter} role="status">
+        <div><span>{collectionLabel}</span><strong>{collectionTitle}</strong></div>
+        <button type="button" onClick={() => onUpdate({ mobilizacao: null, destaque: null, evento: null, cidade: null, uf: null, dia: null, cat_agenda: null, qa: null, anteriores: null })}>Ver agenda completa<X aria-hidden="true" size={16} /></button>
+      </div>}
 
       <section className={styles.agendaControls} aria-label="Filtros da agenda">
         <label className={styles.agendaSearch}>
@@ -131,29 +169,24 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
             ? [...new Set(upcomingEvents.map((event) => event.data!))].map((day) => (
               <section className={styles.timelineDay} key={day}>
                 <h2>{formatAgendaDate(day, agenda.timezone, true)}</h2>
-                {upcomingEvents.filter((event) => event.data === day).map((event) => (
-                  <div className={styles.timelineRow} key={event.id}>
-                    <time dateTime={`${event.data}T${event.inicio}`}>{event.inicio}</time>
-                    {eventCard(event)}
-                  </div>
-                ))}
+                {renderEvents(upcomingEvents.filter((event) => event.data === day), true)}
               </section>
             ))
-            : upcomingEvents.map(eventCard)}
+            : renderEvents(upcomingEvents)}
         </div>
       )}
 
       {pastEvents.length > 0 && <section className={styles.pastSection}>
-        <div><p className={styles.eyebrow}>ARQUIVO</p><h2>Atividades encerradas</h2></div>
+        <div><p className={styles.eyebrow}>ARQUIVO</p><h2>Atividades anteriores</h2></div>
         <p>Eventos anteriores ficam separados da programação principal.</p>
-        <div className={styles.agendaList}>{pastEvents.map(eventCard)}</div>
+        <div className={styles.agendaList}>{renderEvents(pastEvents)}</div>
       </section>}
 
       {filteredPending.length > 0 && (
         <section className={styles.pendingSection}>
           <div><p className={styles.eyebrow}>FORA DA CRONOLOGIA</p><h2>Atividades com data a confirmar</h2></div>
           <p>Estas atividades não entram na programação diária nem no widget de próxima atividade.</p>
-          <div className={styles.agendaList}>{filteredPending.map(eventCard)}</div>
+          <div className={styles.agendaList}>{renderEvents(filteredPending)}</div>
         </section>
       )}
     </div>

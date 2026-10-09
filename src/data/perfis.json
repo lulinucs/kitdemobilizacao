@@ -135,6 +135,26 @@
       "ordem": 9
     },
     {
+      "id": "bernardo-moreira",
+      "nome": "Bernardo Moreira",
+      "usuario": "bemoreiradf",
+      "url": "https://www.instagram.com/bemoreiradf/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Política"],
+      "ativo": true,
+      "ordem": 10
+    },
+    {
+      "id": "dani-portela",
+      "nome": "Dani Portela",
+      "usuario": "daniportelape",
+      "url": "https://www.instagram.com/daniportelape/",
+      "grupo": "partidos-liderancas",
+      "assuntos": ["Atuação parlamentar", "Direitos humanos", "Pernambuco"],
+      "ativo": true,
+      "ordem": 11
+    },
+    {
       "id": "une",
       "nome": "União Nacional dos Estudantes (UNE)",
       "usuario": "uneoficial",
@@ -162,6 +182,95 @@
       "grupo": "movimento-estudantil",
       "ativo": true,
       "ordem": 3
+    },
+    {
+      "id": "estudantes-com-lula-pb",
+      "nome": "Estudantes com Lula PB",
+      "usuario": "estudantescomlulapb",
+      "url": "https://www.instagram.com/estudantescomlulapb/",
+      "grupo": "movimento-estudantil",
+      "ativo": true,
+      "ordem": 4
+    },
+    {
+      "id": "uce-nas-ruas",
+      "nome": "UCE nas Ruas",
+      "usuario": "ucenasruas",
+      "url": "https://www.instagram.com/ucenasruas/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Movimento estudantil"],
+      "ativo": true,
+      "ordem": 5
+    },
+    {
+      "id": "apg-ufsc",
+      "nome": "Associação de Pós-Graduandos da UFSC",
+      "usuario": "apgufsc",
+      "url": "https://www.instagram.com/apgufsc/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Pós-graduação", "Representação estudantil"],
+      "ativo": true,
+      "ordem": 6
+    },
+    {
+      "id": "ufsc-com-lula",
+      "nome": "UFSC com Lula",
+      "usuario": "ufsccomlula",
+      "url": "https://www.instagram.com/ufsccomlula/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Mobilização estudantil"],
+      "ativo": true,
+      "ordem": 7
+    },
+    {
+      "id": "uep-na-rede",
+      "nome": "UEP na Rede",
+      "usuario": "uepnarede",
+      "url": "https://www.instagram.com/uepnarede/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Entidade estudantil", "Pernambuco"],
+      "ativo": true,
+      "ordem": 8
+    },
+    {
+      "id": "dce-odijas-ufrpe",
+      "nome": "DCE Odijas — UFRPE",
+      "usuario": "dce.odijas.ufrpe",
+      "url": "https://www.instagram.com/dce.odijas.ufrpe/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Representação estudantil", "UFRPE"],
+      "ativo": true,
+      "ordem": 9
+    },
+    {
+      "id": "estudantes-com-lula-pe",
+      "nome": "Estudantes com Lula PE",
+      "usuario": "estudantescomlula.pe",
+      "url": "https://www.instagram.com/estudantescomlula.pe/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Mobilização estudantil", "Pernambuco"],
+      "ativo": true,
+      "ordem": 10
+    },
+    {
+      "id": "upe-com-lula",
+      "nome": "UPE com Lula",
+      "usuario": "upecomlula",
+      "url": "https://www.instagram.com/upecomlula/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Mobilização estudantil", "UPE"],
+      "ativo": true,
+      "ordem": 11
+    },
+    {
+      "id": "dce-ufpe",
+      "nome": "DCE-UFPE",
+      "usuario": "dce_ufpe",
+      "url": "https://www.instagram.com/dce_ufpe/",
+      "grupo": "movimento-estudantil",
+      "assuntos": ["Representação estudantil", "UFPE"],
+      "ativo": true,
+      "ordem": 12
     },
     {
       "id": "midia-ninja",
@@ -233,6 +342,36 @@
       "ordem": 8
     },
     {
+      "id": "seja-subversivo",
+      "nome": "Seja Subversivo",
+      "usuario": "sejasubversivo",
+      "url": "https://www.instagram.com/sejasubversivo/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Conteúdo informativo", "Política", "Humor"],
+      "ativo": true,
+      "ordem": 9
+    },
+    {
+      "id": "brasil-fora-da-caverna",
+      "nome": "Brasil Fora da Caverna",
+      "usuario": "brasilforadacaverna",
+      "url": "https://www.instagram.com/brasilforadacaverna/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Notícias", "Política"],
+      "ativo": true,
+      "ordem": 10
+    },
+    {
+      "id": "portal-vermelho",
+      "nome": "Portal Vermelho",
+      "usuario": "oportalvermelho",
+      "url": "https://www.instagram.com/oportalvermelho/",
+      "grupo": "comunicacao-midia",
+      "assuntos": ["Notícias", "Política nacional e internacional"],
+      "ativo": true,
+      "ordem": 11
+    },
+    {
       "id": "janones-apoio",
       "nome": "Janones Apoio",
       "usuario": "janones.apoio",
@@ -240,6 +379,82 @@
       "grupo": "mobilizacao-digital",
       "ativo": true,
       "ordem": 1
+    },
+    {
+      "id": "eu-to-com-lula",
+      "nome": "Eu Tô com Lula",
+      "usuario": "eutocomlula",
+      "url": "https://www.instagram.com/eutocomlula/",
+      "grupo": "mobilizacao-digital",
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "esquerda-brasileira",
+      "nome": "Esquerda Brasileira",
+      "usuario": "esquerda_brasileira",
+      "url": "https://www.instagram.com/esquerda_brasileira/",
+      "grupo": "mobilizacao-digital",
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "esquerda-sexy-oficial",
+      "nome": "Esquerda Sexy Oficial",
+      "usuario": "esquerdasexyoficial",
+      "url": "https://www.instagram.com/esquerdasexyoficial/",
+      "grupo": "mobilizacao-digital",
+      "ativo": true,
+      "ordem": 4
+    },
+    {
+      "id": "esquerda-verde",
+      "nome": "Esquerda Verde",
+      "usuario": "esquerdaverde",
+      "url": "https://www.instagram.com/esquerdaverde/",
+      "grupo": "mobilizacao-digital",
+      "ativo": true,
+      "ordem": 5
+    },
+    {
+      "id": "342-artes",
+      "nome": "342 Artes",
+      "usuario": "342artes",
+      "url": "https://www.instagram.com/342artes/",
+      "grupo": "mobilizacao-digital",
+      "assuntos": ["Arte", "Cultura", "Mobilização"],
+      "ativo": true,
+      "ordem": 6
+    },
+    {
+      "id": "seremos-resistencia",
+      "nome": "Seremos Resistência",
+      "usuario": "seremosresistencia",
+      "url": "https://www.instagram.com/seremosresistencia/",
+      "grupo": "mobilizacao-digital",
+      "assuntos": ["Política", "Questões sociais", "Mobilização digital"],
+      "ativo": true,
+      "ordem": 7
+    },
+    {
+      "id": "time-lula-brasil",
+      "nome": "Time Lula Brasil",
+      "usuario": "timelulabrasil",
+      "url": "https://www.instagram.com/timelulabrasil/",
+      "grupo": "mobilizacao-digital",
+      "assuntos": ["Mobilização digital"],
+      "ativo": true,
+      "ordem": 8
+    },
+    {
+      "id": "porta-voz-lula-br",
+      "nome": "Porta-Voz do Lula BR",
+      "usuario": "portavozdolulabr",
+      "url": "https://www.instagram.com/portavozdolulabr/",
+      "grupo": "mobilizacao-digital",
+      "assuntos": ["Mobilização digital", "Conteúdos para compartilhar"],
+      "ativo": true,
+      "ordem": 9
     },
     {
       "id": "mst",
@@ -272,6 +487,16 @@
       "ordem": 3
     },
     {
+      "id": "coletivo-cria-rj",
+      "nome": "Coletivo Cria RJ",
+      "usuario": "coletivocriarj",
+      "url": "https://www.instagram.com/coletivocriarj/",
+      "grupo": "coletivos-movimentos",
+      "assuntos": ["Coletivo social", "Rio de Janeiro"],
+      "ativo": true,
+      "ordem": 4
+    },
+    {
       "id": "levante-popular-juventude",
       "nome": "Levante Popular da Juventude",
       "usuario": "levantedajuventude",
@@ -282,6 +507,36 @@
       "ordem": 1
     },
     {
+      "id": "juventude-do-lula",
+      "nome": "Juventude do Lula",
+      "usuario": "juventudedolula",
+      "url": "https://www.instagram.com/juventudedolula/",
+      "grupo": "movimentos-juventude",
+      "assuntos": ["Juventude", "Mobilização"],
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "ujs-sc",
+      "nome": "UJS Santa Catarina",
+      "usuario": "ujs_sc",
+      "url": "https://www.instagram.com/ujs_sc/",
+      "grupo": "movimentos-juventude",
+      "assuntos": ["Juventude", "Movimento estudantil"],
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "a-coluna-35",
+      "nome": "A Coluna 35",
+      "usuario": "acoluna35",
+      "url": "https://www.instagram.com/acoluna35/",
+      "grupo": "movimentos-juventude",
+      "assuntos": ["Juventude", "Movimento estudantil"],
+      "ativo": true,
+      "ordem": 4
+    },
+    {
       "id": "prof-joao-saraiva",
       "nome": "Prof. João Saraiva",
       "usuario": "profjoaosaraiva",
@@ -289,6 +544,105 @@
       "grupo": "outros",
       "ativo": true,
       "ordem": 1
+    },
+    {
+      "id": "omar-monteiro",
+      "nome": "Omar Monteiro",
+      "usuario": "omardeideais",
+      "url": "https://www.instagram.com/omardeideais/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 2
+    },
+    {
+      "id": "pablo-mita",
+      "nome": "Pablo Mita",
+      "usuario": "pablomita_",
+      "url": "https://www.instagram.com/pablomita_/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 3
+    },
+    {
+      "id": "bento-do-povo",
+      "nome": "Bento do Povo",
+      "usuario": "bentodopovo",
+      "url": "https://www.instagram.com/bentodopovo/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 4
+    },
+    {
+      "id": "caminhos-educa",
+      "nome": "Caminhos Educa",
+      "usuario": "caminhos.educa",
+      "url": "https://www.instagram.com/caminhos.educa/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 5
+    },
+    {
+      "id": "movendo-estruturas-13",
+      "nome": "Movendo Estruturas 13",
+      "usuario": "movendoestruturas13",
+      "url": "https://www.instagram.com/movendoestruturas13/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 6
+    },
+    {
+      "id": "felipe-marques-1976",
+      "nome": "Felipe Marques",
+      "usuario": "felipemarques1976",
+      "url": "https://www.instagram.com/felipemarques1976/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 7
+    },
+    {
+      "id": "mulheres-vivem-2026",
+      "nome": "Mulheres Vivem 2026",
+      "usuario": "mulheres.vivem2026",
+      "url": "https://www.instagram.com/mulheres.vivem2026/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 8
+    },
+    {
+      "id": "estrela-solitaria-1976",
+      "nome": "Estrela Solitária 1976",
+      "usuario": "estrela.solitaria1976",
+      "url": "https://www.instagram.com/estrela.solitaria1976/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 9
+    },
+    {
+      "id": "bolsonaros-nunca-mais",
+      "nome": "Bolsonaros Nunca Mais",
+      "usuario": "bolsonaros__nunca__mais",
+      "url": "https://www.instagram.com/bolsonaros__nunca__mais/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 10
+    },
+    {
+      "id": "lula-tetra-tetra",
+      "nome": "Lula Tetra Tetra",
+      "usuario": "lulatetratetra",
+      "url": "https://www.instagram.com/lulatetratetra/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 11
+    },
+    {
+      "id": "comunista-inconformado",
+      "nome": "Comunista Inconformado",
+      "usuario": "comunista_inconformado",
+      "url": "https://www.instagram.com/comunista_inconformado/",
+      "grupo": "outros",
+      "ativo": true,
+      "ordem": 12
     }
   ]
 }

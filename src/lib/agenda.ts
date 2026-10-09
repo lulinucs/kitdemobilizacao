@@ -5,6 +5,13 @@ const VALID_STATUSES = new Set<AgendaStatus>(['divulgado', 'confirmado', 'cancel
 const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
 
+function isValidDate(value: string): boolean {
+  if (!DATE_PATTERN.test(value)) return false
+  const [year, month, day] = value.split('-').map(Number)
+  const parsed = new Date(Date.UTC(year, month - 1, day))
+  return parsed.getUTCFullYear() === year && parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === day
+}
+
 export function getZonedDate(now: Date, timezone: string): string {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: timezone,
@@ -28,19 +35,20 @@ function timezoneOffsetMs(instant: Date, timezone: string): number {
   return (match[1] === '-' ? -minutes : minutes) * 60_000
 }
 
-export function eventDateTime(event: Pick<AgendaEvent, 'data' | 'inicio'>, timezone: string): Date | null {
-  if (!event.data || !TIME_PATTERN.test(event.inicio)) return null
+export function eventDateTime(event: Pick<AgendaEvent, 'data' | 'inicio' | 'timezone'>, timezone: string): Date | null {
+  if (!event.data || !event.inicio || !TIME_PATTERN.test(event.inicio)) return null
+  const eventTimezone = event.timezone ?? timezone
   const [year, month, day] = event.data.split('-').map(Number)
   const [hour, minute] = event.inicio.split(':').map(Number)
   const guess = new Date(Date.UTC(year, month - 1, day, hour, minute))
-  const first = new Date(guess.getTime() - timezoneOffsetMs(guess, timezone))
-  return new Date(guess.getTime() - timezoneOffsetMs(first, timezone))
+  const first = new Date(guess.getTime() - timezoneOffsetMs(guess, eventTimezone))
+  return new Date(guess.getTime() - timezoneOffsetMs(first, eventTimezone))
 }
 
 export function eventEndDateTime(event: AgendaEvent, timezone: string): Date | null {
   if (!event.data || !event.fim) return null
   const start = eventDateTime(event, timezone)
-  let end = eventDateTime({ data: event.data, inicio: event.fim }, timezone)
+  let end = eventDateTime({ data: event.data, inicio: event.fim, timezone: event.timezone }, timezone)
   if (!start || !end) return null
 
   // Um fim anterior ao início representa uma atividade que termina no dia
@@ -49,27 +57,35 @@ export function eventEndDateTime(event: AgendaEvent, timezone: string): Date | n
     const [year, month, day] = event.data.split('-').map(Number)
     const nextDay = new Date(Date.UTC(year, month - 1, day + 1))
     const date = [nextDay.getUTCFullYear(), String(nextDay.getUTCMonth() + 1).padStart(2, '0'), String(nextDay.getUTCDate()).padStart(2, '0')].join('-')
-    end = eventDateTime({ data: date, inicio: event.fim }, timezone)
+    end = eventDateTime({ data: date, inicio: event.fim, timezone: event.timezone }, timezone)
   }
   return end
 }
 
 export function isPastForWidget(event: AgendaEvent, now: Date, timezone: string): boolean {
-  const end = eventEndDateTime(event, timezone)
+  const end = effectiveEventEndDateTime(event, timezone)
   return Boolean(end && end.getTime() <= now.getTime())
+}
+
+function effectiveEventEndDateTime(event: AgendaEvent, timezone: string): Date | null {
+  const start = eventDateTime(event, timezone)
+  if (!start) return null
+  const declaredEnd = eventEndDateTime(event, timezone)
+  return new Date(Math.max(declaredEnd?.getTime() ?? 0, start.getTime() + 60 * 60_000))
 }
 
 export function isEventOngoing(event: AgendaEvent, now: Date, timezone: string): boolean {
   const start = eventDateTime(event, timezone)
-  const end = eventEndDateTime(event, timezone)
-  if (!start || !end) return false
-  return start.getTime() <= now.getTime() && now.getTime() < end.getTime()
+  if (!start) return false
+  const effectiveEnd = effectiveEventEndDateTime(event, timezone)
+  return Boolean(effectiveEnd && start.getTime() <= now.getTime() && now.getTime() < effectiveEnd.getTime())
 }
 
 export function isPastForList(event: AgendaEvent, now: Date, timezone: string): boolean {
   if (event.status === 'encerrado') return true
-  const end = eventEndDateTime(event, timezone)
-  return end ? end.getTime() <= now.getTime() : false
+  const end = effectiveEventEndDateTime(event, timezone)
+  if (end) return end.getTime() <= now.getTime()
+  return Boolean(event.data && event.data < getZonedDate(now, event.timezone ?? timezone))
 }
 
 export function getDisplayStatus(event: AgendaEvent, now: Date, timezone: string): AgendaStatus {
@@ -77,14 +93,102 @@ export function getDisplayStatus(event: AgendaEvent, now: Date, timezone: string
   return isPastForList(event, now, timezone) ? 'encerrado' : event.status
 }
 
-export function sortEvents(events: AgendaEvent[], timezone: string): AgendaEvent[] {
+export function sortEvents(events: AgendaEvent[], _timezone: string): AgendaEvent[] {
   return [...events].sort((a, b) => {
-    if (!a.data && !b.data) return a.inicio.localeCompare(b.inicio) || a.titulo.localeCompare(b.titulo, 'pt-BR')
+    if (!a.data && !b.data) return (a.inicio ?? '99:99').localeCompare(b.inicio ?? '99:99') || a.titulo.localeCompare(b.titulo, 'pt-BR')
     if (!a.data) return 1
     if (!b.data) return -1
-    return (eventDateTime(a, timezone)?.getTime() ?? 0) - (eventDateTime(b, timezone)?.getTime() ?? 0)
+    return a.data.localeCompare(b.data)
+      || (a.inicio ?? '99:99').localeCompare(b.inicio ?? '99:99')
       || a.titulo.localeCompare(b.titulo, 'pt-BR')
   })
+}
+
+export type AgendaDisplayItem =
+  | { kind: 'event'; event: AgendaEvent }
+  | { kind: 'mobilization'; id: string; events: AgendaEvent[] }
+
+export interface MobilizationCityGroup {
+  key: string
+  city: string
+  state?: string
+  events: AgendaEvent[]
+}
+
+function groupEventsByCity(events: AgendaEvent[]): MobilizationCityGroup[] {
+  const groups = new Map<string, MobilizationCityGroup>()
+  events.forEach((event) => {
+    if (!event.cidade) return
+    const key = `${event.cidade}|${event.uf ?? ''}`
+    const current = groups.get(key)
+    if (current) current.events.push(event)
+    else groups.set(key, { key, city: event.cidade, state: event.uf, events: [event] })
+  })
+  return [...groups.values()].sort((a, b) => a.city.localeCompare(b.city, 'pt-BR') || (a.state ?? '').localeCompare(b.state ?? ''))
+}
+
+export function getMobilizationEvents(events: AgendaEvent[], mobilizationId: string, timezone: string): AgendaEvent[] {
+  return sortEvents(events.filter((event) => event.mobilizacaoId === mobilizationId && event.status !== 'cancelado'), timezone)
+}
+
+export function getMobilizationCityGroups(events: AgendaEvent[], mobilizationId: string, timezone: string): MobilizationCityGroup[] {
+  return groupEventsByCity(getMobilizationEvents(events, mobilizationId, timezone))
+}
+
+export function shouldShowMobilizationSpotlight(events: AgendaEvent[], mobilizationId: string, throughDate: string, now: Date, timezone: string): boolean {
+  return getZonedDate(now, timezone) <= throughDate && getMobilizationEvents(events, mobilizationId, timezone).length > 0
+}
+
+export function getHighlightedEvents(events: AgendaEvent[], highlightId: string, timezone: string): AgendaEvent[] {
+  return sortEvents(events.filter((event) => event.destaques?.includes(highlightId) && event.status !== 'cancelado'), timezone)
+}
+
+export function getHighlightCityGroups(events: AgendaEvent[], highlightId: string, timezone: string): MobilizationCityGroup[] {
+  return groupEventsByCity(getHighlightedEvents(events, highlightId, timezone))
+}
+
+export function shouldShowEditorialSpotlight(events: AgendaEvent[], highlightId: string, throughDate: string, now: Date, timezone: string): boolean {
+  return getZonedDate(now, timezone) <= throughDate && getHighlightedEvents(events, highlightId, timezone).length > 0
+}
+
+export function createAgendaParams(options: { eventId?: string; mobilizationId?: string; highlightId?: string } = {}): URLSearchParams {
+  const params = new URLSearchParams({ view: 'agenda' })
+  if (options.eventId) params.set('evento', options.eventId)
+  if (options.mobilizationId) params.set('mobilizacao', options.mobilizationId)
+  if (options.highlightId) params.set('destaque', options.highlightId)
+  return params
+}
+
+export function groupAgendaEvents(events: AgendaEvent[], enabled = true): AgendaDisplayItem[] {
+  if (!enabled) return events.map((event) => ({ kind: 'event', event }))
+
+  const grouped = new Map<string, AgendaEvent[]>()
+  events.forEach((event) => {
+    if (!event.mobilizacaoId) return
+    grouped.set(event.mobilizacaoId, [...(grouped.get(event.mobilizacaoId) ?? []), event])
+  })
+
+  const rendered = new Set<string>()
+  return events.flatMap<AgendaDisplayItem>((event) => {
+    if (!event.mobilizacaoId) return [{ kind: 'event' as const, event }]
+    if (rendered.has(event.mobilizacaoId)) return []
+    rendered.add(event.mobilizacaoId)
+    return [{ kind: 'mobilization' as const, id: event.mobilizacaoId, events: grouped.get(event.mobilizacaoId) ?? [event] }]
+  })
+}
+
+export function formatMobilizationTitle(events: AgendaEvent[], timezone: string): string {
+  const first = events[0]
+  if (!first) return 'Mobilização nacional'
+  const label = first.titulo.split('—').at(-1)?.trim() || first.titulo
+  if (!first.data) return label
+  const [year, month, day] = first.data.split('-').map(Number)
+  const date = new Intl.DateTimeFormat('pt-BR', {
+    timeZone: timezone,
+    day: 'numeric',
+    month: 'long',
+  }).format(new Date(Date.UTC(year, month - 1, day, 12)))
+  return `${label} — ${date}`
 }
 
 export function getNextEvent(events: AgendaEvent[], now: Date, timezone: string): AgendaEvent | undefined {
@@ -100,6 +204,12 @@ export type WidgetEventSelection =
   | { kind: 'upcoming'; events: [AgendaEvent] }
   | { kind: 'empty'; events: [] }
 
+export interface WidgetLocationEvent {
+  key: string
+  label: string
+  event: AgendaEvent
+}
+
 export function getWidgetEventSelection(events: AgendaEvent[], now: Date, timezone: string): WidgetEventSelection {
   const eligible = events.filter((event) =>
     Boolean(event.data) && ['divulgado', 'confirmado', 'alterado'].includes(event.status),
@@ -111,6 +221,45 @@ export function getWidgetEventSelection(events: AgendaEvent[], now: Date, timezo
   return next ? { kind: 'upcoming', events: [next] } : { kind: 'empty', events: [] }
 }
 
+function isWidgetEligible(event: AgendaEvent): boolean {
+  return Boolean(event.data) && ['divulgado', 'confirmado', 'alterado'].includes(event.status)
+}
+
+export function getUpcomingWidgetEvents(events: AgendaEvent[], now: Date, timezone: string): AgendaEvent[] {
+  return sortEvents(events.filter((event) => {
+    if (!isWidgetEligible(event) || !event.data || isEventOngoing(event, now, timezone)) return false
+    if (event.inicio) {
+      const start = eventDateTime(event, timezone)
+      return Boolean(start && start.getTime() > now.getTime())
+    }
+    return event.data >= getZonedDate(now, event.timezone ?? timezone)
+  }), timezone)
+}
+
+function widgetLocation(event: AgendaEvent): { key: string; label: string } {
+  if (event.cidade) return { key: `city:${event.cidade}|${event.uf ?? ''}`, label: `${event.cidade}${event.uf ? `/${event.uf}` : ''}` }
+  if (event.modalidade === 'virtual') return { key: 'virtual', label: 'Atividade virtual' }
+  if (event.uf) return { key: `state:${event.uf}`, label: `Município a confirmar · ${event.uf}` }
+  return { key: 'location-pending', label: 'Localidade a confirmar' }
+}
+
+export function getUpcomingWidgetEventsByLocation(events: AgendaEvent[], now: Date, timezone: string): WidgetLocationEvent[] {
+  const locations = new Set<string>()
+  return getUpcomingWidgetEvents(events, now, timezone).flatMap((event) => {
+    const location = widgetLocation(event)
+    if (locations.has(location.key)) return []
+    locations.add(location.key)
+    return [{ ...location, event }]
+  })
+}
+
+export function formatUpcomingEventTime(event: AgendaEvent): string {
+  if (!event.inicio) return 'Horário a confirmar'
+  if (event.inicioRotulo) return event.inicioRotulo
+  if (!event.fim) return `Início previsto às ${formatClock(event.inicio)}`
+  return formatEventTime(event)
+}
+
 export function filterAgendaEvents(events: AgendaEvent[], filters: AgendaFilters, now: Date, timezone: string): AgendaEvent[] {
   const query = normalizeText(filters.query.trim())
   return sortEvents(events, timezone).filter((event) => {
@@ -119,8 +268,10 @@ export function filterAgendaEvents(events: AgendaEvent[], filters: AgendaFilters
     if (filters.city && event.cidade !== filters.city) return false
     if (filters.state && event.uf !== filters.state) return false
     if (filters.category && event.categoria !== filters.category) return false
+    if (filters.mobilization && event.mobilizacaoId !== filters.mobilization) return false
+    if (filters.highlight && !event.destaques?.includes(filters.highlight)) return false
     if (!query) return true
-    return normalizeText([event.titulo, event.cidade, event.uf, event.local ?? '', event.endereco ?? '', event.bairro ?? '', event.descricao, event.informacoesAdicionais ?? ''].join(' ')).includes(query)
+    return normalizeText([event.titulo, event.cidade ?? '', event.uf ?? '', event.instituicao ?? '', event.campus ?? '', event.pontoEncontro ?? '', event.local ?? '', event.endereco ?? '', event.bairro ?? '', event.descricao, event.informacoesAdicionais ?? ''].join(' ')).includes(query)
   })
 }
 
@@ -135,7 +286,38 @@ export function formatAgendaDate(date: string, timezone: string, long = false): 
 }
 
 export function formatEventTime(event: AgendaEvent): string {
+  if (event.inicioRotulo) return event.inicioRotulo
+  if (!event.inicio) return 'Horário a confirmar'
   return event.fim ? `${event.inicio}–${event.fim}` : `a partir das ${event.inicio}`
+}
+
+function formatClock(time: string): string {
+  const [hour, minute] = time.split(':')
+  return minute === '00' ? `${Number(hour)}h` : `${Number(hour)}h${minute}`
+}
+
+export function formatEventScheduleLines(event: AgendaEvent): string[] {
+  if (!event.inicio) return ['Horário a confirmar']
+
+  const label = event.inicioRotulo?.toLocaleLowerCase('pt-BR') ?? ''
+  if (!label.includes('concentração')) return [formatEventTime(event)]
+
+  const lines = [`Concentração às ${formatClock(event.inicio)}`]
+  const announcedStart = label.match(/início previsto às\s*(\d{1,2}h(?:\d{2})?)/)?.[1]
+  if (announcedStart) lines.push(`Início previsto às ${announcedStart}`)
+  return lines
+}
+
+export function formatEventPlace(event: AgendaEvent): string {
+  if (event.modalidade === 'virtual') return 'Atividade virtual'
+  const city = event.cidade ? `${event.cidade}${event.uf ? `/${event.uf}` : ''}` : event.uf ? `Local a confirmar · ${event.uf}` : 'Local a confirmar'
+  const venue = event.pontoEncontro ?? event.local
+  return venue ? `${venue} · ${city}` : city
+}
+
+export function formatEventInstitution(event: AgendaEvent): string | null {
+  if (!event.instituicao && !event.campus) return null
+  return [event.instituicao, event.campus].filter(Boolean).join(' · ')
 }
 
 export function buildEventUrl(eventId: string, locationLike: Pick<Location, 'origin' | 'pathname'>): string {
@@ -147,15 +329,16 @@ export function buildEventShare(event: AgendaEvent, locationLike: Pick<Location,
   const when = event.data ? `${formatAgendaDate(event.data, timezone, true)}, ${formatEventTime(event)}` : `data a confirmar, ${formatEventTime(event)}`
   return {
     title: event.titulo,
-    text: `${event.titulo} — ${when} — ${event.cidade}/${event.uf}${event.local ? ` — ${event.local}` : ''}`,
+    text: `${event.titulo} — ${when} — ${formatEventPlace(event)}`,
     url: buildEventUrl(event.id, locationLike),
   }
 }
 
 export function buildMapUrl(event: AgendaEvent): string | null {
-  const place = event.endereco ?? event.local
-  if (!place) return null
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place}, ${event.cidade} - ${event.uf}`)}`
+  if (event.modalidade === 'virtual') return null
+  const place = event.endereco ?? event.pontoEncontro ?? event.local
+  if (!place || (!event.cidade && !event.uf)) return null
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place, event.cidade, event.uf].filter(Boolean).join(', '))}`
 }
 
 export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; errors: string[] } {
@@ -167,13 +350,17 @@ export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; error
     if (!event.id || ids.has(event.id)) recordErrors.push(`ID ausente ou duplicado: ${event.id || '(vazio)'}`)
     ids.add(event.id)
     if (!categoryIds.has(event.categoria)) recordErrors.push(`Categoria inválida em ${event.id}`)
-    if (!event.cidade.trim() || !/^[A-Z]{2}$/.test(event.uf)) recordErrors.push(`Localização inválida em ${event.id}`)
+    if (event.cidade !== undefined && !event.cidade.trim()) recordErrors.push(`Cidade inválida em ${event.id}`)
+    if (event.uf !== undefined && !/^[A-Z]{2}$/.test(event.uf)) recordErrors.push(`UF inválida em ${event.id}`)
+    if (event.modalidade && !['presencial', 'virtual', 'hibrida'].includes(event.modalidade)) recordErrors.push(`Modalidade inválida em ${event.id}`)
     if (!VALID_STATUSES.has(event.status)) recordErrors.push(`Status inválido em ${event.id}`)
-    if (!TIME_PATTERN.test(event.inicio) || (event.fim && !TIME_PATTERN.test(event.fim))) recordErrors.push(`Horário inválido em ${event.id}`)
+    if (event.mobilizacaoId !== undefined && !event.mobilizacaoId.trim()) recordErrors.push(`Mobilização inválida em ${event.id}`)
+    if (event.destaques !== undefined && (!Array.isArray(event.destaques) || event.destaques.some((highlight) => !highlight.trim()) || new Set(event.destaques).size !== event.destaques.length)) recordErrors.push(`Destaques inválidos em ${event.id}`)
+    if ((event.inicio !== null && !TIME_PATTERN.test(event.inicio)) || (event.fim && !TIME_PATTERN.test(event.fim))) recordErrors.push(`Horário inválido em ${event.id}`)
+    if (event.fim && !event.inicio) recordErrors.push(`Término sem horário inicial em ${event.id}`)
+    if (event.verificadoEm && !DATE_PATTERN.test(event.verificadoEm)) recordErrors.push(`Data de verificação inválida em ${event.id}`)
     if (event.data) {
-      const validShape = DATE_PATTERN.test(event.data)
-      const parsed = validShape ? eventDateTime(event, data.timezone) : null
-      if (!parsed || getZonedDate(parsed, data.timezone) !== event.data) recordErrors.push(`Data inválida em ${event.id}`)
+      if (!isValidDate(event.data)) recordErrors.push(`Data inválida em ${event.id}`)
     } else if (event.status !== 'data_pendente') {
       recordErrors.push(`Evento sem data deve usar data_pendente: ${event.id}`)
     }

@@ -1,11 +1,11 @@
-import { CalendarDays, Clock3, ExternalLink, Link2, MapPin, Share2 } from 'lucide-react'
+import { Building2, CalendarDays, Clock3, ExternalLink, Link2, MapPin, Share2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventTime, getDisplayStatus } from '../lib/agenda'
+import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventInstitution, formatEventPlace, formatEventTime, getDisplayStatus } from '../lib/agenda'
 import styles from '../styles/App.module.css'
 
 const statusLabels = {
-  divulgado: 'Divulgado — confirme',
+  divulgado: 'Informação ainda não verificada',
   confirmado: 'Confirmado',
   cancelado: 'Cancelado',
   alterado: 'Alterado',
@@ -19,6 +19,7 @@ interface AgendaEventCardProps {
   categoryName: string
   now: Date
   selected?: boolean
+  grouped?: boolean
   onPermalink: (id: string) => void
 }
 
@@ -33,11 +34,15 @@ function fallbackCopy(text: string) {
   area.remove()
 }
 
-export function AgendaEventCard({ event, agenda, categoryName, now, selected, onPermalink }: AgendaEventCardProps) {
+export function AgendaEventCard({ event, agenda, categoryName, now, selected, grouped = false, onPermalink }: AgendaEventCardProps) {
   const [shareState, setShareState] = useState('Compartilhar')
   const [expanded, setExpanded] = useState(Boolean(selected))
   const status = getDisplayStatus(event, now, agenda.timezone)
   const mapUrl = buildMapUrl(event)
+  const institution = formatEventInstitution(event)
+  const groupedTitle = event.cidade
+    ? `${event.cidade}${event.uf ? `/${event.uf}` : ''}`
+    : institution ?? (event.modalidade === 'virtual' ? 'Atividade virtual' : event.titulo)
 
   useEffect(() => {
     if (selected) setExpanded(true)
@@ -65,22 +70,28 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, on
         <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{statusLabels[status]}</span>
         <span className={styles.agendaCategory}>{categoryName}</span>
       </div>
-      <h3>{event.titulo}</h3>
+      <h3>{grouped ? groupedTitle : event.titulo}</h3>
       <div className={styles.eventFacts}>
-        <span><CalendarDays aria-hidden="true" size={16} />{event.data ? formatAgendaDate(event.data, agenda.timezone, true) : 'Data a confirmar'}</span>
+        {!grouped && <span><CalendarDays aria-hidden="true" size={16} />{event.data ? formatAgendaDate(event.data, agenda.timezone, true) : 'Data a confirmar'}</span>}
         <span><Clock3 aria-hidden="true" size={16} />{formatEventTime(event)}</span>
-        <span><MapPin aria-hidden="true" size={16} /><strong>{event.cidade}/{event.uf}</strong>{event.local ? ` · ${event.local}` : ''}</span>
+        <span><MapPin aria-hidden="true" size={16} /><strong>{formatEventPlace(event)}</strong></span>
+        {institution && !grouped && <span><Building2 aria-hidden="true" size={16} />{institution}</span>}
       </div>
       <button className={styles.eventExpand} type="button" onClick={() => setExpanded((value) => !value)} aria-expanded={expanded}>{expanded ? 'Ocultar detalhes' : 'Ver detalhes'}</button>
       {expanded && <div className={styles.eventDetails}>
         <p>{event.descricao}</p>
+        {institution && grouped && <p><strong>Instituição/campus:</strong> {institution}</p>}
+        {event.pontoEncontro && <p><strong>Ponto de encontro:</strong> {event.pontoEncontro}</p>}
         {(event.endereco || event.bairro) && <p><strong>Localização:</strong> {[event.endereco, event.bairro].filter(Boolean).join(' · ')}</p>}
         {event.informacoesAdicionais && <p><strong>Informações adicionais:</strong> {event.informacoesAdicionais}</p>}
+        {event.fonte && !event.fonte.url && <p><strong>Fonte:</strong> {event.fonte.rotulo}</p>}
+        {event.verificadoEm && <p><strong>Última verificação:</strong> {formatAgendaDate(event.verificadoEm, agenda.timezone)}</p>}
         {event.recorrencia?.texto && <p className={styles.pendingNote}>{event.recorrencia.texto}. Não há recorrência presumida.</p>}
         <div className={styles.eventActions}>
           <button type="button" onClick={share}><Share2 aria-hidden="true" size={16} />{shareState}</button>
           <button type="button" onClick={() => onPermalink(event.id)}><Link2 aria-hidden="true" size={16} />Link permanente</button>
           {mapUrl && <a href={mapUrl} target="_blank" rel="noopener noreferrer"><MapPin aria-hidden="true" size={16} />Ver no mapa</a>}
+          {event.fonte?.url && <a href={event.fonte.url} target="_blank" rel="noopener noreferrer">{event.fonte.rotulo}<ExternalLink aria-hidden="true" size={15} /></a>}
           {event.links?.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer" key={link.url}>{link.rotulo}<ExternalLink aria-hidden="true" size={15} /></a>)}
         </div>
       </div>}

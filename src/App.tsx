@@ -12,7 +12,7 @@ import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
 import { getNextEvent, validateAgenda } from './lib/agenda'
-import { filterInitiatives, validateDirectory } from './lib/directory'
+import { createCatalogSearch, filterInitiatives, readCatalogFilters, validateDirectory } from './lib/directory'
 import type { AgendaData } from './agendaTypes'
 import type { DirectoryData, Filters } from './types'
 import styles from './styles/App.module.css'
@@ -21,8 +21,14 @@ const data = rawData as DirectoryData
 const agendaSource = rawAgenda as AgendaData
 
 function readFilters(): Filters {
-  const params = new URLSearchParams(window.location.search)
-  return { query: params.get('q') ?? '', category: params.get('categoria') ?? '', activity: params.get('atividade') ?? '' }
+  return readCatalogFilters(window.location.search)
+}
+
+function normalizeCatalogUrl(filters: Filters) {
+  const search = createCatalogSearch(filters)
+  const nextUrl = `${window.location.pathname}${search ? `?${search}` : ''}`
+  const currentUrl = `${window.location.pathname}${window.location.search}`
+  if (nextUrl !== currentUrl) window.history.replaceState({}, '', nextUrl)
 }
 
 function systemTheme(): 'light' | 'dark' {
@@ -57,11 +63,20 @@ export default function App() {
 
   useEffect(() => {
     const onPopState = () => {
-      setFilters(readFilters())
+      const restoredFilters = readFilters()
+      const restoredParams = new URLSearchParams(window.location.search)
+      if (restoredParams.get('view') !== 'agenda' && !restoredParams.has('evento')) normalizeCatalogUrl(restoredFilters)
+      setFilters(restoredFilters)
       setRouteVersion((value) => value + 1)
     }
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+
+  useEffect(() => {
+    if (currentView === 'home') normalizeCatalogUrl(filters)
+    // A normalização inicial deve acontecer apenas ao montar a aplicação.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const commitUrl = (nextParams: URLSearchParams, replace = false) => {
@@ -72,10 +87,9 @@ export default function App() {
 
   const updateCatalog = (patch: Partial<Filters>, replace = false) => {
     const nextFilters = { ...filters, ...patch }
-    const nextParams = new URLSearchParams()
-    if (nextFilters.category) nextParams.set('categoria', nextFilters.category)
-    if (nextFilters.activity) nextParams.set('atividade', nextFilters.activity)
-    if (nextFilters.query) nextParams.set('q', nextFilters.query)
+    if (Object.hasOwn(patch, 'category')) nextFilters.activity = ''
+    if (Object.hasOwn(patch, 'activity')) nextFilters.category = ''
+    const nextParams = new URLSearchParams(createCatalogSearch(nextFilters))
     commitUrl(nextParams, replace)
     setFilters(nextFilters)
   }
@@ -127,8 +141,7 @@ export default function App() {
                 {(filters.query || filters.category || filters.activity) && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
               </div>
               <div className={styles.activeFilters} aria-label="Filtros ativos">
-                {selectedCategory && <button type="button" onClick={() => updateCatalog({ category: '' })}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button>}
-                {selectedActivity && <button type="button" onClick={() => updateCatalog({ activity: '' })}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button>}
+                {selectedCategory ? <button type="button" onClick={() => updateCatalog({ category: '' })}>{selectedCategory.nome}<X aria-hidden="true" size={15} /></button> : selectedActivity ? <button type="button" onClick={() => updateCatalog({ activity: '' })}>{selectedActivity.nome}<X aria-hidden="true" size={15} /></button> : null}
                 {filters.query && <button type="button" onClick={() => updateCatalog({ query: '' })}>Busca: “{filters.query}”<X aria-hidden="true" size={15} /></button>}
               </div>
               {results.length ? <InitiativeList initiatives={results} categories={data.categorias} /> : <EmptyState onClear={clear} />}

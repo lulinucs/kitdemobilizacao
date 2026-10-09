@@ -3,14 +3,36 @@ import type { DirectoryData, Filters, Initiative } from '../types'
 export const normalizeText = (value: string) =>
   value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR')
 
+export function readCatalogFilters(search: string): Filters {
+  const params = new URLSearchParams(search)
+  const category = params.get('categoria') ?? ''
+
+  return {
+    query: params.get('q') ?? '',
+    category,
+    activity: category ? '' : params.get('atividade') ?? '',
+  }
+}
+
+export function createCatalogSearch(filters: Filters): string {
+  const params = new URLSearchParams()
+  if (filters.category) params.set('categoria', filters.category)
+  else if (filters.activity) params.set('atividade', filters.activity)
+  if (filters.query) params.set('q', filters.query)
+  return params.toString()
+}
+
 export function filterInitiatives(data: DirectoryData, filters: Filters): Initiative[] {
   const categoryOrder = new Map(data.categorias.map((category) => [category.id, category.ordem]))
   const query = normalizeText(filters.query.trim())
 
   return data.iniciativas
     .filter((initiative) => initiative.ativo)
-    .filter((initiative) => !filters.category || initiative.categoriaPrincipal === filters.category)
-    .filter((initiative) => !filters.activity || initiative.atividades.includes(filters.activity))
+    .filter((initiative) => {
+      if (filters.category) return initiative.categoriaPrincipal === filters.category
+      if (filters.activity) return initiative.atividades.includes(filters.activity)
+      return true
+    })
     .filter((initiative) => {
       if (!query) return true
       const category = data.categorias.find((item) => item.id === initiative.categoriaPrincipal)

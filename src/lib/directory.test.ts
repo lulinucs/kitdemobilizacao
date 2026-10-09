@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import rawData from '../data/iniciativas.json'
 import type { DirectoryData } from '../types'
-import { filterInitiatives, normalizeText, validateDirectory } from './directory'
+import { createCatalogSearch, filterInitiatives, normalizeText, readCatalogFilters, validateDirectory } from './directory'
 
 const data = rawData as DirectoryData
 
@@ -11,9 +11,26 @@ describe('busca e filtros', () => {
     expect(filterInitiatives(data, { query: 'geracao', category: '', activity: '' }).map((item) => item.id)).toContain('geracao-lula')
   })
 
-  it('combina categoria, atividade e texto', () => {
-    const result = filterInitiatives(data, { query: 'cartazes', category: 'materiais', activity: 'imprimir' })
+  it('trata categoria e atividade como índices alternativos', () => {
+    const categoryResult = filterInitiatives(data, { query: '', category: 'materiais', activity: 'acompanhar' })
+    const activityResult = filterInitiatives(data, { query: '', category: '', activity: 'acompanhar' })
+
+    expect(categoryResult.every((item) => item.categoriaPrincipal === 'materiais')).toBe(true)
+    expect(activityResult.every((item) => item.atividades.includes('acompanhar'))).toBe(true)
+    expect(categoryResult.length).toBeGreaterThan(1)
+    expect(activityResult.length).toBeGreaterThan(1)
+  })
+
+  it('mantém a busca textual sobre a seleção ativa', () => {
+    const result = filterInitiatives(data, { query: 'cartazes', category: 'materiais', activity: '' })
     expect(result.map((item) => item.id)).toEqual(['lambe-brasil'])
+  })
+
+  it('normaliza URLs antigas com precedência para categoria', () => {
+    const filters = readCatalogFilters('?categoria=materiais&atividade=acompanhar&q=cartazes')
+
+    expect(filters).toEqual({ query: 'cartazes', category: 'materiais', activity: '' })
+    expect(createCatalogSearch(filters)).toBe('categoria=materiais&q=cartazes')
   })
 
   it('não duplica iniciativas com várias atividades', () => {

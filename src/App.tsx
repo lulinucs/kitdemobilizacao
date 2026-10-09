@@ -51,16 +51,16 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  const update = (patch: Partial<Filters>, replace = false) => setFilters((current) => {
-    const nextFilters = { ...current, ...patch }
+  const update = (patch: Partial<Filters>, replace = false) => {
+    const nextFilters = { ...filters, ...patch }
     const params = new URLSearchParams()
     if (nextFilters.category) params.set('categoria', nextFilters.category)
     if (nextFilters.activity) params.set('atividade', nextFilters.activity)
     if (nextFilters.query) params.set('q', nextFilters.query)
     const nextUrl = `${window.location.pathname}${params.size ? `?${params}` : ''}`
     window.history[replace ? 'replaceState' : 'pushState'](nextFilters, '', nextUrl)
-    return nextFilters
-  })
+    setFilters(nextFilters)
+  }
   const clear = () => update({ query: '', category: '', activity: '' })
   const selectedCategory = data.categorias.find((item) => item.id === filters.category)
   const selectedActivity = data.atividades.find((item) => item.id === filters.activity)

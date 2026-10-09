@@ -2,16 +2,8 @@ import { Building2, CalendarDays, Clock3, ExternalLink, Link2, MapPin, Share2 } 
 import { useEffect, useState } from 'react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
 import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventInstitution, formatEventPlace, formatEventTime, getDisplayStatus } from '../lib/agenda'
+import { publicAdditionalInfo, publicAgendaStatusLabel } from '../lib/agendaPresentation'
 import styles from '../styles/App.module.css'
-
-const statusLabels = {
-  divulgado: 'Informação ainda não verificada',
-  confirmado: 'Confirmado',
-  cancelado: 'Cancelado',
-  alterado: 'Alterado',
-  data_pendente: 'Data a confirmar',
-  encerrado: 'Encerrado',
-}
 
 interface AgendaEventCardProps {
   event: AgendaEvent
@@ -38,6 +30,8 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, gr
   const [shareState, setShareState] = useState('Compartilhar')
   const [expanded, setExpanded] = useState(Boolean(selected))
   const status = getDisplayStatus(event, now, agenda.timezone)
+  const statusLabel = publicAgendaStatusLabel(status)
+  const additionalInfo = publicAdditionalInfo(event.informacoesAdicionais)
   const mapUrl = buildMapUrl(event)
   const institution = formatEventInstitution(event)
   const groupedTitle = event.cidade
@@ -67,7 +61,7 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, gr
   return (
     <article className={`${styles.agendaCard} ${status === 'encerrado' ? styles.agendaCardPast : ''} ${selected ? styles.agendaCardSelected : ''}`} id={`evento-${event.id}`}>
       <div className={styles.agendaCardTop}>
-        <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{statusLabels[status]}</span>
+        {statusLabel && <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{statusLabel}</span>}
         <span className={styles.agendaCategory}>{categoryName}</span>
       </div>
       <h3>{grouped ? groupedTitle : event.titulo}</h3>
@@ -83,10 +77,9 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, gr
         {institution && grouped && <p><strong>Instituição/campus:</strong> {institution}</p>}
         {event.pontoEncontro && <p><strong>Ponto de encontro:</strong> {event.pontoEncontro}</p>}
         {(event.endereco || event.bairro) && <p><strong>Localização:</strong> {[event.endereco, event.bairro].filter(Boolean).join(' · ')}</p>}
-        {event.informacoesAdicionais && <p><strong>Informações adicionais:</strong> {event.informacoesAdicionais}</p>}
+        {additionalInfo && <p><strong>Informações adicionais:</strong> {additionalInfo}</p>}
         {event.fonte && !event.fonte.url && <p><strong>Fonte:</strong> {event.fonte.rotulo}</p>}
-        {event.verificadoEm && <p><strong>Última verificação:</strong> {formatAgendaDate(event.verificadoEm, agenda.timezone)}</p>}
-        {event.recorrencia?.texto && <p className={styles.pendingNote}>{event.recorrencia.texto}. Não há recorrência presumida.</p>}
+        {event.recorrencia?.texto && <p className={styles.pendingNote}>{event.recorrencia.texto}</p>}
         <div className={styles.eventActions}>
           <button type="button" onClick={share}><Share2 aria-hidden="true" size={16} />{shareState}</button>
           <button type="button" onClick={() => onPermalink(event.id)}><Link2 aria-hidden="true" size={16} />Link permanente</button>

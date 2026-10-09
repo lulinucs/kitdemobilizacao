@@ -1,20 +1,12 @@
 import { ArrowRight, CalendarDays, Clock3, MapPin } from 'lucide-react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
 import { formatEventScheduleLines, getHighlightCityGroups, shouldShowEditorialSpotlight } from '../lib/agenda'
+import { publicAgendaStatusLabel } from '../lib/agendaPresentation'
 import styles from '../styles/App.module.css'
 
 const HIGHLIGHT_ID = 'mobilizacoes-13-out-2026'
 const HIGHLIGHT_DATE = '2026-10-13'
 const MAX_VISIBLE_CITIES = 3
-
-const statusLabels = {
-  divulgado: 'Informação ainda não verificada',
-  confirmado: 'Confirmado',
-  cancelado: 'Cancelado',
-  alterado: 'Informação alterada',
-  data_pendente: 'Data a confirmar',
-  encerrado: 'Encerrado',
-}
 
 interface EditorialMobilizationsSpotlightProps {
   agenda: AgendaData
@@ -55,16 +47,17 @@ export function EditorialMobilizationsSpotlight({ agenda, now, onOpen }: Editori
         {visibleCities.map((city) => (
           <article className={styles.editorialCity} key={city.key}>
             <h3>{city.city}{city.state ? `/${city.state}` : ''}</h3>
-            {city.events.map((event) => (
-              <div className={styles.editorialAct} key={event.id}>
-                <span className={`${styles.editorialStatus} ${styles[`status_${event.status}`]}`}>{statusLabels[event.status]}</span>
+            {city.events.map((event) => {
+              const statusLabel = publicAgendaStatusLabel(event.status)
+              return <div className={styles.editorialAct} key={event.id}>
+                {statusLabel && <span className={`${styles.editorialStatus} ${styles[`status_${event.status}`]}`}>{statusLabel}</span>}
                 <div className={styles.editorialActDetails}>
                   <p><CalendarDays aria-hidden="true" size={16} /><span>{shortDate(event.data)}</span></p>
                   <div className={styles.editorialSchedule}><Clock3 aria-hidden="true" size={16} /><div>{formatEventScheduleLines(event).map((line) => <span key={line}>{line}</span>)}</div></div>
                   <p><MapPin aria-hidden="true" size={16} /><span>{eventPlace(event)}</span></p>
                 </div>
               </div>
-            ))}
+            })}
           </article>
         ))}
       </div>

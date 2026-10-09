@@ -1,4 +1,4 @@
-import { CalendarDays, Clock3, List, Search, X } from 'lucide-react'
+import { Clock3, List, Search, X } from 'lucide-react'
 import { useEffect, useMemo } from 'react'
 import type { AgendaData, AgendaEvent, AgendaFilters, AgendaViewMode } from '../agendaTypes'
 import { filterAgendaEvents, formatAgendaDate, formatMobilizationTitle, groupAgendaEvents, isPastForList } from '../lib/agenda'
@@ -106,11 +106,6 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
         <h1>Agenda de Mobilizações</h1>
         <p>Encontre encontros, atividades e mobilizações na sua cidade ou em outras regiões do Brasil.</p>
       </header>
-
-      <div className={styles.agendaNotice} role="note">
-        <CalendarDays aria-hidden="true" size={20} />
-        <span>{agenda.aviso} “Divulgado” não significa que a informação foi verificada.</span>
-      </div>
 
       {(filters.mobilization || filters.highlight) && <div className={styles.agendaCollectionFilter} role="status">
         <div><span>{collectionLabel}</span><strong>{collectionTitle}</strong></div>

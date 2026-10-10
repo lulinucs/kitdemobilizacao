@@ -203,6 +203,16 @@ export default function App() {
     if (id) next.set('midia', id)
     commitUrl(next, false, '/midias')
   }
+  const selectMediaTab = (tab: 'images' | 'videos') => {
+    const next = new URLSearchParams()
+    if (tab === 'videos') next.set('aba', 'videos')
+    commitUrl(next, false, '/midias')
+  }
+  const selectVideo = (id: string | null) => {
+    const next = new URLSearchParams({ aba: 'videos' })
+    if (id) next.set('video', id)
+    commitUrl(next, false, '/midias')
+  }
   const returnToCatalog = () => {
     pendingResultsScroll.current = null
     commitUrl(new URLSearchParams(createCatalogSearch(filters)), true, '/')
@@ -218,7 +228,7 @@ export default function App() {
       footer={<footer className={styles.footer}><p>O Kit de Mobilização é um agregador independente de recursos, iniciativas e informações de terceiros. Não representa uma organização ou movimento político. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
     >
       {currentView === 'media' ? (
-        <MediaPage selectedId={params.get('midia')} onSelect={selectMedia} onInitiatives={goInitiatives} />
+        <MediaPage selectedId={params.get('midia')} onSelect={selectMedia} onInitiatives={goInitiatives} tab={params.get('aba') === 'videos' || params.has('video') ? 'videos' : 'images'} onTabChange={selectMediaTab} selectedVideoId={params.get('video')} onSelectVideo={selectVideo} />
       ) : currentView === 'profiles' ? (
         <ProfilesPage data={profilesSource} onBack={returnToCatalog} />
       ) : currentView === 'agenda' ? (

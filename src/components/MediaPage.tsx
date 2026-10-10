@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, Check, ChevronLeft, ChevronRight, Download, ExternalLink, FileDown, Image as ImageIcon, Link, Printer, Search as SearchIcon, Share2, X } from 'lucide-react'
 import catalog from '../data/midias.generated.json'
 import { copies, createPrintPdf, downloadBlob, mediaUrl, sheetLayout, type CopyCount, type MediaItem, type Orientation } from '../lib/media'
 import { canShareFile, prepareShareFile, sharePreparedFile, SharePreparationError, type PreparationError } from '../lib/mediaShare'
 import styles from '../styles/Media.module.css'
+
+const VideoGallery = lazy(() => import('./VideoGallery').then((module) => ({ default: module.VideoGallery })))
 
 const items = catalog as MediaItem[]
 const categories = [...new Map(items.map((item) => [item.category, item.categoryName])).entries()]
@@ -14,9 +16,13 @@ interface Props {
   selectedId: string | null
   onSelect: (id: string | null) => void
   onInitiatives: () => void
+  tab: 'images' | 'videos'
+  onTabChange: (tab: 'images' | 'videos') => void
+  selectedVideoId: string | null
+  onSelectVideo: (id: string | null) => void
 }
 
-export function MediaPage({ selectedId, onSelect, onInitiatives }: Props) {
+export function MediaPage({ selectedId, onSelect, onInitiatives, tab, onTabChange, selectedVideoId, onSelectVideo }: Props) {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('')
   const [format, setFormat] = useState('')
@@ -31,6 +37,8 @@ export function MediaPage({ selectedId, onSelect, onInitiatives }: Props) {
       <p>Reunimos aqui uma seleção de materiais disponíveis nos drives de iniciativas que já divulgamos no Kit de Mobilização. Como navegar por pastas enormes nem sempre é fácil, organizamos tudo em uma galeria para você encontrar, visualizar, compartilhar e imprimir com muito mais praticidade.</p>
       <button className={styles.textLink} type="button" onClick={onInitiatives}>Conheça as iniciativas e seus drives <ExternalLink size={16} aria-hidden="true" /></button>
     </header>
+    <nav className={styles.mediaTabs} aria-label="Tipos de mídia"><a href="/midias" className={tab === 'images' ? styles.selectedTab : ''} aria-current={tab === 'images' ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onTabChange('images') }}>Imagens</a><a href="/midias?aba=videos" className={tab === 'videos' ? styles.selectedTab : ''} aria-current={tab === 'videos' ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onTabChange('videos') }}>Vídeos</a></nav>
+    {tab === 'videos' ? <Suspense fallback={<p className={styles.count} role="status">Carregando vídeos…</p>}><VideoGallery selectedId={selectedVideoId} onSelect={onSelectVideo} /></Suspense> : <>
     <section className={styles.filters} aria-label="Buscar e filtrar mídias">
       <label className={styles.search}><SearchIcon size={20} aria-hidden="true" /><span className={styles.srOnly}>Buscar pelo nome</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Busque pelo nome do material" type="search" /></label>
       <div className={styles.filterGroup} aria-label="Categorias"><button type="button" className={!category ? styles.active : ''} aria-pressed={!category} onClick={() => setCategory('')}>Todos</button>{categories.map(([id, name]) => <button type="button" key={id} className={category === id ? styles.active : ''} aria-pressed={category === id} onClick={() => setCategory(id)}>{name}</button>)}</div>
@@ -40,6 +48,7 @@ export function MediaPage({ selectedId, onSelect, onInitiatives }: Props) {
     {filtered.length ? <div className={styles.grid}>{filtered.slice(0, visible).map((item) => <a key={item.id} className={styles.card} href={`/midias?midia=${encodeURIComponent(item.id)}`} onClick={(event) => { event.preventDefault(); onSelect(item.id) }}><div className={styles.thumb}><img src={item.thumbnail} alt="" loading="lazy" width={item.width} height={item.height} />{item.mime === 'application/pdf' && <span className={styles.pdfBadge}>PDF{item.pages && item.pages > 1 ? ` · ${item.pages} pág.` : ''}</span>}</div><div className={styles.cardBody}><span>{item.categoryName}</span><h2>{item.title}</h2><small>Abrir material <ChevronRight size={15} aria-hidden="true" /></small></div></a>)}</div> : <div className={styles.empty}><ImageIcon aria-hidden="true" /><p>Nenhum material encontrado. Tente outra busca ou filtro.</p><button type="button" onClick={() => { setQuery(''); setCategory(''); setFormat('') }}>Limpar filtros</button></div>}
     {visible < filtered.length && <button type="button" className={styles.more} onClick={() => setVisible((value) => value + pageSize)}>Mostrar mais materiais</button>}
     {selected && <MediaViewer item={selected} items={filtered} onSelect={onSelect} />}
+    </>}
   </div>
 }
 

@@ -3,10 +3,10 @@
   "videos": [
     {
       "id": "video-001",
-      "filename": "VICE DE FLÁVIO BOLSONARO.mp4",
+      "filename": "VICE DE FLAVIO BOLSONARO.mp4",
       "title": "VICE DE FLÁVIO BOLSONARO",
-      "url": "https://lulinucs.duckdns.org/videos_kit/VICE%20DE%20FL%C3%81VIO%20BOLSONARO.mp4",
-      "thumbnail": "/midia/video-thumbs/video-001.webp",
+      "url": "https://lulinucs.duckdns.org/videos_kit/%20VICE%20DE%20FL%c3%81VIO%20BOLSONARO.mp4",
+      "thumbnail": "/thumbs/video-001.webp",
       "format": "mp4"
     },
     {
@@ -14,7 +14,7 @@
       "filename": "00024b7a10db175a388f948bb0bcd1db0304bd1f.mp4",
       "title": "00024b7a10db175a388f948bb0bcd1db0304bd1f",
       "url": "https://lulinucs.duckdns.org/videos_kit/00024b7a10db175a388f948bb0bcd1db0304bd1f.mp4",
-      "thumbnail": "/midia/video-thumbs/video-002.webp",
+      "thumbnail": "/thumbs/video-002.webp",
       "format": "mp4"
     },
     {
@@ -22,7 +22,7 @@
       "filename": "02807cd8-8ad0-41cd-8166-cdc8a220b929.mp4",
       "title": "02807cd8-8ad0-41cd-8166-cdc8a220b929",
       "url": "https://lulinucs.duckdns.org/videos_kit/02807cd8-8ad0-41cd-8166-cdc8a220b929.mp4",
-      "thumbnail": "/midia/video-thumbs/video-003.webp",
+      "thumbnail": "/thumbs/video-003.webp",
       "format": "mp4"
     },
     {
@@ -30,7 +30,7 @@
       "filename": "1d8bc0b1-42fb-42f7-a77e-8d476b6725b6.mp4",
       "title": "1d8bc0b1-42fb-42f7-a77e-8d476b6725b6",
       "url": "https://lulinucs.duckdns.org/videos_kit/1d8bc0b1-42fb-42f7-a77e-8d476b6725b6.mp4",
-      "thumbnail": "/midia/video-thumbs/video-004.webp",
+      "thumbnail": "/thumbs/video-004.webp",
       "format": "mp4"
     },
     {
@@ -38,7 +38,7 @@
       "filename": "28ff84b471a9070e62afbb4d5b8e217dfa5273db.mp4",
       "title": "28ff84b471a9070e62afbb4d5b8e217dfa5273db",
       "url": "https://lulinucs.duckdns.org/videos_kit/28ff84b471a9070e62afbb4d5b8e217dfa5273db.mp4",
-      "thumbnail": "/midia/video-thumbs/video-005.webp",
+      "thumbnail": "/thumbs/video-005.webp",
       "format": "mp4"
     },
     {
@@ -46,7 +46,7 @@
       "filename": "5500df5699130b33b0836a71745544c8277fe184.mp4",
       "title": "5500df5699130b33b0836a71745544c8277fe184",
       "url": "https://lulinucs.duckdns.org/videos_kit/5500df5699130b33b0836a71745544c8277fe184.mp4",
-      "thumbnail": "/midia/video-thumbs/video-006.webp",
+      "thumbnail": "/thumbs/video-006.webp",
       "format": "mp4"
     },
     {
@@ -54,7 +54,7 @@
       "filename": "63d0e338a31f730a0c5834788ed1a5a314b423b8.mp4",
       "title": "63d0e338a31f730a0c5834788ed1a5a314b423b8",
       "url": "https://lulinucs.duckdns.org/videos_kit/63d0e338a31f730a0c5834788ed1a5a314b423b8.mp4",
-      "thumbnail": "/midia/video-thumbs/video-007.webp",
+      "thumbnail": "/thumbs/video-007.webp",
       "format": "mp4"
     },
     {
@@ -62,7 +62,7 @@
       "filename": "6bd4300da364fe1c4d439efb2466cbadb1d842ec.mp4",
       "title": "6bd4300da364fe1c4d439efb2466cbadb1d842ec",
       "url": "https://lulinucs.duckdns.org/videos_kit/6bd4300da364fe1c4d439efb2466cbadb1d842ec.mp4",
-      "thumbnail": "/midia/video-thumbs/video-008.webp",
+      "thumbnail": "/thumbs/video-008.webp",
       "format": "mp4"
     },
     {
@@ -70,7 +70,7 @@
       "filename": "6c642dbee0d6e70306eed752d5b1f3f63eac2b06.mp4",
       "title": "6c642dbee0d6e70306eed752d5b1f3f63eac2b06",
       "url": "https://lulinucs.duckdns.org/videos_kit/6c642dbee0d6e70306eed752d5b1f3f63eac2b06.mp4",
-      "thumbnail": "/midia/video-thumbs/video-009.webp",
+      "thumbnail": "/thumbs/video-009.webp",
       "format": "mp4"
     },
     {
@@ -78,7 +78,7 @@
       "filename": "6f1e54e0c56847e367fcd71b7454d24c30d74cb8.mp4",
       "title": "6f1e54e0c56847e367fcd71b7454d24c30d74cb8",
       "url": "https://lulinucs.duckdns.org/videos_kit/6f1e54e0c56847e367fcd71b7454d24c30d74cb8.mp4",
-      "thumbnail": "/midia/video-thumbs/video-010.webp",
+      "thumbnail": "/thumbs/video-010.webp",
       "format": "mp4"
     },
     {
@@ -86,7 +86,7 @@
       "filename": "7199153e51c0c56c67ae52ddd35bc7caf1872811.mp4",
       "title": "7199153e51c0c56c67ae52ddd35bc7caf1872811",
       "url": "https://lulinucs.duckdns.org/videos_kit/7199153e51c0c56c67ae52ddd35bc7caf1872811.mp4",
-      "thumbnail": "/midia/video-thumbs/video-011.webp",
+      "thumbnail": "/thumbs/video-011.webp",
       "format": "mp4"
     },
     {
@@ -94,7 +94,7 @@
       "filename": "8be305ca-fe03-49f7-b7f6-a98513244cf0.mp4",
       "title": "8be305ca-fe03-49f7-b7f6-a98513244cf0",
       "url": "https://lulinucs.duckdns.org/videos_kit/8be305ca-fe03-49f7-b7f6-a98513244cf0.mp4",
-      "thumbnail": "/midia/video-thumbs/video-012.webp",
+      "thumbnail": "/thumbs/video-012.webp",
       "format": "mp4"
     },
     {
@@ -102,7 +102,7 @@
       "filename": "97251d02becece863692988f00d0f381a4bec0b0.mp4",
       "title": "97251d02becece863692988f00d0f381a4bec0b0",
       "url": "https://lulinucs.duckdns.org/videos_kit/97251d02becece863692988f00d0f381a4bec0b0.mp4",
-      "thumbnail": "/midia/video-thumbs/video-013.webp",
+      "thumbnail": "/thumbs/video-013.webp",
       "format": "mp4"
     },
     {
@@ -110,7 +110,7 @@
       "filename": "alvexya_2107910665721544978.mp4",
       "title": "alvexya_2107910665721544978",
       "url": "https://lulinucs.duckdns.org/videos_kit/alvexya_2107910665721544978.mp4",
-      "thumbnail": "/midia/video-thumbs/video-014.webp",
+      "thumbnail": "/thumbs/video-014.webp",
       "format": "mp4"
     },
     {
@@ -118,7 +118,7 @@
       "filename": "alvexya_2107911102533169353.mp4",
       "title": "alvexya_2107911102533169353",
       "url": "https://lulinucs.duckdns.org/videos_kit/alvexya_2107911102533169353.mp4",
-      "thumbnail": "/midia/video-thumbs/video-015.webp",
+      "thumbnail": "/thumbs/video-015.webp",
       "format": "mp4"
     },
     {
@@ -126,7 +126,7 @@
       "filename": "anne_tais_2107880993830887442.mp4",
       "title": "anne_tais_2107880993830887442",
       "url": "https://lulinucs.duckdns.org/videos_kit/anne_tais_2107880993830887442.mp4",
-      "thumbnail": "/midia/video-thumbs/video-016.webp",
+      "thumbnail": "/thumbs/video-016.webp",
       "format": "mp4"
     },
     {
@@ -134,7 +134,7 @@
       "filename": "anne_tais_2107881228288307518.mp4",
       "title": "anne_tais_2107881228288307518",
       "url": "https://lulinucs.duckdns.org/videos_kit/anne_tais_2107881228288307518.mp4",
-      "thumbnail": "/midia/video-thumbs/video-017.webp",
+      "thumbnail": "/thumbs/video-017.webp",
       "format": "mp4"
     },
     {
@@ -142,7 +142,7 @@
       "filename": "anne_tais_2107881416289923211.mp4",
       "title": "anne_tais_2107881416289923211",
       "url": "https://lulinucs.duckdns.org/videos_kit/anne_tais_2107881416289923211.mp4",
-      "thumbnail": "/midia/video-thumbs/video-018.webp",
+      "thumbnail": "/thumbs/video-018.webp",
       "format": "mp4"
     },
     {
@@ -150,7 +150,7 @@
       "filename": "anne_tais_2107883017565831275.mp4",
       "title": "anne_tais_2107883017565831275",
       "url": "https://lulinucs.duckdns.org/videos_kit/anne_tais_2107883017565831275.mp4",
-      "thumbnail": "/midia/video-thumbs/video-019.webp",
+      "thumbnail": "/thumbs/video-019.webp",
       "format": "mp4"
     },
     {
@@ -158,7 +158,7 @@
       "filename": "asneiraspontoc_2107850938367332463.mp4",
       "title": "asneiraspontoc_2107850938367332463",
       "url": "https://lulinucs.duckdns.org/videos_kit/asneiraspontoc_2107850938367332463.mp4",
-      "thumbnail": "/midia/video-thumbs/video-020.webp",
+      "thumbnail": "/thumbs/video-020.webp",
       "format": "mp4"
     },
     {
@@ -166,7 +166,7 @@
       "filename": "asneiraspontoc_2107851040565641439.mp4",
       "title": "asneiraspontoc_2107851040565641439",
       "url": "https://lulinucs.duckdns.org/videos_kit/asneiraspontoc_2107851040565641439.mp4",
-      "thumbnail": "/midia/video-thumbs/video-021.webp",
+      "thumbnail": "/thumbs/video-021.webp",
       "format": "mp4"
     },
     {
@@ -174,7 +174,7 @@
       "filename": "ASSASSINO VOTA EM QUEM_!.mp4",
       "title": "ASSASSINO VOTA EM QUEM_!",
       "url": "https://lulinucs.duckdns.org/videos_kit/ASSASSINO%20VOTA%20EM%20QUEM_%21.mp4",
-      "thumbnail": "/midia/video-thumbs/video-022.webp",
+      "thumbnail": "/thumbs/video-022.webp",
       "format": "mp4"
     },
     {
@@ -182,7 +182,7 @@
       "filename": "BANDIDOS BOM É BANDIDO BOLSONARO_!.mp4",
       "title": "BANDIDOS BOM É BANDIDO BOLSONARO_!",
       "url": "https://lulinucs.duckdns.org/videos_kit/BANDIDOS%20BOM%20%C3%89%20BANDIDO%20BOLSONARO_%21.mp4",
-      "thumbnail": "/midia/video-thumbs/video-023.webp",
+      "thumbnail": "/thumbs/video-023.webp",
       "format": "mp4"
     },
     {
@@ -190,7 +190,7 @@
       "filename": "carol_ornelas_2107988850098266489.mp4",
       "title": "carol_ornelas_2107988850098266489",
       "url": "https://lulinucs.duckdns.org/videos_kit/carol_ornelas_2107988850098266489.mp4",
-      "thumbnail": "/midia/video-thumbs/video-024.webp",
+      "thumbnail": "/thumbs/video-024.webp",
       "format": "mp4"
     },
     {
@@ -198,7 +198,7 @@
       "filename": "CarvalhoSisi_2107855592840695975.mp4",
       "title": "CarvalhoSisi_2107855592840695975",
       "url": "https://lulinucs.duckdns.org/videos_kit/CarvalhoSisi_2107855592840695975.mp4",
-      "thumbnail": "/midia/video-thumbs/video-025.webp",
+      "thumbnail": "/thumbs/video-025.webp",
       "format": "mp4"
     },
     {
@@ -206,7 +206,7 @@
       "filename": "CarvalhoSisi_2107856088779641042.mp4",
       "title": "CarvalhoSisi_2107856088779641042",
       "url": "https://lulinucs.duckdns.org/videos_kit/CarvalhoSisi_2107856088779641042.mp4",
-      "thumbnail": "/midia/video-thumbs/video-026.webp",
+      "thumbnail": "/thumbs/video-026.webp",
       "format": "mp4"
     },
     {
@@ -214,7 +214,7 @@
       "filename": "claralero_2107936707903434888.mp4",
       "title": "claralero_2107936707903434888",
       "url": "https://lulinucs.duckdns.org/videos_kit/claralero_2107936707903434888.mp4",
-      "thumbnail": "/midia/video-thumbs/video-027.webp",
+      "thumbnail": "/thumbs/video-027.webp",
       "format": "mp4"
     },
     {
@@ -222,7 +222,7 @@
       "filename": "ClaraOaky_2107893828153974879.mp4",
       "title": "ClaraOaky_2107893828153974879",
       "url": "https://lulinucs.duckdns.org/videos_kit/ClaraOaky_2107893828153974879.mp4",
-      "thumbnail": "/midia/video-thumbs/video-028.webp",
+      "thumbnail": "/thumbs/video-028.webp",
       "format": "mp4"
     },
     {
@@ -230,7 +230,7 @@
       "filename": "COMO FLÁVIO TRATA A IMPRENSA.mp4",
       "title": "COMO FLÁVIO TRATA A IMPRENSA",
       "url": "https://lulinucs.duckdns.org/videos_kit/COMO%20FL%C3%81VIO%20TRATA%20A%20IMPRENSA.mp4",
-      "thumbnail": "/midia/video-thumbs/video-029.webp",
+      "thumbnail": "/thumbs/video-029.webp",
       "format": "mp4"
     },
     {
@@ -238,7 +238,7 @@
       "filename": "COMO SÃO OS BOLSONARISTAS.mp4",
       "title": "COMO SÃO OS BOLSONARISTAS",
       "url": "https://lulinucs.duckdns.org/videos_kit/COMO%20S%C3%83O%20OS%20BOLSONARISTAS.mp4",
-      "thumbnail": "/midia/video-thumbs/video-030.webp",
+      "thumbnail": "/thumbs/video-030.webp",
       "format": "mp4"
     },
     {
@@ -246,7 +246,7 @@
       "filename": "d7000a3f6b95d7d43260f4935f5528b780ea2f24.mp4",
       "title": "d7000a3f6b95d7d43260f4935f5528b780ea2f24",
       "url": "https://lulinucs.duckdns.org/videos_kit/d7000a3f6b95d7d43260f4935f5528b780ea2f24.mp4",
-      "thumbnail": "/midia/video-thumbs/video-031.webp",
+      "thumbnail": "/thumbs/video-031.webp",
       "format": "mp4"
     },
     {
@@ -254,7 +254,7 @@
       "filename": "da9e65f03cb4d6c9656fad3a55f77e52354d8a2b.mp4",
       "title": "da9e65f03cb4d6c9656fad3a55f77e52354d8a2b",
       "url": "https://lulinucs.duckdns.org/videos_kit/da9e65f03cb4d6c9656fad3a55f77e52354d8a2b.mp4",
-      "thumbnail": "/midia/video-thumbs/video-032.webp",
+      "thumbnail": "/thumbs/video-032.webp",
       "format": "mp4"
     },
     {
@@ -262,7 +262,7 @@
       "filename": "darlintangerine_2107892273367159034.mp4",
       "title": "darlintangerine_2107892273367159034",
       "url": "https://lulinucs.duckdns.org/videos_kit/darlintangerine_2107892273367159034.mp4",
-      "thumbnail": "/midia/video-thumbs/video-033.webp",
+      "thumbnail": "/thumbs/video-033.webp",
       "format": "mp4"
     },
     {
@@ -270,7 +270,7 @@
       "filename": "ddaengxv_2107818284556984488.mp4",
       "title": "ddaengxv_2107818284556984488",
       "url": "https://lulinucs.duckdns.org/videos_kit/ddaengxv_2107818284556984488.mp4",
-      "thumbnail": "/midia/video-thumbs/video-034.webp",
+      "thumbnail": "/thumbs/video-034.webp",
       "format": "mp4"
     },
     {
@@ -278,7 +278,7 @@
       "filename": "duchadecu_2107949232799813886.mp4",
       "title": "duchadecu_2107949232799813886",
       "url": "https://lulinucs.duckdns.org/videos_kit/duchadecu_2107949232799813886.mp4",
-      "thumbnail": "/midia/video-thumbs/video-035.webp",
+      "thumbnail": "/thumbs/video-035.webp",
       "format": "mp4"
     },
     {
@@ -286,7 +286,7 @@
       "filename": "duchadecu_2107949305554424275.mp4",
       "title": "duchadecu_2107949305554424275",
       "url": "https://lulinucs.duckdns.org/videos_kit/duchadecu_2107949305554424275.mp4",
-      "thumbnail": "/midia/video-thumbs/video-036.webp",
+      "thumbnail": "/thumbs/video-036.webp",
       "format": "mp4"
     },
     {
@@ -294,7 +294,7 @@
       "filename": "elisa_esquerda_2107865432845603134.mp4",
       "title": "elisa_esquerda_2107865432845603134",
       "url": "https://lulinucs.duckdns.org/videos_kit/elisa_esquerda_2107865432845603134.mp4",
-      "thumbnail": "/midia/video-thumbs/video-037.webp",
+      "thumbnail": "/thumbs/video-037.webp",
       "format": "mp4"
     },
     {
@@ -302,7 +302,7 @@
       "filename": "elisa_esquerda_2107865466181951672.mp4",
       "title": "elisa_esquerda_2107865466181951672",
       "url": "https://lulinucs.duckdns.org/videos_kit/elisa_esquerda_2107865466181951672.mp4",
-      "thumbnail": "/midia/video-thumbs/video-038.webp",
+      "thumbnail": "/thumbs/video-038.webp",
       "format": "mp4"
     },
     {
@@ -310,7 +310,7 @@
       "filename": "elisa_esquerda_2107865491507122538.mp4",
       "title": "elisa_esquerda_2107865491507122538",
       "url": "https://lulinucs.duckdns.org/videos_kit/elisa_esquerda_2107865491507122538.mp4",
-      "thumbnail": "/midia/video-thumbs/video-039.webp",
+      "thumbnail": "/thumbs/video-039.webp",
       "format": "mp4"
     },
     {
@@ -318,7 +318,7 @@
       "filename": "elisa_esquerda_2107865620398436809.mp4",
       "title": "elisa_esquerda_2107865620398436809",
       "url": "https://lulinucs.duckdns.org/videos_kit/elisa_esquerda_2107865620398436809.mp4",
-      "thumbnail": "/midia/video-thumbs/video-040.webp",
+      "thumbnail": "/thumbs/video-040.webp",
       "format": "mp4"
     },
     {
@@ -326,7 +326,7 @@
       "filename": "escopofobia_2107892801795150195.mp4",
       "title": "escopofobia_2107892801795150195",
       "url": "https://lulinucs.duckdns.org/videos_kit/escopofobia_2107892801795150195.mp4",
-      "thumbnail": "/midia/video-thumbs/video-041.webp",
+      "thumbnail": "/thumbs/video-041.webp",
       "format": "mp4"
     },
     {
@@ -334,7 +334,7 @@
       "filename": "export_1791370478174.mov",
       "title": "export_1791370478174",
       "url": "https://lulinucs.duckdns.org/videos_kit/export_1791370478174.mov",
-      "thumbnail": "/midia/video-thumbs/video-042.webp",
+      "thumbnail": "/thumbs/video-042.webp",
       "format": "mov"
     },
     {
@@ -342,7 +342,7 @@
       "filename": "FILHOTE DE GENOCIDA.mp4",
       "title": "FILHOTE DE GENOCIDA",
       "url": "https://lulinucs.duckdns.org/videos_kit/FILHOTE%20DE%20GENOCIDA.mp4",
-      "thumbnail": "/midia/video-thumbs/video-043.webp",
+      "thumbnail": "/thumbs/video-043.webp",
       "format": "mp4"
     },
     {
@@ -350,7 +350,7 @@
       "filename": "fisherickman_2107932044843987311_2.mp4",
       "title": "fisherickman_2107932044843987311_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/fisherickman_2107932044843987311_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-044.webp",
+      "thumbnail": "/thumbs/video-044.webp",
       "format": "mp4"
     },
     {
@@ -358,7 +358,7 @@
       "filename": "fisherickman_2107932044843987311_3.mp4",
       "title": "fisherickman_2107932044843987311_3",
       "url": "https://lulinucs.duckdns.org/videos_kit/fisherickman_2107932044843987311_3.mp4",
-      "thumbnail": "/midia/video-thumbs/video-045.webp",
+      "thumbnail": "/thumbs/video-045.webp",
       "format": "mp4"
     },
     {
@@ -366,7 +366,7 @@
       "filename": "fisherickman_2107932044843987311_4.mp4",
       "title": "fisherickman_2107932044843987311_4",
       "url": "https://lulinucs.duckdns.org/videos_kit/fisherickman_2107932044843987311_4.mp4",
-      "thumbnail": "/midia/video-thumbs/video-046.webp",
+      "thumbnail": "/thumbs/video-046.webp",
       "format": "mp4"
     },
     {
@@ -374,7 +374,7 @@
       "filename": "fisherickman_2107933096758989041.mp4",
       "title": "fisherickman_2107933096758989041",
       "url": "https://lulinucs.duckdns.org/videos_kit/fisherickman_2107933096758989041.mp4",
-      "thumbnail": "/midia/video-thumbs/video-047.webp",
+      "thumbnail": "/thumbs/video-047.webp",
       "format": "mp4"
     },
     {
@@ -382,7 +382,7 @@
       "filename": "fisherickman_2107933096758989041_4.mp4",
       "title": "fisherickman_2107933096758989041_4",
       "url": "https://lulinucs.duckdns.org/videos_kit/fisherickman_2107933096758989041_4.mp4",
-      "thumbnail": "/midia/video-thumbs/video-048.webp",
+      "thumbnail": "/thumbs/video-048.webp",
       "format": "mp4"
     },
     {
@@ -390,7 +390,7 @@
       "filename": "girlfromgio_2107871780019089675.mp4",
       "title": "girlfromgio_2107871780019089675",
       "url": "https://lulinucs.duckdns.org/videos_kit/girlfromgio_2107871780019089675.mp4",
-      "thumbnail": "/midia/video-thumbs/video-049.webp",
+      "thumbnail": "/thumbs/video-049.webp",
       "format": "mp4"
     },
     {
@@ -398,7 +398,7 @@
       "filename": "girlfromgio_2107871780019089675_2.mp4",
       "title": "girlfromgio_2107871780019089675_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/girlfromgio_2107871780019089675_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-050.webp",
+      "thumbnail": "/thumbs/video-050.webp",
       "format": "mp4"
     },
     {
@@ -406,7 +406,7 @@
       "filename": "Gustavo41085330_2107817785988440238.mp4",
       "title": "Gustavo41085330_2107817785988440238",
       "url": "https://lulinucs.duckdns.org/videos_kit/Gustavo41085330_2107817785988440238.mp4",
-      "thumbnail": "/midia/video-thumbs/video-051.webp",
+      "thumbnail": "/thumbs/video-051.webp",
       "format": "mp4"
     },
     {
@@ -414,7 +414,7 @@
       "filename": "H4der4ch_2107895999247134809.mp4",
       "title": "H4der4ch_2107895999247134809",
       "url": "https://lulinucs.duckdns.org/videos_kit/H4der4ch_2107895999247134809.mp4",
-      "thumbnail": "/midia/video-thumbs/video-052.webp",
+      "thumbnail": "/thumbs/video-052.webp",
       "format": "mp4"
     },
     {
@@ -422,7 +422,7 @@
       "filename": "H4der4ch_2107895999247134809_2.mp4",
       "title": "H4der4ch_2107895999247134809_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/H4der4ch_2107895999247134809_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-053.webp",
+      "thumbnail": "/thumbs/video-053.webp",
       "format": "mp4"
     },
     {
@@ -430,7 +430,7 @@
       "filename": "issa__kitty_2107912091801948491_2.mp4",
       "title": "issa__kitty_2107912091801948491_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/issa__kitty_2107912091801948491_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-054.webp",
+      "thumbnail": "/thumbs/video-054.webp",
       "format": "mp4"
     },
     {
@@ -438,7 +438,7 @@
       "filename": "issa__kitty_2107912091801948491_3.mp4",
       "title": "issa__kitty_2107912091801948491_3",
       "url": "https://lulinucs.duckdns.org/videos_kit/issa__kitty_2107912091801948491_3.mp4",
-      "thumbnail": "/midia/video-thumbs/video-055.webp",
+      "thumbnail": "/thumbs/video-055.webp",
       "format": "mp4"
     },
     {
@@ -446,7 +446,7 @@
       "filename": "joabson_l_2107896032063365306.mp4",
       "title": "joabson_l_2107896032063365306",
       "url": "https://lulinucs.duckdns.org/videos_kit/joabson_l_2107896032063365306.mp4",
-      "thumbnail": "/midia/video-thumbs/video-056.webp",
+      "thumbnail": "/thumbs/video-056.webp",
       "format": "mp4"
     },
     {
@@ -454,7 +454,7 @@
       "filename": "josemaforts22_2107817669705777340.mp4",
       "title": "josemaforts22_2107817669705777340",
       "url": "https://lulinucs.duckdns.org/videos_kit/josemaforts22_2107817669705777340.mp4",
-      "thumbnail": "/midia/video-thumbs/video-057.webp",
+      "thumbnail": "/thumbs/video-057.webp",
       "format": "mp4"
     },
     {
@@ -462,7 +462,7 @@
       "filename": "kelefeeling__2107919294474657853_2.mp4",
       "title": "kelefeeling__2107919294474657853_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/kelefeeling__2107919294474657853_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-058.webp",
+      "thumbnail": "/thumbs/video-058.webp",
       "format": "mp4"
     },
     {
@@ -470,7 +470,7 @@
       "filename": "lau_lluby_2107867652219691053.mp4",
       "title": "lau_lluby_2107867652219691053",
       "url": "https://lulinucs.duckdns.org/videos_kit/lau_lluby_2107867652219691053.mp4",
-      "thumbnail": "/midia/video-thumbs/video-059.webp",
+      "thumbnail": "/thumbs/video-059.webp",
       "format": "mp4"
     },
     {
@@ -478,7 +478,7 @@
       "filename": "lau_lluby_2107867652219691053_2.mp4",
       "title": "lau_lluby_2107867652219691053_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/lau_lluby_2107867652219691053_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-060.webp",
+      "thumbnail": "/thumbs/video-060.webp",
       "format": "mp4"
     },
     {
@@ -486,7 +486,7 @@
       "filename": "lau_lluby_2107867652219691053_3.mp4",
       "title": "lau_lluby_2107867652219691053_3",
       "url": "https://lulinucs.duckdns.org/videos_kit/lau_lluby_2107867652219691053_3.mp4",
-      "thumbnail": "/midia/video-thumbs/video-061.webp",
+      "thumbnail": "/thumbs/video-061.webp",
       "format": "mp4"
     },
     {
@@ -494,7 +494,7 @@
       "filename": "ledaacorda_2107973344523919533.mp4",
       "title": "ledaacorda_2107973344523919533",
       "url": "https://lulinucs.duckdns.org/videos_kit/ledaacorda_2107973344523919533.mp4",
-      "thumbnail": "/midia/video-thumbs/video-062.webp",
+      "thumbnail": "/thumbs/video-062.webp",
       "format": "mp4"
     },
     {
@@ -502,7 +502,7 @@
       "filename": "Lorrxxne_2107829953664352690.mp4",
       "title": "Lorrxxne_2107829953664352690",
       "url": "https://lulinucs.duckdns.org/videos_kit/Lorrxxne_2107829953664352690.mp4",
-      "thumbnail": "/midia/video-thumbs/video-063.webp",
+      "thumbnail": "/thumbs/video-063.webp",
       "format": "mp4"
     },
     {
@@ -510,7 +510,7 @@
       "filename": "marcianabreu_2107820844151963767.mp4",
       "title": "marcianabreu_2107820844151963767",
       "url": "https://lulinucs.duckdns.org/videos_kit/marcianabreu_2107820844151963767.mp4",
-      "thumbnail": "/midia/video-thumbs/video-064.webp",
+      "thumbnail": "/thumbs/video-064.webp",
       "format": "mp4"
     },
     {
@@ -518,7 +518,7 @@
       "filename": "moodspolvinho_2107922904487018958.mp4",
       "title": "moodspolvinho_2107922904487018958",
       "url": "https://lulinucs.duckdns.org/videos_kit/moodspolvinho_2107922904487018958.mp4",
-      "thumbnail": "/midia/video-thumbs/video-065.webp",
+      "thumbnail": "/thumbs/video-065.webp",
       "format": "mp4"
     },
     {
@@ -526,7 +526,7 @@
       "filename": "moodspolvinho_2107923015606644938.mp4",
       "title": "moodspolvinho_2107923015606644938",
       "url": "https://lulinucs.duckdns.org/videos_kit/moodspolvinho_2107923015606644938.mp4",
-      "thumbnail": "/midia/video-thumbs/video-066.webp",
+      "thumbnail": "/thumbs/video-066.webp",
       "format": "mp4"
     },
     {
@@ -534,7 +534,7 @@
       "filename": "moodspolvinho_2107923104735371464.mp4",
       "title": "moodspolvinho_2107923104735371464",
       "url": "https://lulinucs.duckdns.org/videos_kit/moodspolvinho_2107923104735371464.mp4",
-      "thumbnail": "/midia/video-thumbs/video-067.webp",
+      "thumbnail": "/thumbs/video-067.webp",
       "format": "mp4"
     },
     {
@@ -542,7 +542,7 @@
       "filename": "mrnfrsf_2107955178519355654.mp4",
       "title": "mrnfrsf_2107955178519355654",
       "url": "https://lulinucs.duckdns.org/videos_kit/mrnfrsf_2107955178519355654.mp4",
-      "thumbnail": "/midia/video-thumbs/video-068.webp",
+      "thumbnail": "/thumbs/video-068.webp",
       "format": "mp4"
     },
     {
@@ -550,7 +550,7 @@
       "filename": "mrnfrsf_2107955609488257134.mp4",
       "title": "mrnfrsf_2107955609488257134",
       "url": "https://lulinucs.duckdns.org/videos_kit/mrnfrsf_2107955609488257134.mp4",
-      "thumbnail": "/midia/video-thumbs/video-069.webp",
+      "thumbnail": "/thumbs/video-069.webp",
       "format": "mp4"
     },
     {
@@ -558,7 +558,7 @@
       "filename": "neitarts_2107810997331456050.mp4",
       "title": "neitarts_2107810997331456050",
       "url": "https://lulinucs.duckdns.org/videos_kit/neitarts_2107810997331456050.mp4",
-      "thumbnail": "/midia/video-thumbs/video-070.webp",
+      "thumbnail": "/thumbs/video-070.webp",
       "format": "mp4"
     },
     {
@@ -566,7 +566,7 @@
       "filename": "neitarts_2107811109528891400.mp4",
       "title": "neitarts_2107811109528891400",
       "url": "https://lulinucs.duckdns.org/videos_kit/neitarts_2107811109528891400.mp4",
-      "thumbnail": "/midia/video-thumbs/video-071.webp",
+      "thumbnail": "/thumbs/video-071.webp",
       "format": "mp4"
     },
     {
@@ -574,7 +574,7 @@
       "filename": "O VERDADEIRO FLÁVIO BOLSONARO.mp4",
       "title": "O VERDADEIRO FLÁVIO BOLSONARO",
       "url": "https://lulinucs.duckdns.org/videos_kit/O%20VERDADEIRO%20FL%C3%81VIO%20BOLSONARO.mp4",
-      "thumbnail": "/midia/video-thumbs/video-072.webp",
+      "thumbnail": "/thumbs/video-072.webp",
       "format": "mp4"
     },
     {
@@ -582,7 +582,7 @@
       "filename": "patr1ciaadelia_2107843922995093666.mp4",
       "title": "patr1ciaadelia_2107843922995093666",
       "url": "https://lulinucs.duckdns.org/videos_kit/patr1ciaadelia_2107843922995093666.mp4",
-      "thumbnail": "/midia/video-thumbs/video-073.webp",
+      "thumbnail": "/thumbs/video-073.webp",
       "format": "mp4"
     },
     {
@@ -590,7 +590,7 @@
       "filename": "paulinharr__2107853592321257501.mp4",
       "title": "paulinharr__2107853592321257501",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107853592321257501.mp4",
-      "thumbnail": "/midia/video-thumbs/video-074.webp",
+      "thumbnail": "/thumbs/video-074.webp",
       "format": "mp4"
     },
     {
@@ -598,7 +598,7 @@
       "filename": "paulinharr__2107853592321257501_2.mp4",
       "title": "paulinharr__2107853592321257501_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107853592321257501_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-075.webp",
+      "thumbnail": "/thumbs/video-075.webp",
       "format": "mp4"
     },
     {
@@ -606,7 +606,7 @@
       "filename": "paulinharr__2107853592321257501_3.mp4",
       "title": "paulinharr__2107853592321257501_3",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107853592321257501_3.mp4",
-      "thumbnail": "/midia/video-thumbs/video-076.webp",
+      "thumbnail": "/thumbs/video-076.webp",
       "format": "mp4"
     },
     {
@@ -614,7 +614,7 @@
       "filename": "paulinharr__2107853592321257501_4.mp4",
       "title": "paulinharr__2107853592321257501_4",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107853592321257501_4.mp4",
-      "thumbnail": "/midia/video-thumbs/video-077.webp",
+      "thumbnail": "/thumbs/video-077.webp",
       "format": "mp4"
     },
     {
@@ -622,7 +622,7 @@
       "filename": "paulinharr__2107854065245868351.mp4",
       "title": "paulinharr__2107854065245868351",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107854065245868351.mp4",
-      "thumbnail": "/midia/video-thumbs/video-078.webp",
+      "thumbnail": "/thumbs/video-078.webp",
       "format": "mp4"
     },
     {
@@ -630,7 +630,7 @@
       "filename": "paulinharr__2107854065245868351_2.mp4",
       "title": "paulinharr__2107854065245868351_2",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107854065245868351_2.mp4",
-      "thumbnail": "/midia/video-thumbs/video-079.webp",
+      "thumbnail": "/thumbs/video-079.webp",
       "format": "mp4"
     },
     {
@@ -638,7 +638,7 @@
       "filename": "paulinharr__2107854065245868351_3.mp4",
       "title": "paulinharr__2107854065245868351_3",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107854065245868351_3.mp4",
-      "thumbnail": "/midia/video-thumbs/video-080.webp",
+      "thumbnail": "/thumbs/video-080.webp",
       "format": "mp4"
     },
     {
@@ -646,7 +646,7 @@
       "filename": "paulinharr__2107854065245868351_4.mp4",
       "title": "paulinharr__2107854065245868351_4",
       "url": "https://lulinucs.duckdns.org/videos_kit/paulinharr__2107854065245868351_4.mp4",
-      "thumbnail": "/midia/video-thumbs/video-081.webp",
+      "thumbnail": "/thumbs/video-081.webp",
       "format": "mp4"
     },
     {
@@ -654,7 +654,7 @@
       "filename": "pipidolas_2107845913603350967.mp4",
       "title": "pipidolas_2107845913603350967",
       "url": "https://lulinucs.duckdns.org/videos_kit/pipidolas_2107845913603350967.mp4",
-      "thumbnail": "/midia/video-thumbs/video-082.webp",
+      "thumbnail": "/thumbs/video-082.webp",
       "format": "mp4"
     },
     {
@@ -662,7 +662,7 @@
       "filename": "pipidolas_2107846004682936421.mp4",
       "title": "pipidolas_2107846004682936421",
       "url": "https://lulinucs.duckdns.org/videos_kit/pipidolas_2107846004682936421.mp4",
-      "thumbnail": "/midia/video-thumbs/video-083.webp",
+      "thumbnail": "/thumbs/video-083.webp",
       "format": "mp4"
     },
     {
@@ -670,7 +670,7 @@
       "filename": "pipidolas_2107846665767940292.mp4",
       "title": "pipidolas_2107846665767940292",
       "url": "https://lulinucs.duckdns.org/videos_kit/pipidolas_2107846665767940292.mp4",
-      "thumbnail": "/midia/video-thumbs/video-084.webp",
+      "thumbnail": "/thumbs/video-084.webp",
       "format": "mp4"
     },
     {
@@ -678,7 +678,7 @@
       "filename": "pipidolas_2107846782235681208.mp4",
       "title": "pipidolas_2107846782235681208",
       "url": "https://lulinucs.duckdns.org/videos_kit/pipidolas_2107846782235681208.mp4",
-      "thumbnail": "/midia/video-thumbs/video-085.webp",
+      "thumbnail": "/thumbs/video-085.webp",
       "format": "mp4"
     },
     {
@@ -686,7 +686,7 @@
       "filename": "pipidolas_2107846850992578685.mp4",
       "title": "pipidolas_2107846850992578685",
       "url": "https://lulinucs.duckdns.org/videos_kit/pipidolas_2107846850992578685.mp4",
-      "thumbnail": "/midia/video-thumbs/video-086.webp",
+      "thumbnail": "/thumbs/video-086.webp",
       "format": "mp4"
     },
     {
@@ -694,7 +694,7 @@
       "filename": "PLANO DE GOVERNO PARA MULHERES.mp4",
       "title": "PLANO DE GOVERNO PARA MULHERES",
       "url": "https://lulinucs.duckdns.org/videos_kit/PLANO%20DE%20GOVERNO%20PARA%20MULHERES.mp4",
-      "thumbnail": "/midia/video-thumbs/video-087.webp",
+      "thumbnail": "/thumbs/video-087.webp",
       "format": "mp4"
     },
     {
@@ -702,7 +702,7 @@
       "filename": "PlayerDev420_2107843688605098050.mp4",
       "title": "PlayerDev420_2107843688605098050",
       "url": "https://lulinucs.duckdns.org/videos_kit/PlayerDev420_2107843688605098050.mp4",
-      "thumbnail": "/midia/video-thumbs/video-088.webp",
+      "thumbnail": "/thumbs/video-088.webp",
       "format": "mp4"
     },
     {
@@ -710,7 +710,7 @@
       "filename": "putavidabicho_2107962296056115523.mp4",
       "title": "putavidabicho_2107962296056115523",
       "url": "https://lulinucs.duckdns.org/videos_kit/putavidabicho_2107962296056115523.mp4",
-      "thumbnail": "/midia/video-thumbs/video-089.webp",
+      "thumbnail": "/thumbs/video-089.webp",
       "format": "mp4"
     },
     {
@@ -718,7 +718,7 @@
       "filename": "rafsdu_2107826881047544066.mp4",
       "title": "rafsdu_2107826881047544066",
       "url": "https://lulinucs.duckdns.org/videos_kit/rafsdu_2107826881047544066.mp4",
-      "thumbnail": "/midia/video-thumbs/video-090.webp",
+      "thumbnail": "/thumbs/video-090.webp",
       "format": "mp4"
     },
     {
@@ -726,7 +726,7 @@
       "filename": "Regra_Jeane_2107844198816682300.mp4",
       "title": "Regra_Jeane_2107844198816682300",
       "url": "https://lulinucs.duckdns.org/videos_kit/Regra_Jeane_2107844198816682300.mp4",
-      "thumbnail": "/midia/video-thumbs/video-091.webp",
+      "thumbnail": "/thumbs/video-091.webp",
       "format": "mp4"
     },
     {
@@ -734,7 +734,7 @@
       "filename": "Regra_Jeane_2107844316496314772.mp4",
       "title": "Regra_Jeane_2107844316496314772",
       "url": "https://lulinucs.duckdns.org/videos_kit/Regra_Jeane_2107844316496314772.mp4",
-      "thumbnail": "/midia/video-thumbs/video-092.webp",
+      "thumbnail": "/thumbs/video-092.webp",
       "format": "mp4"
     },
     {
@@ -742,7 +742,7 @@
       "filename": "RELAÇÃO COM VORCARO.mp4",
       "title": "RELAÇÃO COM VORCARO",
       "url": "https://lulinucs.duckdns.org/videos_kit/RELA%C3%87%C3%83O%20COM%20VORCARO.mp4",
-      "thumbnail": "/midia/video-thumbs/video-093.webp",
+      "thumbnail": "/thumbs/video-093.webp",
       "format": "mp4"
     },
     {
@@ -750,7 +750,7 @@
       "filename": "ryujdd_2107975454020026634.mp4",
       "title": "ryujdd_2107975454020026634",
       "url": "https://lulinucs.duckdns.org/videos_kit/ryujdd_2107975454020026634.mp4",
-      "thumbnail": "/midia/video-thumbs/video-094.webp",
+      "thumbnail": "/thumbs/video-094.webp",
       "format": "mp4"
     },
     {
@@ -758,7 +758,7 @@
       "filename": "Seokjiani_2107886750920269951.mp4",
       "title": "Seokjiani_2107886750920269951",
       "url": "https://lulinucs.duckdns.org/videos_kit/Seokjiani_2107886750920269951.mp4",
-      "thumbnail": "/midia/video-thumbs/video-095.webp",
+      "thumbnail": "/thumbs/video-095.webp",
       "format": "mp4"
     },
     {
@@ -766,7 +766,7 @@
       "filename": "Seokjiani_2107887102985990158.mp4",
       "title": "Seokjiani_2107887102985990158",
       "url": "https://lulinucs.duckdns.org/videos_kit/Seokjiani_2107887102985990158.mp4",
-      "thumbnail": "/midia/video-thumbs/video-096.webp",
+      "thumbnail": "/thumbs/video-096.webp",
       "format": "mp4"
     },
     {
@@ -774,7 +774,7 @@
       "filename": "Seokjiani_2107889089324458273.mp4",
       "title": "Seokjiani_2107889089324458273",
       "url": "https://lulinucs.duckdns.org/videos_kit/Seokjiani_2107889089324458273.mp4",
-      "thumbnail": "/midia/video-thumbs/video-097.webp",
+      "thumbnail": "/thumbs/video-097.webp",
       "format": "mp4"
     },
     {
@@ -782,7 +782,7 @@
       "filename": "SofisViana_2107873842488361328.mp4",
       "title": "SofisViana_2107873842488361328",
       "url": "https://lulinucs.duckdns.org/videos_kit/SofisViana_2107873842488361328.mp4",
-      "thumbnail": "/midia/video-thumbs/video-098.webp",
+      "thumbnail": "/thumbs/video-098.webp",
       "format": "mp4"
     },
     {
@@ -790,7 +790,7 @@
       "filename": "sooya_angel_2107854412202774737.mp4",
       "title": "sooya_angel_2107854412202774737",
       "url": "https://lulinucs.duckdns.org/videos_kit/sooya_angel_2107854412202774737.mp4",
-      "thumbnail": "/midia/video-thumbs/video-099.webp",
+      "thumbnail": "/thumbs/video-099.webp",
       "format": "mp4"
     },
     {
@@ -798,7 +798,7 @@
       "filename": "stextop_2107889401472954437.mp4",
       "title": "stextop_2107889401472954437",
       "url": "https://lulinucs.duckdns.org/videos_kit/stextop_2107889401472954437.mp4",
-      "thumbnail": "/midia/video-thumbs/video-100.webp",
+      "thumbnail": "/thumbs/video-100.webp",
       "format": "mp4"
     },
     {
@@ -806,7 +806,7 @@
       "filename": "SUPERMERCADO NO GOVERNO BOLSONARO.mp4",
       "title": "SUPERMERCADO NO GOVERNO BOLSONARO",
       "url": "https://lulinucs.duckdns.org/videos_kit/SUPERMERCADO%20NO%20GOVERNO%20BOLSONARO.mp4",
-      "thumbnail": "/midia/video-thumbs/video-101.webp",
+      "thumbnail": "/thumbs/video-101.webp",
       "format": "mp4"
     },
     {
@@ -814,7 +814,7 @@
       "filename": "Synyste50769202_2107879569453633687.mp4",
       "title": "Synyste50769202_2107879569453633687",
       "url": "https://lulinucs.duckdns.org/videos_kit/Synyste50769202_2107879569453633687.mp4",
-      "thumbnail": "/midia/video-thumbs/video-102.webp",
+      "thumbnail": "/thumbs/video-102.webp",
       "format": "mp4"
     },
     {
@@ -822,7 +822,7 @@
       "filename": "taticaffc_2107811085738820007.mp4",
       "title": "taticaffc_2107811085738820007",
       "url": "https://lulinucs.duckdns.org/videos_kit/taticaffc_2107811085738820007.mp4",
-      "thumbnail": "/midia/video-thumbs/video-103.webp",
+      "thumbnail": "/thumbs/video-103.webp",
       "format": "mp4"
     },
     {
@@ -830,7 +830,7 @@
       "filename": "taticaffc_2107811351401812395.mp4",
       "title": "taticaffc_2107811351401812395",
       "url": "https://lulinucs.duckdns.org/videos_kit/taticaffc_2107811351401812395.mp4",
-      "thumbnail": "/midia/video-thumbs/video-104.webp",
+      "thumbnail": "/thumbs/video-104.webp",
       "format": "mp4"
     },
     {
@@ -838,7 +838,7 @@
       "filename": "TESOURAÇO DE FLÁVIO BOLSONARO.mp4",
       "title": "TESOURAÇO DE FLÁVIO BOLSONARO",
       "url": "https://lulinucs.duckdns.org/videos_kit/TESOURA%C3%87O%20DE%20FL%C3%81VIO%20BOLSONARO.mp4",
-      "thumbnail": "/midia/video-thumbs/video-105.webp",
+      "thumbnail": "/thumbs/video-105.webp",
       "format": "mp4"
     },
     {
@@ -846,7 +846,7 @@
       "filename": "thaisterica__2107831903323636022.mp4",
       "title": "thaisterica__2107831903323636022",
       "url": "https://lulinucs.duckdns.org/videos_kit/thaisterica__2107831903323636022.mp4",
-      "thumbnail": "/midia/video-thumbs/video-106.webp",
+      "thumbnail": "/thumbs/video-106.webp",
       "format": "mp4"
     },
     {
@@ -854,7 +854,7 @@
       "filename": "thaisterica__2107834149058843121.mp4",
       "title": "thaisterica__2107834149058843121",
       "url": "https://lulinucs.duckdns.org/videos_kit/thaisterica__2107834149058843121.mp4",
-      "thumbnail": "/midia/video-thumbs/video-107.webp",
+      "thumbnail": "/thumbs/video-107.webp",
       "format": "mp4"
     },
     {
@@ -862,7 +862,7 @@
       "filename": "thaisterica__2107891508347019436.mp4",
       "title": "thaisterica__2107891508347019436",
       "url": "https://lulinucs.duckdns.org/videos_kit/thaisterica__2107891508347019436.mp4",
-      "thumbnail": "/midia/video-thumbs/video-108.webp",
+      "thumbnail": "/thumbs/video-108.webp",
       "format": "mp4"
     },
     {
@@ -870,7 +870,7 @@
       "filename": "thestrawqueen__2107884755324747923.mp4",
       "title": "thestrawqueen__2107884755324747923",
       "url": "https://lulinucs.duckdns.org/videos_kit/thestrawqueen__2107884755324747923.mp4",
-      "thumbnail": "/midia/video-thumbs/video-109.webp",
+      "thumbnail": "/thumbs/video-109.webp",
       "format": "mp4"
     },
     {
@@ -878,7 +878,7 @@
       "filename": "TRANSFORMAR BRASIL EM ARGENTINA.mp4",
       "title": "TRANSFORMAR BRASIL EM ARGENTINA",
       "url": "https://lulinucs.duckdns.org/videos_kit/TRANSFORMAR%20BRASIL%20EM%20ARGENTINA.mp4",
-      "thumbnail": "/midia/video-thumbs/video-110.webp",
+      "thumbnail": "/thumbs/video-110.webp",
       "format": "mp4"
     },
     {
@@ -886,7 +886,7 @@
       "filename": "user094368_2107803003000623243.mp4",
       "title": "user094368_2107803003000623243",
       "url": "https://lulinucs.duckdns.org/videos_kit/user094368_2107803003000623243.mp4",
-      "thumbnail": "/midia/video-thumbs/video-111.webp",
+      "thumbnail": "/thumbs/video-111.webp",
       "format": "mp4"
     },
     {
@@ -894,7 +894,7 @@
       "filename": "userlimax_2107830814876611066.mp4",
       "title": "userlimax_2107830814876611066",
       "url": "https://lulinucs.duckdns.org/videos_kit/userlimax_2107830814876611066.mp4",
-      "thumbnail": "/midia/video-thumbs/video-112.webp",
+      "thumbnail": "/thumbs/video-112.webp",
       "format": "mp4"
     },
     {
@@ -902,7 +902,7 @@
       "filename": "v14044g50000d6bi5vvog65qfttakn0g.mp4",
       "title": "v14044g50000d6bi5vvog65qfttakn0g",
       "url": "https://lulinucs.duckdns.org/videos_kit/v14044g50000d6bi5vvog65qfttakn0g.mp4",
-      "thumbnail": "/midia/video-thumbs/video-113.webp",
+      "thumbnail": "/thumbs/video-113.webp",
       "format": "mp4"
     },
     {
@@ -910,7 +910,7 @@
       "filename": "v14044g50000dakpi6vog65p7umhd390(1).mp4",
       "title": "v14044g50000dakpi6vog65p7umhd390(1)",
       "url": "https://lulinucs.duckdns.org/videos_kit/v14044g50000dakpi6vog65p7umhd390%281%29.mp4",
-      "thumbnail": "/midia/video-thumbs/video-114.webp",
+      "thumbnail": "/thumbs/video-114.webp",
       "format": "mp4"
     },
     {
@@ -918,7 +918,7 @@
       "filename": "v14044g50000dakpi6vog65p7umhd390.mp4",
       "title": "v14044g50000dakpi6vog65p7umhd390",
       "url": "https://lulinucs.duckdns.org/videos_kit/v14044g50000dakpi6vog65p7umhd390.mp4",
-      "thumbnail": "/midia/video-thumbs/video-115.webp",
+      "thumbnail": "/thumbs/video-115.webp",
       "format": "mp4"
     },
     {
@@ -926,7 +926,7 @@
       "filename": "vemfernanda_2107818034559615135.mp4",
       "title": "vemfernanda_2107818034559615135",
       "url": "https://lulinucs.duckdns.org/videos_kit/vemfernanda_2107818034559615135.mp4",
-      "thumbnail": "/midia/video-thumbs/video-116.webp",
+      "thumbnail": "/thumbs/video-116.webp",
       "format": "mp4"
     },
     {
@@ -934,7 +934,7 @@
       "filename": "wonkxz_2107815182076608528.mp4",
       "title": "wonkxz_2107815182076608528",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107815182076608528.mp4",
-      "thumbnail": "/midia/video-thumbs/video-117.webp",
+      "thumbnail": "/thumbs/video-117.webp",
       "format": "mp4"
     },
     {
@@ -942,7 +942,7 @@
       "filename": "wonkxz_2107815231057744239.mp4",
       "title": "wonkxz_2107815231057744239",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107815231057744239.mp4",
-      "thumbnail": "/midia/video-thumbs/video-118.webp",
+      "thumbnail": "/thumbs/video-118.webp",
       "format": "mp4"
     },
     {
@@ -950,7 +950,7 @@
       "filename": "wonkxz_2107815263575875691.mp4",
       "title": "wonkxz_2107815263575875691",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107815263575875691.mp4",
-      "thumbnail": "/midia/video-thumbs/video-119.webp",
+      "thumbnail": "/thumbs/video-119.webp",
       "format": "mp4"
     },
     {
@@ -958,7 +958,7 @@
       "filename": "wonkxz_2107824526843166724.mp4",
       "title": "wonkxz_2107824526843166724",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107824526843166724.mp4",
-      "thumbnail": "/midia/video-thumbs/video-120.webp",
+      "thumbnail": "/thumbs/video-120.webp",
       "format": "mp4"
     },
     {
@@ -966,7 +966,7 @@
       "filename": "wonkxz_2107824552629940556.mp4",
       "title": "wonkxz_2107824552629940556",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107824552629940556.mp4",
-      "thumbnail": "/midia/video-thumbs/video-121.webp",
+      "thumbnail": "/thumbs/video-121.webp",
       "format": "mp4"
     },
     {
@@ -974,7 +974,7 @@
       "filename": "wonkxz_2107824578450067858.mp4",
       "title": "wonkxz_2107824578450067858",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107824578450067858.mp4",
-      "thumbnail": "/midia/video-thumbs/video-122.webp",
+      "thumbnail": "/thumbs/video-122.webp",
       "format": "mp4"
     },
     {
@@ -982,7 +982,7 @@
       "filename": "wonkxz_2107824601820741745.mp4",
       "title": "wonkxz_2107824601820741745",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107824601820741745.mp4",
-      "thumbnail": "/midia/video-thumbs/video-123.webp",
+      "thumbnail": "/thumbs/video-123.webp",
       "format": "mp4"
     },
     {
@@ -990,7 +990,7 @@
       "filename": "wonkxz_2107824623085609178.mp4",
       "title": "wonkxz_2107824623085609178",
       "url": "https://lulinucs.duckdns.org/videos_kit/wonkxz_2107824623085609178.mp4",
-      "thumbnail": "/midia/video-thumbs/video-124.webp",
+      "thumbnail": "/thumbs/video-124.webp",
       "format": "mp4"
     },
     {
@@ -998,7 +998,7 @@
       "filename": "ZDIIV_2107819935804031129.mp4",
       "title": "ZDIIV_2107819935804031129",
       "url": "https://lulinucs.duckdns.org/videos_kit/ZDIIV_2107819935804031129.mp4",
-      "thumbnail": "/midia/video-thumbs/video-125.webp",
+      "thumbnail": "/thumbs/video-125.webp",
       "format": "mp4"
     }
   ]

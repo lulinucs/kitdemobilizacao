@@ -230,7 +230,7 @@ export default function App() {
             <p className={styles.lead}>Encontre atividades, materiais, ferramentas e informações sobre as mobilizações do segundo turno de 2026.</p>
           </section>
 
-          <ParticipationPaths onAgenda={goAgenda} onCategory={(category) => updateCatalog({ category }, false, true)} onProfiles={goProfiles} />
+          <ParticipationPaths onAgenda={goAgenda} onCategory={(category) => updateCatalog({ category }, false, true)} onMedia={goMedia} onProfiles={goProfiles} />
 
           <section className={styles.mobilizationsSection} aria-labelledby="mobilizations-title">
             <div className={styles.homeSectionHeading}><p className={styles.eyebrow}>AGENDA</p><h2 id="mobilizations-title">Atividades e mobilizações</h2></div>

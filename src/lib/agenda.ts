@@ -288,7 +288,8 @@ export function formatAgendaDate(date: string, timezone: string, long = false): 
 export function formatEventTime(event: AgendaEvent): string {
   if (event.inicioRotulo) return event.inicioRotulo
   if (!event.inicio) return 'Horário a confirmar'
-  return event.fim ? `${event.inicio}–${event.fim}` : `a partir das ${event.inicio}`
+  if (!event.fim) return `a partir das ${event.inicio}`
+  return `${event.inicio}–${event.fim}${event.fim < event.inicio ? ' (dia seguinte)' : ''}`
 }
 
 function formatClock(time: string): string {

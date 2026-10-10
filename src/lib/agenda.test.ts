@@ -106,8 +106,8 @@ describe('agenda', () => {
     expect(added.every((event) => !event.mobilizacaoId && !event.destaques?.length)).toBe(true)
     expect(added.every((event) => event.fonte && !event.fonte.url)).toBe(true)
     expect(added.filter((event) => event.data === '2026-10-15')).toHaveLength(0)
-    expect(added.filter((event) => event.inicio === null)).toHaveLength(6)
-    expect(added.filter((event) => event.fim !== null)).toHaveLength(2)
+    expect(added.filter((event) => event.inicio === null)).toHaveLength(5)
+    expect(added.filter((event) => event.fim !== null)).toHaveLength(3)
     expect(added.find((event) => event.id === 'mobilizacao-hospital-regional-sao-jose-1310')?.inicioRotulo).toContain('Ao longo do dia')
     expect(added.find((event) => event.id === 'mobilizacao-picadas-sul-sao-jose-1410')?.inicioRotulo).toContain('Pela manhã')
     expect(validateAgenda(data).errors).toEqual([])
@@ -126,6 +126,17 @@ describe('agenda', () => {
       expect(new URL(url).searchParams.get('evento')).toBe(event.id)
     }
     expect(getUpcomingWidgetEventsByLocation(data.eventos, now, data.timezone).find((item) => item.label === 'São José/SC')?.event.id).toBe('barraca-vira-voto-kobrasol-sao-jose-1010')
+  })
+
+  it('mantém a entrega do Dia do Nordestino até a meia-noite de 12/10', () => {
+    const event = data.eventos.find((item) => item.id === 'entrega-materiais-dia-nordestino-sao-jose-1110')!
+    expect(event).toMatchObject({ data: '2026-10-11', inicio: '13:00', fim: '00:00' })
+    expect(event.local).toContain('Arena Multiuso')
+    expect(event.informacoesAdicionais).toBe('Levar adesivos.')
+    expect(formatEventTime(event)).toBe('13:00–00:00 (dia seguinte)')
+    expect(eventEndDateTime(event, data.timezone)?.toISOString()).toBe('2026-10-12T03:00:00.000Z')
+    expect(isEventOngoing(event, new Date('2026-10-12T02:30:00.000Z'), data.timezone)).toBe(true)
+    expect(isEventOngoing(event, new Date('2026-10-12T03:00:00.000Z'), data.timezone)).toBe(false)
   })
 
   it('aceita atividade virtual sem cidade e permite encontrá-la pela instituição', () => {

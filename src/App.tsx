@@ -8,7 +8,6 @@ import { AppShell } from './components/AppShell'
 import { ContributionCallout } from './components/ContributionCallout'
 import { EmptyState } from './components/EmptyState'
 import { InitiativeList } from './components/InitiativeList'
-import { EditorialMobilizationsSpotlight } from './components/EditorialMobilizationsSpotlight'
 import { NextEventWidget } from './components/NextEventWidget'
 import { ParticipationPaths } from './components/ParticipationPaths'
 import { ProfilesPage } from './components/ProfilesPage'
@@ -16,7 +15,7 @@ import { MediaPage } from './components/MediaPage'
 import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
-import { createAgendaParams, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, validateAgenda } from './lib/agenda'
+import { createAgendaParams, getBalancedUpcomingWidgetEvents, getWidgetEventSelection, validateAgenda } from './lib/agenda'
 import { createCatalogSearch, filterInitiatives, readCatalogFilters, validateDirectory } from './lib/directory'
 import { validateProfiles } from './lib/profiles'
 import type { AgendaData } from './agendaTypes'
@@ -65,7 +64,7 @@ export default function App() {
   const agendaValidation = useMemo(() => validateAgenda(agendaSource), [])
   const agenda = useMemo(() => ({ ...agendaSource, eventos: agendaValidation.events }), [agendaValidation.events])
   const widgetSelection = useMemo(() => getWidgetEventSelection(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
-  const widgetUpcomingByLocation = useMemo(() => getUpcomingWidgetEventsByLocation(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
+  const widgetUpcomingByLocation = useMemo(() => getBalancedUpcomingWidgetEvents(agenda.eventos, now, agenda.timezone), [agenda.eventos, agenda.timezone, now])
 
   useEffect(() => {
     if (directoryErrors.length) console.error('Erros em iniciativas.json:', directoryErrors)
@@ -184,10 +183,6 @@ export default function App() {
     setFilters({ query: '', category: '', activity: '' })
     commitUrl(new URLSearchParams(), false, '/')
   }
-  const goHighlight = (highlightId: string) => {
-    pendingResultsScroll.current = null
-    commitUrl(createAgendaParams({ highlightId }), false, '/')
-  }
   const goProfiles = () => {
     pendingResultsScroll.current = null
     commitUrl(new URLSearchParams(), false, '/perfis')
@@ -247,7 +242,6 @@ export default function App() {
             <div className={styles.homeSectionHeading}><p className={styles.eyebrow}>AGENDA</p><h2 id="mobilizations-title">Atividades e mobilizações</h2></div>
             <div className={styles.mobilizationsGrid}>
               <NextEventWidget selection={widgetSelection} upcomingByLocation={widgetUpcomingByLocation} agenda={agenda} onAgenda={goAgenda} onEvent={goAgendaEvent} />
-              <EditorialMobilizationsSpotlight agenda={agenda} now={now} onOpen={goHighlight} />
             </div>
           </section>
 

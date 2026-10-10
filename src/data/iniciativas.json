@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "titulo": "Diretório de Mobilização",
   "subtitulo": "Encontre iniciativas, materiais e ferramentas para participar",
-  "atualizadoEm": "2026-10-09",
+  "atualizadoEm": "2026-10-10",
   "aviso": "Este diretório reúne links de iniciativas de terceiros. A inclusão não implica vínculo oficial nem endosso. Confira a origem e respeite as regras eleitorais e de uso dos espaços.",
   "categorias": [
     {
@@ -151,6 +151,34 @@
         }
       ],
       "origem": "fornecido-pelo-organizador",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
+      "id": "lula-x-bolsonaro",
+      "nome": "Lula X Bolsonaro",
+      "descricao": "Plataforma de comparação de indicadores entre os governos Lula e Bolsonaro, com gráficos e dados que podem ser transformados em imagens para compartilhar nas redes sociais.",
+      "categoriaPrincipal": "nas-redes",
+      "atividades": [
+        "compartilhar"
+      ],
+      "tags": [
+        "Dados",
+        "Gráficos"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar plataforma",
+          "url": "https://lulaxbolsonaro.com/",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-usuario",
       "verificacao": {
         "status": "nao-verificado",
         "verificadoEm": null,

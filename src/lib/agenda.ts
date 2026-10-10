@@ -108,54 +108,10 @@ export type AgendaDisplayItem =
   | { kind: 'event'; event: AgendaEvent }
   | { kind: 'mobilization'; id: string; events: AgendaEvent[] }
 
-export interface MobilizationCityGroup {
-  key: string
-  city: string
-  state?: string
-  events: AgendaEvent[]
-}
-
-function groupEventsByCity(events: AgendaEvent[]): MobilizationCityGroup[] {
-  const groups = new Map<string, MobilizationCityGroup>()
-  events.forEach((event) => {
-    if (!event.cidade) return
-    const key = `${event.cidade}|${event.uf ?? ''}`
-    const current = groups.get(key)
-    if (current) current.events.push(event)
-    else groups.set(key, { key, city: event.cidade, state: event.uf, events: [event] })
-  })
-  return [...groups.values()].sort((a, b) => a.city.localeCompare(b.city, 'pt-BR') || (a.state ?? '').localeCompare(b.state ?? ''))
-}
-
-export function getMobilizationEvents(events: AgendaEvent[], mobilizationId: string, timezone: string): AgendaEvent[] {
-  return sortEvents(events.filter((event) => event.mobilizacaoId === mobilizationId && event.status !== 'cancelado'), timezone)
-}
-
-export function getMobilizationCityGroups(events: AgendaEvent[], mobilizationId: string, timezone: string): MobilizationCityGroup[] {
-  return groupEventsByCity(getMobilizationEvents(events, mobilizationId, timezone))
-}
-
-export function shouldShowMobilizationSpotlight(events: AgendaEvent[], mobilizationId: string, throughDate: string, now: Date, timezone: string): boolean {
-  return getZonedDate(now, timezone) <= throughDate && getMobilizationEvents(events, mobilizationId, timezone).length > 0
-}
-
-export function getHighlightedEvents(events: AgendaEvent[], highlightId: string, timezone: string): AgendaEvent[] {
-  return sortEvents(events.filter((event) => event.destaques?.includes(highlightId) && event.status !== 'cancelado'), timezone)
-}
-
-export function getHighlightCityGroups(events: AgendaEvent[], highlightId: string, timezone: string): MobilizationCityGroup[] {
-  return groupEventsByCity(getHighlightedEvents(events, highlightId, timezone))
-}
-
-export function shouldShowEditorialSpotlight(events: AgendaEvent[], highlightId: string, throughDate: string, now: Date, timezone: string): boolean {
-  return getZonedDate(now, timezone) <= throughDate && getHighlightedEvents(events, highlightId, timezone).length > 0
-}
-
-export function createAgendaParams(options: { eventId?: string; mobilizationId?: string; highlightId?: string } = {}): URLSearchParams {
+export function createAgendaParams(options: { eventId?: string; mobilizationId?: string } = {}): URLSearchParams {
   const params = new URLSearchParams({ view: 'agenda' })
   if (options.eventId) params.set('evento', options.eventId)
   if (options.mobilizationId) params.set('mobilizacao', options.mobilizationId)
-  if (options.highlightId) params.set('destaque', options.highlightId)
   return params
 }
 
@@ -269,7 +225,6 @@ export function filterAgendaEvents(events: AgendaEvent[], filters: AgendaFilters
     if (filters.state && event.uf !== filters.state) return false
     if (filters.category && event.categoria !== filters.category) return false
     if (filters.mobilization && event.mobilizacaoId !== filters.mobilization) return false
-    if (filters.highlight && !event.destaques?.includes(filters.highlight)) return false
     if (!query) return true
     return normalizeText([event.titulo, event.cidade ?? '', event.uf ?? '', event.instituicao ?? '', event.campus ?? '', event.pontoEncontro ?? '', event.local ?? '', event.endereco ?? '', event.bairro ?? '', event.descricao, event.informacoesAdicionais ?? ''].join(' ')).includes(query)
   })
@@ -292,21 +247,33 @@ export function formatEventTime(event: AgendaEvent): string {
   return `${event.inicio}–${event.fim}${event.fim < event.inicio ? ' (dia seguinte)' : ''}`
 }
 
+export function getBalancedUpcomingWidgetEvents(events: AgendaEvent[], now: Date, timezone: string, limit = 8): WidgetLocationEvent[] {
+  const byLocation = new Map<string, AgendaEvent[]>()
+  for (const event of getUpcomingWidgetEvents(events, now, timezone)) {
+    const location = widgetLocation(event)
+    const group = byLocation.get(location.key) ?? []
+    group.push(event)
+    byLocation.set(location.key, group)
+  }
+
+  const chosen: AgendaEvent[] = []
+  while (chosen.length < limit) {
+    let added = false
+    for (const group of byLocation.values()) {
+      const event = group.shift()
+      if (!event) continue
+      chosen.push(event)
+      added = true
+      if (chosen.length === limit) break
+    }
+    if (!added) break
+  }
+  return sortEvents(chosen, timezone).map((event) => ({ ...widgetLocation(event), key: event.id, event }))
+}
+
 function formatClock(time: string): string {
   const [hour, minute] = time.split(':')
   return minute === '00' ? `${Number(hour)}h` : `${Number(hour)}h${minute}`
-}
-
-export function formatEventScheduleLines(event: AgendaEvent): string[] {
-  if (!event.inicio) return ['Horário a confirmar']
-
-  const label = event.inicioRotulo?.toLocaleLowerCase('pt-BR') ?? ''
-  if (!label.includes('concentração')) return [formatEventTime(event)]
-
-  const lines = [`Concentração às ${formatClock(event.inicio)}`]
-  const announcedStart = label.match(/início previsto às\s*(\d{1,2}h(?:\d{2})?)/)?.[1]
-  if (announcedStart) lines.push(`Início previsto às ${announcedStart}`)
-  return lines
 }
 
 export function formatEventPlace(event: AgendaEvent): string {
@@ -356,7 +323,6 @@ export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; error
     if (event.modalidade && !['presencial', 'virtual', 'hibrida'].includes(event.modalidade)) recordErrors.push(`Modalidade inválida em ${event.id}`)
     if (!VALID_STATUSES.has(event.status)) recordErrors.push(`Status inválido em ${event.id}`)
     if (event.mobilizacaoId !== undefined && !event.mobilizacaoId.trim()) recordErrors.push(`Mobilização inválida em ${event.id}`)
-    if (event.destaques !== undefined && (!Array.isArray(event.destaques) || event.destaques.some((highlight) => !highlight.trim()) || new Set(event.destaques).size !== event.destaques.length)) recordErrors.push(`Destaques inválidos em ${event.id}`)
     if ((event.inicio !== null && !TIME_PATTERN.test(event.inicio)) || (event.fim && !TIME_PATTERN.test(event.fim))) recordErrors.push(`Horário inválido em ${event.id}`)
     if (event.fim && !event.inicio) recordErrors.push(`Término sem horário inicial em ${event.id}`)
     if (event.verificadoEm && !DATE_PATTERN.test(event.verificadoEm)) recordErrors.push(`Data de verificação inválida em ${event.id}`)

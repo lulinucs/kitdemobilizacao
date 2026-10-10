@@ -21,7 +21,6 @@ export interface AgendaEvent {
   id: string
   titulo: string
   mobilizacaoId?: string
-  destaques?: string[]
   categoria: string
   data: string | null
   recorrencia?: {
@@ -66,7 +65,6 @@ export interface AgendaFilters {
   state: string
   category: string
   mobilization: string
-  highlight: string
   includePast: boolean
 }
 

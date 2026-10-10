@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventScheduleLines, formatEventTime, formatMobilizationTitle, getHighlightCityGroups, getNextEvent, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, shouldShowEditorialSpotlight, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getNextEvent, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
@@ -9,6 +9,14 @@ const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
     expect(data.eventos).toHaveLength(102)
+    const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
+    expect(october13).toHaveLength(11)
+    expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
+      'mobilizacao-estudantil-brasilia-1310',
+      'mobilizacao-estudantil-feira-santana-1310',
+      'ato-nacional-estudantes-florianopolis-1310',
+      'mobilizacao-estudantil-ufrj-fundao-1310',
+    ]))
     expect(validateAgenda(data).errors).toEqual([])
     const ids = new Set(data.eventos.map((event) => event.id))
     expect(ids.size).toBe(data.eventos.length)
@@ -28,7 +36,7 @@ describe('agenda', () => {
       '2026-10-13 Aracaju 15:13',
       '2026-10-13 Assú 18:13',
     ]))
-    expect(filterAgendaEvents(data.eventos, { query: '', day: '2026-10-18', city: 'Florianópolis', state: 'SC', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((event) => event.local)).toEqual(['Escadaria Valda Costa, Centro'])
+    expect(filterAgendaEvents(data.eventos, { query: '', day: '2026-10-18', city: 'Florianópolis', state: 'SC', category: '', mobilization: '', includePast: true }, now, data.timezone).map((event) => event.local)).toEqual(['Escadaria Valda Costa, Centro'])
     expect(sortEvents(data.eventos, data.timezone).filter((event) => event.data === '2026-10-18').map((event) => event.inicio)).toEqual(['08:30', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '13:00'])
   })
 
@@ -49,7 +57,7 @@ describe('agenda', () => {
   })
 
   it('combina dia, cidade, estado, categoria e busca', () => {
-    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', city: 'Florianópolis', state: 'SC', category: 'bandeiraco', mobilization: '', highlight: '', includePast: true }, now, data.timezone)
+    const result = filterAgendaEvents(data.eventos, { query: 'bandeiraco', day: '2026-10-09', city: 'Florianópolis', state: 'SC', category: 'bandeiraco', mobilization: '', includePast: true }, now, data.timezone)
     expect(result.map((event) => event.id)).toEqual(['bandeiraco-campeche-0910'])
   })
 
@@ -58,7 +66,7 @@ describe('agenda', () => {
     const event = { ...baseEvent, id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
     const events = [...data.eventos, event]
 
-    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual([
+    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual([
       'evento-recife',
       '2026-10-11-recife-estudantes-com-lula-pelo-futuro-do-brasil',
       '2026-10-18-recife-mobilizacao-marco-zero',
@@ -132,7 +140,7 @@ describe('agenda', () => {
     expect(added).toHaveLength(11)
     expect(new Set(added.map((event) => event.id)).size).toBe(11)
     expect(added.every((event) => event.cidade === 'São José' && event.uf === 'SC' && event.status === 'divulgado')).toBe(true)
-    expect(added.every((event) => !event.mobilizacaoId && !event.destaques?.length)).toBe(true)
+    expect(added.every((event) => !event.mobilizacaoId)).toBe(true)
     expect(added.every((event) => event.fonte && !event.fonte.url)).toBe(true)
     expect(added.filter((event) => event.data === '2026-10-15')).toHaveLength(0)
     expect(added.filter((event) => event.inicio === null)).toHaveLength(5)
@@ -141,7 +149,7 @@ describe('agenda', () => {
     expect(added.find((event) => event.id === 'mobilizacao-picadas-sul-sao-jose-1410')?.inicioRotulo).toContain('Pela manhã')
     expect(validateAgenda(data).errors).toEqual([])
 
-    const cityEvents = filterAgendaEvents(data.eventos, { query: '', day: '', city: 'São José', state: 'SC', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone)
+    const cityEvents = filterAgendaEvents(data.eventos, { query: '', day: '', city: 'São José', state: 'SC', category: '', mobilization: '', includePast: true }, now, data.timezone)
     expect(cityEvents).toHaveLength(12) // Inclui a reunião já cadastrada na Serraria.
     expect(cityEvents.map((event) => event.data)).toEqual([...cityEvents.map((event) => event.data)].sort())
     expect(cityEvents[0]?.id).toBe('barraca-vira-voto-kobrasol-sao-jose-1010')
@@ -185,7 +193,7 @@ describe('agenda', () => {
 
     expect(validateAgenda(nextData).errors).toEqual([])
     expect(formatEventPlace(virtual)).toBe('Atividade virtual')
-    expect(filterAgendaEvents([virtual], { query: 'entidade estudantil', day: '', city: '', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone)).toEqual([virtual])
+    expect(filterAgendaEvents([virtual], { query: 'entidade estudantil', day: '', city: '', state: '', category: '', mobilization: '', includePast: true }, now, data.timezone)).toEqual([virtual])
   })
 
   it('não associa a agenda da Mídia NINJA ao ato nacional sem confirmação explícita', () => {
@@ -197,50 +205,14 @@ describe('agenda', () => {
   })
 
   it('filtra uma mobilização nacional sem afetar os demais filtros', () => {
-    const result = filterAgendaEvents(data.eventos, { query: '', day: '', city: '', state: '', category: '', mobilization: 'ato-nacional-13-out-2026', highlight: '', includePast: true }, now, data.timezone)
+    const result = filterAgendaEvents(data.eventos, { query: '', day: '', city: '', state: '', category: '', mobilization: 'ato-nacional-13-out-2026', includePast: true }, now, data.timezone)
 
     expect(result.map((event) => event.id)).toEqual(['ato-nacional-estudantes-florianopolis-1310'])
   })
 
-  it('conta cidades únicas no destaque editorial e preserva múltiplos atos na mesma cidade', () => {
-    const floripa = data.eventos.find((event) => event.id === 'ato-nacional-estudantes-florianopolis-1310')!
-    const secondFloripa = { ...floripa, id: 'segundo-ato-floripa', inicio: null, inicioRotulo: undefined }
-    const feira = data.eventos.find((event) => event.id === 'mobilizacao-estudantil-feira-santana-1310')!
-    const groups = getHighlightCityGroups([floripa, secondFloripa, feira], 'mobilizacoes-13-out-2026', data.timezone)
-
-    expect(groups).toHaveLength(2)
-    expect(groups.find((group) => group.city === 'Florianópolis')?.events).toHaveLength(2)
-    expect(formatEventTime(secondFloripa)).toBe('Horário a confirmar')
-  })
-
-  it('exibe o destaque editorial até o fim do dia 13 no fuso local e o remove no dia seguinte', () => {
-    expect(shouldShowEditorialSpotlight(data.eventos, 'mobilizacoes-13-out-2026', '2026-10-13', new Date('2026-10-14T02:59:00.000Z'), data.timezone)).toBe(true)
-    expect(shouldShowEditorialSpotlight(data.eventos, 'mobilizacoes-13-out-2026', '2026-10-13', new Date('2026-10-14T03:00:00.000Z'), data.timezone)).toBe(false)
-  })
-
-  it('gera navegação limpa para a agenda e filtro dedicado para o destaque editorial', () => {
+  it('gera navegação limpa para a agenda e links permanentes dos eventos', () => {
     expect(createAgendaParams().toString()).toBe('view=agenda')
-    expect(createAgendaParams({ highlightId: 'mobilizacoes-13-out-2026' }).toString()).toBe('view=agenda&destaque=mobilizacoes-13-out-2026')
     expect(createAgendaParams({ eventId: 'evento-individual' }).toString()).toBe('view=agenda&evento=evento-individual')
-  })
-
-  it('mantém destaque editorial separado de mobilizacaoId e filtra suas três cidades', () => {
-    const result = filterAgendaEvents(data.eventos, { query: '', day: '', city: '', state: '', category: '', mobilization: '', highlight: 'mobilizacoes-13-out-2026', includePast: true }, now, data.timezone)
-
-    expect(result.map((event) => event.cidade)).toEqual(['Brasília', 'Feira de Santana', 'Florianópolis'])
-    expect(result.filter((event) => event.mobilizacaoId)).toHaveLength(1)
-    expect(result.find((event) => event.cidade === 'Brasília')?.status).toBe('confirmado')
-    expect(result.find((event) => event.cidade === 'Florianópolis')?.fonte?.url).toBeUndefined()
-  })
-
-  it('formata concentração e início previsto em linhas legíveis no destaque', () => {
-    const brasilia = data.eventos.find((event) => event.cidade === 'Brasília' && event.data === '2026-10-13')!
-    const floripa = data.eventos.find((event) => event.id === 'ato-nacional-estudantes-florianopolis-1310')!
-    const unknown = { ...floripa, inicio: null, inicioRotulo: undefined }
-
-    expect(formatEventScheduleLines(brasilia)).toEqual(['Concentração às 16h', 'Início previsto às 18h'])
-    expect(formatEventScheduleLines(floripa)).toEqual(['Concentração às 17h'])
-    expect(formatEventScheduleLines(unknown)).toEqual(['Horário a confirmar'])
   })
 })
 
@@ -285,6 +257,13 @@ describe('seleção do widget de próxima atividade', () => {
 
     expect(selection.kind).toBe('ongoing')
     expect(selection.events.map((item) => item.id)).toEqual(['primeiro', 'segundo'])
+  })
+
+  it('mantém todas as atividades em andamento para a vitrine expansível', () => {
+    const simultaneous = Array.from({ length: 11 }, (_, index) => event({ id: `simultaneo-${index}` }))
+    const selection = getWidgetEventSelection(simultaneous, new Date('2026-10-09T19:00:00.000Z'), timezone)
+    expect(selection.kind).toBe('ongoing')
+    expect(selection.events).toHaveLength(11)
   })
 
   it('seleciona o futuro mais próximo quando nada está acontecendo', () => {
@@ -337,6 +316,20 @@ describe('seleção do widget de próxima atividade', () => {
     const groups = getUpcomingWidgetEventsByLocation([laterFloripa, recife, firstFloripa], new Date('2026-10-09T19:00:00.000Z'), timezone)
 
     expect(groups.map((group) => group.event.id)).toEqual(['floripa-primeiro', 'recife'])
+  })
+
+  it('distribui próximas atividades entre cidades antes de preencher vagas e exclui as atuais', () => {
+    const now = new Date('2026-10-09T19:00:00.000Z')
+    const ongoing = event({ id: 'agora' })
+    const floripa1 = event({ id: 'floripa-1', inicio: '17:00', fim: '19:00' })
+    const floripa2 = event({ id: 'floripa-2', inicio: '17:30', fim: '19:30' })
+    const floripa3 = event({ id: 'floripa-3', inicio: '18:00', fim: '20:00' })
+    const recife = event({ id: 'recife', inicio: '19:00', fim: '21:00', cidade: 'Recife', uf: 'PE' })
+    const brasilia = event({ id: 'brasilia', inicio: '20:00', fim: '22:00', cidade: 'Brasília', uf: 'DF' })
+    const selected = getBalancedUpcomingWidgetEvents([floripa3, recife, ongoing, floripa2, brasilia, floripa1], now, timezone, 4)
+
+    expect(selected.map((item) => item.event.id)).toEqual(['floripa-1', 'floripa-2', 'recife', 'brasilia'])
+    expect(selected.map((item) => item.label)).toEqual(['Florianópolis/SC', 'Florianópolis/SC', 'Recife/PE', 'Brasília/DF'])
   })
 
   it('mostra o ato nacional como próximo antes da concentração sem mantê-lo em andamento indefinidamente', () => {

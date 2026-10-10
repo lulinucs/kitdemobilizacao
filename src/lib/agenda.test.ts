@@ -7,6 +7,31 @@ const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
+  it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
+    expect(data.eventos).toHaveLength(102)
+    expect(validateAgenda(data).errors).toEqual([])
+    const ids = new Set(data.eventos.map((event) => event.id))
+    expect(ids.size).toBe(data.eventos.length)
+    expect(data.eventos.find((event) => event.id === 'mobilizacao-estudantil-brasilia-1310')).toMatchObject({
+      inicio: '16:00',
+      pontoEncontro: 'Museu Nacional da República, Setor Cultural Sul',
+      fonte: { url: 'https://diariodecontexto.com/brasil/estudantes-unb-ato-brasilia/' },
+    })
+    expect(data.eventos.find((event) => event.id === 'mobilizacao-estudantil-ufrj-fundao-1310')?.fonte?.url).toContain('midianinja.org')
+    const symbolic = data.eventos.filter((event) => event.inicio?.endsWith(':13'))
+    expect(symbolic.map((event) => `${event.data} ${event.cidade} ${event.inicio}`)).toEqual(expect.arrayContaining([
+      '2026-10-10 Aracaju 08:13',
+      '2026-10-10 João Pessoa 09:13',
+      '2026-10-10 João Pessoa 17:13',
+      '2026-10-11 Aracaju 10:13',
+      '2026-10-12 Aracaju 10:13',
+      '2026-10-13 Aracaju 15:13',
+      '2026-10-13 Assú 18:13',
+    ]))
+    expect(filterAgendaEvents(data.eventos, { query: '', day: '2026-10-18', city: 'Florianópolis', state: 'SC', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((event) => event.local)).toEqual(['Escadaria Valda Costa, Centro'])
+    expect(sortEvents(data.eventos, data.timezone).filter((event) => event.data === '2026-10-18').map((event) => event.inicio)).toEqual(['08:30', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '13:00'])
+  })
+
   it('ordena por data e hora e deixa data pendente ao final', () => {
     const sorted = sortEvents(data.eventos, data.timezone)
     expect(sorted[0].id).toBe('banca-ticen-0910')
@@ -33,7 +58,11 @@ describe('agenda', () => {
     const event = { ...baseEvent, id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
     const events = [...data.eventos, event]
 
-    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(['evento-recife'])
+    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', highlight: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual([
+      'evento-recife',
+      '2026-10-11-recife-estudantes-com-lula-pelo-futuro-do-brasil',
+      '2026-10-18-recife-mobilizacao-marco-zero',
+    ])
     expect(validateAgenda({ ...data, eventos: events }).errors).toEqual([])
   })
 

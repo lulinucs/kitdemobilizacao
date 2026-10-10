@@ -181,7 +181,8 @@ export default function App() {
   }
   const goInitiatives = () => {
     pendingResultsScroll.current = 'smooth'
-    commitUrl(new URLSearchParams(createCatalogSearch(filters)), false, '/')
+    setFilters({ query: '', category: '', activity: '' })
+    commitUrl(new URLSearchParams(), false, '/')
   }
   const goHighlight = (highlightId: string) => {
     pendingResultsScroll.current = null
@@ -230,7 +231,7 @@ export default function App() {
             <p className={styles.lead}>Encontre atividades, materiais, ferramentas e informações sobre as mobilizações do segundo turno de 2026.</p>
           </section>
 
-          <ParticipationPaths onAgenda={goAgenda} onCategory={(category) => updateCatalog({ category }, false, true)} onMedia={goMedia} onProfiles={goProfiles} />
+          <ParticipationPaths onAgenda={goAgenda} onInitiatives={goInitiatives} onMedia={goMedia} onProfiles={goProfiles} />
 
           <section className={styles.mobilizationsSection} aria-labelledby="mobilizations-title">
             <div className={styles.homeSectionHeading}><p className={styles.eyebrow}>AGENDA</p><h2 id="mobilizations-title">Atividades e mobilizações</h2></div>

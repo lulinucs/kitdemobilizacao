@@ -1,14 +1,15 @@
-import { CalendarDays, Home, LayoutGrid, Menu, MessageCircle, UsersRound, X } from 'lucide-react'
+import { CalendarDays, Home, Images, LayoutGrid, Menu, MessageCircle, UsersRound, X } from 'lucide-react'
 import { WHATSAPP_SUBMISSION_URL } from '../config'
 import styles from '../styles/App.module.css'
 
 interface SidebarProps {
-  currentView: 'home' | 'agenda' | 'profiles'
+  currentView: 'home' | 'agenda' | 'profiles' | 'media'
   open: boolean
   onHome: () => void
   onInitiatives: () => void
   onAgenda: () => void
   onProfiles: () => void
+  onMedia: () => void
   onClose: () => void
   onOpen: () => void
 }
@@ -31,6 +32,7 @@ export function Sidebar(props: SidebarProps) {
           <button className={props.currentView === 'home' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onHome(); props.onClose() }}><Home aria-hidden="true" size={18} />Início</button>
           <button className={props.currentView === 'agenda' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onAgenda(); props.onClose() }}><CalendarDays aria-hidden="true" size={18} />Agenda de Mobilizações</button>
           <button type="button" onClick={() => { props.onInitiatives(); props.onClose() }}><LayoutGrid aria-hidden="true" size={18} />Iniciativas</button>
+          <button className={props.currentView === 'media' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onMedia(); props.onClose() }}><Images aria-hidden="true" size={18} />Mídias para compartilhar</button>
           <button className={props.currentView === 'profiles' ? styles.mainNavActive : ''} type="button" onClick={() => { props.onProfiles(); props.onClose() }}><UsersRound aria-hidden="true" size={18} />Perfis para acompanhar</button>
           <a href={WHATSAPP_SUBMISSION_URL} target="_blank" rel="noopener noreferrer" onClick={props.onClose}><MessageCircle aria-hidden="true" size={18} />Envie sua iniciativa</a>
         </nav>

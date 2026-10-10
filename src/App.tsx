@@ -12,6 +12,7 @@ import { EditorialMobilizationsSpotlight } from './components/EditorialMobilizat
 import { NextEventWidget } from './components/NextEventWidget'
 import { ParticipationPaths } from './components/ParticipationPaths'
 import { ProfilesPage } from './components/ProfilesPage'
+import { MediaPage } from './components/MediaPage'
 import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
@@ -57,7 +58,7 @@ export default function App() {
   catalogFiltersRef.current = filters
   const params = useMemo(() => new URLSearchParams(window.location.search), [routeVersion])
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-  const currentView = currentPath === '/perfis' ? 'profiles' : params.get('view') === 'agenda' || params.has('evento') ? 'agenda' : 'home'
+  const currentView = currentPath === '/midias' ? 'media' : currentPath === '/perfis' ? 'profiles' : params.get('view') === 'agenda' || params.has('evento') ? 'agenda' : 'home'
   const results = useMemo(() => filterInitiatives(data, filters), [filters])
   const directoryErrors = useMemo(() => validateDirectory(data), [])
   const profileErrors = useMemo(() => validateProfiles(profilesSource), [])
@@ -78,7 +79,9 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
-    document.title = currentView === 'profiles'
+    document.title = currentView === 'media'
+      ? 'Mídias para compartilhar | Kit de Mobilização'
+      : currentView === 'profiles'
       ? 'Perfis para acompanhar | Kit de Mobilização'
       : currentView === 'agenda'
         ? 'Agenda de Mobilizações | Kit de Mobilização'
@@ -189,6 +192,16 @@ export default function App() {
     commitUrl(new URLSearchParams(), false, '/perfis')
     window.scrollTo({ top: 0 })
   }
+  const goMedia = () => {
+    pendingResultsScroll.current = null
+    commitUrl(new URLSearchParams(), false, '/midias')
+    window.scrollTo({ top: 0 })
+  }
+  const selectMedia = (id: string | null) => {
+    const next = new URLSearchParams()
+    if (id) next.set('midia', id)
+    commitUrl(next, false, '/midias')
+  }
   const returnToCatalog = () => {
     pendingResultsScroll.current = null
     commitUrl(new URLSearchParams(createCatalogSearch(filters)), true, '/')
@@ -199,11 +212,13 @@ export default function App() {
 
   return (
     <AppShell
-      sidebar={<Sidebar currentView={currentView} open={menuOpen} onHome={goHome} onInitiatives={goInitiatives} onAgenda={goAgenda} onProfiles={goProfiles} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
+      sidebar={<Sidebar currentView={currentView} open={menuOpen} onHome={goHome} onInitiatives={goInitiatives} onAgenda={goAgenda} onProfiles={goProfiles} onMedia={goMedia} onClose={() => setMenuOpen(false)} onOpen={() => setMenuOpen(true)} />}
       header={<header className={styles.header}><div className={styles.mobileBrand}><strong>Kit de Mobilização</strong><small>Segundo Turno · Eleições 2026</small></div><ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} /></header>}
       footer={<footer className={styles.footer}><p>O Kit de Mobilização é um agregador independente de recursos, iniciativas e informações de terceiros. Não representa uma organização ou movimento político. Confirme os dados e respeite a legislação eleitoral e as regras de uso dos espaços.</p><p>Dados atualizados em 9 de outubro de 2026.</p></footer>}
     >
-      {currentView === 'profiles' ? (
+      {currentView === 'media' ? (
+        <MediaPage selectedId={params.get('midia')} onSelect={selectMedia} onInitiatives={goInitiatives} />
+      ) : currentView === 'profiles' ? (
         <ProfilesPage data={profilesSource} onBack={returnToCatalog} />
       ) : currentView === 'agenda' ? (
         <AgendaPage agenda={agenda} events={agenda.eventos} now={now} params={params} onUpdate={updateAgenda} />

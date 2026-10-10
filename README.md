@@ -63,3 +63,10 @@ A proposta técnica acompanha a ideia do projeto: manter tudo leve, acessível e
 ### 🔗 [kitdemobilizacao.org](https://kitdemobilizacao.org)
 
 *Porque uma boa iniciativa merece ser encontrada.*
+# Galeria de mídias
+
+A página `/midias` é gerada a partir das pastas de `public/midia/`. Para acrescentar um material, coloque o arquivo original (JPG, JPEG, PNG, WebP ou PDF) na pasta da categoria e execute `npm run build`. O script `scripts/gerar-midias.mjs` cria o catálogo em `src/data/midias.generated.json` e miniaturas WebP em `public/midia-miniaturas/`. Ambos são gerados automaticamente; não edite esses arquivos. Novas pastas viram novas categorias.
+
+O script usa o conteúdo de cada arquivo como chave do cache da miniatura. O relatório local fica em `.cache/midias-build.json`. Os originais nunca são convertidos nem renomeados. Arquivos acima de 25 MiB ficam fora do catálogo e a cópia deles é retirada somente de `dist/`, pois Cloudflare Pages não publica arquivos maiores. O original em `public/midia/` permanece intacto.
+
+Para testar, execute `npm test`. A impressão é gerada no navegador: imagens são incorporadas ao PDF A4 e páginas de PDF são incorporadas como PDF, preservando o conteúdo vetorial quando presente. A opção “Baixar original” fornece o arquivo original.

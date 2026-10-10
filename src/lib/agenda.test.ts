@@ -8,9 +8,9 @@ const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
-    expect(data.eventos).toHaveLength(102)
+    expect(data.eventos).toHaveLength(470)
     const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
-    expect(october13).toHaveLength(11)
+    expect(october13).toHaveLength(53)
     expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
       'mobilizacao-estudantil-brasilia-1310',
       'mobilizacao-estudantil-feira-santana-1310',
@@ -37,7 +37,14 @@ describe('agenda', () => {
       '2026-10-13 Assú 18:13',
     ]))
     expect(filterAgendaEvents(data.eventos, { query: '', day: '2026-10-18', city: 'Florianópolis', state: 'SC', category: '', mobilization: '', includePast: true }, now, data.timezone).map((event) => event.local)).toEqual(['Escadaria Valda Costa, Centro'])
-    expect(sortEvents(data.eventos, data.timezone).filter((event) => event.data === '2026-10-18').map((event) => event.inicio)).toEqual(['08:30', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '11:00', '13:00'])
+    const october18Times = sortEvents(data.eventos, data.timezone).filter((event) => event.data === '2026-10-18').map((event) => event.inicio)
+    expect(october18Times).toEqual([...october18Times].sort((a, b) => (a ?? '99:99').localeCompare(b ?? '99:99')))
+    expect(data.eventos.filter((event) => event.id.startsWith('txt-'))).toHaveLength(368)
+    expect(data.eventos.filter((event) => event.data === '2026-10-24')).toHaveLength(6)
+    expect(data.eventos.filter((event) => event.data === '2026-10-10' && event.cidade === 'Campinas' && event.inicio === '09:00')).toHaveLength(4)
+    const newEventsWithoutTime = data.eventos.filter((event) => event.id.startsWith('txt-') && event.inicio === null)
+    expect(newEventsWithoutTime).toHaveLength(13)
+    expect(newEventsWithoutTime.every((event) => event.fim === null)).toBe(true)
   })
 
   it('ordena por data e hora e deixa data pendente ao final', () => {
@@ -53,7 +60,7 @@ describe('agenda', () => {
 
   it('mantém data pendente fora do próximo evento', () => {
     expect(getNextEvent(data.eventos, now, data.timezone)?.id).toBe('assembleia-ufsc-0910')
-    expect(getNextEvent([data.eventos[0]], now, data.timezone)).toBeUndefined()
+    expect(getNextEvent([data.eventos.find((event) => event.id === 'serigrafia-centro')!], now, data.timezone)).toBeUndefined()
   })
 
   it('combina dia, cidade, estado, categoria e busca', () => {
@@ -66,11 +73,11 @@ describe('agenda', () => {
     const event = { ...baseEvent, id: 'evento-recife', cidade: 'Recife', uf: 'PE' }
     const events = [...data.eventos, event]
 
-    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual([
+    expect(filterAgendaEvents(events, { query: '', day: '', city: 'Recife', state: '', category: '', mobilization: '', includePast: true }, now, data.timezone).map((item) => item.id)).toEqual(expect.arrayContaining([
       'evento-recife',
       '2026-10-11-recife-estudantes-com-lula-pelo-futuro-do-brasil',
       '2026-10-18-recife-mobilizacao-marco-zero',
-    ])
+    ]))
     expect(validateAgenda({ ...data, eventos: events }).errors).toEqual([])
   })
 

@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "titulo": "Diretório de Mobilização",
   "subtitulo": "Encontre iniciativas, materiais e ferramentas para participar",
-  "atualizadoEm": "2026-10-10",
+  "atualizadoEm": "2026-10-11",
   "aviso": "Este diretório reúne links de iniciativas de terceiros. A inclusão não implica vínculo oficial nem endosso. Confira a origem e respeite as regras eleitorais e de uso dos espaços.",
   "categorias": [
     {
@@ -175,6 +175,62 @@
         {
           "rotulo": "Acessar plataforma",
           "url": "https://lulaxbolsonaro.com/",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-usuario",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
+      "id": "o-brasil-em-jogo",
+      "nome": "O Brasil em Jogo",
+      "descricao": "Plataforma com dados públicos, fontes e comparações entre governos e propostas dos candidatos nas eleições de 2026, organizada em 12 temas.",
+      "categoriaPrincipal": "nas-redes",
+      "atividades": [
+        "compartilhar"
+      ],
+      "tags": [
+        "Dados",
+        "Comparações"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar plataforma",
+          "url": "https://obrasilemjogo.com.br/",
+          "principal": true
+        }
+      ],
+      "origem": "fornecido-pelo-usuario",
+      "verificacao": {
+        "status": "nao-verificado",
+        "verificadoEm": null,
+        "observacao": null
+      },
+      "ativo": true,
+      "destaque": false
+    },
+    {
+      "id": "fura-bolha",
+      "nome": "Fura Bolha",
+      "descricao": "Acervo de vídeos sobre política e eleições, organizados por temas, com opções para assistir, baixar e compartilhar pelo WhatsApp.",
+      "categoriaPrincipal": "nas-redes",
+      "atividades": [
+        "compartilhar"
+      ],
+      "tags": [
+        "Vídeos",
+        "WhatsApp"
+      ],
+      "links": [
+        {
+          "rotulo": "Acessar acervo",
+          "url": "https://fura-bolha.com/",
           "principal": true
         }
       ],

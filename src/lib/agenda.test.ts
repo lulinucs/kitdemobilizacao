@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getNextEvent, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getNextEvent, getUpcomingWidgetEvents, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
-    expect(data.eventos).toHaveLength(470)
+    expect(data.eventos).toHaveLength(471)
     const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
     expect(october13).toHaveLength(53)
     expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
@@ -140,6 +140,15 @@ describe('agenda', () => {
     expect(formatEventTime(unknown)).toBe('Horário a confirmar')
     expect(sorted.map((event) => event.id)).toEqual([timed.id, unknown.id])
     expect(getWidgetEventSelection([unknown], now, data.timezone).kind).toBe('empty')
+  })
+
+  it('inclui o protesto de Gravatal nos filtros e nas próximas atividades', () => {
+    const event = data.eventos.find((item) => item.id === 'protesto-educacao-gravatal-1710')
+    expect(event).toMatchObject({ data: '2026-10-17', inicio: '15:00', fim: null, cidade: 'Gravatal', uf: 'SC' })
+    const morning = new Date('2026-10-17T14:00:00.000Z') // 11h em Santa Catarina
+    const filters = { query: '', day: '2026-10-17', city: 'Gravatal', state: 'SC', category: '', mobilization: '', includePast: false }
+    expect(filterAgendaEvents(data.eventos, filters, morning, data.timezone).map((item) => item.id)).toEqual([event?.id])
+    expect(getUpcomingWidgetEvents(data.eventos, morning, data.timezone).some((item) => item.id === event?.id)).toBe(true)
   })
 
   it('exibe a programação de São José sem duplicações, horários inventados ou vínculo estudantil', () => {

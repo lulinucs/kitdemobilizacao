@@ -36,7 +36,10 @@ export function NextEventWidget({ selection, upcomingByLocation, agenda, onAgend
   const titleId = useId()
   const [showAllOngoing, setShowAllOngoing] = useState(false)
   const ongoingEvents = selection.kind === 'ongoing' ? selection.events : []
+  const possiblyOngoingEvents = selection.kind === 'ongoing' ? selection.possiblyOngoingEvents : selection.kind === 'possibly-ongoing' ? selection.events : []
   const visibleOngoing = showAllOngoing ? ongoingEvents : ongoingEvents.slice(0, 9)
+  const visiblePossiblyOngoing = showAllOngoing ? possiblyOngoingEvents : possiblyOngoingEvents.slice(0, Math.max(0, 9 - visibleOngoing.length))
+  const highlightedCount = ongoingEvents.length + possiblyOngoingEvents.length
 
   return (
     <aside className={styles.nextEvent} aria-labelledby={titleId}>
@@ -45,8 +48,12 @@ export function NextEventWidget({ selection, upcomingByLocation, agenda, onAgend
         <div className={styles.nextEventStatus}>{ongoingEvents.length > 0 && <span className={styles.liveDot} aria-hidden="true" />}<h4 id={`${titleId}-now`}>Acontecendo agora</h4><span className={styles.nextEventNowCount} role="status">{ongoingEvents.length} {ongoingEvents.length === 1 ? 'atividade' : 'atividades'}</span></div>
       {visibleOngoing.length > 0 && <div className={styles.nextEventItems}>{visibleOngoing.map((event) => <EventDetails key={event.id} event={event} agenda={agenda} onEvent={onEvent} />)}</div>}
       {!ongoingEvents.length && <p className={styles.nextEventEmpty}>Nenhuma atividade acontecendo neste momento.</p>}
-      {ongoingEvents.length > 9 && <button className={styles.nextEventExpand} type="button" aria-expanded={showAllOngoing} onClick={() => setShowAllOngoing((value) => !value)}>{showAllOngoing ? 'Mostrar menos atividades' : `Ver todas as ${ongoingEvents.length} atividades acontecendo`}</button>}
       </section>
+      {possiblyOngoingEvents.length > 0 && <section className={styles.nextEventPossibly} aria-labelledby={`${titleId}-possibly`}>
+        <div className={styles.nextEventStatus}><h4 id={`${titleId}-possibly`}>Pode estar acontecendo ainda</h4><span className={styles.nextEventNowCount} role="status">{possiblyOngoingEvents.length} {possiblyOngoingEvents.length === 1 ? 'atividade' : 'atividades'}</span></div>
+        <div className={styles.nextEventItems}>{visiblePossiblyOngoing.map((event) => <EventDetails key={event.id} event={event} agenda={agenda} onEvent={onEvent} />)}</div>
+      </section>}
+      {highlightedCount > 9 && <button className={styles.nextEventExpand} type="button" aria-expanded={showAllOngoing} onClick={() => setShowAllOngoing((value) => !value)}>{showAllOngoing ? 'Mostrar menos atividades' : `Ver todas as ${highlightedCount} atividades em andamento`}</button>}
       {upcomingByLocation.length > 0 ? (
         <section className={styles.nextEventCities} aria-labelledby={`${titleId}-cities`}>
           <h4 id={`${titleId}-cities`}>Próximas atividades</h4>

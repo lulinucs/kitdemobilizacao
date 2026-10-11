@@ -56,6 +56,5 @@ utils/__pycache__/
 # Configurações locais do OpenAI / Codex
 .openai/
 
-# Catálogo e miniaturas gerados durante o build
+# Miniaturas otimizadas geradas durante o build
 public/midia-miniaturas/
-src/data/midias.generated.json

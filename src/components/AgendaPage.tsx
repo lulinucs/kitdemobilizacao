@@ -1,8 +1,9 @@
-import { Clock3, List, Search, X } from 'lucide-react'
+import { Clock3, List, MapPin, Search, X } from 'lucide-react'
 import { useEffect, useMemo } from 'react'
 import type { AgendaData, AgendaEvent, AgendaFilters, AgendaViewMode } from '../agendaTypes'
 import { filterAgendaEvents, formatAgendaDate, formatMobilizationTitle, groupAgendaEvents, isPastForList } from '../lib/agenda'
 import { AgendaEventCard } from './AgendaEventCard'
+import { AgendaMap } from './AgendaMap'
 import styles from '../styles/App.module.css'
 
 interface AgendaPageProps {
@@ -16,7 +17,7 @@ interface AgendaPageProps {
 export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPageProps) {
   const selectedEventId = params.get('evento') ?? ''
   const selectedEvent = events.find((event) => event.id === selectedEventId)
-  const mode = (params.get('modo') === 'lista' ? 'list' : 'timeline') as AgendaViewMode
+  const mode = (params.get('modo') === 'mapa' ? 'map' : params.get('modo') === 'lista' ? 'list' : 'timeline') as AgendaViewMode
   const filters: AgendaFilters = {
     query: params.get('qa') ?? '',
     day: params.get('dia') ?? '',
@@ -67,7 +68,7 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
   }, [selectedEventId])
 
   const clear = () => onUpdate({ evento: null, qa: null, dia: null, cidade: null, uf: null, bairro: null, cat_agenda: null, mobilizacao: null, anteriores: null })
-  const setMode = (next: AgendaViewMode) => onUpdate({ modo: next === 'list' ? 'lista' : null })
+  const setMode = (next: AgendaViewMode) => onUpdate({ modo: next === 'map' ? 'mapa' : next === 'list' ? 'lista' : null })
   const eventCard = (event: AgendaEvent, grouped = false) => (
     <AgendaEventCard key={event.id} event={event} agenda={agenda} categoryName={agenda.categorias.find((item) => item.id === event.categoria)?.nome ?? event.categoria} now={now} selected={event.id === selectedEventId} grouped={grouped} onPermalink={(id) => onUpdate({ evento: id })} />
   )
@@ -147,13 +148,16 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
         <div className={styles.viewToggle} aria-label="Modo de visualização">
           <button className={mode === 'timeline' ? styles.viewActive : ''} type="button" onClick={() => setMode('timeline')} aria-label="Ver linha do tempo"><Clock3 aria-hidden="true" size={18} />Linha do tempo</button>
           <button className={mode === 'list' ? styles.viewActive : ''} type="button" onClick={() => setMode('list')} aria-label="Ver lista"><List aria-hidden="true" size={18} />Lista</button>
+          <button className={mode === 'map' ? styles.viewActive : ''} type="button" onClick={() => setMode('map')} aria-label="Ver mapa"><MapPin aria-hidden="true" size={18} />Mapa</button>
         </div>
         {hasFilters && <button className={styles.clearButton} type="button" onClick={clear}>Limpar filtros</button>}
       </div>
 
       {!resultCount && <div className={styles.emptyState}><Search aria-hidden="true" size={30} /><h3>Nenhuma atividade encontrada</h3><p>Tente outra data ou remova algum filtro.</p><button type="button" onClick={clear}>Limpar filtros</button></div>}
 
-      {upcomingEvents.length > 0 && (
+      {mode === 'map' && resultCount > 0 && <AgendaMap agenda={agenda} events={[...upcomingEvents, ...pastEvents, ...filteredPending]} now={now} selectedEventId={selectedEventId} />}
+
+      {mode !== 'map' && upcomingEvents.length > 0 && (
         <div className={mode === 'timeline' ? styles.timeline : styles.agendaList}>
           {mode === 'timeline'
             ? [...new Set(upcomingEvents.map((event) => event.data!))].map((day) => (
@@ -166,13 +170,13 @@ export function AgendaPage({ agenda, events, now, params, onUpdate }: AgendaPage
         </div>
       )}
 
-      {pastEvents.length > 0 && <section className={styles.pastSection}>
+      {mode !== 'map' && pastEvents.length > 0 && <section className={styles.pastSection}>
         <div><p className={styles.eyebrow}>ARQUIVO</p><h2>Atividades anteriores</h2></div>
         <p>Eventos anteriores ficam separados da programação principal.</p>
         <div className={styles.agendaList}>{renderEvents(pastEvents)}</div>
       </section>}
 
-      {filteredPending.length > 0 && (
+      {mode !== 'map' && filteredPending.length > 0 && (
         <section className={styles.pendingSection}>
           <div><p className={styles.eyebrow}>FORA DA CRONOLOGIA</p><h2>Atividades com data a confirmar</h2></div>
           <p>Estas atividades não entram na programação diária nem no widget de próxima atividade.</p>

@@ -31,6 +31,8 @@ async function main() {
   const catalog = []
   const excluded = []
   let generated = 0
+  const writeCatalog = () => writeFileSync(catalogFile, JSON.stringify(catalog, null, 2) + '\n')
+  let processed = 0
   for (const file of files(source).sort((a, b) => a.localeCompare(b, 'pt-BR'))) {
     const rel = relative(source, file).replaceAll('\\', '/')
     const extension = extname(file).toLowerCase()
@@ -74,8 +76,12 @@ async function main() {
     } catch (error) {
       excluded.push({ path: rel, reason: `Falha ao processar: ${error.message}` })
     }
+    processed++
+    // Preserve a usable partial catalog if this long-running job is interrupted.
+    // Keep the previous complete file until the first batch has finished.
+    if (processed % 10 === 0) writeCatalog()
   }
-  writeFileSync(catalogFile, JSON.stringify(catalog, null, 2) + '\n')
+  writeCatalog()
   const report = { cataloged: catalog.length, generated, excluded, thumbnailBytes: files(thumbs).reduce((sum, file) => sum + statSync(file).size, 0) }
   writeFileSync(reportFile, JSON.stringify(report, null, 2) + '\n')
   console.log(JSON.stringify(report, null, 2))

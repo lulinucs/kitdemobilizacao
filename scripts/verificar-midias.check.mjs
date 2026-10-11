@@ -17,7 +17,7 @@ test('todas as mídias e miniaturas são servidas como arquivo, nunca como HTML 
     for (let index = 0; index < catalog.length; index += 16) {
       await Promise.all(catalog.slice(index, index + 16).flatMap((item) => [
         [item.path, item.mime],
-        [item.thumbnail, 'image/webp'],
+        [item.thumbnail, item.thumbnail.startsWith('/midia-miniaturas/') ? 'image/webp' : item.thumbnail.endsWith('.svg') ? 'image/svg+xml' : item.mime],
       ]).map(async ([path, expected]) => {
         const response = await fetch(base + path, { method: 'HEAD' })
         if (response.status !== 200 || !response.headers.get('content-type')?.startsWith(expected)) failures.push([path, response.status, response.headers.get('content-type')])

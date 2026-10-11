@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getNextEvent, getUpcomingWidgetEvents, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getEventTemporalState, getNextEvent, getUpcomingWidgetEvents, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isEventPossiblyOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
@@ -188,7 +188,8 @@ describe('agenda', () => {
     expect(event.informacoesAdicionais).toBe('Levar adesivos.')
     expect(formatEventTime(event)).toBe('13:00–00:00 (dia seguinte)')
     expect(eventEndDateTime(event, data.timezone)?.toISOString()).toBe('2026-10-12T03:00:00.000Z')
-    expect(isEventOngoing(event, new Date('2026-10-12T02:30:00.000Z'), data.timezone)).toBe(true)
+    expect(isEventOngoing(event, new Date('2026-10-12T02:30:00.000Z'), data.timezone)).toBe(false)
+    expect(isPastForList(event, new Date('2026-10-12T02:30:00.000Z'), data.timezone)).toBe(false)
     expect(isEventOngoing(event, new Date('2026-10-12T03:00:00.000Z'), data.timezone)).toBe(false)
   })
 
@@ -249,12 +250,12 @@ describe('seleção do widget de próxima atividade', () => {
     ...overrides,
   })
 
-  it('prioriza um evento acontecendo agora entre 14h e 18h', () => {
+  it('classifica como possivelmente acontecendo entre 2h e 4h após o início', () => {
     const ongoing = event()
     const future = event({ id: 'futuro', inicio: '17:00', fim: '19:00' })
     const selection = getWidgetEventSelection([future, ongoing], new Date('2026-10-09T19:00:00.000Z'), timezone) // 16h local
 
-    expect(selection.kind).toBe('ongoing')
+    expect(selection.kind).toBe('possibly-ongoing')
     expect(selection.events.map((item) => item.id)).toEqual(['evento-base'])
   })
 
@@ -272,13 +273,14 @@ describe('seleção do widget de próxima atividade', () => {
     const selection = getWidgetEventSelection([second, first], new Date('2026-10-09T19:00:00.000Z'), timezone)
 
     expect(selection.kind).toBe('ongoing')
-    expect(selection.events.map((item) => item.id)).toEqual(['primeiro', 'segundo'])
+    expect(selection.events.map((item) => item.id)).toEqual(['segundo'])
+    expect(selection.kind === 'ongoing' ? selection.possiblyOngoingEvents.map((item) => item.id) : []).toEqual(['primeiro'])
   })
 
   it('mantém todas as atividades em andamento para a vitrine expansível', () => {
     const simultaneous = Array.from({ length: 11 }, (_, index) => event({ id: `simultaneo-${index}` }))
     const selection = getWidgetEventSelection(simultaneous, new Date('2026-10-09T19:00:00.000Z'), timezone)
-    expect(selection.kind).toBe('ongoing')
+    expect(selection.kind).toBe('possibly-ongoing')
     expect(selection.events).toHaveLength(11)
   })
 
@@ -304,25 +306,44 @@ describe('seleção do widget de próxima atividade', () => {
     expect(eventEndDateTime(overnight, timezone)?.toISOString()).toBe('2026-10-10T04:00:00.000Z')
   })
 
-  it('não mantém como acontecendo agora um evento sem término conhecido', () => {
+  it('passa um evento sem término para o destaque secundário após 2h', () => {
     const withoutEnd = event({ fim: null })
     const afterStart = new Date('2026-10-09T19:00:00.000Z')
     const selection = getWidgetEventSelection([withoutEnd], afterStart, timezone)
 
-    expect(selection.kind).toBe('empty')
+    expect(selection.kind).toBe('possibly-ongoing')
     expect(isEventOngoing(withoutEnd, afterStart, timezone)).toBe(false)
     expect(isPastForWidget(withoutEnd, new Date('2026-10-10T19:00:00.000Z'), timezone)).toBe(true)
   })
 
-  it('mantém ao vivo por no mínimo uma hora mesmo sem término informado', () => {
+  it('mantém o destaque principal por 2h e o secundário até 4h sem término informado', () => {
     const withoutEnd = event({ fim: null })
     expect(isEventOngoing(withoutEnd, new Date('2026-10-09T17:30:00.000Z'), timezone)).toBe(true)
-    expect(isEventOngoing(withoutEnd, new Date('2026-10-09T18:00:00.000Z'), timezone)).toBe(false)
+    expect(isEventOngoing(withoutEnd, new Date('2026-10-09T18:59:59.000Z'), timezone)).toBe(true)
+    expect(isEventOngoing(withoutEnd, new Date('2026-10-09T19:00:00.000Z'), timezone)).toBe(false)
+    expect(isEventPossiblyOngoing(withoutEnd, new Date('2026-10-09T19:00:00.000Z'), timezone)).toBe(true)
+    expect(isEventPossiblyOngoing(withoutEnd, new Date('2026-10-09T20:59:59.000Z'), timezone)).toBe(true)
+    expect(getEventTemporalState(withoutEnd, new Date('2026-10-09T21:00:00.000Z'), timezone)).toBe('inactive')
+    expect(isPastForList(withoutEnd, new Date('2026-10-09T21:00:00.000Z'), timezone)).toBe(true)
   })
 
-  it('mantém a janela mínima de uma hora quando o término divulgado é anterior', () => {
+  it('respeita o término explícito mesmo dentro da janela principal', () => {
     const short = event({ fim: '14:30' })
-    expect(isEventOngoing(short, new Date('2026-10-09T17:45:00.000Z'), timezone)).toBe(true)
+    expect(isEventOngoing(short, new Date('2026-10-09T17:29:59.000Z'), timezone)).toBe(true)
+    expect(isEventOngoing(short, new Date('2026-10-09T17:30:00.000Z'), timezone)).toBe(false)
+    expect(isEventPossiblyOngoing(short, new Date('2026-10-09T17:45:00.000Z'), timezone)).toBe(false)
+  })
+
+  it('respeita o fuso específico do local do evento', () => {
+    const manaus = event({ fim: null, timezone: 'America/Manaus', cidade: 'Manaus', uf: 'AM' })
+    expect(getEventTemporalState(manaus, new Date('2026-10-09T19:30:00.000Z'), timezone)).toBe('happening-now')
+    expect(getEventTemporalState(manaus, new Date('2026-10-09T20:00:00.000Z'), timezone)).toBe('possibly-happening')
+  })
+
+  it('não exibe o destaque secundário depois do término explícito', () => {
+    const endingDuringSecondaryWindow = event({ fim: '16:30' })
+    expect(isEventPossiblyOngoing(endingDuringSecondaryWindow, new Date('2026-10-09T19:29:59.000Z'), timezone)).toBe(true)
+    expect(getEventTemporalState(endingDuringSecondaryWindow, new Date('2026-10-09T19:30:00.000Z'), timezone)).toBe('inactive')
   })
 
   it('seleciona uma próxima atividade por localidade em ordem cronológica', () => {
@@ -355,7 +376,7 @@ describe('seleção do widget de próxima atividade', () => {
 
     expect(beforeStart.kind).toBe('upcoming')
     expect(beforeStart.events[0]?.id).toBe(nationalAct.id)
-    expect(afterStart.kind).toBe('empty')
+    expect(afterStart.kind).toBe('ongoing')
   })
 
   it('respeita o conjunto previamente filtrado pela cidade', () => {

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title description">
+  <title id="title">Documento PDF</title>
+  <desc id="description">Prévia genérica de um documento PDF</desc>
+  <rect width="800" height="600" fill="#f7f1e5"/>
+  <path d="M285 85h165l95 95v335H285z" fill="#fff" stroke="#e8ddc9" stroke-width="12"/>
+  <path d="M450 85v95h95" fill="#f8e5df" stroke="#e8ddc9" stroke-width="12" stroke-linejoin="round"/>
+  <rect x="330" y="285" width="170" height="78" rx="12" fill="#c7473a"/>
+  <text x="415" y="337" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="700">PDF</text>
+  <path d="M330 405h170M330 445h125" stroke="#61756b" stroke-width="12" stroke-linecap="round" opacity=".55"/>
+</svg>

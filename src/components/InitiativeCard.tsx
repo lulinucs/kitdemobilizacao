@@ -1,12 +1,25 @@
 import type { MouseEvent } from 'react'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, AtSign, Code2, ExternalLink, Folder, Globe2, HardDrive, MessageCircle, Play, Radio, Send, UserRound, UsersRound, Video } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import type { Category, Initiative } from '../types'
+import { getInitiativeLinkPresentation, type InitiativeLinkPresentation } from '../lib/initiativeLinks'
 import styles from '../styles/App.module.css'
 
 interface InitiativeCardProps {
   initiative: Initiative
   category?: Category
   onInternalNavigate?: (path: string) => void
+}
+
+const platformIcons: Partial<Record<InitiativeLinkPresentation['platform'], LucideIcon>> = {
+  whatsapp: MessageCircle, telegram: Send, 'google-drive': HardDrive,
+  instagram: AtSign, youtube: Play, github: Code2,
+}
+const kindIcons = { group: UsersRound, channel: Radio, folder: Folder, profile: UserRound, video: Video, site: Globe2 }
+
+function InitiativeLinkIcon({ presentation }: { presentation: InitiativeLinkPresentation }) {
+  const Icon = platformIcons[presentation.platform] ?? kindIcons[presentation.kind]
+  return <span className={styles.initiativeLinkIcon} data-platform={presentation.platform}><Icon aria-hidden="true" /></span>
 }
 
 export function InitiativeCard({ initiative, category, onInternalNavigate }: InitiativeCardProps) {
@@ -26,15 +39,17 @@ export function InitiativeCard({ initiative, category, onInternalNavigate }: Ini
       </div>
       <h3>{initiative.nome}</h3>
       <p className={styles.description}>{initiative.descricao}</p>
-      <div className={styles.cardActions}>
-        <a className={styles.primaryLink} href={primary.url} target={primary.url.startsWith('/') ? undefined : '_blank'} rel={primary.url.startsWith('/') ? undefined : 'noopener noreferrer'} onClick={(event) => internalNavigate(event, primary.url)}>
-          {primary.rotulo}{primary.url.startsWith('/') ? <ArrowRight aria-hidden="true" size={17} /> : <ExternalLink aria-hidden="true" size={17} />}
-        </a>
-        {secondary.map((link) => (
-          <a className={styles.secondaryLink} href={link.url} target={link.url.startsWith('/') ? undefined : '_blank'} rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'} onClick={(event) => internalNavigate(event, link.url)} key={link.url}>
-            {link.rotulo}{link.url.startsWith('/') ? <ArrowRight aria-hidden="true" size={14} /> : <ExternalLink aria-hidden="true" size={14} />}
+      <div className={styles.initiativeLinks}>
+        {[primary, ...secondary].map((link) => {
+          const presentation = getInitiativeLinkPresentation(link)
+          const internal = link.url.startsWith('/')
+          return <a className={`${styles.initiativeLink} ${link === primary ? styles.initiativeLinkPrimary : ''}`} data-platform={presentation.platform} href={link.url} target={internal ? undefined : '_blank'} rel={internal ? undefined : 'noopener noreferrer'} onClick={(event) => internalNavigate(event, link.url)} key={link.url}>
+            <InitiativeLinkIcon presentation={presentation} />
+            <span className={styles.initiativeLinkText}><strong>{link.rotulo}</strong><small>{presentation.descriptor}</small></span>
+            {internal ? <ArrowRight className={styles.initiativeLinkArrow} aria-hidden="true" size={17} /> : <ExternalLink className={styles.initiativeLinkArrow} aria-hidden="true" size={16} />}
+            {!internal && <span className={styles.srOnly}>(abre em nova aba)</span>}
           </a>
-        ))}
+        })}
       </div>
     </article>
   )

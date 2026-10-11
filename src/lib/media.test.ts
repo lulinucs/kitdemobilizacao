@@ -15,12 +15,12 @@ describe('catálogo de mídias', () => {
     expect(new Set(items.map((item) => item.path)).size).toBe(items.length)
     for (const item of items) {
       expect(item.path).toMatch(/^\/midia\//)
-      expect(item.thumbnail).toMatch(/^\/midia-miniaturas\//)
+      expect(item.thumbnail).toMatch(/^\/(midia-miniaturas\/|midia\/|pdf-placeholder\.svg$)/)
       expect(item.category).toBe(decodeURIComponent(item.path.split('/')[2]))
       expect(item.bytes).toBeLessThanOrEqual(25 * 1024 * 1024)
       expect(item.width).toBeGreaterThan(0)
       expect(item.height).toBeGreaterThan(0)
-      if (item.mime === 'application/pdf') expect(item.pages).toBeGreaterThan(0)
+      if (item.mime === 'application/pdf' && item.pages !== null) expect(item.pages).toBeGreaterThan(0)
     }
     expect(items.some((item) => /%20|%40|%C3/i.test(item.path))).toBe(true)
   })

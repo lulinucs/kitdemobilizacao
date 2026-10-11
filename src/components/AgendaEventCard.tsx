@@ -1,7 +1,7 @@
 import { Building2, CalendarDays, Clock3, ExternalLink, Link2, MapPin, Share2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventInstitution, formatEventPlace, formatEventTime, getDisplayStatus } from '../lib/agenda'
+import { buildEventShare, buildMapUrl, formatAgendaDate, formatEventInstitution, formatEventPlace, formatEventTime, getDisplayStatus, getEventTemporalState } from '../lib/agenda'
 import { publicAdditionalInfo, publicAgendaStatusLabel } from '../lib/agendaPresentation'
 import styles from '../styles/App.module.css'
 
@@ -30,7 +30,11 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, gr
   const [shareState, setShareState] = useState('Compartilhar')
   const [expanded, setExpanded] = useState(Boolean(selected))
   const status = getDisplayStatus(event, now, agenda.timezone)
-  const statusLabel = publicAgendaStatusLabel(status)
+  const temporalState = getEventTemporalState(event, now, agenda.timezone)
+  const functionalStatusLabel = publicAgendaStatusLabel(status)
+  const canBeActive = ['divulgado', 'confirmado', 'alterado'].includes(event.status)
+  const temporalStatus = !canBeActive ? null : temporalState === 'happening-now' ? 'happeningNow' : temporalState === 'possibly-happening' ? 'possiblyHappening' : null
+  const temporalStatusLabel = temporalStatus === 'happeningNow' ? 'Acontecendo agora' : temporalStatus === 'possiblyHappening' ? 'Pode estar acontecendo ainda' : null
   const additionalInfo = publicAdditionalInfo(event.informacoesAdicionais)
   const mapUrl = buildMapUrl(event)
   const institution = formatEventInstitution(event)
@@ -59,9 +63,10 @@ export function AgendaEventCard({ event, agenda, categoryName, now, selected, gr
   }
 
   return (
-    <article className={`${styles.agendaCard} ${status === 'encerrado' ? styles.agendaCardPast : ''} ${selected ? styles.agendaCardSelected : ''}`} id={`evento-${event.id}`}>
+    <article className={`${styles.agendaCard} ${status === 'encerrado' ? styles.agendaCardPast : ''} ${temporalStatus ? styles[`agendaCard_${temporalStatus}`] : ''} ${selected ? styles.agendaCardSelected : ''}`} id={`evento-${event.id}`}>
       <div className={styles.agendaCardTop}>
-        {statusLabel && <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{statusLabel}</span>}
+        {temporalStatusLabel && <span className={`${styles.statusBadge} ${styles[`status_${temporalStatus}`]}`}>{temporalStatusLabel}</span>}
+        {functionalStatusLabel && <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>{functionalStatusLabel}</span>}
         <span className={styles.agendaCategory}>{categoryName}</span>
       </div>
       <h3>{grouped ? groupedTitle : event.titulo}</h3>

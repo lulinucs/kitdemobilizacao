@@ -4,6 +4,10 @@ import { normalizeText } from './directory'
 const VALID_STATUSES = new Set<AgendaStatus>(['divulgado', 'confirmado', 'cancelado', 'alterado', 'data_pendente', 'encerrado'])
 const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
+const HAPPENING_NOW_MS = 2 * 60 * 60_000
+const POSSIBLY_HAPPENING_MS = 4 * 60 * 60_000
+
+export type EventTemporalState = 'upcoming' | 'happening-now' | 'possibly-happening' | 'inactive' | 'unscheduled'
 
 function isValidDate(value: string): boolean {
   if (!DATE_PATTERN.test(value)) return false
@@ -63,27 +67,48 @@ export function eventEndDateTime(event: AgendaEvent, timezone: string): Date | n
 }
 
 export function isPastForWidget(event: AgendaEvent, now: Date, timezone: string): boolean {
-  const end = effectiveEventEndDateTime(event, timezone)
+  const end = eventListEndDateTime(event, timezone)
   return Boolean(end && end.getTime() <= now.getTime())
 }
 
-function effectiveEventEndDateTime(event: AgendaEvent, timezone: string): Date | null {
+function eventListEndDateTime(event: AgendaEvent, timezone: string): Date | null {
   const start = eventDateTime(event, timezone)
   if (!start) return null
   const declaredEnd = eventEndDateTime(event, timezone)
-  return new Date(Math.max(declaredEnd?.getTime() ?? 0, start.getTime() + 60 * 60_000))
+  return declaredEnd ?? new Date(start.getTime() + POSSIBLY_HAPPENING_MS)
+}
+
+export function getEventTemporalState(event: AgendaEvent, now: Date, timezone: string): EventTemporalState {
+  const start = eventDateTime(event, timezone)
+  if (!start) return 'unscheduled'
+
+  const nowMs = now.getTime()
+  const startMs = start.getTime()
+  if (nowMs < startMs) return 'upcoming'
+
+  const declaredEndMs = eventEndDateTime(event, timezone)?.getTime()
+  if (declaredEndMs !== undefined && nowMs >= declaredEndMs) return 'inactive'
+  if (nowMs < startMs + HAPPENING_NOW_MS) return 'happening-now'
+  if (nowMs < startMs + POSSIBLY_HAPPENING_MS) return 'possibly-happening'
+  return 'inactive'
 }
 
 export function isEventOngoing(event: AgendaEvent, now: Date, timezone: string): boolean {
-  const start = eventDateTime(event, timezone)
-  if (!start) return false
-  const effectiveEnd = effectiveEventEndDateTime(event, timezone)
-  return Boolean(effectiveEnd && start.getTime() <= now.getTime() && now.getTime() < effectiveEnd.getTime())
+  return getEventTemporalState(event, now, timezone) === 'happening-now'
+}
+
+export function isEventPossiblyOngoing(event: AgendaEvent, now: Date, timezone: string): boolean {
+  return getEventTemporalState(event, now, timezone) === 'possibly-happening'
+}
+
+export function isEventHighlightedAsOngoing(event: AgendaEvent, now: Date, timezone: string): boolean {
+  const state = getEventTemporalState(event, now, timezone)
+  return state === 'happening-now' || state === 'possibly-happening'
 }
 
 export function isPastForList(event: AgendaEvent, now: Date, timezone: string): boolean {
   if (event.status === 'encerrado') return true
-  const end = effectiveEventEndDateTime(event, timezone)
+  const end = eventListEndDateTime(event, timezone)
   if (end) return end.getTime() <= now.getTime()
   return Boolean(event.data && event.data < getZonedDate(now, event.timezone ?? timezone))
 }
@@ -156,7 +181,8 @@ export function getNextEvent(events: AgendaEvent[], now: Date, timezone: string)
 }
 
 export type WidgetEventSelection =
-  | { kind: 'ongoing'; events: AgendaEvent[] }
+  | { kind: 'ongoing'; events: AgendaEvent[]; possiblyOngoingEvents: AgendaEvent[] }
+  | { kind: 'possibly-ongoing'; events: AgendaEvent[] }
   | { kind: 'upcoming'; events: [AgendaEvent] }
   | { kind: 'empty'; events: [] }
 
@@ -171,7 +197,9 @@ export function getWidgetEventSelection(events: AgendaEvent[], now: Date, timezo
     Boolean(event.data) && ['divulgado', 'confirmado', 'alterado'].includes(event.status),
   )
   const ongoing = sortEvents(eligible.filter((event) => isEventOngoing(event, now, timezone)), timezone)
-  if (ongoing.length) return { kind: 'ongoing', events: ongoing }
+  const possiblyOngoing = sortEvents(eligible.filter((event) => isEventPossiblyOngoing(event, now, timezone)), timezone)
+  if (ongoing.length) return { kind: 'ongoing', events: ongoing, possiblyOngoingEvents: possiblyOngoing }
+  if (possiblyOngoing.length) return { kind: 'possibly-ongoing', events: possiblyOngoing }
 
   const next = getNextEvent(eligible, now, timezone)
   return next ? { kind: 'upcoming', events: [next] } : { kind: 'empty', events: [] }
@@ -183,7 +211,7 @@ function isWidgetEligible(event: AgendaEvent): boolean {
 
 export function getUpcomingWidgetEvents(events: AgendaEvent[], now: Date, timezone: string): AgendaEvent[] {
   return sortEvents(events.filter((event) => {
-    if (!isWidgetEligible(event) || !event.data || isEventOngoing(event, now, timezone)) return false
+    if (!isWidgetEligible(event) || !event.data || isEventHighlightedAsOngoing(event, now, timezone)) return false
     if (event.inicio) {
       const start = eventDateTime(event, timezone)
       return Boolean(start && start.getTime() > now.getTime())
@@ -326,6 +354,12 @@ export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; error
     if ((event.inicio !== null && !TIME_PATTERN.test(event.inicio)) || (event.fim && !TIME_PATTERN.test(event.fim))) recordErrors.push(`Horário inválido em ${event.id}`)
     if (event.fim && !event.inicio) recordErrors.push(`Término sem horário inicial em ${event.id}`)
     if (event.verificadoEm && !DATE_PATTERN.test(event.verificadoEm)) recordErrors.push(`Data de verificação inválida em ${event.id}`)
+    if (event.coordenadas) {
+      const { latitude, longitude, precisao, provedor, consulta, rotulo, geocodificadoEm } = event.coordenadas
+      if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90 || !Number.isFinite(longitude) || longitude < -180 || longitude > 180) recordErrors.push(`Coordenadas inválidas em ${event.id}`)
+      if (!['endereco', 'local', 'cidade'].includes(precisao) || provedor !== 'nominatim' || typeof consulta !== 'string' || !consulta.trim() || typeof rotulo !== 'string' || !rotulo.trim()) recordErrors.push(`Metadados de geocodificação inválidos em ${event.id}`)
+      if (!DATE_PATTERN.test(geocodificadoEm)) recordErrors.push(`Data de geocodificação inválida em ${event.id}`)
+    }
     if (event.data) {
       if (!isValidDate(event.data)) recordErrors.push(`Data inválida em ${event.id}`)
     } else if (event.status !== 'data_pendente') {

@@ -17,6 +17,16 @@ export interface AgendaSource {
 
 export type AgendaModality = 'presencial' | 'virtual' | 'hibrida'
 
+export interface AgendaCoordinates {
+  latitude: number
+  longitude: number
+  precisao: 'endereco' | 'local' | 'cidade'
+  rotulo: string
+  provedor: 'nominatim'
+  consulta: string
+  geocodificadoEm: string
+}
+
 export interface AgendaEvent {
   id: string
   titulo: string
@@ -40,6 +50,7 @@ export interface AgendaEvent {
   local?: string
   endereco?: string
   bairro?: string
+  coordenadas?: AgendaCoordinates
   descricao: string
   informacoesAdicionais?: string
   fonte?: AgendaSource
@@ -68,4 +79,4 @@ export interface AgendaFilters {
   includePast: boolean
 }
 
-export type AgendaViewMode = 'timeline' | 'list'
+export type AgendaViewMode = 'timeline' | 'list' | 'map'

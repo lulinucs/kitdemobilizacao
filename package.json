@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/gerar-midias.mjs",
     "dev": "vite",
     "build": "node scripts/gerar-midias.mjs && tsc -b && vite build && node scripts/validar-deploy-midias.mjs",
     "preview": "vite preview",
     "pretest": "node scripts/gerar-midias.mjs",
     "test": "vitest run && node --test scripts/verificar-midias.check.mjs",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "geocode:agenda": "node scripts/geocodificar-agenda.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",

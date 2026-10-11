@@ -64,3 +64,42 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button { color: inherit; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.agenda-map-marker-wrap { background: transparent; border: 0; }
+.agenda-map-marker { display: block; position: relative; width: 24px; height: 24px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; background: #f4c542; box-shadow: 0 2px 8px rgb(0 0 0 / 30%); transform: rotate(-45deg); }
+.agenda-map-marker::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; background: #fff; }
+.agenda-map-marker--now { background: #d73a31; animation: agendaMapPulse 2.2s ease-out infinite; }
+.agenda-map-marker--possibly { background: #ef765f; }
+.agenda-map-marker--future { background: #f4c542; }
+.agenda-map-marker--soon { border-color: #263d38; background: #f4c542; box-shadow: 0 0 0 4px rgb(244 197 66 / 65%), 0 2px 8px rgb(0 0 0 / 35%); }
+.agenda-map-marker--inactive { background: #7b8580; opacity: .72; }
+.agenda-map-marker--cancelled { background: #7b8580; opacity: .72; }
+@keyframes agendaMapPulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(215 58 49 / 45%), 0 2px 8px rgb(0 0 0 / 32%); } 55% { box-shadow: 0 0 0 9px rgb(215 58 49 / 0%), 0 2px 8px rgb(0 0 0 / 32%); } }
+.agenda-map-popup { color: #263d38; font-family: "DM Sans", sans-serif; line-height: 1.4; }
+.agenda-map-popup > span { color: #9f382f; font-size: .7rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.agenda-map-popup h3 { margin: 5px 0 8px; font-size: 1rem; line-height: 1.28; }
+.agenda-map-popup p { margin: 5px 0; font-size: .8rem; }
+.agenda-map-popup .agenda-map-precision { color: #61756b; font-size: .72rem; }
+.agenda-map-popup > div { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 7px; }
+.leaflet-container .agenda-map-popup a { border: 2px solid #263d38; border-radius: 6px; padding: 6px 8px; color: #fff !important; background: #263d38; text-decoration: none; font-size: .75rem; font-weight: 800; }
+.leaflet-container .agenda-map-popup a.agenda-map-popup__route { color: #263d38 !important; background: #fff9ed; }
+.leaflet-container .agenda-map-popup a:hover, .leaflet-container .agenda-map-popup a:focus-visible { border-color: #263d38; color: #263d38 !important; background: #f4c542; }
+.agenda-map-cluster-icon { border: 0 !important; background: transparent !important; }
+.agenda-map-cluster { position: relative; width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; background: var(--agenda-cluster-ring); box-shadow: 0 3px 12px rgb(0 0 0 / 28%); }
+.agenda-map-cluster::before { content: ''; position: absolute; inset: 7px; border: 2px solid rgb(38 61 56 / 13%); border-radius: 50%; background: #fff9ed; }
+.agenda-map-cluster strong { position: relative; z-index: 1; color: #263d38; font-family: "DM Sans", sans-serif; font-size: .84rem; font-weight: 850; line-height: 1; }
+.leaflet-marker-icon.agenda-map-cluster-icon:focus-visible { border-radius: 50%; outline: 4px solid #263d38; outline-offset: 3px; }
+.agenda-map-cluster-composition { min-width: 220px; color: #263d38; font-family: "DM Sans", sans-serif; }
+.agenda-map-cluster-composition > strong { display: block; margin-bottom: 9px; font-size: .9rem; }
+.agenda-map-cluster-composition ul { margin: 0; padding: 0; display: grid; gap: 6px; list-style: none; }
+.agenda-map-cluster-composition li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 7px; font-size: .77rem; }
+.agenda-map-cluster-composition li i { width: 10px; height: 10px; border-radius: 50%; background: #7b8580; }
+.agenda-map-cluster-composition li i[data-state='now'] { background: #d73a31; }
+.agenda-map-cluster-composition li i[data-state='possibly'] { background: #ef765f; }
+.agenda-map-cluster-composition li i[data-state='future'] { background: #f4c542; box-shadow: 0 0 0 1px rgb(38 61 56 / 22%); }
+.agenda-map-cluster-composition li b { font-size: .8rem; }
+.agenda-map-cluster-composition small { display: block; margin-top: 9px; color: #61756b; font-size: .69rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .agenda-map-marker--now { animation: none; box-shadow: 0 0 0 4px rgb(215 58 49 / 28%), 0 2px 8px rgb(0 0 0 / 32%); }
+}

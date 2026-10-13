@@ -1611,14 +1611,23 @@
       "rotulo": "Novo Hamburgo, Rio Grande do Sul, Região Sul, Brasil",
       "consulta": "Novo Hamburgo, Rio Grande do Sul, Brasil",
       "fonte": "cache-municipio"
+    },
+    "tubarao|SC": {
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "latitude": -28.471488,
+      "longitude": -49.014132,
+      "rotulo": "Tubarão, Santa Catarina, Região Sul, Brasil",
+      "consulta": "Tubarão, Santa Catarina, Brasil",
+      "fonte": "cache-municipio"
     }
   },
-  "generatedAt": "2026-10-13T13:45:36.453Z",
+  "generatedAt": "2026-10-13T13:57:28.298Z",
   "summary": {
-    "municipalities": 179,
-    "recoveredFromHistory": 133,
+    "municipalities": 180,
+    "recoveredFromHistory": 0,
     "cacheHits": 0,
-    "externalRequests": 47,
-    "coordinatesRecovered": 367
+    "externalRequests": 1,
+    "coordinatesRecovered": 5
   }
 }

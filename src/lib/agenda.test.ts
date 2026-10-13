@@ -8,9 +8,9 @@ const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
-    expect(data.eventos).toHaveLength(549)
+    expect(data.eventos).toHaveLength(554)
     const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
-    expect(october13).toHaveLength(78)
+    expect(october13).toHaveLength(79)
     expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
       'mobilizacao-estudantil-brasilia-1310',
       'mobilizacao-estudantil-feira-santana-1310',
@@ -23,7 +23,7 @@ describe('agenda', () => {
     const exactCoordinates = data.eventos.filter((event) => event.coordenadas && event.coordenadas.precisao !== 'cidade')
     const approximateCoordinates = data.eventos.filter((event) => event.coordenadas?.precisao === 'cidade')
     expect(exactCoordinates).toHaveLength(175)
-    expect(approximateCoordinates).toHaveLength(367)
+    expect(approximateCoordinates).toHaveLength(372)
     expect(data.eventos.filter((event) => !event.coordenadas && event.modalidade !== 'virtual')).toHaveLength(7)
     expect(approximateCoordinates.every((event) => event.coordenadas?.rotulo === `Localização aproximada em ${event.cidade}/${event.uf} — coordenada representativa do município`)).toBe(true)
     expect(data.eventos.find((event) => event.id === 'mobilizacao-estudantil-brasilia-1310')).toMatchObject({
@@ -52,6 +52,23 @@ describe('agenda', () => {
     const newEventsWithoutTime = data.eventos.filter((event) => event.id.startsWith('txt-') && event.inicio === null)
     expect(newEventsWithoutTime).toHaveLength(13)
     expect(newEventsWithoutTime.every((event) => event.fim === null)).toBe(true)
+  })
+
+  it('inclui a agenda de Tubarão sem duplicações e sem inventar dados ausentes', () => {
+    const events = data.eventos.filter((event) => event.cidade === 'Tubarão' && event.uf === 'SC')
+
+    expect(events).toHaveLength(5)
+    expect(new Set(events.map((event) => event.id)).size).toBe(5)
+    expect(events.map((event) => `${event.data}|${event.inicio}|${event.local ?? ''}`)).toEqual([
+      '2026-10-13|18:30|Em frente ao Bloco Pedagógico da Unisul',
+      '2026-10-14|18:30|FUCAP',
+      '2026-10-16|null|Viper',
+      '2026-10-17|09:00|Chafariz',
+      '2026-10-18|19:00|',
+    ])
+    expect(events.find((event) => event.id === 'chafariz-caminhada-comercio-tubarao-1710')?.inicioRotulo).toBe('a partir das 9h; concentração às 11h')
+    expect(events.every((event) => event.coordenadas?.precisao === 'cidade')).toBe(true)
+    expect(new Set(events.map((event) => `${event.coordenadas?.latitude},${event.coordenadas?.longitude}`)).size).toBe(1)
   })
 
   it('ordena por data e hora e deixa data pendente ao final', () => {

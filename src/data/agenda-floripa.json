@@ -14410,6 +14410,140 @@
         "consulta": "Maricá, RJ, Brasil",
         "geocodificadoEm": "2026-10-13"
       }
+    },
+    {
+      "id": "mobilizacao-unisul-tubarao-1310",
+      "titulo": "Mobilização na Unisul — Tubarão",
+      "categoria": "ato",
+      "data": "2026-10-13",
+      "inicio": "18:30",
+      "fim": null,
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "local": "Em frente ao Bloco Pedagógico da Unisul",
+      "descricao": "Mobilização na Unisul, em Tubarão/SC.",
+      "fonte": {
+        "rotulo": "Agenda de mobilizações — Tubarão/SC fornecida ao Kit"
+      },
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -28.471488,
+        "longitude": -49.014132,
+        "precisao": "cidade",
+        "rotulo": "Localização aproximada em Tubarão/SC — coordenada representativa do município",
+        "provedor": "nominatim",
+        "consulta": "Tubarão, Santa Catarina, Brasil",
+        "geocodificadoEm": "2026-10-13"
+      }
+    },
+    {
+      "id": "mobilizacao-fucap-tubarao-1410",
+      "titulo": "Mobilização na FUCAP — Tubarão",
+      "categoria": "ato",
+      "data": "2026-10-14",
+      "inicio": "18:30",
+      "fim": null,
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "local": "FUCAP",
+      "descricao": "Mobilização na FUCAP, em Tubarão/SC.",
+      "informacoesAdicionais": "Ponto exato de encontro não informado.",
+      "fonte": {
+        "rotulo": "Agenda de mobilizações — Tubarão/SC fornecida ao Kit"
+      },
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -28.471488,
+        "longitude": -49.014132,
+        "precisao": "cidade",
+        "rotulo": "Localização aproximada em Tubarão/SC — coordenada representativa do município",
+        "provedor": "nominatim",
+        "consulta": "Tubarão, Santa Catarina, Brasil",
+        "geocodificadoEm": "2026-10-13"
+      }
+    },
+    {
+      "id": "farofa-arce-tubarao-1610",
+      "titulo": "Farofa da ARCE",
+      "categoria": "outros",
+      "data": "2026-10-16",
+      "inicio": null,
+      "fim": null,
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "local": "Viper",
+      "descricao": "Farofa da ARCE, em Tubarão/SC.",
+      "informacoesAdicionais": "Horário não informado.",
+      "fonte": {
+        "rotulo": "Agenda de mobilizações — Tubarão/SC fornecida ao Kit"
+      },
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -28.471488,
+        "longitude": -49.014132,
+        "precisao": "cidade",
+        "rotulo": "Localização aproximada em Tubarão/SC — coordenada representativa do município",
+        "provedor": "nominatim",
+        "consulta": "Tubarão, Santa Catarina, Brasil",
+        "geocodificadoEm": "2026-10-13"
+      }
+    },
+    {
+      "id": "chafariz-caminhada-comercio-tubarao-1710",
+      "titulo": "Chafariz + caminhada pelo comércio",
+      "categoria": "caminhada",
+      "data": "2026-10-17",
+      "inicio": "09:00",
+      "inicioRotulo": "a partir das 9h; concentração às 11h",
+      "fim": null,
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "local": "Chafariz",
+      "descricao": "Atividade no chafariz seguida de caminhada pelo comércio, em Tubarão/SC.",
+      "informacoesAdicionais": "O ponto exato do chafariz não foi informado.",
+      "fonte": {
+        "rotulo": "Agenda de mobilizações — Tubarão/SC fornecida ao Kit"
+      },
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -28.471488,
+        "longitude": -49.014132,
+        "precisao": "cidade",
+        "rotulo": "Localização aproximada em Tubarão/SC — coordenada representativa do município",
+        "provedor": "nominatim",
+        "consulta": "Tubarão, Santa Catarina, Brasil",
+        "geocodificadoEm": "2026-10-13"
+      }
+    },
+    {
+      "id": "reuniao-comite-lula-tubarao-1810",
+      "titulo": "Reunião do Comitê do Lula — Tubarão",
+      "categoria": "reuniao",
+      "data": "2026-10-18",
+      "inicio": "19:00",
+      "fim": null,
+      "cidade": "Tubarão",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "descricao": "Reunião do Comitê do Lula, em Tubarão/SC.",
+      "informacoesAdicionais": "Local não informado.",
+      "fonte": {
+        "rotulo": "Agenda de mobilizações — Tubarão/SC fornecida ao Kit"
+      },
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -28.471488,
+        "longitude": -49.014132,
+        "precisao": "cidade",
+        "rotulo": "Localização aproximada em Tubarão/SC — coordenada representativa do município",
+        "provedor": "nominatim",
+        "consulta": "Tubarão, Santa Catarina, Brasil",
+        "geocodificadoEm": "2026-10-13"
+      }
     }
   ]
 }

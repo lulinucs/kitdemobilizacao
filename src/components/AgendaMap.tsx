@@ -210,7 +210,9 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
         L.circleMarker([origin.latitude, origin.longitude], { radius: 8, color: '#155eef', fillColor: '#fff', fillOpacity: 1, weight: 4 })
           .bindPopup('Sua localização aproximada — não armazenada').addTo(map)
       }
-      if (selectedMarker) {
+      if (origin) {
+        map.setView([origin.latitude, origin.longitude], 11)
+      } else if (selectedMarker) {
         cluster.zoomToShowLayer(selectedMarker, () => selectedMarker.openPopup())
       } else if (bounds.length > 1) {
         const padding = variant === 'home' ? 14 : 28

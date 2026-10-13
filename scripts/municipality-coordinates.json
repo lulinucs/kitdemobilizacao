@@ -1,0 +1,1624 @@
+{
+  "schemaVersion": 1,
+  "entries": {
+    "florianopolis|SC": {
+      "cidade": "Florianópolis",
+      "uf": "SC",
+      "latitude": -27.5973002,
+      "longitude": -48.5496098,
+      "rotulo": "Florianópolis, Santa Catarina, Região Sul, Brasil",
+      "consulta": "Florianópolis, SC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao jose|SC": {
+      "cidade": "São José",
+      "uf": "SC",
+      "latitude": -27.6157733,
+      "longitude": -48.6276491,
+      "rotulo": "São José, Santa Catarina, Região Sul, Brasil",
+      "consulta": "São José, SC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao luis|MA": {
+      "cidade": "São Luís",
+      "uf": "MA",
+      "latitude": -2.5295265,
+      "longitude": -44.2963942,
+      "rotulo": "São Luís, Maranhão, Região Nordeste, Brasil",
+      "consulta": "São Luís, MA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "belo jardim|PE": {
+      "cidade": "Belo Jardim",
+      "uf": "PE",
+      "latitude": -8.3338293,
+      "longitude": -36.4176419,
+      "rotulo": "Belo Jardim, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Belo Jardim, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "serra talhada|PE": {
+      "cidade": "Serra Talhada",
+      "uf": "PE",
+      "latitude": -7.9867805,
+      "longitude": -38.2920294,
+      "rotulo": "Serra Talhada, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Serra Talhada, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "feira santana|BA": {
+      "cidade": "Feira de Santana",
+      "uf": "BA",
+      "latitude": -12.2578934,
+      "longitude": -38.9598047,
+      "rotulo": "Feira de Santana, Bahia, Região Nordeste, Brasil",
+      "consulta": "Feira de Santana, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "joao pessoa|PB": {
+      "cidade": "João Pessoa",
+      "uf": "PB",
+      "latitude": -7.1215981,
+      "longitude": -34.882028,
+      "rotulo": "João Pessoa, Paraíba, Região Nordeste, Brasil",
+      "consulta": "João Pessoa, PB, Brasil",
+      "fonte": "historico-cache"
+    },
+    "juazeiro norte|CE": {
+      "cidade": "Juazeiro do Norte",
+      "uf": "CE",
+      "latitude": -7.2153453,
+      "longitude": -39.3153336,
+      "rotulo": "Juazeiro do Norte, Ceará, Região Nordeste, Brasil",
+      "consulta": "Juazeiro do Norte, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "crato|CE": {
+      "cidade": "Crato",
+      "uf": "CE",
+      "latitude": -7.2885006,
+      "longitude": -39.4820298,
+      "rotulo": "Crato, Ceará, Região Nordeste, Brasil",
+      "consulta": "Crato, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "aracaju|SE": {
+      "cidade": "Aracaju",
+      "uf": "SE",
+      "latitude": -10.9162061,
+      "longitude": -37.0774655,
+      "rotulo": "Aracaju, Sergipe, Região Nordeste, Brasil",
+      "consulta": "Aracaju, SE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rio claro|SP": {
+      "cidade": "Rio Claro",
+      "uf": "SP",
+      "latitude": -22.4100108,
+      "longitude": -47.5603933,
+      "rotulo": "Rio Claro, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Rio Claro, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "salvador|BA": {
+      "cidade": "Salvador",
+      "uf": "BA",
+      "latitude": -12.9822499,
+      "longitude": -38.4812772,
+      "rotulo": "Salvador, Bahia, Região Nordeste, Brasil",
+      "consulta": "Salvador, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "praia grande|SP": {
+      "cidade": "Praia Grande",
+      "uf": "SP",
+      "latitude": -24.008979,
+      "longitude": -46.4144939,
+      "rotulo": "Praia Grande, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Praia Grande, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao paulo|SP": {
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "latitude": -23.5506507,
+      "longitude": -46.6333824,
+      "rotulo": "São Paulo, Região Sudeste, Brasil",
+      "consulta": "São Paulo, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "vitoria|ES": {
+      "cidade": "Vitória",
+      "uf": "ES",
+      "latitude": -20.3200917,
+      "longitude": -40.3376682,
+      "rotulo": "Vitória, Espírito Santo, Região Sudeste, Brasil",
+      "consulta": "Vitória, ES, Brasil",
+      "fonte": "historico-cache"
+    },
+    "manaus|AM": {
+      "cidade": "Manaus",
+      "uf": "AM",
+      "latitude": -3.1316333,
+      "longitude": -59.9825041,
+      "rotulo": "Manaus, Amazonas, Região Norte, 69000-000, Brasil",
+      "consulta": "Manaus, AM, Brasil",
+      "fonte": "historico-cache"
+    },
+    "assu|RN": {
+      "cidade": "Assú",
+      "uf": "RN",
+      "latitude": -5.5836471,
+      "longitude": -36.9139421,
+      "rotulo": "Assu, Rio Grande do Norte, Região Nordeste, 59650-000, Brasil",
+      "consulta": "Assú, RN, Brasil",
+      "fonte": "historico-cache"
+    },
+    "joinville|SC": {
+      "cidade": "Joinville",
+      "uf": "SC",
+      "latitude": -26.3044898,
+      "longitude": -48.8486726,
+      "rotulo": "Joinville, Santa Catarina, Região Sul, Brasil",
+      "consulta": "Joinville, SC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rio janeiro|RJ": {
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "latitude": -22.9110137,
+      "longitude": -43.2093727,
+      "rotulo": "Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Rio de Janeiro, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "itabuna|BA": {
+      "cidade": "Itabuna",
+      "uf": "BA",
+      "latitude": -14.793173,
+      "longitude": -39.2750341,
+      "rotulo": "Itabuna, Bahia, Região Nordeste, Brasil",
+      "consulta": "Itabuna, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "parauapebas|PA": {
+      "cidade": "Parauapebas",
+      "uf": "PA",
+      "latitude": -6.0696846,
+      "longitude": -49.8903283,
+      "rotulo": "Parauapebas, Pará, Região Norte, Brasil",
+      "consulta": "Parauapebas, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "camacari|BA": {
+      "cidade": "Camaçari",
+      "uf": "BA",
+      "latitude": -12.6998188,
+      "longitude": -38.3260762,
+      "rotulo": "Camaçari, Bahia, Região Nordeste, Brasil",
+      "consulta": "Camaçari, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "itapetininga|SP": {
+      "cidade": "Itapetininga",
+      "uf": "SP",
+      "latitude": -23.588607,
+      "longitude": -48.048326,
+      "rotulo": "Itapetininga, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Itapetininga, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "recife|PE": {
+      "cidade": "Recife",
+      "uf": "PE",
+      "latitude": -8.0584933,
+      "longitude": -34.8848193,
+      "rotulo": "Recife, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Recife, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "santo antonio jesus|BA": {
+      "cidade": "Santo Antônio de Jesus",
+      "uf": "BA",
+      "latitude": -12.9689361,
+      "longitude": -39.260914,
+      "rotulo": "Santo Antônio de Jesus, Bahia, Região Nordeste, Brasil",
+      "consulta": "Santo Antônio de Jesus, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "natal|RN": {
+      "cidade": "Natal",
+      "uf": "RN",
+      "latitude": -5.805398,
+      "longitude": -35.2080905,
+      "rotulo": "Natal, Rio Grande do Norte, Região Nordeste, Brasil",
+      "consulta": "Natal, RN, Brasil",
+      "fonte": "historico-cache"
+    },
+    "jaciara|MT": {
+      "cidade": "Jaciara",
+      "uf": "MT",
+      "latitude": -15.9520115,
+      "longitude": -54.9762106,
+      "rotulo": "Jaciara, Mato Grosso, Região Centro-Oeste, Brasil",
+      "consulta": "Jaciara, MT, Brasil",
+      "fonte": "historico-cache"
+    },
+    "fortaleza|CE": {
+      "cidade": "Fortaleza",
+      "uf": "CE",
+      "latitude": -3.7932167,
+      "longitude": -38.5280359,
+      "rotulo": "Fortaleza, Ceará, Região Nordeste, Brasil",
+      "consulta": "Fortaleza, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "brazlandia|DF": {
+      "cidade": "Brazlândia",
+      "uf": "DF",
+      "latitude": -15.6808898,
+      "longitude": -48.1942621,
+      "rotulo": "Brazlândia, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Brazlândia, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "anapolis|GO": {
+      "cidade": "Anápolis",
+      "uf": "GO",
+      "latitude": -16.3332828,
+      "longitude": -48.9525756,
+      "rotulo": "Anápolis, Goiás, Região Centro-Oeste, Brasil",
+      "consulta": "Anápolis, GO, Brasil",
+      "fonte": "historico-cache"
+    },
+    "linhares|ES": {
+      "cidade": "Linhares",
+      "uf": "ES",
+      "latitude": -19.341076,
+      "longitude": -39.9483354,
+      "rotulo": "Linhares, Espírito Santo, Região Sudeste, Brasil",
+      "consulta": "Linhares, ES, Brasil",
+      "fonte": "historico-cache"
+    },
+    "campinas|SP": {
+      "cidade": "Campinas",
+      "uf": "SP",
+      "latitude": -22.9056391,
+      "longitude": -47.059564,
+      "rotulo": "Campinas, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Campinas, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "curitiba|PR": {
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "latitude": -25.4295963,
+      "longitude": -49.2712724,
+      "rotulo": "Curitiba, Paraná, Região Sul, Brasil",
+      "consulta": "Curitiba, PR, Brasil",
+      "fonte": "historico-cache"
+    },
+    "bauru|SP": {
+      "cidade": "Bauru",
+      "uf": "SP",
+      "latitude": -22.3173803,
+      "longitude": -49.0689778,
+      "rotulo": "Bauru, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Bauru, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "paranavai|PR": {
+      "cidade": "Paranavaí",
+      "uf": "PR",
+      "latitude": -23.08165,
+      "longitude": -52.461724,
+      "rotulo": "Paranavaí, Paraná, Região Sul, Brasil",
+      "consulta": "Paranavaí, PR, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao roque|SP": {
+      "cidade": "São Roque",
+      "uf": "SP",
+      "latitude": -23.5304843,
+      "longitude": -47.1355473,
+      "rotulo": "São Roque, São Paulo, Região Sudeste, Brasil",
+      "consulta": "São Roque, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "macae|RJ": {
+      "cidade": "Macaé",
+      "uf": "RJ",
+      "latitude": -22.2828305,
+      "longitude": -41.9649091,
+      "rotulo": "Macaé, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Macaé, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "barbalha|CE": {
+      "cidade": "Barbalha",
+      "uf": "CE",
+      "latitude": -7.3121067,
+      "longitude": -39.3036427,
+      "rotulo": "Barbalha, Ceará, Região Nordeste, Brasil",
+      "consulta": "Barbalha, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "caxambu|MG": {
+      "cidade": "Caxambu",
+      "uf": "MG",
+      "latitude": -21.9755872,
+      "longitude": -44.9311403,
+      "rotulo": "Caxambu, Minas Gerais, Região Sudeste, 37440-000, Brasil",
+      "consulta": "Caxambu, MG, Brasil",
+      "fonte": "historico-cache"
+    },
+    "mage|RJ": {
+      "cidade": "Magé",
+      "uf": "RJ",
+      "latitude": -22.6042779,
+      "longitude": -43.1081091,
+      "rotulo": "Magé, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Magé, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "mesquita|RJ": {
+      "cidade": "Mesquita",
+      "uf": "RJ",
+      "latitude": -22.802535,
+      "longitude": -43.460259,
+      "rotulo": "Mesquita, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Mesquita, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "nova iguacu|RJ": {
+      "cidade": "Nova Iguaçu",
+      "uf": "RJ",
+      "latitude": -22.7592175,
+      "longitude": -43.4508728,
+      "rotulo": "Nova Iguaçu, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Nova Iguaçu, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cascavel|CE": {
+      "cidade": "Cascavel",
+      "uf": "CE",
+      "latitude": -4.129666,
+      "longitude": -38.241178,
+      "rotulo": "Cascavel, Ceará, Região Nordeste, Brasil",
+      "consulta": "Cascavel, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "maceio|AL": {
+      "cidade": "Maceió",
+      "uf": "AL",
+      "latitude": -9.6476843,
+      "longitude": -35.7339264,
+      "rotulo": "Maceió, Alagoas, Região Nordeste, Brasil",
+      "consulta": "Maceió, AL, Brasil",
+      "fonte": "historico-cache"
+    },
+    "ceilandia|DF": {
+      "cidade": "Ceilândia",
+      "uf": "DF",
+      "latitude": -15.8173391,
+      "longitude": -48.1045766,
+      "rotulo": "Ceilândia, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Ceilândia, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "santos|SP": {
+      "cidade": "Santos",
+      "uf": "SP",
+      "latitude": -23.9609448,
+      "longitude": -46.3166316,
+      "rotulo": "Santos, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Santos, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "volta redonda|RJ": {
+      "cidade": "Volta Redonda",
+      "uf": "RJ",
+      "latitude": -22.521856,
+      "longitude": -44.1040128,
+      "rotulo": "Volta Redonda, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Volta Redonda, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "belford roxo|RJ": {
+      "cidade": "Belford Roxo",
+      "uf": "RJ",
+      "latitude": -22.7309996,
+      "longitude": -43.3796377,
+      "rotulo": "Belford Roxo, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Belford Roxo, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "campo grande|MS": {
+      "cidade": "Campo Grande",
+      "uf": "MS",
+      "latitude": -20.4640173,
+      "longitude": -54.6162947,
+      "rotulo": "Campo Grande, Mato Grosso do Sul, Região Centro-Oeste, Brasil",
+      "consulta": "Campo Grande, MS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "diadema|SP": {
+      "cidade": "Diadema",
+      "uf": "SP",
+      "latitude": -23.6866428,
+      "longitude": -46.6246935,
+      "rotulo": "Diadema, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Diadema, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rio branco|AC": {
+      "cidade": "Rio Branco",
+      "uf": "AC",
+      "latitude": -9.9765362,
+      "longitude": -67.8220778,
+      "rotulo": "Rio Branco, Acre, Região Norte, Brasil",
+      "consulta": "Rio Branco, AC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "atibaia|SP": {
+      "cidade": "Atibaia",
+      "uf": "SP",
+      "latitude": -23.1177393,
+      "longitude": -46.5547861,
+      "rotulo": "Atibaia, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Atibaia, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "salto|SP": {
+      "cidade": "Salto",
+      "uf": "SP",
+      "latitude": -23.1989983,
+      "longitude": -47.2913682,
+      "rotulo": "Salto, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Salto, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "osorio|RS": {
+      "cidade": "Osório",
+      "uf": "RS",
+      "latitude": -29.8890733,
+      "longitude": -50.2740498,
+      "rotulo": "Osório, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Osório, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "osasco|SP": {
+      "cidade": "Osasco",
+      "uf": "SP",
+      "latitude": -23.5324859,
+      "longitude": -46.7916801,
+      "rotulo": "Osasco, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Osasco, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "goiania|GO": {
+      "cidade": "Goiânia",
+      "uf": "GO",
+      "latitude": -16.680882,
+      "longitude": -49.2532691,
+      "rotulo": "Goiânia, Goiás, Região Centro-Oeste, Brasil",
+      "consulta": "Goiânia, GO, Brasil",
+      "fonte": "historico-cache"
+    },
+    "lages|SC": {
+      "cidade": "Lages",
+      "uf": "SC",
+      "latitude": -27.8165664,
+      "longitude": -50.325883,
+      "rotulo": "Lages, Santa Catarina, Região Sul, Brasil",
+      "consulta": "Lages, SC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cidreira|RS": {
+      "cidade": "Cidreira",
+      "uf": "RS",
+      "latitude": -30.1657063,
+      "longitude": -50.218331,
+      "rotulo": "Cidreira, Rio Grande do Sul, Região Sul, 95595-000, Brasil",
+      "consulta": "Cidreira, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "brasilia|DF": {
+      "cidade": "Brasília",
+      "uf": "DF",
+      "latitude": -15.7939869,
+      "longitude": -47.8828,
+      "rotulo": "Brasília, Plano Piloto, Distrito Federal, Região Centro-Oeste, 70391-900, Brasil",
+      "consulta": "Brasília, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "juiz fora|MG": {
+      "cidade": "Juiz de Fora",
+      "uf": "MG",
+      "latitude": -21.7609533,
+      "longitude": -43.3501129,
+      "rotulo": "Juiz de Fora, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Juiz de Fora, MG, Brasil",
+      "fonte": "historico-cache"
+    },
+    "duque caxias|RJ": {
+      "cidade": "Duque de Caxias",
+      "uf": "RJ",
+      "latitude": -22.6429163,
+      "longitude": -43.3021266,
+      "rotulo": "Duque de Caxias, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Duque de Caxias, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "macapa|AP": {
+      "cidade": "Macapá",
+      "uf": "AP",
+      "latitude": 0.0401529,
+      "longitude": -51.0569588,
+      "rotulo": "Macapá, Amapá, Região Norte, Brasil",
+      "consulta": "Macapá, AP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "varjao|DF": {
+      "cidade": "Varjão",
+      "uf": "DF",
+      "latitude": -15.710824,
+      "longitude": -47.8763338,
+      "rotulo": "Varjão, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Varjão, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rondonopolis|MT": {
+      "cidade": "Rondonópolis",
+      "uf": "MT",
+      "latitude": -16.4603533,
+      "longitude": -54.6397099,
+      "rotulo": "Rondonópolis, Mato Grosso, Região Centro-Oeste, Brasil",
+      "consulta": "Rondonópolis, MT, Brasil",
+      "fonte": "historico-cache"
+    },
+    "poco redondo|SE": {
+      "cidade": "Poço Redondo",
+      "uf": "SE",
+      "latitude": -9.8055833,
+      "longitude": -37.6850557,
+      "rotulo": "Poço Redondo, Sergipe, Região Nordeste, 49810-000, Brasil",
+      "consulta": "Poço Redondo, SE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "porto alegre|RS": {
+      "cidade": "Porto Alegre",
+      "uf": "RS",
+      "latitude": -30.1009166,
+      "longitude": -51.1887882,
+      "rotulo": "Porto Alegre, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Porto Alegre, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rio grande|RS": {
+      "cidade": "Rio Grande",
+      "uf": "RS",
+      "latitude": -32.0334252,
+      "longitude": -52.0991297,
+      "rotulo": "Rio Grande, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Rio Grande, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "itaperuna|RJ": {
+      "cidade": "Itaperuna",
+      "uf": "RJ",
+      "latitude": -21.215816,
+      "longitude": -41.879813,
+      "rotulo": "Itaperuna, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Itaperuna, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "maracanau|CE": {
+      "cidade": "Maracanaú",
+      "uf": "CE",
+      "latitude": -3.8779438,
+      "longitude": -38.6247697,
+      "rotulo": "Maracanaú, Ceará, Região Nordeste, Brasil",
+      "consulta": "Maracanaú, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "braganca|PA": {
+      "cidade": "Bragança",
+      "uf": "PA",
+      "latitude": -1.0574255,
+      "longitude": -46.7635232,
+      "rotulo": "Bragança, Pará, Região Norte, 68600-000, Brasil",
+      "consulta": "Bragança, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "benevides|PA": {
+      "cidade": "Benevides",
+      "uf": "PA",
+      "latitude": -1.3555577,
+      "longitude": -48.252235,
+      "rotulo": "Benevides, Pará, Região Norte, Brasil",
+      "consulta": "Benevides, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "morrinhos|GO": {
+      "cidade": "Morrinhos",
+      "uf": "GO",
+      "latitude": -17.7333689,
+      "longitude": -49.105908,
+      "rotulo": "Morrinhos, Goiás, Região Centro-Oeste, Brasil",
+      "consulta": "Morrinhos, GO, Brasil",
+      "fonte": "historico-cache"
+    },
+    "boa vista|RR": {
+      "cidade": "Boa Vista",
+      "uf": "RR",
+      "latitude": 2.8208478,
+      "longitude": -60.6719582,
+      "rotulo": "Boa Vista, Roraima, Região Norte, Brasil",
+      "consulta": "Boa Vista, RR, Brasil",
+      "fonte": "historico-cache"
+    },
+    "ibiuna|SP": {
+      "cidade": "Ibiúna",
+      "uf": "SP",
+      "latitude": -23.6544825,
+      "longitude": -47.220856,
+      "rotulo": "Ibiúna, São Paulo, Região Sudeste, 18150-000, Brasil",
+      "consulta": "Ibiúna, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cuiaba|MT": {
+      "cidade": "Cuiabá",
+      "uf": "MT",
+      "latitude": -15.5986686,
+      "longitude": -56.0991301,
+      "rotulo": "Cuiabá, Mato Grosso, Região Centro-Oeste, Brasil",
+      "consulta": "Cuiabá, MT, Brasil",
+      "fonte": "historico-cache"
+    },
+    "maraba|PA": {
+      "cidade": "Marabá",
+      "uf": "PA",
+      "latitude": -5.3462821,
+      "longitude": -49.1007401,
+      "rotulo": "Marabá, Pará, Região Norte, Brasil",
+      "consulta": "Marabá, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "planaltina|DF": {
+      "cidade": "Planaltina",
+      "uf": "DF",
+      "latitude": -15.6181947,
+      "longitude": -47.6555703,
+      "rotulo": "Planaltina, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Planaltina, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "franca|SP": {
+      "cidade": "Franca",
+      "uf": "SP",
+      "latitude": -20.5381768,
+      "longitude": -47.4009795,
+      "rotulo": "Franca, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Franca, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "itaguai|RJ": {
+      "cidade": "Itaguaí",
+      "uf": "RJ",
+      "latitude": -22.8122697,
+      "longitude": -43.823563,
+      "rotulo": "Itaguaí, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Itaguaí, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "marilia|SP": {
+      "cidade": "Marília",
+      "uf": "SP",
+      "latitude": -22.2172002,
+      "longitude": -49.9500061,
+      "rotulo": "Marília, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Marília, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao sebastiao paraiso|MG": {
+      "cidade": "São Sebastião do Paraíso",
+      "uf": "MG",
+      "latitude": -20.9124331,
+      "longitude": -46.9823296,
+      "rotulo": "São Sebastião do Paraíso, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "São Sebastião do Paraíso, MG, Brasil",
+      "fonte": "historico-cache"
+    },
+    "araras|SP": {
+      "cidade": "Araras",
+      "uf": "SP",
+      "latitude": -22.357202,
+      "longitude": -47.3838715,
+      "rotulo": "Araras, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Araras, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "taboao serra|SP": {
+      "cidade": "Taboão da Serra",
+      "uf": "SP",
+      "latitude": -23.6121912,
+      "longitude": -46.7790539,
+      "rotulo": "Taboão da Serra, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Taboão da Serra, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "valinhos|SP": {
+      "cidade": "Valinhos",
+      "uf": "SP",
+      "latitude": -22.97056,
+      "longitude": -46.99583,
+      "rotulo": "Valinhos, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Valinhos, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "torres|RS": {
+      "cidade": "Torres",
+      "uf": "RS",
+      "latitude": -29.3373663,
+      "longitude": -49.7299648,
+      "rotulo": "Torres, Rio Grande do Sul, Região Sul, 95560-000, Brasil",
+      "consulta": "Torres, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cascavel|PR": {
+      "cidade": "Cascavel",
+      "uf": "PR",
+      "latitude": -24.9554996,
+      "longitude": -53.4560544,
+      "rotulo": "Cascavel, Paraná, Região Sul, Brasil",
+      "consulta": "Cascavel, PR, Brasil",
+      "fonte": "historico-cache"
+    },
+    "tiradentes|MG": {
+      "cidade": "Tiradentes",
+      "uf": "MG",
+      "latitude": -21.1104688,
+      "longitude": -44.1742937,
+      "rotulo": "Tiradentes, Minas Gerais, Região Sudeste, 36325-000, Brasil",
+      "consulta": "Tiradentes, MG, Brasil",
+      "fonte": "historico-cache"
+    },
+    "capao canoa|RS": {
+      "cidade": "Capão da Canoa",
+      "uf": "RS",
+      "latitude": -29.7508278,
+      "longitude": -50.0210729,
+      "rotulo": "Capão da Canoa, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Capão da Canoa, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "carapicuiba|SP": {
+      "cidade": "Carapicuíba",
+      "uf": "SP",
+      "latitude": -23.5234673,
+      "longitude": -46.8406808,
+      "rotulo": "Carapicuíba, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Carapicuíba, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "conceicao coite|BA": {
+      "cidade": "Conceição do Coité",
+      "uf": "BA",
+      "latitude": -11.5110945,
+      "longitude": -39.2510362,
+      "rotulo": "Conceição do Coité, Bahia, Região Nordeste, Brasil",
+      "consulta": "Conceição do Coité, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "imbe|RS": {
+      "cidade": "Imbé",
+      "uf": "RS",
+      "latitude": -29.975269,
+      "longitude": -50.128068,
+      "rotulo": "Imbé, Rio Grande do Sul, Região Sul, 95625-000, Brasil",
+      "consulta": "Imbé, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "palmas|TO": {
+      "cidade": "Palmas",
+      "uf": "TO",
+      "latitude": -10.1837852,
+      "longitude": -48.3336423,
+      "rotulo": "Palmas, Tocantins, Região Norte, Brasil",
+      "consulta": "Palmas, TO, Brasil",
+      "fonte": "historico-cache"
+    },
+    "santa rita|PB": {
+      "cidade": "Santa Rita",
+      "uf": "PB",
+      "latitude": -7.128465,
+      "longitude": -34.9846186,
+      "rotulo": "Santa Rita, Paraíba, Região Nordeste, Brasil",
+      "consulta": "Santa Rita, PB, Brasil",
+      "fonte": "historico-cache"
+    },
+    "presidente dutra|MA": {
+      "cidade": "Presidente Dutra",
+      "uf": "MA",
+      "latitude": -5.289801,
+      "longitude": -44.49498,
+      "rotulo": "Presidente Dutra, Maranhão, Região Nordeste, 65760-000, Brasil",
+      "consulta": "Presidente Dutra, MA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "caninde|CE": {
+      "cidade": "Canindé",
+      "uf": "CE",
+      "latitude": -4.4035777,
+      "longitude": -39.4236161,
+      "rotulo": "Canindé, Ceará, Região Nordeste, 62700-000, Brasil",
+      "consulta": "Canindé, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "pau ferros|RN": {
+      "cidade": "Pau dos Ferros",
+      "uf": "RN",
+      "latitude": -6.1124964,
+      "longitude": -38.2062628,
+      "rotulo": "Pau dos Ferros, Rio Grande do Norte, Região Nordeste, 59900-000, Brasil",
+      "consulta": "Pau dos Ferros, RN, Brasil",
+      "fonte": "historico-cache"
+    },
+    "pinhal|RS": {
+      "cidade": "Pinhal",
+      "uf": "RS",
+      "latitude": -27.5114158,
+      "longitude": -53.2163814,
+      "rotulo": "Pinhal, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Pinhal, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "parnaiba|PI": {
+      "cidade": "Parnaíba",
+      "uf": "PI",
+      "latitude": -2.9147515,
+      "longitude": -41.7661953,
+      "rotulo": "Parnaíba, Piauí, Região Nordeste, Brasil",
+      "consulta": "Parnaíba, PI, Brasil",
+      "fonte": "historico-cache"
+    },
+    "belem|PA": {
+      "cidade": "Belém",
+      "uf": "PA",
+      "latitude": -1.45056,
+      "longitude": -48.4682453,
+      "rotulo": "Belém, Pará, Região Norte, Brasil",
+      "consulta": "Belém, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "simao dias|SE": {
+      "cidade": "Simão Dias",
+      "uf": "SE",
+      "latitude": -10.7383767,
+      "longitude": -37.8090877,
+      "rotulo": "Simão Dias, Sergipe, Região Nordeste, 49480-000, Brasil",
+      "consulta": "Simão Dias, SE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cidade ocidental|GO": {
+      "cidade": "Cidade Ocidental",
+      "uf": "GO",
+      "latitude": -16.1000758,
+      "longitude": -47.9445014,
+      "rotulo": "Cidade Ocidental, Goiás, Região Centro-Oeste, Brasil",
+      "consulta": "Cidade Ocidental, GO, Brasil",
+      "fonte": "historico-cache"
+    },
+    "pelotas|RS": {
+      "cidade": "Pelotas",
+      "uf": "RS",
+      "latitude": -31.5616084,
+      "longitude": -52.3439617,
+      "rotulo": "Pelotas, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Pelotas, RS, Brasil",
+      "fonte": "historico-cache"
+    },
+    "resende|RJ": {
+      "cidade": "Resende",
+      "uf": "RJ",
+      "latitude": -22.4418699,
+      "longitude": -44.4204847,
+      "rotulo": "Resende, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Resende, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "ananindeua|PA": {
+      "cidade": "Ananindeua",
+      "uf": "PA",
+      "latitude": -1.374035,
+      "longitude": -48.4016623,
+      "rotulo": "Ananindeua, Pará, Região Norte, Brasil",
+      "consulta": "Ananindeua, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "brumado|BA": {
+      "cidade": "Brumado",
+      "uf": "BA",
+      "latitude": -14.2025099,
+      "longitude": -41.6701307,
+      "rotulo": "Brumado, Bahia, Região Nordeste, Brasil",
+      "consulta": "Brumado, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "aracati|CE": {
+      "cidade": "Aracati",
+      "uf": "CE",
+      "latitude": -4.558259,
+      "longitude": -37.767894,
+      "rotulo": "Aracati, Ceará, Região Nordeste, Brasil",
+      "consulta": "Aracati, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "iguatu|CE": {
+      "cidade": "Iguatu",
+      "uf": "CE",
+      "latitude": -6.361934,
+      "longitude": -39.2972233,
+      "rotulo": "Iguatu, Ceará, Região Nordeste, Brasil",
+      "consulta": "Iguatu, CE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "caico|RN": {
+      "cidade": "Caicó",
+      "uf": "RN",
+      "latitude": -6.4594544,
+      "longitude": -37.0971911,
+      "rotulo": "Caicó, Rio Grande do Norte, Região Nordeste, 59300-000, Brasil",
+      "consulta": "Caicó, RN, Brasil",
+      "fonte": "historico-cache"
+    },
+    "barreiras|BA": {
+      "cidade": "Barreiras",
+      "uf": "BA",
+      "latitude": -12.1440031,
+      "longitude": -44.9967406,
+      "rotulo": "Barreiras, Bahia, Região Nordeste, Brasil",
+      "consulta": "Barreiras, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sobradinho|DF": {
+      "cidade": "Sobradinho",
+      "uf": "DF",
+      "latitude": -15.6500533,
+      "longitude": -47.7848449,
+      "rotulo": "Sobradinho, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Sobradinho, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "umbauba|SE": {
+      "cidade": "Umbaúba",
+      "uf": "SE",
+      "latitude": -11.3826792,
+      "longitude": -37.6565562,
+      "rotulo": "Umbaúba, Sergipe, Região Nordeste, 49260-000, Brasil",
+      "consulta": "Umbaúba, SE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "piloezinhos|PB": {
+      "cidade": "Pilõezinhos",
+      "uf": "PB",
+      "latitude": -6.8427437,
+      "longitude": -35.5308348,
+      "rotulo": "Pilõezinhos, Paraíba, Região Nordeste, Brasil",
+      "consulta": "Pilõezinhos, PB, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sorocaba|SP": {
+      "cidade": "Sorocaba",
+      "uf": "SP",
+      "latitude": -23.5003451,
+      "longitude": -47.4582864,
+      "rotulo": "Sorocaba, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Sorocaba, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "gama|DF": {
+      "cidade": "Gama",
+      "uf": "DF",
+      "latitude": -16.0170857,
+      "longitude": -48.0653054,
+      "rotulo": "Gama, Distrito Federal, Região Centro-Oeste, Brasil",
+      "consulta": "Gama, DF, Brasil",
+      "fonte": "historico-cache"
+    },
+    "santo antonio leverger|MT": {
+      "cidade": "Santo Antônio do Leverger",
+      "uf": "MT",
+      "latitude": -15.8644521,
+      "longitude": -56.0765226,
+      "rotulo": "Santo Antônio de Leverger, Mato Grosso, Região Centro-Oeste, Brasil",
+      "consulta": "Santo Antônio do Leverger, MT, Brasil",
+      "fonte": "historico-cache"
+    },
+    "caruaru|PE": {
+      "cidade": "Caruaru",
+      "uf": "PE",
+      "latitude": -8.2829702,
+      "longitude": -35.9722852,
+      "rotulo": "Caruaru, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Caruaru, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "teixeira freitas|BA": {
+      "cidade": "Teixeira de Freitas",
+      "uf": "BA",
+      "latitude": -17.5384774,
+      "longitude": -39.7451701,
+      "rotulo": "Teixeira de Freitas, Bahia, Região Nordeste, Brasil",
+      "consulta": "Teixeira de Freitas, BA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "capanema|PA": {
+      "cidade": "Capanema",
+      "uf": "PA",
+      "latitude": -1.1933054,
+      "longitude": -47.1828679,
+      "rotulo": "Capanema, Pará, Região Norte, Brasil",
+      "consulta": "Capanema, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "aurora para|PA": {
+      "cidade": "Aurora do Pará",
+      "uf": "PA",
+      "latitude": -2.1323199,
+      "longitude": -47.558436,
+      "rotulo": "Aurora do Pará, Pará, Região Norte, Brasil",
+      "consulta": "Aurora do Pará, PA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "leopoldina|MG": {
+      "cidade": "Leopoldina",
+      "uf": "MG",
+      "latitude": -21.5314282,
+      "longitude": -42.6403534,
+      "rotulo": "Leopoldina, Minas Gerais, Região Sudeste, 36700-192, Brasil",
+      "consulta": "Leopoldina, MG, Brasil",
+      "fonte": "historico-cache"
+    },
+    "ribeirao preto|SP": {
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "latitude": -21.1776315,
+      "longitude": -47.8100983,
+      "rotulo": "Ribeirão Preto, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Ribeirão Preto, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao jose campos|SP": {
+      "cidade": "São José dos Campos",
+      "uf": "SP",
+      "latitude": -23.1867782,
+      "longitude": -45.8854538,
+      "rotulo": "São José dos Campos, Eugênio de Melo, São Paulo, Região Sudeste, Brasil",
+      "consulta": "São José dos Campos, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "gravatal|SC": {
+      "cidade": "Gravatal",
+      "uf": "SC",
+      "latitude": -28.3300703,
+      "longitude": -49.0362296,
+      "rotulo": "Gravatal, Santa Catarina, Região Sul, 88735-000, Brasil",
+      "consulta": "Gravatal, SC, Brasil",
+      "fonte": "historico-cache"
+    },
+    "marica|RJ": {
+      "cidade": "Maricá",
+      "uf": "RJ",
+      "latitude": -22.9088758,
+      "longitude": -42.8171914,
+      "rotulo": "Maricá, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Maricá, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "raposa|MA": {
+      "cidade": "Raposa",
+      "uf": "MA",
+      "latitude": -2.4410095,
+      "longitude": -44.1104256,
+      "rotulo": "Raposa, Maranhão, Região Nordeste, 65138-000, Brasil",
+      "consulta": "Raposa, MA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "estancia|SE": {
+      "cidade": "Estância",
+      "uf": "SE",
+      "latitude": -11.2682255,
+      "longitude": -37.4378341,
+      "rotulo": "Estância, Sergipe, Região Nordeste, 49200-000, Brasil",
+      "consulta": "Estância, SE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "cabo santo agostinho|PE": {
+      "cidade": "Cabo de Santo Agostinho",
+      "uf": "PE",
+      "latitude": -8.2838945,
+      "longitude": -35.0320984,
+      "rotulo": "Cabo de Santo Agostinho, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Cabo de Santo Agostinho, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "itaiba|PE": {
+      "cidade": "Itaíba",
+      "uf": "PE",
+      "latitude": -8.94675,
+      "longitude": -37.421188,
+      "rotulo": "Itaíba, Pernambuco, Região Nordeste, Brasil",
+      "consulta": "Itaíba, PE, Brasil",
+      "fonte": "historico-cache"
+    },
+    "santa barbara d oeste|SP": {
+      "cidade": "Santa Bárbara d'Oeste",
+      "uf": "SP",
+      "latitude": -22.7542539,
+      "longitude": -47.4137884,
+      "rotulo": "Santa Bárbara d'Oeste, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Santa Bárbara d'Oeste, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "niteroi|RJ": {
+      "cidade": "Niterói",
+      "uf": "RJ",
+      "latitude": -22.8884,
+      "longitude": -43.1147,
+      "rotulo": "Niterói, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Niterói, RJ, Brasil",
+      "fonte": "historico-cache"
+    },
+    "rosario|MA": {
+      "cidade": "Rosário",
+      "uf": "MA",
+      "latitude": -2.9405903,
+      "longitude": -44.2491088,
+      "rotulo": "Rosário, Maranhão, Região Nordeste, Brasil",
+      "consulta": "Rosário, MA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "sao joao boa vista|SP": {
+      "cidade": "São João da Boa Vista",
+      "uf": "SP",
+      "latitude": -21.9687099,
+      "longitude": -46.7969216,
+      "rotulo": "São João da Boa Vista, São Paulo, Região Sudeste, Brasil",
+      "consulta": "São João da Boa Vista, SP, Brasil",
+      "fonte": "historico-cache"
+    },
+    "bacabeira|MA": {
+      "cidade": "Bacabeira",
+      "uf": "MA",
+      "latitude": -2.9786744,
+      "longitude": -44.3163504,
+      "rotulo": "Bacabeira, Maranhão, Região Nordeste, Brasil",
+      "consulta": "Bacabeira, MA, Brasil",
+      "fonte": "historico-cache"
+    },
+    "belo horizonte|MG": {
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "latitude": -19.9227318,
+      "longitude": -43.9450948,
+      "rotulo": "Belo Horizonte, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Belo Horizonte, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "quixada|CE": {
+      "cidade": "Quixadá",
+      "uf": "CE",
+      "latitude": -4.9160786,
+      "longitude": -39.0293634,
+      "rotulo": "Quixadá, Ceará, Região Nordeste, Brasil",
+      "consulta": "Quixadá, Ceará, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "palmeira indios|AL": {
+      "cidade": "Palmeira dos Índios",
+      "uf": "AL",
+      "latitude": -9.4076249,
+      "longitude": -36.6323616,
+      "rotulo": "Palmeira dos Índios, Alagoas, Região Nordeste, Brasil",
+      "consulta": "Palmeira dos Índios, Alagoas, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "guarabira|PB": {
+      "cidade": "Guarabira",
+      "uf": "PB",
+      "latitude": -6.8513982,
+      "longitude": -35.4915582,
+      "rotulo": "Guarabira, Paraíba, Região Nordeste, Brasil",
+      "consulta": "Guarabira, Paraíba, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "teresina|PI": {
+      "cidade": "Teresina",
+      "uf": "PI",
+      "latitude": -5.0874608,
+      "longitude": -42.8049571,
+      "rotulo": "Teresina, Piauí, Região Nordeste, Brasil",
+      "consulta": "Teresina, Piauí, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "londrina|PR": {
+      "cidade": "Londrina",
+      "uf": "PR",
+      "latitude": -23.3112878,
+      "longitude": -51.1595023,
+      "rotulo": "Londrina, Paraná, Região Sul, Brasil",
+      "consulta": "Londrina, Paraná, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "mossoro|RN": {
+      "cidade": "Mossoró",
+      "uf": "RN",
+      "latitude": -5.1904332,
+      "longitude": -37.3443872,
+      "rotulo": "Mossoró, Rio Grande do Norte, Região Nordeste, Brasil",
+      "consulta": "Mossoró, Rio Grande do Norte, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "divinopolis|MG": {
+      "cidade": "Divinópolis",
+      "uf": "MG",
+      "latitude": -20.1597921,
+      "longitude": -44.8739341,
+      "rotulo": "Divinópolis, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Divinópolis, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "araraquara|SP": {
+      "cidade": "Araraquara",
+      "uf": "SP",
+      "latitude": -21.7886713,
+      "longitude": -48.1773096,
+      "rotulo": "Araraquara, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Araraquara, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "cabo frio|RJ": {
+      "cidade": "Cabo Frio",
+      "uf": "RJ",
+      "latitude": -22.7378309,
+      "longitude": -42.0240869,
+      "rotulo": "Cabo Frio, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "Cabo Frio, Rio de Janeiro, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "cajamar|SP": {
+      "cidade": "Cajamar",
+      "uf": "SP",
+      "latitude": -23.3561111,
+      "longitude": -46.8769444,
+      "rotulo": "Cajamar, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Cajamar, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "castanhal|PA": {
+      "cidade": "Castanhal",
+      "uf": "PA",
+      "latitude": -1.2927031,
+      "longitude": -47.9223903,
+      "rotulo": "Castanhal, Pará, Região Norte, Brasil",
+      "consulta": "Castanhal, Pará, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "santa maria|RS": {
+      "cidade": "Santa Maria",
+      "uf": "RS",
+      "latitude": -29.6860512,
+      "longitude": -53.8069214,
+      "rotulo": "Santa Maria, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Santa Maria, Rio Grande do Sul, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "itajuba|MG": {
+      "cidade": "Itajubá",
+      "uf": "MG",
+      "latitude": -22.4238234,
+      "longitude": -45.4524156,
+      "rotulo": "Itajubá, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Itajubá, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "itabaiana|SE": {
+      "cidade": "Itabaiana",
+      "uf": "SE",
+      "latitude": -10.6856197,
+      "longitude": -37.4270517,
+      "rotulo": "Itabaiana, Sergipe, Região Nordeste, Brasil",
+      "consulta": "Itabaiana, Sergipe, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "porto feliz|SP": {
+      "cidade": "Porto Feliz",
+      "uf": "SP",
+      "latitude": -23.2110713,
+      "longitude": -47.5247163,
+      "rotulo": "Porto Feliz, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Porto Feliz, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "mogi cruzes|SP": {
+      "cidade": "Mogi das Cruzes",
+      "uf": "SP",
+      "latitude": -23.5234284,
+      "longitude": -46.1926671,
+      "rotulo": "Mogi das Cruzes, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Mogi das Cruzes, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "bom conselho|PE": {
+      "cidade": "Bom Conselho",
+      "uf": "PE",
+      "latitude": -9.169191,
+      "longitude": -36.685683,
+      "rotulo": "Bom Conselho, Pernambuco, Região Nordeste, 55330-000, Brasil",
+      "consulta": "Bom Conselho, Pernambuco, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "seabra|BA": {
+      "cidade": "Seabra",
+      "uf": "BA",
+      "latitude": -12.4172071,
+      "longitude": -41.772051,
+      "rotulo": "Seabra, Bahia, Região Nordeste, Brasil",
+      "consulta": "Seabra, Bahia, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "ararangua|SC": {
+      "cidade": "Araranguá",
+      "uf": "SC",
+      "latitude": -28.9348832,
+      "longitude": -49.4858389,
+      "rotulo": "Araranguá, Santa Catarina, Região Sul, Brasil",
+      "consulta": "Araranguá, Santa Catarina, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "piracicaba|SP": {
+      "cidade": "Piracicaba",
+      "uf": "SP",
+      "latitude": -22.725165,
+      "longitude": -47.6493269,
+      "rotulo": "Piracicaba, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Piracicaba, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "marituba|PA": {
+      "cidade": "Marituba",
+      "uf": "PA",
+      "latitude": -1.3595306,
+      "longitude": -48.3361504,
+      "rotulo": "Marituba, Pará, Região Norte, 67200-000, Brasil",
+      "consulta": "Marituba, Pará, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "limoeiro norte|CE": {
+      "cidade": "Limoeiro do Norte",
+      "uf": "CE",
+      "latitude": -5.1455607,
+      "longitude": -38.0984936,
+      "rotulo": "Limoeiro do Norte, Ceará, Região Nordeste, 62930-000, Brasil",
+      "consulta": "Limoeiro do Norte, Ceará, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "paranagua|PR": {
+      "cidade": "Paranaguá",
+      "uf": "PR",
+      "latitude": -25.5148822,
+      "longitude": -48.5226695,
+      "rotulo": "Paranaguá, Paraná, Região Sul, Brasil",
+      "consulta": "Paranaguá, Paraná, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "francisco beltrao|PR": {
+      "cidade": "Francisco Beltrão",
+      "uf": "PR",
+      "latitude": -26.0790979,
+      "longitude": -53.0533527,
+      "rotulo": "Francisco Beltrão, Paraná, Região Sul, Brasil",
+      "consulta": "Francisco Beltrão, Paraná, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "suzano|SP": {
+      "cidade": "Suzano",
+      "uf": "SP",
+      "latitude": -23.5427842,
+      "longitude": -46.3108391,
+      "rotulo": "Suzano, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Suzano, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "araguaina|TO": {
+      "cidade": "Araguaína",
+      "uf": "TO",
+      "latitude": -7.1936574,
+      "longitude": -48.2064645,
+      "rotulo": "Araguaína, Tocantins, Região Norte, Brasil",
+      "consulta": "Araguaína, Tocantins, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "vitoria conquista|BA": {
+      "cidade": "Vitória da Conquista",
+      "uf": "BA",
+      "latitude": -15.0747441,
+      "longitude": -40.8940303,
+      "rotulo": "Vitória da Conquista, Bahia, Região Nordeste, Brasil",
+      "consulta": "Vitória da Conquista, Bahia, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "campina grande|PB": {
+      "cidade": "Campina Grande",
+      "uf": "PB",
+      "latitude": -7.2246743,
+      "longitude": -35.8771292,
+      "rotulo": "Campina Grande, Paraíba, Região Nordeste, Brasil",
+      "consulta": "Campina Grande, Paraíba, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "barueri|SP": {
+      "cidade": "Barueri",
+      "uf": "SP",
+      "latitude": -23.5112184,
+      "longitude": -46.8764612,
+      "rotulo": "Barueri, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Barueri, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "ilheus|BA": {
+      "cidade": "Ilhéus",
+      "uf": "BA",
+      "latitude": -14.792599,
+      "longitude": -39.0453843,
+      "rotulo": "Ilhéus, Bahia, Região Nordeste, Brasil",
+      "consulta": "Ilhéus, Bahia, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "muriae|MG": {
+      "cidade": "Muriaé",
+      "uf": "MG",
+      "latitude": -21.1313485,
+      "longitude": -42.3628918,
+      "rotulo": "Muriaé, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Muriaé, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "sao goncalo|RJ": {
+      "cidade": "São Gonçalo",
+      "uf": "RJ",
+      "latitude": -22.821635,
+      "longitude": -42.9956797,
+      "rotulo": "São Gonçalo, Rio de Janeiro, Região Sudeste, Brasil",
+      "consulta": "São Gonçalo, Rio de Janeiro, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "caldas novas|GO": {
+      "cidade": "Caldas Novas",
+      "uf": "GO",
+      "latitude": -17.745,
+      "longitude": -48.625,
+      "rotulo": "Caldas Novas, Goiás, Região Centro-Oeste, Brasil",
+      "consulta": "Caldas Novas, Goiás, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "joao monlevade|MG": {
+      "cidade": "João Monlevade",
+      "uf": "MG",
+      "latitude": -19.809444,
+      "longitude": -43.173334,
+      "rotulo": "João Monlevade, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "João Monlevade, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "januaria|MG": {
+      "cidade": "Januária",
+      "uf": "MG",
+      "latitude": -15.317185,
+      "longitude": -45.2045505,
+      "rotulo": "Januária, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Januária, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "betim|MG": {
+      "cidade": "Betim",
+      "uf": "MG",
+      "latitude": -19.9703184,
+      "longitude": -44.206495,
+      "rotulo": "Betim, Minas Gerais, Região Sudeste, Brasil",
+      "consulta": "Betim, Minas Gerais, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "mogi guacu|SP": {
+      "cidade": "Mogi Guaçu",
+      "uf": "SP",
+      "latitude": -22.372222,
+      "longitude": -46.9425,
+      "rotulo": "Mogi Guaçu, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Mogi Guaçu, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "ponta grossa|PR": {
+      "cidade": "Ponta Grossa",
+      "uf": "PR",
+      "latitude": -25.1391547,
+      "longitude": -49.9921806,
+      "rotulo": "Ponta Grossa, Paraná, Região Sul, Brasil",
+      "consulta": "Ponta Grossa, Paraná, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "cajueiro praia|PI": {
+      "cidade": "Cajueiro da Praia",
+      "uf": "PI",
+      "latitude": -2.9289603,
+      "longitude": -41.3381617,
+      "rotulo": "Cajueiro da Praia, Piauí, Região Nordeste, 64222-000, Brasil",
+      "consulta": "Cajueiro da Praia, Piauí, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "balsas|MA": {
+      "cidade": "Balsas",
+      "uf": "MA",
+      "latitude": -7.53214,
+      "longitude": -46.037163,
+      "rotulo": "Balsas, Maranhão, Região Nordeste, 65800-000, Brasil",
+      "consulta": "Balsas, Maranhão, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "coroata|MA": {
+      "cidade": "Coroatá",
+      "uf": "MA",
+      "latitude": -4.1282283,
+      "longitude": -44.1360269,
+      "rotulo": "Coroatá, Maranhão, Região Nordeste, 65415-000, Brasil",
+      "consulta": "Coroatá, Maranhão, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "anage|BA": {
+      "cidade": "Anagé",
+      "uf": "BA",
+      "latitude": -14.6134669,
+      "longitude": -41.1376308,
+      "rotulo": "Anagé, Bahia, Região Nordeste, 45180-000, Brasil",
+      "consulta": "Anagé, Bahia, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "jacarei|SP": {
+      "cidade": "Jacareí",
+      "uf": "SP",
+      "latitude": -23.3050682,
+      "longitude": -45.9723075,
+      "rotulo": "Jacareí, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Jacareí, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "aparecida|SP": {
+      "cidade": "Aparecida",
+      "uf": "SP",
+      "latitude": -22.851552,
+      "longitude": -45.2340924,
+      "rotulo": "Aparecida, São Paulo, Região Sudeste, Brasil",
+      "consulta": "Aparecida, São Paulo, Brasil",
+      "fonte": "cache-municipio"
+    },
+    "novo hamburgo|RS": {
+      "cidade": "Novo Hamburgo",
+      "uf": "RS",
+      "latitude": -29.6905705,
+      "longitude": -51.1429035,
+      "rotulo": "Novo Hamburgo, Rio Grande do Sul, Região Sul, Brasil",
+      "consulta": "Novo Hamburgo, Rio Grande do Sul, Brasil",
+      "fonte": "cache-municipio"
+    }
+  },
+  "generatedAt": "2026-10-13T13:45:36.453Z",
+  "summary": {
+    "municipalities": 179,
+    "recoveredFromHistory": 133,
+    "cacheHits": 0,
+    "externalRequests": 47,
+    "coordinatesRecovered": 367
+  }
+}

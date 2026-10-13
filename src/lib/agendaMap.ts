@@ -18,6 +18,13 @@ export interface ClusterComposition {
   total: number
 }
 
+export interface MapCoverageSummary {
+  total: number
+  exact: number
+  approximate: number
+  pending: number
+}
+
 const CLUSTER_COLORS: Record<ClusterStatus, string> = {
   now: '#d73a31',
   possibly: '#ef765f',
@@ -76,6 +83,20 @@ export function hasEventCoordinates(event: AgendaEvent): boolean {
     && point.longitude >= -180 && point.longitude <= 180)
 }
 
+export function hasApproximateCoordinates(event: AgendaEvent): boolean {
+  return hasEventCoordinates(event) && event.coordenadas?.precisao === 'cidade'
+}
+
+export function summarizeMapCoverage(events: AgendaEvent[]): MapCoverageSummary {
+  return events.reduce<MapCoverageSummary>((summary, event) => {
+    summary.total += 1
+    if (!hasEventCoordinates(event)) summary.pending += 1
+    else if (hasApproximateCoordinates(event)) summary.approximate += 1
+    else summary.exact += 1
+    return summary
+  }, { total: 0, exact: 0, approximate: 0, pending: 0 })
+}
+
 export function distanceKm(from: GeoPoint, to: GeoPoint): number {
   const radians = (degrees: number) => degrees * Math.PI / 180
   const latitudeDelta = radians(to.latitude - from.latitude)
@@ -106,10 +127,14 @@ export function formatDistance(distance: number): string {
   return `aprox. ${Math.round(distance)} km`
 }
 
-export function buildExternalRouteUrl(event: AgendaEvent, origin?: GeoPoint): string | null {
-  if (!hasEventCoordinates(event)) return null
+export function formatEventDistance(event: AgendaEvent, distance: number): string {
+  const formatted = formatDistance(distance).replace(/^aprox\. /, '')
+  return hasApproximateCoordinates(event) ? `Distância aproximada: ${formatted}` : `aprox. ${formatted}`
+}
+
+export function buildExternalRouteUrl(event: AgendaEvent): string | null {
+  if (!hasEventCoordinates(event) || hasApproximateCoordinates(event)) return null
   const destination = `${event.coordenadas!.latitude},${event.coordenadas!.longitude}`
   const params = new URLSearchParams({ api: '1', destination })
-  if (origin) params.set('origin', `${origin.latitude},${origin.longitude}`)
   return `https://www.google.com/maps/dir/?${params}`
 }

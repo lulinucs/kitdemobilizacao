@@ -10,7 +10,8 @@
     "pretest": "node scripts/gerar-midias.mjs",
     "test": "vitest run && node --test scripts/verificar-midias.check.mjs",
     "test:watch": "vitest",
-    "geocode:agenda": "node scripts/geocodificar-agenda.mjs"
+    "geocode:agenda": "node scripts/geocodificar-agenda.mjs",
+    "geocode:municipios": "node scripts/recuperar-coordenadas-municipais.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",

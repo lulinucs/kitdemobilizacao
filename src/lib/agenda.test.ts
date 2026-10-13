@@ -8,9 +8,9 @@ const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
-    expect(data.eventos).toHaveLength(471)
+    expect(data.eventos).toHaveLength(549)
     const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
-    expect(october13).toHaveLength(53)
+    expect(october13).toHaveLength(78)
     expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
       'mobilizacao-estudantil-brasilia-1310',
       'mobilizacao-estudantil-feira-santana-1310',
@@ -20,9 +20,16 @@ describe('agenda', () => {
     expect(validateAgenda(data).errors).toEqual([])
     const ids = new Set(data.eventos.map((event) => event.id))
     expect(ids.size).toBe(data.eventos.length)
+    const exactCoordinates = data.eventos.filter((event) => event.coordenadas && event.coordenadas.precisao !== 'cidade')
+    const approximateCoordinates = data.eventos.filter((event) => event.coordenadas?.precisao === 'cidade')
+    expect(exactCoordinates).toHaveLength(175)
+    expect(approximateCoordinates).toHaveLength(367)
+    expect(data.eventos.filter((event) => !event.coordenadas && event.modalidade !== 'virtual')).toHaveLength(7)
+    expect(approximateCoordinates.every((event) => event.coordenadas?.rotulo === `Localização aproximada em ${event.cidade}/${event.uf} — coordenada representativa do município`)).toBe(true)
     expect(data.eventos.find((event) => event.id === 'mobilizacao-estudantil-brasilia-1310')).toMatchObject({
       inicio: '16:00',
-      pontoEncontro: 'Museu Nacional da República, Setor Cultural Sul',
+      pontoEncontro: 'Museu Nacional',
+      local: 'Museu Nacional da República, Setor Cultural Sul',
       fonte: { url: 'https://diariodecontexto.com/brasil/estudantes-unb-ato-brasilia/' },
     })
     expect(data.eventos.find((event) => event.id === 'mobilizacao-estudantil-ufrj-fundao-1310')?.fonte?.url).toContain('midianinja.org')
@@ -39,8 +46,8 @@ describe('agenda', () => {
     expect(filterAgendaEvents(data.eventos, { query: '', day: '2026-10-18', city: 'Florianópolis', state: 'SC', category: '', mobilization: '', includePast: true }, now, data.timezone).map((event) => event.local)).toEqual(['Escadaria Valda Costa, Centro'])
     const october18Times = sortEvents(data.eventos, data.timezone).filter((event) => event.data === '2026-10-18').map((event) => event.inicio)
     expect(october18Times).toEqual([...october18Times].sort((a, b) => (a ?? '99:99').localeCompare(b ?? '99:99')))
-    expect(data.eventos.filter((event) => event.id.startsWith('txt-'))).toHaveLength(368)
-    expect(data.eventos.filter((event) => event.data === '2026-10-24')).toHaveLength(6)
+    expect(data.eventos.filter((event) => event.id.startsWith('txt-'))).toHaveLength(361)
+    expect(data.eventos.filter((event) => event.data === '2026-10-24')).toHaveLength(7)
     expect(data.eventos.filter((event) => event.data === '2026-10-10' && event.cidade === 'Campinas' && event.inicio === '09:00')).toHaveLength(4)
     const newEventsWithoutTime = data.eventos.filter((event) => event.id.startsWith('txt-') && event.inicio === null)
     expect(newEventsWithoutTime).toHaveLength(13)

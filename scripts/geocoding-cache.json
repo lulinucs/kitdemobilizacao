@@ -19735,6 +19735,3045 @@
       "query": "Drogaria Moderna, Manejo, Resende, RJ, Brasil",
       "fetchedAt": "2026-10-11T19:34:33.691Z",
       "results": []
+    },
+    "praca do elevado do rio tavares, rio tavares, florianopolis, sc, brasil": {
+      "query": "Praça do Elevado do Rio Tavares, Rio Tavares, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:32:40.280Z",
+      "results": [
+        {
+          "place_id": 7628369,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 788283429,
+          "lat": "-27.6611813",
+          "lon": "-48.5003559",
+          "category": "leisure",
+          "type": "park",
+          "place_rank": 24,
+          "importance": 0.08006652246890972,
+          "addresstype": "park",
+          "name": "Praça Milton Otávio da Silva (Milton Tatu)",
+          "display_name": "Praça Milton Otávio da Silva (Milton Tatu), Rio Tavares, Campeche, Florianópolis, Santa Catarina, Região Sul, Brasil",
+          "address": {
+            "park": "Praça Milton Otávio da Silva (Milton Tatu)",
+            "suburb": "Rio Tavares",
+            "city": "Florianópolis",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-27.6614885",
+            "-27.6608904",
+            "-48.5009976",
+            "-48.4998000"
+          ]
+        }
+      ]
+    },
+    "angeloni dos ingleses, ingleses, florianopolis, sc, brasil": {
+      "query": "Angeloni dos Ingleses, Ingleses, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:09.765Z",
+      "results": [
+        {
+          "place_id": 7619234,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 203429579,
+          "lat": "-27.4368091",
+          "lon": "-48.3983491",
+          "category": "shop",
+          "type": "supermarket",
+          "place_rank": 30,
+          "importance": 0.00006652246890969738,
+          "addresstype": "shop",
+          "name": "Supermercado Angeloni",
+          "display_name": "Supermercado Angeloni, 6375, Rodovia Armando Calil Bulos, Ingleses Centro, Ingleses, Ingleses do Rio Vermelho, Florianópolis, Santa Catarina, Região Sul, 88058-001, Brasil",
+          "address": {
+            "shop": "Supermercado Angeloni",
+            "house_number": "6375",
+            "road": "Rodovia Armando Calil Bulos",
+            "neighbourhood": "Ingleses Centro",
+            "suburb": "Ingleses",
+            "city": "Florianópolis",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "postcode": "88058-001",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-27.4371852",
+            "-27.4364404",
+            "-48.3986132",
+            "-48.3980721"
+          ]
+        }
+      ]
+    },
+    "parque de coqueiros, coqueiros, florianopolis, sc, brasil": {
+      "query": "Parque de Coqueiros, Coqueiros, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:12.082Z",
+      "results": [
+        {
+          "place_id": 7715599,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 13105801,
+          "lat": "-27.6017514",
+          "lon": "-48.5745002",
+          "category": "leisure",
+          "type": "park",
+          "place_rank": 24,
+          "importance": 0.08006652246890972,
+          "addresstype": "park",
+          "name": "Parque de Coqueiros Engenheiro Hamilton Schaefer",
+          "display_name": "Parque de Coqueiros Engenheiro Hamilton Schaefer, Coqueiros, Florianópolis, Santa Catarina, Região Sul, Brasil",
+          "address": {
+            "park": "Parque de Coqueiros Engenheiro Hamilton Schaefer",
+            "suburb": "Coqueiros",
+            "city": "Florianópolis",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-27.6034356",
+            "-27.6001058",
+            "-48.5754760",
+            "-48.5731034"
+          ]
+        }
+      ]
+    },
+    "rua major costa, mont serrat, florianopolis, sc, brasil": {
+      "query": "Rua Major Costa, Mont Serrat, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:34.854Z",
+      "results": []
+    },
+    "ponto final formiguinha, mont serrat, florianopolis, sc, brasil": {
+      "query": "Ponto final Formiguinha, Mont Serrat, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:36.946Z",
+      "results": []
+    },
+    "cabeceira continental da ponte pedro ivo campos, florianopolis, sc, brasil": {
+      "query": "Cabeceira continental da Ponte Pedro Ivo Campos, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:38.960Z",
+      "results": []
+    },
+    "praca do skate, beira-mar de sao jose, sao jose, sc, brasil": {
+      "query": "Praça do Skate, Beira-Mar de São José, São José, SC, Brasil",
+      "fetchedAt": "2026-10-11T20:36:40.501Z",
+      "results": []
+    },
+    "esquina das avenidas silvio silva e maracaju, aracaju, se, brasil": {
+      "query": "Esquina das avenidas Silvio Silva e Maracaju, Aracaju, SE, Brasil",
+      "fetchedAt": "2026-10-13T13:19:06.524Z",
+      "results": []
+    },
+    "praca dos estudantes, barueri, sp, brasil": {
+      "query": "Praça dos Estudantes, Barueri, SP, Brasil",
+      "fetchedAt": "2026-10-13T13:19:08.396Z",
+      "results": [
+        {
+          "place_id": 9110692,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 542182034,
+          "lat": "-23.5084003",
+          "lon": "-46.8656885",
+          "category": "leisure",
+          "type": "park",
+          "place_rank": 24,
+          "importance": 0.08006316853589682,
+          "addresstype": "park",
+          "name": "Praça dos Estudantes",
+          "display_name": "Praça dos Estudantes, Vila São Miguel, Centro, Barueri, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "park": "Praça dos Estudantes",
+            "quarter": "Vila São Miguel",
+            "suburb": "Centro",
+            "city": "Barueri",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.5091978",
+            "-23.5077147",
+            "-46.8664282",
+            "-46.8649263"
+          ]
+        }
+      ]
+    },
+    "belo horizonte, minas gerais, brasil": {
+      "query": "Belo Horizonte, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:44:19.352Z",
+      "results": [
+        {
+          "place_id": 10947757,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 368782,
+          "lat": "-19.9227318",
+          "lon": "-43.9450948",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.6729998336686934,
+          "addresstype": "city",
+          "name": "Belo Horizonte",
+          "display_name": "Belo Horizonte, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "city": "Belo Horizonte",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-20.0594646",
+            "-19.7765437",
+            "-44.0632916",
+            "-43.8572199"
+          ]
+        }
+      ]
+    },
+    "riacho dantas, sergipe, brasil": {
+      "query": "Riacho Dantas, Sergipe, Brasil",
+      "fetchedAt": "2026-10-13T13:44:21.259Z",
+      "results": [
+        {
+          "place_id": 14807051,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 1416969340,
+          "lat": "-11.0216067",
+          "lon": "-37.7108998",
+          "category": "waterway",
+          "type": "stream",
+          "place_rank": 22,
+          "importance": 0.10671666819256884,
+          "addresstype": "stream",
+          "name": "Riacho Areias",
+          "display_name": "Riacho Areias, Riachão do Dantas, Sergipe, Região Nordeste, Brasil",
+          "address": {
+            "stream": "Riacho Areias",
+            "city_district": "Riachão do Dantas",
+            "town": "Riachão do Dantas",
+            "state": "Sergipe",
+            "ISO3166-2-lvl4": "BR-SE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-11.0268282",
+            "-10.9993774",
+            "-37.7187371",
+            "-37.6925081"
+          ]
+        },
+        {
+          "place_id": 14826617,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 325902538,
+          "lat": "-11.1349065",
+          "lon": "-37.6589080",
+          "category": "waterway",
+          "type": "stream",
+          "place_rank": 22,
+          "importance": 0.10671666819256884,
+          "addresstype": "stream",
+          "name": "Riacho Cipó",
+          "display_name": "Riacho Cipó, Cipó Grande, Riachão do Dantas, Sergipe, Região Nordeste, Brasil",
+          "address": {
+            "stream": "Riacho Cipó",
+            "hamlet": "Cipó Grande",
+            "city_district": "Riachão do Dantas",
+            "town": "Riachão do Dantas",
+            "state": "Sergipe",
+            "ISO3166-2-lvl4": "BR-SE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-11.1408220",
+            "-11.1306605",
+            "-37.6769785",
+            "-37.6412364"
+          ]
+        },
+        {
+          "place_id": 14744809,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 1417216301,
+          "lat": "-11.0688094",
+          "lon": "-37.6872177",
+          "category": "waterway",
+          "type": "stream",
+          "place_rank": 22,
+          "importance": 0.10671666819256884,
+          "addresstype": "stream",
+          "name": "Riacho Limeira",
+          "display_name": "Riacho Limeira, Riachão do Dantas, Sergipe, Região Nordeste, Brasil",
+          "address": {
+            "stream": "Riacho Limeira",
+            "city_district": "Riachão do Dantas",
+            "town": "Riachão do Dantas",
+            "state": "Sergipe",
+            "ISO3166-2-lvl4": "BR-SE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-11.0771016",
+            "-11.0530601",
+            "-37.6902442",
+            "-37.6791019"
+          ]
+        }
+      ]
+    },
+    "quixada, ceara, brasil": {
+      "query": "Quixadá, Ceará, Brasil",
+      "fetchedAt": "2026-10-13T13:44:22.825Z",
+      "results": [
+        {
+          "place_id": 14146632,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 302476,
+          "lat": "-4.9160786",
+          "lon": "-39.0293634",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.49442793681234554,
+          "addresstype": "municipality",
+          "name": "Quixadá",
+          "display_name": "Quixadá, Ceará, Região Nordeste, Brasil",
+          "address": {
+            "municipality": "Quixadá",
+            "state": "Ceará",
+            "ISO3166-2-lvl4": "BR-CE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.1681703",
+            "-4.6641065",
+            "-39.2341117",
+            "-38.6153479"
+          ]
+        },
+        {
+          "place_id": 416499445,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 20602605,
+          "lat": "-4.9654810",
+          "lon": "-39.0109420",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.49442793681234554,
+          "addresstype": "town",
+          "name": "Quixadá",
+          "display_name": "Quixadá, Ceará, Região Nordeste, Brasil",
+          "address": {
+            "town": "Quixadá",
+            "municipality": "Quixadá",
+            "state": "Ceará",
+            "ISO3166-2-lvl4": "BR-CE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.0682639",
+            "-4.8407957",
+            "-39.1390337",
+            "-38.9123337"
+          ]
+        },
+        {
+          "place_id": 14475779,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 5745922209,
+          "lat": "-4.7392212",
+          "lon": "-39.9734975",
+          "category": "place",
+          "type": "hamlet",
+          "place_rank": 20,
+          "importance": 0.13338564965285724,
+          "addresstype": "hamlet",
+          "name": "Quixadá",
+          "display_name": "Quixadá, Monsenhor Tabosa, Ceará, Região Nordeste, Brasil",
+          "address": {
+            "hamlet": "Quixadá",
+            "town": "Monsenhor Tabosa",
+            "municipality": "Monsenhor Tabosa",
+            "state": "Ceará",
+            "ISO3166-2-lvl4": "BR-CE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-4.7592212",
+            "-4.7192212",
+            "-39.9934975",
+            "-39.9534975"
+          ]
+        }
+      ]
+    },
+    "palmeira dos indios, alagoas, brasil": {
+      "query": "Palmeira dos Índios, Alagoas, Brasil",
+      "fetchedAt": "2026-10-13T13:44:24.708Z",
+      "results": [
+        {
+          "place_id": 15117832,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 303782,
+          "lat": "-9.4076249",
+          "lon": "-36.6323616",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.47315295961002335,
+          "addresstype": "city",
+          "name": "Palmeira dos Índios",
+          "display_name": "Palmeira dos Índios, Alagoas, Região Nordeste, Brasil",
+          "address": {
+            "city": "Palmeira dos Índios",
+            "state": "Alagoas",
+            "ISO3166-2-lvl4": "BR-AL",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-9.5309281",
+            "-9.2925889",
+            "-36.7240000",
+            "-36.4510000"
+          ]
+        },
+        {
+          "place_id": 15073479,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6186278,
+          "lat": "-9.4373523",
+          "lon": "-36.5830852",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005573891813532,
+          "addresstype": "city_district",
+          "name": "Palmeira dos Índios",
+          "display_name": "Palmeira dos Índios, Alagoas, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Palmeira dos Índios",
+            "city": "Palmeira dos Índios",
+            "state": "Alagoas",
+            "ISO3166-2-lvl4": "BR-AL",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-9.5309281",
+            "-9.3506447",
+            "-36.7210000",
+            "-36.4510000"
+          ]
+        }
+      ]
+    },
+    "guarabira, paraiba, brasil": {
+      "query": "Guarabira, Paraíba, Brasil",
+      "fetchedAt": "2026-10-13T13:44:26.502Z",
+      "results": [
+        {
+          "place_id": 14658641,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 301314,
+          "lat": "-6.8513982",
+          "lon": "-35.4915582",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4799432766896504,
+          "addresstype": "city",
+          "name": "Guarabira",
+          "display_name": "Guarabira, Paraíba, Região Nordeste, Brasil",
+          "address": {
+            "city": "Guarabira",
+            "state": "Paraíba",
+            "ISO3166-2-lvl4": "BR-PB",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-6.9634730",
+            "-6.8122654",
+            "-35.5390181",
+            "-35.3801578"
+          ]
+        },
+        {
+          "place_id": 14581732,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6212578,
+          "lat": "-6.8530504",
+          "lon": "-35.4560773",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005552834363315,
+          "addresstype": "city_district",
+          "name": "Guarabira",
+          "display_name": "Guarabira, Paraíba, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Guarabira",
+            "city": "Guarabira",
+            "state": "Paraíba",
+            "ISO3166-2-lvl4": "BR-PB",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-6.8937968",
+            "-6.8122654",
+            "-35.5390181",
+            "-35.3892508"
+          ]
+        }
+      ]
+    },
+    "teresina, piaui, brasil": {
+      "query": "Teresina, Piauí, Brasil",
+      "fetchedAt": "2026-10-13T13:44:28.501Z",
+      "results": [
+        {
+          "place_id": 13320127,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 302749,
+          "lat": "-5.0874608",
+          "lon": "-42.8049571",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.558317371208927,
+          "addresstype": "city",
+          "name": "Teresina",
+          "display_name": "Teresina, Piauí, Região Nordeste, Brasil",
+          "address": {
+            "city": "Teresina",
+            "state": "Piauí",
+            "ISO3166-2-lvl4": "BR-PI",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.5865980",
+            "-4.7870000",
+            "-42.9706437",
+            "-42.5990000"
+          ]
+        }
+      ]
+    },
+    "londrina, parana, brasil": {
+      "query": "Londrina, Paraná, Brasil",
+      "fetchedAt": "2026-10-13T13:44:30.041Z",
+      "results": [
+        {
+          "place_id": 420024688,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 297756,
+          "lat": "-23.3112878",
+          "lon": "-51.1595023",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5681449262508692,
+          "addresstype": "city",
+          "name": "Londrina",
+          "display_name": "Londrina, Paraná, Região Sul, Brasil",
+          "address": {
+            "city": "Londrina",
+            "state": "Paraná",
+            "ISO3166-2-lvl4": "BR-PR",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.7799202",
+            "-23.1721548",
+            "-51.3212639",
+            "-50.8760623"
+          ]
+        }
+      ]
+    },
+    "mossoro, rio grande do norte, brasil": {
+      "query": "Mossoró, Rio Grande do Norte, Brasil",
+      "fetchedAt": "2026-10-13T13:44:31.460Z",
+      "results": [
+        {
+          "place_id": 14235293,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 301153,
+          "lat": "-5.1904332",
+          "lon": "-37.3443872",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5013556224186938,
+          "addresstype": "city",
+          "name": "Mossoró",
+          "display_name": "Mossoró, Rio Grande do Norte, Região Nordeste, Brasil",
+          "address": {
+            "city": "Mossoró",
+            "state": "Rio Grande do Norte",
+            "ISO3166-2-lvl4": "BR-RN",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.4900000",
+            "-4.8800806",
+            "-37.5830954",
+            "-37.1050000"
+          ]
+        },
+        {
+          "place_id": 14179574,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6237131,
+          "lat": "-5.1840003",
+          "lon": "-37.3530787",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005820172426946,
+          "addresstype": "city_district",
+          "name": "Mossoró",
+          "display_name": "Mossoró, Rio Grande do Norte, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Mossoró",
+            "city": "Mossoró",
+            "state": "Rio Grande do Norte",
+            "ISO3166-2-lvl4": "BR-RN",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.4900000",
+            "-4.8800806",
+            "-37.5830954",
+            "-37.1050000"
+          ]
+        }
+      ]
+    },
+    "divinopolis, minas gerais, brasil": {
+      "query": "Divinópolis, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:44:32.900Z",
+      "results": [
+        {
+          "place_id": 9764005,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 315091,
+          "lat": "-20.1597921",
+          "lon": "-44.8739341",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5740034486833165,
+          "addresstype": "city",
+          "name": "Divinópolis",
+          "display_name": "Divinópolis, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "city": "Divinópolis",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-20.3090000",
+            "-19.9181800",
+            "-45.1220000",
+            "-44.7504926"
+          ]
+        }
+      ]
+    },
+    "araraquara, sao paulo, brasil": {
+      "query": "Araraquara, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:44:34.794Z",
+      "results": [
+        {
+          "place_id": 11874373,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298395,
+          "lat": "-21.7886713",
+          "lon": "-48.1773096",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.577942499003183,
+          "addresstype": "city",
+          "name": "Araraquara",
+          "display_name": "Araraquara, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Araraquara",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-21.9719336",
+            "-21.5389305",
+            "-48.3966951",
+            "-47.9450000"
+          ]
+        },
+        {
+          "place_id": 428867193,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5349569,
+          "lat": "-21.7886713",
+          "lon": "-48.1773096",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.577942499003183,
+          "addresstype": "city",
+          "name": "Araraquara",
+          "display_name": "Araraquara, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Araraquara",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-21.9719336",
+            "-21.7061942",
+            "-48.3966951",
+            "-48.0548629"
+          ]
+        }
+      ]
+    },
+    "cabo frio, rio de janeiro, brasil": {
+      "query": "Cabo Frio, Rio de Janeiro, Brasil",
+      "fetchedAt": "2026-10-13T13:44:36.283Z",
+      "results": [
+        {
+          "place_id": 10660116,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 2215541,
+          "lat": "-22.7378309",
+          "lon": "-42.0240869",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5026452104688357,
+          "addresstype": "municipality",
+          "name": "Cabo Frio",
+          "display_name": "Cabo Frio, Rio de Janeiro, Região Sudeste, Brasil",
+          "address": {
+            "municipality": "Cabo Frio",
+            "state": "Rio de Janeiro",
+            "ISO3166-2-lvl4": "BR-RJ",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.9331308",
+            "-22.5401258",
+            "-42.1824031",
+            "-41.8890111"
+          ]
+        },
+        {
+          "place_id": 10583369,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 15976538,
+          "lat": "-22.8804369",
+          "lon": "-42.0189227",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5026452104688357,
+          "addresstype": "city",
+          "name": "Cabo Frio",
+          "display_name": "Cabo Frio, Rio de Janeiro, Região Sudeste, Brasil",
+          "address": {
+            "city": "Cabo Frio",
+            "municipality": "Cabo Frio",
+            "state": "Rio de Janeiro",
+            "ISO3166-2-lvl4": "BR-RJ",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.9331308",
+            "-22.7942753",
+            "-42.1221906",
+            "-41.8890111"
+          ]
+        }
+      ]
+    },
+    "cajamar, sao paulo, brasil": {
+      "query": "Cajamar, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:44:37.729Z",
+      "results": [
+        {
+          "place_id": 8585929,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298462,
+          "lat": "-23.3561111",
+          "lon": "-46.8769444",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5411362947908467,
+          "addresstype": "town",
+          "name": "Cajamar",
+          "display_name": "Cajamar, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "town": "Cajamar",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.4306005",
+            "-23.2778620",
+            "-46.9419956",
+            "-46.8196597"
+          ]
+        },
+        {
+          "place_id": 8563273,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5684859,
+          "lat": "-23.3561111",
+          "lon": "-46.8769444",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5411362947908467,
+          "addresstype": "town",
+          "name": "Cajamar",
+          "display_name": "Cajamar, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "town": "Cajamar",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.4047470",
+            "-23.2889897",
+            "-46.9419956",
+            "-46.8230104"
+          ]
+        }
+      ]
+    },
+    "castanhal, para, brasil": {
+      "query": "Castanhal, Pará, Brasil",
+      "fetchedAt": "2026-10-13T13:44:39.635Z",
+      "results": [
+        {
+          "place_id": 13511147,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 185664,
+          "lat": "-1.2927031",
+          "lon": "-47.9223903",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4723370171534866,
+          "addresstype": "city",
+          "name": "Castanhal",
+          "display_name": "Castanhal, Pará, Região Norte, Brasil",
+          "address": {
+            "city": "Castanhal",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-1.4925035",
+            "-1.0381901",
+            "-48.0360432",
+            "-47.6384284"
+          ]
+        },
+        {
+          "place_id": 13507738,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6458224,
+          "lat": "-1.2652830",
+          "lon": "-47.9075350",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005453803311206,
+          "addresstype": "city_district",
+          "name": "Castanhal",
+          "display_name": "Castanhal, Pará, Região Norte, Brasil",
+          "address": {
+            "city_district": "Castanhal",
+            "city": "Castanhal",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-1.4925035",
+            "-1.0381901",
+            "-48.0214850",
+            "-47.6384284"
+          ]
+        },
+        {
+          "place_id": 13100038,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 10538036812,
+          "lat": "-1.7372192",
+          "lon": "-48.8643094",
+          "category": "place",
+          "type": "suburb",
+          "place_rank": 19,
+          "importance": 0.1467214839398794,
+          "addresstype": "suburb",
+          "name": "Castanhal",
+          "display_name": "Castanhal, Abaetetuba, Pará, Região Norte, 68440-000, Brasil",
+          "address": {
+            "suburb": "Castanhal",
+            "city_district": "Abaetetuba",
+            "town": "Abaetetuba",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "postcode": "68440-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-1.7572192",
+            "-1.7172192",
+            "-48.8843094",
+            "-48.8443094"
+          ]
+        }
+      ]
+    },
+    "santa maria, rio grande do sul, brasil": {
+      "query": "Santa Maria, Rio Grande do Sul, Brasil",
+      "fetchedAt": "2026-10-13T13:44:41.168Z",
+      "results": [
+        {
+          "place_id": 8153964,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 242595,
+          "lat": "-29.6860512",
+          "lon": "-53.8069214",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5627750837402105,
+          "addresstype": "city",
+          "name": "Santa Maria",
+          "display_name": "Santa Maria, Rio Grande do Sul, Região Sul, Brasil",
+          "address": {
+            "city": "Santa Maria",
+            "state": "Rio Grande do Sul",
+            "ISO3166-2-lvl4": "BR-RS",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-30.0056759",
+            "-29.5493913",
+            "-54.1368461",
+            "-53.5168897"
+          ]
+        },
+        {
+          "place_id": 8180826,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 4009232,
+          "lat": "-29.6963146",
+          "lon": "-53.7876281",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16006194934004728,
+          "addresstype": "borough",
+          "name": "Sede",
+          "display_name": "Sede, Santa Maria, Rio Grande do Sul, Região Sul, Brasil",
+          "address": {
+            "borough": "Sede",
+            "city": "Santa Maria",
+            "state": "Rio Grande do Sul",
+            "ISO3166-2-lvl4": "BR-RS",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-29.7736130",
+            "-29.6217887",
+            "-53.8922674",
+            "-53.6678776"
+          ]
+        }
+      ]
+    },
+    "itajuba, minas gerais, brasil": {
+      "query": "Itajubá, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:44:43.054Z",
+      "results": [
+        {
+          "place_id": 9315845,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 314895,
+          "lat": "-22.4238234",
+          "lon": "-45.4524156",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5576906627504044,
+          "addresstype": "town",
+          "name": "Itajubá",
+          "display_name": "Itajubá, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "town": "Itajubá",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.5399450",
+            "-22.3387252",
+            "-45.5313157",
+            "-45.2609408"
+          ]
+        },
+        {
+          "place_id": 9313466,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6492257,
+          "lat": "-22.4467512",
+          "lon": "-45.4437711",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16006158617532615,
+          "addresstype": "city_district",
+          "name": "Itajubá",
+          "display_name": "Itajubá, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "city_district": "Itajubá",
+            "town": "Itajubá",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.5399450",
+            "-22.3537619",
+            "-45.5313157",
+            "-45.3496887"
+          ]
+        }
+      ]
+    },
+    "itabaiana, sergipe, brasil": {
+      "query": "Itabaiana, Sergipe, Brasil",
+      "fetchedAt": "2026-10-13T13:44:44.479Z",
+      "results": [
+        {
+          "place_id": 14871520,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 303888,
+          "lat": "-10.6856197",
+          "lon": "-37.4270517",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4499234675436917,
+          "addresstype": "city",
+          "name": "Itabaiana",
+          "display_name": "Itabaiana, Sergipe, Região Nordeste, Brasil",
+          "address": {
+            "city": "Itabaiana",
+            "state": "Sergipe",
+            "ISO3166-2-lvl4": "BR-SE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-10.8310390",
+            "-10.5660000",
+            "-37.5300000",
+            "-37.3200403"
+          ]
+        },
+        {
+          "place_id": 14880634,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6170261,
+          "lat": "-10.6984797",
+          "lon": "-37.4036710",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005458228427558,
+          "addresstype": "city_district",
+          "name": "Itabaiana",
+          "display_name": "Itabaiana, Sergipe, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Itabaiana",
+            "city": "Itabaiana",
+            "state": "Sergipe",
+            "ISO3166-2-lvl4": "BR-SE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-10.8310390",
+            "-10.5660000",
+            "-37.5300000",
+            "-37.3200403"
+          ]
+        }
+      ]
+    },
+    "porto feliz, sao paulo, brasil": {
+      "query": "Porto Feliz, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:44:46.403Z",
+      "results": [
+        {
+          "place_id": 8434444,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298485,
+          "lat": "-23.2110713",
+          "lon": "-47.5247163",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5424739064487566,
+          "addresstype": "town",
+          "name": "Porto Feliz",
+          "display_name": "Porto Feliz, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "town": "Porto Feliz",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.3851250",
+            "-23.0908021",
+            "-47.6329526",
+            "-47.4039371"
+          ]
+        },
+        {
+          "place_id": 8400589,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5684937,
+          "lat": "-23.2378262",
+          "lon": "-47.5229473",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005970931563285,
+          "addresstype": "city_district",
+          "name": "Porto Feliz",
+          "display_name": "Porto Feliz, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city_district": "Porto Feliz",
+            "town": "Porto Feliz",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.3851250",
+            "-23.0908021",
+            "-47.6329526",
+            "-47.4039371"
+          ]
+        }
+      ]
+    },
+    "mogi das cruzes, sao paulo, brasil": {
+      "query": "Mogi das Cruzes, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:44:47.892Z",
+      "results": [
+        {
+          "place_id": 8754045,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298415,
+          "lat": "-23.5234284",
+          "lon": "-46.1926671",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5767962396869049,
+          "addresstype": "city",
+          "name": "Mogi das Cruzes",
+          "display_name": "Mogi das Cruzes, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Mogi das Cruzes",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.7707615",
+            "-23.3420000",
+            "-46.3222754",
+            "-46.0500000"
+          ]
+        },
+        {
+          "place_id": 8747263,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5349675,
+          "lat": "-23.5234284",
+          "lon": "-46.1926671",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5767962396869049,
+          "addresstype": "city",
+          "name": "Mogi das Cruzes",
+          "display_name": "Mogi das Cruzes, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Mogi das Cruzes",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.6272800",
+            "-23.3420000",
+            "-46.2903362",
+            "-46.0868132"
+          ]
+        }
+      ]
+    },
+    "bom conselho, pernambuco, brasil": {
+      "query": "Bom Conselho, Pernambuco, Brasil",
+      "fetchedAt": "2026-10-13T13:44:49.691Z",
+      "results": [
+        {
+          "place_id": 15085386,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 303648,
+          "lat": "-9.1691910",
+          "lon": "-36.6856830",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.46663859559773935,
+          "addresstype": "town",
+          "name": "Bom Conselho",
+          "display_name": "Bom Conselho, Pernambuco, Região Nordeste, 55330-000, Brasil",
+          "address": {
+            "town": "Bom Conselho",
+            "state": "Pernambuco",
+            "ISO3166-2-lvl4": "BR-PE",
+            "region": "Região Nordeste",
+            "postcode": "55330-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-9.3415125",
+            "-9.0203951",
+            "-36.8830000",
+            "-36.4995859"
+          ]
+        },
+        {
+          "place_id": 15085772,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6198822,
+          "lat": "-9.1539311",
+          "lon": "-36.7194922",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005043793392842,
+          "addresstype": "city_district",
+          "name": "Bom Conselho",
+          "display_name": "Bom Conselho, Pernambuco, Região Nordeste, 55330-000, Brasil",
+          "address": {
+            "city_district": "Bom Conselho",
+            "town": "Bom Conselho",
+            "state": "Pernambuco",
+            "ISO3166-2-lvl4": "BR-PE",
+            "region": "Região Nordeste",
+            "postcode": "55330-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-9.2886284",
+            "-9.0203951",
+            "-36.8830000",
+            "-36.6078432"
+          ]
+        },
+        {
+          "place_id": 14592723,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 9685529,
+          "lat": "-8.2369270",
+          "lon": "-34.9757063",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 20,
+          "importance": 0.14672112687876704,
+          "addresstype": "suburb",
+          "name": "Bom Conselho",
+          "display_name": "Bom Conselho, Ponte dos Carvalhos, Cabo de Santo Agostinho, Pernambuco, Região Nordeste, Brasil",
+          "address": {
+            "suburb": "Bom Conselho",
+            "city_district": "Ponte dos Carvalhos",
+            "city": "Cabo de Santo Agostinho",
+            "state": "Pernambuco",
+            "ISO3166-2-lvl4": "BR-PE",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-8.2417343",
+            "-8.2302131",
+            "-34.9853303",
+            "-34.9699567"
+          ]
+        }
+      ]
+    },
+    "seabra, bahia, brasil": {
+      "query": "Seabra, Bahia, Brasil",
+      "fetchedAt": "2026-10-13T13:44:51.112Z",
+      "results": [
+        {
+          "place_id": 15260617,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 362215,
+          "lat": "-12.4172071",
+          "lon": "-41.7720510",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5249713234443948,
+          "addresstype": "town",
+          "name": "Seabra",
+          "display_name": "Seabra, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "town": "Seabra",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-12.6843193",
+            "-12.0915253",
+            "-42.2709944",
+            "-41.5399075"
+          ]
+        },
+        {
+          "place_id": 15205663,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6390160,
+          "lat": "-12.3136977",
+          "lon": "-42.0107383",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.1600584336614023,
+          "addresstype": "city_district",
+          "name": "Seabra",
+          "display_name": "Seabra, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Seabra",
+            "town": "Seabra",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-12.5360424",
+            "-12.0915253",
+            "-42.2709944",
+            "-41.6658261"
+          ]
+        }
+      ]
+    },
+    "ararangua, santa catarina, brasil": {
+      "query": "Araranguá, Santa Catarina, Brasil",
+      "fetchedAt": "2026-10-13T13:44:52.554Z",
+      "results": [
+        {
+          "place_id": 7792993,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 296568,
+          "lat": "-28.9348832",
+          "lon": "-49.4858389",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.49114123708072377,
+          "addresstype": "town",
+          "name": "Araranguá",
+          "display_name": "Araranguá, Santa Catarina, Região Sul, Brasil",
+          "address": {
+            "town": "Araranguá",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-29.0590559",
+            "-28.8330000",
+            "-49.6236462",
+            "-49.2901288"
+          ]
+        }
+      ]
+    },
+    "piracicaba, sao paulo, brasil": {
+      "query": "Piracicaba, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:44:54.097Z",
+      "results": [
+        {
+          "place_id": 9444794,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298413,
+          "lat": "-22.7251650",
+          "lon": "-47.6493269",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5841922918326176,
+          "addresstype": "city",
+          "name": "Piracicaba",
+          "display_name": "Piracicaba, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Piracicaba",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.9017907",
+            "-22.5208872",
+            "-48.0982733",
+            "-47.4903220"
+          ]
+        },
+        {
+          "place_id": 9434287,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5683215,
+          "lat": "-22.7398075",
+          "lon": "-47.6680092",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005000152590218,
+          "addresstype": "city_district",
+          "name": "Piracicaba",
+          "display_name": "Piracicaba, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city_district": "Piracicaba",
+            "city": "Piracicaba",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.9017907",
+            "-22.5777010",
+            "-47.8801260",
+            "-47.5220000"
+          ]
+        }
+      ]
+    },
+    "marituba, para, brasil": {
+      "query": "Marituba, Pará, Brasil",
+      "fetchedAt": "2026-10-13T13:44:55.902Z",
+      "results": [
+        {
+          "place_id": 13044294,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 185631,
+          "lat": "-1.3595306",
+          "lon": "-48.3361504",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.46416898776941257,
+          "addresstype": "city",
+          "name": "Marituba",
+          "display_name": "Marituba, Pará, Região Norte, 67200-000, Brasil",
+          "address": {
+            "city": "Marituba",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "postcode": "67200-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-1.4711826",
+            "-1.3237288",
+            "-48.3673895",
+            "-48.2771739"
+          ]
+        },
+        {
+          "place_id": 13124925,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6428394,
+          "lat": "-1.3979049",
+          "lon": "-48.3218083",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005041199359119,
+          "addresstype": "city_district",
+          "name": "Marituba",
+          "display_name": "Marituba, Pará, Região Norte, 67200-000, Brasil",
+          "address": {
+            "city_district": "Marituba",
+            "city": "Marituba",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "postcode": "67200-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-1.4711826",
+            "-1.3237288",
+            "-48.3673895",
+            "-48.2771739"
+          ]
+        },
+        {
+          "place_id": 13056865,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 4455977429,
+          "lat": "-3.0326233",
+          "lon": "-55.0971900",
+          "category": "place",
+          "type": "hamlet",
+          "place_rank": 20,
+          "importance": 0.13338244373235675,
+          "addresstype": "hamlet",
+          "name": "Marituba",
+          "display_name": "Marituba, Belterra, Pará, Região Norte, Brasil",
+          "address": {
+            "hamlet": "Marituba",
+            "city_district": "Belterra",
+            "town": "Belterra",
+            "state": "Pará",
+            "ISO3166-2-lvl4": "BR-PA",
+            "region": "Região Norte",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-3.0526233",
+            "-3.0126233",
+            "-55.1171900",
+            "-55.0771900"
+          ]
+        }
+      ]
+    },
+    "limoeiro do norte, ceara, brasil": {
+      "query": "Limoeiro do Norte, Ceará, Brasil",
+      "fetchedAt": "2026-10-13T13:44:57.356Z",
+      "results": [
+        {
+          "place_id": 14149334,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 302543,
+          "lat": "-5.1455607",
+          "lon": "-38.0984936",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4894524862416937,
+          "addresstype": "town",
+          "name": "Limoeiro do Norte",
+          "display_name": "Limoeiro do Norte, Ceará, Região Nordeste, 62930-000, Brasil",
+          "address": {
+            "town": "Limoeiro do Norte",
+            "state": "Ceará",
+            "ISO3166-2-lvl4": "BR-CE",
+            "region": "Região Nordeste",
+            "postcode": "62930-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-5.2971669",
+            "-4.9589648",
+            "-38.2671277",
+            "-37.7823387"
+          ]
+        }
+      ]
+    },
+    "paranagua, parana, brasil": {
+      "query": "Paranaguá, Paraná, Brasil",
+      "fetchedAt": "2026-10-13T13:44:58.929Z",
+      "results": [
+        {
+          "place_id": 7269225,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 297491,
+          "lat": "-25.5148822",
+          "lon": "-48.5226695",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.536897243882939,
+          "addresstype": "city",
+          "name": "Paranaguá",
+          "display_name": "Paranaguá, Paraná, Região Sul, Brasil",
+          "address": {
+            "city": "Paranaguá",
+            "state": "Paraná",
+            "ISO3166-2-lvl4": "BR-PR",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-25.7341226",
+            "-25.3650000",
+            "-48.7041148",
+            "-48.2760000"
+          ]
+        }
+      ]
+    },
+    "francisco beltrao, parana, brasil": {
+      "query": "Francisco Beltrão, Paraná, Brasil",
+      "fetchedAt": "2026-10-13T13:45:00.382Z",
+      "results": [
+        {
+          "place_id": 6435610,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 297492,
+          "lat": "-26.0790979",
+          "lon": "-53.0533527",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5131303692570487,
+          "addresstype": "town",
+          "name": "Francisco Beltrão",
+          "display_name": "Francisco Beltrão, Paraná, Região Sul, Brasil",
+          "address": {
+            "town": "Francisco Beltrão",
+            "state": "Paraná",
+            "ISO3166-2-lvl4": "BR-PR",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-26.1968505",
+            "-25.9372509",
+            "-53.3780757",
+            "-52.8845229"
+          ]
+        }
+      ]
+    },
+    "suzano, sao paulo, brasil": {
+      "query": "Suzano, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:45:02.361Z",
+      "results": [
+        {
+          "place_id": 8672423,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298085,
+          "lat": "-23.5427842",
+          "lon": "-46.3108391",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5676284544209643,
+          "addresstype": "city",
+          "name": "Suzano",
+          "display_name": "Suzano, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Suzano",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.7449516",
+            "-23.4860000",
+            "-46.3840842",
+            "-46.2543243"
+          ]
+        },
+        {
+          "place_id": 8693350,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5683270,
+          "lat": "-23.5427842",
+          "lon": "-46.3108391",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5676284544209643,
+          "addresstype": "city",
+          "name": "Suzano",
+          "display_name": "Suzano, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Suzano",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.6681155",
+            "-23.5089714",
+            "-46.3840842",
+            "-46.2632634"
+          ]
+        }
+      ]
+    },
+    "araguaina, tocantins, brasil": {
+      "query": "Araguaína, Tocantins, Brasil",
+      "fetchedAt": "2026-10-13T13:45:04.266Z",
+      "results": [
+        {
+          "place_id": 13204358,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 336824,
+          "lat": "-7.1936574",
+          "lon": "-48.2064645",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4772214284545285,
+          "addresstype": "city",
+          "name": "Araguaína",
+          "display_name": "Araguaína, Tocantins, Região Norte, Brasil",
+          "address": {
+            "city": "Araguaína",
+            "state": "Tocantins",
+            "ISO3166-2-lvl4": "BR-TO",
+            "region": "Região Norte",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-7.5620000",
+            "-6.9408637",
+            "-49.2657926",
+            "-48.0463158"
+          ]
+        }
+      ]
+    },
+    "vitoria da conquista, bahia, brasil": {
+      "query": "Vitória da Conquista, Bahia, Brasil",
+      "fetchedAt": "2026-10-13T13:45:06.151Z",
+      "results": [
+        {
+          "place_id": 15717847,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 362423,
+          "lat": "-15.0747441",
+          "lon": "-40.8940303",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5558142435656606,
+          "addresstype": "municipality",
+          "name": "Vitória da Conquista",
+          "display_name": "Vitória da Conquista, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "municipality": "Vitória da Conquista",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.4783587",
+            "-14.6709216",
+            "-41.1718033",
+            "-40.5255190"
+          ]
+        },
+        {
+          "place_id": 417436413,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 20665698,
+          "lat": "-14.8567487",
+          "lon": "-40.8414804",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5558142435656606,
+          "addresstype": "city",
+          "name": "Vitória da Conquista",
+          "display_name": "Vitória da Conquista, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "city": "Vitória da Conquista",
+            "municipality": "Vitória da Conquista",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.0767586",
+            "-14.6742895",
+            "-40.9636619",
+            "-40.6695530"
+          ]
+        }
+      ]
+    },
+    "campina grande, paraiba, brasil": {
+      "query": "Campina Grande, Paraíba, Brasil",
+      "fetchedAt": "2026-10-13T13:45:07.650Z",
+      "results": [
+        {
+          "place_id": 14653526,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 301462,
+          "lat": "-7.2246743",
+          "lon": "-35.8771292",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5345675491893419,
+          "addresstype": "city",
+          "name": "Campina Grande",
+          "display_name": "Campina Grande, Paraíba, Região Nordeste, Brasil",
+          "address": {
+            "city": "Campina Grande",
+            "state": "Paraíba",
+            "ISO3166-2-lvl4": "BR-PB",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-7.3870676",
+            "-7.1542828",
+            "-36.1238920",
+            "-35.7041419"
+          ]
+        },
+        {
+          "place_id": 14624382,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 4146397,
+          "lat": "-7.2378984",
+          "lon": "-35.9169564",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16006033340962844,
+          "addresstype": "city_district",
+          "name": "Campina Grande",
+          "display_name": "Campina Grande, Paraíba, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Campina Grande",
+            "city": "Campina Grande",
+            "state": "Paraíba",
+            "ISO3166-2-lvl4": "BR-PB",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-7.3077378",
+            "-7.1679796",
+            "-36.0206813",
+            "-35.8139772"
+          ]
+        }
+      ]
+    },
+    "barueri, sao paulo, brasil": {
+      "query": "Barueri, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:45:09.553Z",
+      "results": [
+        {
+          "place_id": 9010148,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298021,
+          "lat": "-23.5112184",
+          "lon": "-46.8764612",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5766687211947501,
+          "addresstype": "city",
+          "name": "Barueri",
+          "display_name": "Barueri, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Barueri",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.5537470",
+            "-23.4703789",
+            "-46.9663017",
+            "-46.7986840"
+          ]
+        },
+        {
+          "place_id": 8593845,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5684851,
+          "lat": "-23.5112184",
+          "lon": "-46.8764612",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5766687211947501,
+          "addresstype": "city",
+          "name": "Barueri",
+          "display_name": "Barueri, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Barueri",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.5219261",
+            "-23.4703789",
+            "-46.9146910",
+            "-46.7986840"
+          ]
+        }
+      ]
+    },
+    "ilheus, bahia, brasil": {
+      "query": "Ilhéus, Bahia, Brasil",
+      "fetchedAt": "2026-10-13T13:45:11.014Z",
+      "results": [
+        {
+          "place_id": 15735063,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 362159,
+          "lat": "-14.7925990",
+          "lon": "-39.0453843",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5571637851367567,
+          "addresstype": "city",
+          "name": "Ilhéus",
+          "display_name": "Ilhéus, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "city": "Ilhéus",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.1122917",
+            "-14.4196422",
+            "-39.5505925",
+            "-38.9960756"
+          ]
+        },
+        {
+          "place_id": 15808162,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6618450,
+          "lat": "-14.7838999",
+          "lon": "-39.1428073",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.1600615495536736,
+          "addresstype": "city_district",
+          "name": "Ilhéus",
+          "display_name": "Ilhéus, Bahia, Região Nordeste, Brasil",
+          "address": {
+            "city_district": "Ilhéus",
+            "city": "Ilhéus",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-14.8820741",
+            "-14.6856690",
+            "-39.2805434",
+            "-39.0224747"
+          ]
+        }
+      ]
+    },
+    "muriae, minas gerais, brasil": {
+      "query": "Muriaé, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:45:12.462Z",
+      "results": [
+        {
+          "place_id": 9843101,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 315428,
+          "lat": "-21.1313485",
+          "lon": "-42.3628918",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5714487697987375,
+          "addresstype": "city",
+          "name": "Muriaé",
+          "display_name": "Muriaé, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "city": "Muriaé",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-21.3070000",
+            "-20.8660000",
+            "-42.5660000",
+            "-42.2530000"
+          ]
+        }
+      ]
+    },
+    "sao goncalo, rio de janeiro, brasil": {
+      "query": "São Gonçalo, Rio de Janeiro, Brasil",
+      "fetchedAt": "2026-10-13T13:45:13.990Z",
+      "results": [
+        {
+          "place_id": 10455542,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 2220792,
+          "lat": "-22.8216350",
+          "lon": "-42.9956797",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5154963751275768,
+          "addresstype": "municipality",
+          "name": "São Gonçalo",
+          "display_name": "São Gonçalo, Rio de Janeiro, Região Sudeste, Brasil",
+          "address": {
+            "municipality": "São Gonçalo",
+            "state": "Rio de Janeiro",
+            "ISO3166-2-lvl4": "BR-RJ",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.9091541",
+            "-22.7340701",
+            "-43.1155404",
+            "-42.8859505"
+          ]
+        },
+        {
+          "place_id": 10468162,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 14174311,
+          "lat": "-22.8219014",
+          "lon": "-43.0309252",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5154963751275768,
+          "addresstype": "city",
+          "name": "São Gonçalo",
+          "display_name": "São Gonçalo, Rio de Janeiro, Região Sudeste, Brasil",
+          "address": {
+            "city": "São Gonçalo",
+            "municipality": "São Gonçalo",
+            "state": "Rio de Janeiro",
+            "ISO3166-2-lvl4": "BR-RJ",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.8562238",
+            "-22.7340701",
+            "-43.0814990",
+            "-42.9915589"
+          ]
+        },
+        {
+          "place_id": 9197051,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 4393880914,
+          "lat": "-23.0326222",
+          "lon": "-44.6175976",
+          "category": "place",
+          "type": "suburb",
+          "place_rank": 19,
+          "importance": 0.14672031357289994,
+          "addresstype": "suburb",
+          "name": "São Gonçalo",
+          "display_name": "São Gonçalo, Tarituba, Paraty, Rio de Janeiro, Região Sudeste, Brasil",
+          "address": {
+            "suburb": "São Gonçalo",
+            "village": "Tarituba",
+            "town": "Paraty",
+            "state": "Rio de Janeiro",
+            "ISO3166-2-lvl4": "BR-RJ",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.0526222",
+            "-23.0126222",
+            "-44.6375976",
+            "-44.5975976"
+          ]
+        }
+      ]
+    },
+    "caldas novas, goias, brasil": {
+      "query": "Caldas Novas, Goiás, Brasil",
+      "fetchedAt": "2026-10-13T13:45:15.776Z",
+      "results": [
+        {
+          "place_id": 11474766,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 334452,
+          "lat": "-17.7450000",
+          "lon": "-48.6250000",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5085156959641381,
+          "addresstype": "city",
+          "name": "Caldas Novas",
+          "display_name": "Caldas Novas, Goiás, Região Centro-Oeste, Brasil",
+          "address": {
+            "city": "Caldas Novas",
+            "state": "Goiás",
+            "ISO3166-2-lvl4": "BR-GO",
+            "region": "Região Centro-Oeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-18.0672965",
+            "-17.4747354",
+            "-48.9285383",
+            "-48.4509349"
+          ]
+        }
+      ]
+    },
+    "joao monlevade, minas gerais, brasil": {
+      "query": "João Monlevade, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:45:17.547Z",
+      "results": [
+        {
+          "place_id": 10919918,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 315389,
+          "lat": "-19.8094440",
+          "lon": "-43.1733340",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5558682229910492,
+          "addresstype": "town",
+          "name": "João Monlevade",
+          "display_name": "João Monlevade, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "town": "João Monlevade",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-19.8955510",
+            "-19.7836868",
+            "-43.2233623",
+            "-43.0894230"
+          ]
+        }
+      ]
+    },
+    "januaria, minas gerais, brasil": {
+      "query": "Januária, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:45:19.442Z",
+      "results": [
+        {
+          "place_id": 15457801,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 315206,
+          "lat": "-15.3171850",
+          "lon": "-45.2045505",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5574145805956742,
+          "addresstype": "municipality",
+          "name": "Januária",
+          "display_name": "Januária, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "municipality": "Januária",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.8029488",
+            "-14.8314574",
+            "-45.6204600",
+            "-44.1009168"
+          ]
+        },
+        {
+          "place_id": 15467487,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 246671049,
+          "lat": "-15.4875000",
+          "lon": "-44.3611110",
+          "category": "place",
+          "type": "town",
+          "place_rank": 18,
+          "importance": 0.5574145805956742,
+          "addresstype": "town",
+          "name": "Januária",
+          "display_name": "Januária, Minas Gerais, Região Sudeste, 39480-000, Brasil",
+          "address": {
+            "town": "Januária",
+            "municipality": "Januária",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "postcode": "39480-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.5275000",
+            "-15.4475000",
+            "-44.4011110",
+            "-44.3211110"
+          ]
+        },
+        {
+          "place_id": 15475741,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6159021,
+          "lat": "-15.4646228",
+          "lon": "-44.3370526",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16006130846112762,
+          "addresstype": "city_district",
+          "name": "Januária",
+          "display_name": "Januária, Minas Gerais, Região Sudeste, 39480-000, Brasil",
+          "address": {
+            "city_district": "Januária",
+            "municipality": "Januária",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "postcode": "39480-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-15.6228822",
+            "-15.3019540",
+            "-44.4949216",
+            "-44.2829068"
+          ]
+        }
+      ]
+    },
+    "betim, minas gerais, brasil": {
+      "query": "Betim, Minas Gerais, Brasil",
+      "fetchedAt": "2026-10-13T13:45:21.091Z",
+      "results": [
+        {
+          "place_id": 422123087,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 368812,
+          "lat": "-19.9703184",
+          "lon": "-44.2064950",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5777689374153495,
+          "addresstype": "city",
+          "name": "Betim",
+          "display_name": "Betim, Minas Gerais, Região Sudeste, Brasil",
+          "address": {
+            "city": "Betim",
+            "state": "Minas Gerais",
+            "ISO3166-2-lvl4": "BR-MG",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-20.0525967",
+            "-19.8317114",
+            "-44.3173799",
+            "-44.0675650"
+          ]
+        }
+      ]
+    },
+    "mogi guacu, sao paulo, brasil": {
+      "query": "Mogi Guaçu, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:45:22.984Z",
+      "results": [
+        {
+          "place_id": 9418976,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298487,
+          "lat": "-22.3722220",
+          "lon": "-46.9425000",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5600611532866293,
+          "addresstype": "city",
+          "name": "Mogi Guaçu",
+          "display_name": "Mogi Guaçu, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Mogi Guaçu",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.4014845",
+            "-22.0660000",
+            "-47.2426446",
+            "-46.7905566"
+          ]
+        },
+        {
+          "place_id": 9283240,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5349674,
+          "lat": "-22.3722220",
+          "lon": "-46.9425000",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5600611532866293,
+          "addresstype": "city",
+          "name": "Mogi Guaçu",
+          "display_name": "Mogi Guaçu, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Mogi Guaçu",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-22.4014845",
+            "-22.0660000",
+            "-47.1994401",
+            "-46.7905566"
+          ]
+        }
+      ]
+    },
+    "ponta grossa, parana, brasil": {
+      "query": "Ponta Grossa, Paraná, Brasil",
+      "fetchedAt": "2026-10-13T13:45:24.457Z",
+      "results": [
+        {
+          "place_id": 6757947,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 297796,
+          "lat": "-25.1391547",
+          "lon": "-49.9921806",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5420255100167726,
+          "addresstype": "municipality",
+          "name": "Ponta Grossa",
+          "display_name": "Ponta Grossa, Paraná, Região Sul, Brasil",
+          "address": {
+            "municipality": "Ponta Grossa",
+            "state": "Paraná",
+            "ISO3166-2-lvl4": "BR-PR",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-25.3865717",
+            "-24.8917734",
+            "-50.4565226",
+            "-49.6802008"
+          ]
+        },
+        {
+          "place_id": 423033788,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 21092447,
+          "lat": "-25.0891685",
+          "lon": "-50.1601812",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5420255100167726,
+          "addresstype": "city",
+          "name": "Ponta Grossa",
+          "display_name": "Ponta Grossa, Paraná, Região Sul, Brasil",
+          "address": {
+            "city": "Ponta Grossa",
+            "municipality": "Ponta Grossa",
+            "state": "Paraná",
+            "ISO3166-2-lvl4": "BR-PR",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-25.2354919",
+            "-25.0139292",
+            "-50.2816082",
+            "-50.0414496"
+          ]
+        }
+      ]
+    },
+    "cajueiro da praia, piaui, brasil": {
+      "query": "Cajueiro da Praia, Piauí, Brasil",
+      "fetchedAt": "2026-10-13T13:45:25.876Z",
+      "results": [
+        {
+          "place_id": 13543845,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 302712,
+          "lat": "-2.9289603",
+          "lon": "-41.3381617",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.4758626549398821,
+          "addresstype": "town",
+          "name": "Cajueiro da Praia",
+          "display_name": "Cajueiro da Praia, Piauí, Região Nordeste, 64222-000, Brasil",
+          "address": {
+            "town": "Cajueiro da Praia",
+            "state": "Piauí",
+            "ISO3166-2-lvl4": "BR-PI",
+            "region": "Região Nordeste",
+            "postcode": "64222-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-3.0785272",
+            "-2.9039959",
+            "-41.4452790",
+            "-41.2479034"
+          ]
+        }
+      ]
+    },
+    "balsas, maranhao, brasil": {
+      "query": "Balsas, Maranhão, Brasil",
+      "fetchedAt": "2026-10-13T13:45:27.316Z",
+      "results": [
+        {
+          "place_id": 15136322,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 332875,
+          "lat": "-7.5321400",
+          "lon": "-46.0371630",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.48502966637068307,
+          "addresstype": "city",
+          "name": "Balsas",
+          "display_name": "Balsas, Maranhão, Região Nordeste, 65800-000, Brasil",
+          "address": {
+            "city": "Balsas",
+            "state": "Maranhão",
+            "ISO3166-2-lvl4": "BR-MA",
+            "region": "Região Nordeste",
+            "postcode": "65800-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-9.4140000",
+            "-7.1599018",
+            "-47.0680000",
+            "-45.6733409"
+          ]
+        }
+      ]
+    },
+    "coroata, maranhao, brasil": {
+      "query": "Coroatá, Maranhão, Brasil",
+      "fetchedAt": "2026-10-13T13:45:29.198Z",
+      "results": [
+        {
+          "place_id": 13202284,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 332856,
+          "lat": "-4.1282283",
+          "lon": "-44.1360269",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.48874204813083894,
+          "addresstype": "town",
+          "name": "Coroatá",
+          "display_name": "Coroatá, Maranhão, Região Nordeste, 65415-000, Brasil",
+          "address": {
+            "town": "Coroatá",
+            "state": "Maranhão",
+            "ISO3166-2-lvl4": "BR-MA",
+            "region": "Região Nordeste",
+            "postcode": "65415-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-4.4947595",
+            "-3.8360000",
+            "-44.4628072",
+            "-43.8950000"
+          ]
+        },
+        {
+          "place_id": 13239111,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 5339571553,
+          "lat": "-4.8689827",
+          "lon": "-44.7844449",
+          "category": "place",
+          "type": "hamlet",
+          "place_rank": 20,
+          "importance": 0.13338861753261613,
+          "addresstype": "hamlet",
+          "name": "Coroatá",
+          "display_name": "Coroatá, Esperantinópolis, Maranhão, Região Nordeste, Brasil",
+          "address": {
+            "hamlet": "Coroatá",
+            "town": "Esperantinópolis",
+            "state": "Maranhão",
+            "ISO3166-2-lvl4": "BR-MA",
+            "region": "Região Nordeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-4.8889827",
+            "-4.8489827",
+            "-44.8044449",
+            "-44.7644449"
+          ]
+        }
+      ]
+    },
+    "anage, bahia, brasil": {
+      "query": "Anagé, Bahia, Brasil",
+      "fetchedAt": "2026-10-13T13:45:30.617Z",
+      "results": [
+        {
+          "place_id": 15554607,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 362512,
+          "lat": "-14.6134669",
+          "lon": "-41.1376308",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5266364267170621,
+          "addresstype": "town",
+          "name": "Anagé",
+          "display_name": "Anagé, Bahia, Região Nordeste, 45180-000, Brasil",
+          "address": {
+            "town": "Anagé",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "postcode": "45180-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-14.8539576",
+            "-14.3627080",
+            "-41.2277112",
+            "-40.6146152"
+          ]
+        },
+        {
+          "place_id": 15516137,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 6451983,
+          "lat": "-14.6260308",
+          "lon": "-41.0186073",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16005705577172502,
+          "addresstype": "city_district",
+          "name": "Anagé",
+          "display_name": "Anagé, Bahia, Região Nordeste, 45180-000, Brasil",
+          "address": {
+            "city_district": "Anagé",
+            "town": "Anagé",
+            "state": "Bahia",
+            "ISO3166-2-lvl4": "BR-BA",
+            "region": "Região Nordeste",
+            "postcode": "45180-000",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-14.8539576",
+            "-14.3986919",
+            "-41.2277112",
+            "-40.8416312"
+          ]
+        }
+      ]
+    },
+    "jacarei, sao paulo, brasil": {
+      "query": "Jacareí, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:45:32.602Z",
+      "results": [
+        {
+          "place_id": 9153044,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298234,
+          "lat": "-23.3050682",
+          "lon": "-45.9723075",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5609284237778501,
+          "addresstype": "city",
+          "name": "Jacareí",
+          "display_name": "Jacareí, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Jacareí",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.4190136",
+            "-23.1725106",
+            "-46.1520000",
+            "-45.7946529"
+          ]
+        },
+        {
+          "place_id": 9143282,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5349653,
+          "lat": "-23.3050682",
+          "lon": "-45.9723075",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5609284237778501,
+          "addresstype": "city",
+          "name": "Jacareí",
+          "display_name": "Jacareí, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "city": "Jacareí",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.3994861",
+            "-23.1725106",
+            "-46.1520000",
+            "-45.7946529"
+          ]
+        }
+      ]
+    },
+    "aparecida, sao paulo, brasil": {
+      "query": "Aparecida, São Paulo, Brasil",
+      "fetchedAt": "2026-10-13T13:45:34.991Z",
+      "results": [
+        {
+          "place_id": 9253403,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 5349566,
+          "lat": "-22.8515520",
+          "lon": "-45.2340924",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.5312152035609611,
+          "addresstype": "town",
+          "name": "Aparecida",
+          "display_name": "Aparecida, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "town": "Aparecida",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.0080006",
+            "-22.8100000",
+            "-45.2816762",
+            "-45.1880000"
+          ]
+        },
+        {
+          "place_id": 9206800,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 298160,
+          "lat": "-22.8515520",
+          "lon": "-45.2340924",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5312152035609611,
+          "addresstype": "town",
+          "name": "Aparecida",
+          "display_name": "Aparecida, São Paulo, Região Sudeste, Brasil",
+          "address": {
+            "town": "Aparecida",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.0080006",
+            "-22.8100000",
+            "-45.2816762",
+            "-45.1880000"
+          ]
+        },
+        {
+          "place_id": 8531009,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "node",
+          "osm_id": 416657090,
+          "lat": "-23.4433283",
+          "lon": "-47.3770028",
+          "category": "place",
+          "type": "suburb",
+          "place_rank": 19,
+          "importance": 0.1467315747310597,
+          "addresstype": "suburb",
+          "name": "Aparecida",
+          "display_name": "Aparecida, Sorocaba, São Paulo, Região Sudeste, 18087-245, Brasil",
+          "address": {
+            "suburb": "Aparecida",
+            "city": "Sorocaba",
+            "state": "São Paulo",
+            "ISO3166-2-lvl4": "BR-SP",
+            "region": "Região Sudeste",
+            "postcode": "18087-245",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-23.4633283",
+            "-23.4233283",
+            "-47.3970028",
+            "-47.3570028"
+          ]
+        }
+      ]
+    },
+    "novo hamburgo, rio grande do sul, brasil": {
+      "query": "Novo Hamburgo, Rio Grande do Sul, Brasil",
+      "fetchedAt": "2026-10-13T13:45:36.421Z",
+      "results": [
+        {
+          "place_id": 7845739,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 242616,
+          "lat": "-29.6905705",
+          "lon": "-51.1429035",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 16,
+          "importance": 0.5530710000011976,
+          "addresstype": "city",
+          "name": "Novo Hamburgo",
+          "display_name": "Novo Hamburgo, Rio Grande do Sul, Região Sul, Brasil",
+          "address": {
+            "city": "Novo Hamburgo",
+            "state": "Rio Grande do Sul",
+            "ISO3166-2-lvl4": "BR-RS",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-29.8302389",
+            "-29.6377057",
+            "-51.1787892",
+            "-50.9341246"
+          ]
+        },
+        {
+          "place_id": 7905216,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "relation",
+          "osm_id": 7021656,
+          "lat": "-29.7338918",
+          "lon": "-51.0227082",
+          "category": "boundary",
+          "type": "administrative",
+          "place_rank": 18,
+          "importance": 0.16006097581445028,
+          "addresstype": "city_district",
+          "name": "Novo Hamburgo",
+          "display_name": "Novo Hamburgo, Rio Grande do Sul, Região Sul, Brasil",
+          "address": {
+            "city_district": "Novo Hamburgo",
+            "city": "Novo Hamburgo",
+            "state": "Rio Grande do Sul",
+            "ISO3166-2-lvl4": "BR-RS",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-29.8302389",
+            "-29.6377057",
+            "-51.1787892",
+            "-50.9341246"
+          ]
+        }
+      ]
     }
   }
 }

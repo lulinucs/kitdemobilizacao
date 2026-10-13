@@ -1,185 +1,52 @@
 {
-  "generatedAt": "2026-10-11T19:34:33.737Z",
+  "generatedAt": "2026-10-13T13:45:36.483Z",
   "dryRun": false,
   "summary": {
-    "updated": 459,
-    "cacheHits": 167,
-    "requests": 582,
-    "pendingReview": 12
+    "pendingReview": 7,
+    "municipalityRecoveryRequests": 47
   },
   "events": [
     {
       "eventId": "mobilizacao-estudantil-furg-0910",
       "reason": "sem-localizacao",
-      "title": "Mobilização estudantil — FURG"
+      "title": "Mobilização estudantil — FURG",
+      "location": "RS"
     },
     {
       "eventId": "mobilizacao-estudantil-uepg-0910",
       "reason": "sem-localizacao",
-      "title": "Mobilização estudantil — UEPG"
-    },
-    {
-      "eventId": "txt-2026-10-10-belford-roxo-dfcef9160a",
-      "reason": "ambiguo",
-      "query": "PREFEITURA DE BELFORD ROXO, Belford Roxo, RJ, Brasil",
-      "candidates": [
-        {
-          "displayName": "Prefeitura Municipal de Belford Roxo, 2986, Avenida Joaquim da Costa Lima, São Bernardo, Belford Roxo, Rio de Janeiro, Região Sudeste, 26167-325, Brasil",
-          "latitude": -22.7373436,
-          "longitude": -43.3851244
-        },
-        {
-          "displayName": "Sub-prefeitura Municipal de Belford Roxo, Avenida Nova Aurora, Vila Recantus, Nova Aurora, Belford Roxo, Rio de Janeiro, Região Sudeste, 26163-320, Brasil",
-          "latitude": -22.7210856,
-          "longitude": -43.3980496
-        },
-        {
-          "displayName": "sub prefeitura, Rua do Carmo, Vale do Ipê, Belford Roxo, Rio de Janeiro, Região Sudeste, 26185-190, Brasil",
-          "latitude": -22.7074282,
-          "longitude": -43.3342875
-        }
-      ]
-    },
-    {
-      "eventId": "txt-2026-10-11-maceio-c2183b9ae8",
-      "reason": "ambiguo",
-      "query": "ORLA DE MACEIÓ, Maceió, AL, Brasil",
-      "candidates": [
-        {
-          "displayName": "Nova Orla, Jaraguá, Maceió, Alagoas, Região Nordeste, 57030-108, Brasil",
-          "latitude": -9.6743346,
-          "longitude": -35.7172314
-        },
-        {
-          "displayName": "Orla Oito2 - Creperia, Avenida Álvaro Otacílio, Ponta Verde, Maceió, Alagoas, Região Nordeste, 57035-180, Brasil",
-          "latitude": -9.6628813,
-          "longitude": -35.6958349
-        }
-      ]
-    },
-    {
-      "eventId": "txt-2026-10-11-belo-horizonte-cca19069ef",
-      "reason": "ambiguo",
-      "query": "PRAÇA SETE, Belo Horizonte, MG, Brasil",
-      "candidates": [
-        {
-          "displayName": "Obelisco da Praça 7 de Setembro, Avenida Amazonas, Centro, Regional Centro-Sul, Belo Horizonte, Minas Gerais, Região Sudeste, 30160-909, Brasil",
-          "latitude": -19.9191023,
-          "longitude": -43.9385851
-        },
-        {
-          "displayName": "Praca Um Mil Duzentos E Noventa E Sete, Novo Tupi, Regional Norte, Belo Horizonte, Minas Gerais, Região Sudeste, Brasil",
-          "latitude": -19.8293483,
-          "longitude": -43.9050082
-        },
-        {
-          "displayName": "Praca Um Mil Quinhentos E Vinte E Sete, Conjunto Capitão Eduardo, Regional Nordeste, Belo Horizonte, Minas Gerais, Região Sudeste, Brasil",
-          "latitude": -19.8297123,
-          "longitude": -43.8666071
-        }
-      ]
+      "title": "Mobilização estudantil — UEPG",
+      "location": "PR"
     },
     {
       "eventId": "txt-2026-10-11-ba-140c970374",
       "reason": "nao-encontrado",
-      "queries": [
-        "Salvador e interior · UFBA e universidades baianas, BA, Brasil"
-      ],
-      "title": "Jornada universitária"
+      "title": "Jornada universitária",
+      "location": "Salvador e interior · UFBA e universidades baianas, BA"
     },
     {
       "eventId": "txt-2026-10-11-mg-fbf8717a33",
       "reason": "nao-encontrado",
-      "queries": [
-        "vários municípios · UFMG, UFOP, UFSJ e UFV, MG, Brasil"
-      ],
-      "title": "Jornada universitária"
+      "title": "Jornada universitária",
+      "location": "vários municípios · UFMG, UFOP, UFSJ e UFV, MG"
     },
     {
-      "eventId": "txt-2026-10-12-juazeiro-do-norte-ee283cb802",
-      "reason": "ambiguo",
-      "query": "SHOPPING, Juazeiro do Norte, CE, Brasil",
-      "candidates": [
-        {
-          "displayName": "Cariri Garden Shopping, 2555, Avenida Padre Cícero, Triângulo, Juazeiro do Norte, Ceará, Região Nordeste, 63041-145, Brasil",
-          "latitude": -7.2237419,
-          "longitude": -39.3248034
-        },
-        {
-          "displayName": "Shopping Kajado, Rua Francisca Paula Bezerra, Limoeiro, Juazeiro do Norte, Ceará, Região Nordeste, 63010-000, Brasil",
-          "latitude": -7.2285645,
-          "longitude": -39.2980422
-        },
-        {
-          "displayName": "Orient Cinemas Cariri Garden Shopping, 2555, Avenida Padre Cícero, Triângulo, Juazeiro do Norte, Ceará, Região Nordeste, 63041-145, Brasil",
-          "latitude": -7.223445,
-          "longitude": -39.3238822
-        }
-      ]
-    },
-    {
-      "eventId": "txt-2026-10-12-curitiba-3bc635c146",
-      "reason": "ambiguo",
-      "query": "CIDADE DE CURITIBA, Curitiba, PR, Brasil",
-      "candidates": [
-        {
-          "displayName": "HORSCH do Brasil, 2020, Rua Doutor Libânio Estanislau Cardoso, Cidade Industrial de Curitiba, Curitiba, Paraná, Região Sul, 81460-070, Brasil",
-          "latitude": -25.5470251,
-          "longitude": -49.3288901
-        },
-        {
-          "displayName": "Memorial da Segurança no Transporte no Brasil, 6447, Rua Eduardo Sprada, Cidade Industrial de Curitiba, Curitiba, Paraná, Região Sul, 81290-260, Brasil",
-          "latitude": -25.4523972,
-          "longitude": -49.3647163
-        },
-        {
-          "displayName": "HORSCH do Brasil, 2020, Rua Wiegando Olsen, Cidade Industrial de Curitiba, Curitiba, Paraná, Região Sul, 81460-070, Brasil",
-          "latitude": -25.5490071,
-          "longitude": -49.3282309
-        }
-      ]
-    },
-    {
-      "eventId": "txt-2026-10-14-salvador-15d1465341",
-      "reason": "ambiguo",
-      "query": "PRAÇA DAS ARTES, Salvador, BA, Brasil",
-      "candidates": [
-        {
-          "displayName": "Praça das Artes, Pelourinho, Centro Histórico, Salvador, Bahia, Região Nordeste, Brasil",
-          "latitude": -12.9729762,
-          "longitude": -38.5080546
-        },
-        {
-          "displayName": "Praça das Artes, Rua 9 de Outubro, Vila Candeal Pequeno, Candeal, Salvador, Bahia, Região Nordeste, 40301-155, Brasil",
-          "latitude": -12.9968438,
-          "longitude": -38.4825555
-        }
-      ]
+      "eventId": "txt-2026-10-13-riacho-dantas-abee1c335e",
+      "reason": "municipio-uf-inconsistentes",
+      "title": "Grande Carreata/Passeata do Lula",
+      "location": "PRAÇA EPIFÂNIO GÓES, Riacho Dantas, SE"
     },
     {
       "eventId": "txt-2026-10-14-rs-579f363550",
       "reason": "nao-encontrado",
-      "queries": [
-        "Universidade La Salle · em frente à sala do DCE da La Salle, RS, Brasil"
-      ],
-      "title": "Plenária estudantil"
+      "title": "Plenária estudantil",
+      "location": "Universidade La Salle · em frente à sala do DCE da La Salle, RS"
     },
     {
-      "eventId": "txt-2026-10-14-goiania-d9987ed1b8",
-      "reason": "ambiguo",
-      "query": "Praça Central de Goiânia, Goiânia, GO, Brasil",
-      "candidates": [
-        {
-          "displayName": "Praça Central, Setor Pedro Ludovico, Goiânia, Goiás, Região Centro-Oeste, 74823-020, Brasil",
-          "latitude": -16.7132123,
-          "longitude": -49.2540741
-        },
-        {
-          "displayName": "Avenida F, Conjunto Anhanguera, Goiânia, Goiás, Região Centro-Oeste, 74853-050, Brasil",
-          "latitude": -16.7310714,
-          "longitude": -49.248203
-        }
-      ]
+      "eventId": "rel-2026-10-13-apucaran-praca-do-redondo-8828f9b1",
+      "reason": "municipio-uf-inconsistentes",
+      "title": "Mobilização Na Praça Do Redondo",
+      "location": "Praça do Redondo, APUCARAN, AP"
     }
   ]
 }

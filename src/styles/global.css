@@ -74,6 +74,8 @@ a { color: inherit; }
 .agenda-map-marker--soon { border-color: #263d38; background: #f4c542; box-shadow: 0 0 0 4px rgb(244 197 66 / 65%), 0 2px 8px rgb(0 0 0 / 35%); }
 .agenda-map-marker--inactive { background: #7b8580; opacity: .72; }
 .agenda-map-marker--cancelled { background: #7b8580; opacity: .72; }
+.agenda-map-marker--approximate { border-color: #263d38; border-style: dashed; }
+.agenda-map-marker--approximate::after { inset: 5px; border: 2px solid #fff; background: transparent; }
 @keyframes agendaMapPulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(215 58 49 / 45%), 0 2px 8px rgb(0 0 0 / 32%); } 55% { box-shadow: 0 0 0 9px rgb(215 58 49 / 0%), 0 2px 8px rgb(0 0 0 / 32%); } }
 .agenda-map-popup { color: #263d38; font-family: "DM Sans", sans-serif; line-height: 1.4; }
 .agenda-map-popup > span { color: #9f382f; font-size: .7rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
@@ -98,6 +100,7 @@ a { color: inherit; }
 .agenda-map-cluster-composition li i[data-state='possibly'] { background: #ef765f; }
 .agenda-map-cluster-composition li i[data-state='future'] { background: #f4c542; box-shadow: 0 0 0 1px rgb(38 61 56 / 22%); }
 .agenda-map-cluster-composition li b { font-size: .8rem; }
+.agenda-map-cluster-composition p { margin: 9px 0 0; color: #61756b; font-size: .72rem; }
 .agenda-map-cluster-composition small { display: block; margin-top: 9px; color: #61756b; font-size: .69rem; }
 
 @media (prefers-reduced-motion: reduce) {

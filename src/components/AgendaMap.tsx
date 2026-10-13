@@ -2,7 +2,7 @@ import { AlertTriangle, Crosshair, ExternalLink, LocateFixed, MapPin } from 'luc
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
 import { formatAgendaDate, formatEventPlace, formatEventTime, getDisplayStatus, getEventTemporalState } from '../lib/agenda'
-import { buildExternalRouteUrl, clusterRingGradient, formatDistance, geolocationFailure, getMapMarkerState, hasEventCoordinates, sortEventsByDistance, summarizeMarkerStates, type ClusterComposition, type GeoPoint, type MapMarkerState } from '../lib/agendaMap'
+import { buildExternalRouteUrl, clusterRingGradient, formatEventDistance, geolocationFailure, getMapMarkerState, hasApproximateCoordinates, hasEventCoordinates, sortEventsByDistance, summarizeMapCoverage, summarizeMarkerStates, type ClusterComposition, type GeoPoint, type MapMarkerState } from '../lib/agendaMap'
 import { publicAgendaStatusLabel } from '../lib/agendaPresentation'
 import styles from '../styles/App.module.css'
 
@@ -80,10 +80,10 @@ function temporalLabel(event: AgendaEvent, now: Date, timezone: string): string 
   return publicAgendaStatusLabel(status) ?? (status === 'confirmado' ? 'Confirmado' : 'Divulgado')
 }
 
-function popupHtml(event: AgendaEvent, agenda: AgendaData, now: Date, origin?: GeoPoint): string {
-  const route = buildExternalRouteUrl(event, origin)
+function popupHtml(event: AgendaEvent, agenda: AgendaData, now: Date): string {
+  const route = buildExternalRouteUrl(event)
   const details = `?view=agenda&evento=${encodeURIComponent(event.id)}`
-  const precision = event.coordenadas?.precisao === 'cidade' ? '<p class="agenda-map-precision">Posição aproximada da cidade</p>' : ''
+  const precision = hasApproximateCoordinates(event) ? '<p class="agenda-map-precision"><strong>Localização aproximada</strong> — o marcador representa o município, não o ponto de encontro.</p>' : ''
   return `<article class="agenda-map-popup">
     <span>${escapeHtml(temporalLabel(event, now, agenda.timezone))}</span>
     <h3>${escapeHtml(event.titulo)}</h3>
@@ -93,24 +93,26 @@ function popupHtml(event: AgendaEvent, agenda: AgendaData, now: Date, origin?: G
   </article>`
 }
 
-function clusterLabel(composition: ClusterComposition): string {
+function clusterLabel(composition: ClusterComposition, approximate: number): string {
   const parts = [
     composition.now && `${composition.now} acontecendo agora`,
     composition.possibly && `${composition.possibly} possivelmente acontecendo`,
     composition.future && `${composition.future} futuros`,
     composition.other && `${composition.other} encerrados ou cancelados`,
   ].filter(Boolean)
-  return `Agrupamento com ${composition.total} eventos: ${parts.join(', ')}.`
+  const precision = approximate ? ` ${approximate} com localização municipal aproximada.` : ''
+  return `Agrupamento com ${composition.total} eventos: ${parts.join(', ')}.${precision}`
 }
 
-function clusterCompositionHtml(composition: ClusterComposition): string {
+function clusterCompositionHtml(composition: ClusterComposition, approximate: number): string {
   const rows = [
     ['now', 'Acontecendo agora', composition.now],
     ['possibly', 'Pode estar acontecendo', composition.possibly],
     ['future', 'Eventos futuros', composition.future],
     ['other', 'Encerrados ou cancelados', composition.other],
   ].filter(([, , count]) => Number(count) > 0)
-  return `<section class="agenda-map-cluster-composition"><strong>${composition.total} eventos neste agrupamento</strong><ul>${rows.map(([state, label, count]) => `<li><i data-state="${state}" aria-hidden="true"></i><span>${label}</span><b>${count}</b></li>`).join('')}</ul><small>Aproxime o mapa para ver cada marcador.</small></section>`
+  const precision = approximate ? `<p>${approximate} ${approximate === 1 ? 'marcador representa apenas o município' : 'marcadores representam apenas os municípios'}, não pontos exatos de concentração.</p>` : ''
+  return `<section class="agenda-map-cluster-composition"><strong>${composition.total} eventos neste agrupamento</strong><ul>${rows.map(([state, label, count]) => `<li><i data-state="${state}" aria-hidden="true"></i><span>${label}</span><b>${count}</b></li>`).join('')}</ul>${precision}<small>Aproxime o mapa para ver cada marcador; eventos no mesmo município podem se sobrepor.</small></section>`
 }
 
 export function AgendaMap({ agenda, events, now, selectedEventId = '', variant = 'agenda', showNearbyList = true }: AgendaMapProps) {
@@ -119,6 +121,7 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
   const [locationStatus, setLocationStatus] = useState<'idle' | 'requesting' | 'denied' | 'unavailable'>('idle')
   const [mapStatus, setMapStatus] = useState<'loading' | 'ready' | 'error'>('loading')
   const mappedEvents = useMemo(() => events.filter(hasEventCoordinates), [events])
+  const coverage = useMemo(() => summarizeMapCoverage(events), [events])
   const nearest = useMemo(() => origin ? sortEventsByDistance(mappedEvents, origin) : [], [mappedEvents, origin])
 
   useEffect(() => {
@@ -147,6 +150,7 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map)
       const compositionFor = (group: any) => summarizeMarkerStates(group.getAllChildMarkers().map((marker: any) => marker.options.agendaState as MapMarkerState))
+      const approximateFor = (group: any) => group.getAllChildMarkers().filter((marker: any) => marker.options.agendaPrecision === 'approximate').length
       const cluster = L.markerClusterGroup!({
         showCoverageOnHover: false,
         maxClusterRadius: 46,
@@ -155,7 +159,7 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
         iconCreateFunction: (group: any) => {
           const composition = compositionFor(group)
           const size = composition.total >= 100 ? 62 : composition.total >= 10 ? 56 : 50
-          const label = escapeHtml(clusterLabel(composition))
+          const label = escapeHtml(clusterLabel(composition, approximateFor(group)))
           const ring = clusterRingGradient(composition)
           return L.divIcon({
             className: 'agenda-map-cluster-icon',
@@ -170,13 +174,14 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
       mappedEvents.forEach((event) => {
         const coordinates = event.coordenadas!
         const state = getMapMarkerState(event, now, agenda.timezone)
+        const approximate = hasApproximateCoordinates(event)
         const icon = L.divIcon({
           className: 'agenda-map-marker-wrap',
-          html: `<span class="agenda-map-marker agenda-map-marker--${state}" aria-hidden="true"></span>`,
+          html: `<span class="agenda-map-marker agenda-map-marker--${state}${approximate ? ' agenda-map-marker--approximate' : ''}" aria-hidden="true"></span>`,
           iconSize: [26, 34], iconAnchor: [13, 30], popupAnchor: [0, -27],
         })
-        const marker = L.marker([coordinates.latitude, coordinates.longitude], { icon, title: event.titulo, agendaState: state })
-          .bindPopup(popupHtml(event, agenda, now, origin), { maxWidth: 320 })
+        const marker = L.marker([coordinates.latitude, coordinates.longitude], { icon, title: `${event.titulo}${approximate ? ' — localização aproximada' : ''}`, agendaState: state, agendaPrecision: approximate ? 'approximate' : 'exact' })
+          .bindPopup(popupHtml(event, agenda, now), { maxWidth: 320 })
         cluster.addLayer(marker)
         bounds.push([coordinates.latitude, coordinates.longitude])
         if (event.id === selectedEventId) selectedMarker = marker
@@ -192,19 +197,20 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
         const targetZoom = map.getBoundsZoom(group.getBounds())
         if (positions.size > 1 && targetZoom > map.getZoom()) return
         const composition = compositionFor(group)
+        const approximate = approximateFor(group)
         window.setTimeout(() => {
           if (disposed) return
           L.popup({ className: 'agenda-map-cluster-popup', maxWidth: 280 })
             .setLatLng(clusterEvent.latlng)
-            .setContent(clusterCompositionHtml(composition))
+            .setContent(clusterCompositionHtml(composition, approximate))
             .openOn(map)
         }, 0)
       })
       if (origin) {
         L.circleMarker([origin.latitude, origin.longitude], { radius: 8, color: '#155eef', fillColor: '#fff', fillOpacity: 1, weight: 4 })
           .bindPopup('Sua localização aproximada — não armazenada').addTo(map)
-        map.setView([origin.latitude, origin.longitude], 9)
-      } else if (selectedMarker) {
+      }
+      if (selectedMarker) {
         cluster.zoomToShowLayer(selectedMarker, () => selectedMarker.openPopup())
       } else if (bounds.length > 1) {
         const padding = variant === 'home' ? 14 : 28
@@ -232,7 +238,7 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
 
   return <section className={`${styles.agendaMapSection} ${variant === 'home' ? styles.agendaMapHome : ''}`} aria-label="Mapa das mobilizações">
     <div className={styles.agendaMapHeader}>
-      <div><h2>{variant === 'home' ? 'Mapa nacional das mobilizações' : 'Mobilizações no mapa'}</h2><p>{mappedEvents.length} de {events.length} atividades com localização disponível.</p></div>
+      <div><h2>{variant === 'home' ? 'Mapa nacional das mobilizações' : 'Mobilizações no mapa'}</h2><p>{coverage.total} no total · {coverage.exact} exatas · {coverage.approximate} aproximadas · {coverage.pending} pendentes.</p></div>
       <button type="button" onClick={locate} disabled={locationStatus === 'requesting'}><LocateFixed aria-hidden="true" size={18} />{locationStatus === 'requesting' ? 'Localizando…' : 'Perto de mim'}</button>
     </div>
     <div className={styles.agendaMapLegend} aria-label="Legenda dos marcadores">
@@ -240,6 +246,8 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
       <span><i data-state="possibly" aria-hidden="true" />Pode estar acontecendo</span>
       <span><i data-state="future" aria-hidden="true" />Evento futuro</span>
       <span><i data-state="soon" aria-hidden="true" />Começa em até 2 horas</span>
+      <span><i data-precision="exact" aria-hidden="true" />Localização exata</span>
+      <span><i data-precision="approximate" aria-hidden="true" />Município aproximado</span>
       <span className={styles.agendaClusterLegend}><i aria-hidden="true" />Anel do agrupamento = proporção por status; número = total</span>
     </div>
     {(locationStatus === 'denied' || locationStatus === 'unavailable') && <p className={styles.agendaMapNotice} role="status"><AlertTriangle aria-hidden="true" size={17} />{locationStatus === 'denied' ? 'A localização não foi autorizada. Use os filtros de cidade e UF acima.' : 'Não foi possível obter sua localização. Use os filtros de cidade e UF acima.'}</p>}
@@ -248,12 +256,12 @@ export function AgendaMap({ agenda, events, now, selectedEventId = '', variant =
       {mapStatus === 'loading' && <div className={styles.agendaMapOverlay} role="status">Carregando mapa…</div>}
       {mapStatus === 'error' && <div className={styles.agendaMapOverlay} role="alert"><MapPin aria-hidden="true" size={25} /><strong>O mapa não pôde ser carregado.</strong><span>A lista e os filtros continuam disponíveis. Verifique sua conexão e tente novamente.</span></div>}
     </div>
-    {events.length > mappedEvents.length && <p className={styles.agendaMapFootnote}>{events.length - mappedEvents.length} {events.length - mappedEvents.length === 1 ? 'atividade ainda não aparece' : 'atividades ainda não aparecem'} no mapa porque a localização não foi confirmada.</p>}
+    {coverage.pending > 0 && <p className={styles.agendaMapFootnote}>{coverage.pending} {coverage.pending === 1 ? 'atividade ainda não aparece' : 'atividades ainda não aparecem'} no mapa porque o município e a UF não foram confirmados.</p>}
     {showNearbyList && origin && <div className={styles.nearbyEvents}>
       <div><Crosshair aria-hidden="true" size={18} /><strong>Mais perto de você</strong><span>Sua posição é usada somente neste navegador e não é armazenada.</span></div>
       <ol>{nearest.slice(0, 12).map(({ event, distance }) => <li key={event.id}>
-        <a href={`?view=agenda&evento=${encodeURIComponent(event.id)}`}><span><strong>{event.titulo}</strong><small>{formatEventPlace(event)}</small></span><b>{formatDistance(distance)}</b></a>
-        {buildExternalRouteUrl(event, origin) && <a href={buildExternalRouteUrl(event, origin)!} target="_blank" rel="noopener noreferrer" aria-label={`Traçar rota para ${event.titulo}`}><ExternalLink aria-hidden="true" size={16} /></a>}
+        <a href={`?view=agenda&evento=${encodeURIComponent(event.id)}`}><span><strong>{event.titulo}</strong><small>{formatEventPlace(event)}</small>{hasApproximateCoordinates(event) && <em>Localização aproximada do município</em>}</span><b>{formatEventDistance(event, distance)}</b></a>
+        {buildExternalRouteUrl(event) && <a href={buildExternalRouteUrl(event)!} target="_blank" rel="noopener noreferrer" aria-label={`Traçar rota para ${event.titulo}`}><ExternalLink aria-hidden="true" size={16} /></a>}
       </li>)}</ol>
     </div>}
   </section>

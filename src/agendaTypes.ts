@@ -15,6 +15,11 @@ export interface AgendaSource {
   url?: string
 }
 
+export interface AgendaRecurrence {
+  tipo: 'diaria'
+  texto: string
+}
+
 export type AgendaModality = 'presencial' | 'virtual' | 'hibrida'
 
 export interface AgendaCoordinates {
@@ -33,10 +38,7 @@ export interface AgendaEvent {
   mobilizacaoId?: string
   categoria: string
   data: string | null
-  recorrencia?: {
-    tipo: string
-    texto: string
-  }
+  recorrencia?: AgendaRecurrence
   inicio: string | null
   inicioRotulo?: string
   fim: string | null

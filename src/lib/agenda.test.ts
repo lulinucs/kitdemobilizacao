@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import rawAgenda from '../data/agenda-floripa.json'
 import type { AgendaData, AgendaEvent } from '../agendaTypes'
-import { buildEventShare, createAgendaParams, eventEndDateTime, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getEventTemporalState, getNextEvent, getUpcomingWidgetEvents, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isEventPossiblyOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
+import { buildEventShare, createAgendaParams, eventEndDateTime, expandRecurringEvents, filterAgendaEvents, formatEventPlace, formatEventTime, formatMobilizationTitle, getBalancedUpcomingWidgetEvents, getEventTemporalState, getNextEvent, getUpcomingWidgetEvents, getUpcomingWidgetEventsByLocation, getWidgetEventSelection, getZonedDate, groupAgendaEvents, isEventOngoing, isEventPossiblyOngoing, isPastForList, isPastForWidget, sortEvents, validateAgenda } from './agenda'
 
 const data = rawAgenda as AgendaData
 const now = new Date('2026-10-09T14:00:00.000Z') // 11h em Florianópolis
 
 describe('agenda', () => {
   it('incorpora a relação de outubro sem perder registros, fontes ou horários simbólicos', () => {
-    expect(data.eventos).toHaveLength(554)
+    expect(data.eventos).toHaveLength(555)
     const october13 = data.eventos.filter((event) => event.data === '2026-10-13')
     expect(october13).toHaveLength(79)
     expect(october13.map((event) => event.id)).toEqual(expect.arrayContaining([
@@ -22,7 +22,7 @@ describe('agenda', () => {
     expect(ids.size).toBe(data.eventos.length)
     const exactCoordinates = data.eventos.filter((event) => event.coordenadas && event.coordenadas.precisao !== 'cidade')
     const approximateCoordinates = data.eventos.filter((event) => event.coordenadas?.precisao === 'cidade')
-    expect(exactCoordinates).toHaveLength(175)
+    expect(exactCoordinates).toHaveLength(176)
     expect(approximateCoordinates).toHaveLength(372)
     expect(data.eventos.filter((event) => !event.coordenadas && event.modalidade !== 'virtual')).toHaveLength(7)
     expect(approximateCoordinates.every((event) => event.coordenadas?.rotulo === `Localização aproximada em ${event.cidade}/${event.uf} — coordenada representativa do município`)).toBe(true)
@@ -50,7 +50,7 @@ describe('agenda', () => {
     expect(data.eventos.filter((event) => event.data === '2026-10-24')).toHaveLength(7)
     expect(data.eventos.filter((event) => event.data === '2026-10-10' && event.cidade === 'Campinas' && event.inicio === '09:00')).toHaveLength(4)
     const newEventsWithoutTime = data.eventos.filter((event) => event.id.startsWith('txt-') && event.inicio === null)
-    expect(newEventsWithoutTime).toHaveLength(13)
+    expect(newEventsWithoutTime).toHaveLength(12)
     expect(newEventsWithoutTime.every((event) => event.fim === null)).toBe(true)
   })
 
@@ -85,6 +85,53 @@ describe('agenda', () => {
   it('mantém data pendente fora do próximo evento', () => {
     expect(getNextEvent(data.eventos, now, data.timezone)?.id).toBe('assembleia-ufsc-0910')
     expect(getNextEvent([data.eventos.find((event) => event.id === 'serigrafia-centro')!], now, data.timezone)).toBeUndefined()
+  })
+
+  it('expande a serigrafia diária sem duplicar o registro-fonte', () => {
+    const source = data.eventos.find((event) => event.id === 'serigrafia-centro')!
+    const expanded = expandRecurringEvents(data.eventos)
+    const occurrences = expanded.filter((event) => event.id.startsWith('serigrafia-centro--'))
+
+    expect(data.eventos.filter((event) => event.id === source.id)).toHaveLength(1)
+    expect(source).toMatchObject({
+      data: null,
+      recorrencia: { tipo: 'diaria', texto: 'Todos os dias' },
+      inicio: '08:00',
+      inicioRotulo: '08h às 23h',
+      fim: '23:00',
+      categoria: 'serigrafia',
+      status: 'confirmado',
+    })
+    expect(occurrences.map((event) => event.data)).toEqual([
+      '2026-10-09', '2026-10-10', '2026-10-11', '2026-10-12',
+      '2026-10-13', '2026-10-14', '2026-10-15', '2026-10-16',
+      '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20',
+      '2026-10-21', '2026-10-22', '2026-10-23', '2026-10-24',
+    ])
+    expect(filterAgendaEvents(expanded, { query: '', day: '2026-10-17', city: 'Florianópolis', state: 'SC', category: 'serigrafia', mobilization: '', includePast: true }, now, data.timezone).map((event) => event.id)).toEqual(['serigrafia-centro--2026-10-17'])
+    expect(getUpcomingWidgetEvents(expanded, new Date('2026-10-14T10:00:00.000Z'), data.timezone).some((event) => event.id === 'serigrafia-centro--2026-10-14')).toBe(true)
+  })
+
+  it('mantém os dados confirmados do ato com Boulos e do Pedalula da Virada', () => {
+    expect(data.eventos.find((event) => event.id === 'txt-2026-10-15-florianopolis-9c8fd66082')).toMatchObject({
+      titulo: 'Ato de mobilização com Guilherme Boulos',
+      data: '2026-10-15',
+      inicio: '17:30',
+      inicioRotulo: 'A partir das 17h30',
+      fim: null,
+      local: 'Largo da Alfândega',
+      coordenadas: { latitude: -27.597897, longitude: -48.5518612, precisao: 'endereco' },
+    })
+    expect(data.eventos.find((event) => event.id === 'pedalula-da-virada-1710')).toMatchObject({
+      titulo: 'Pedalula da Virada',
+      data: '2026-10-17',
+      inicio: '14:00',
+      inicioRotulo: '14h — concentração; 15h — saída',
+      fim: null,
+      categoria: 'pedalada_mobilizacao',
+      local: 'Parque Linear João Manoel Gomes',
+      coordenadas: { latitude: -27.4373482, longitude: -48.3958632, precisao: 'endereco' },
+    })
   })
 
   it('combina dia, cidade, estado, categoria e busca', () => {

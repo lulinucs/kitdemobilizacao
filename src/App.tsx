@@ -15,7 +15,7 @@ import { MediaPage } from './components/MediaPage'
 import { Search } from './components/Search'
 import { Sidebar } from './components/Sidebar'
 import { ThemeToggle } from './components/ThemeToggle'
-import { createAgendaParams, validateAgenda } from './lib/agenda'
+import { createAgendaParams, expandRecurringEvents, validateAgenda } from './lib/agenda'
 import { createCatalogSearch, filterInitiatives, readCatalogFilters, validateDirectory } from './lib/directory'
 import { validateProfiles } from './lib/profiles'
 import type { AgendaData } from './agendaTypes'
@@ -62,7 +62,7 @@ export default function App() {
   const directoryErrors = useMemo(() => validateDirectory(data), [])
   const profileErrors = useMemo(() => validateProfiles(profilesSource), [])
   const agendaValidation = useMemo(() => validateAgenda(agendaSource), [])
-  const agenda = useMemo(() => ({ ...agendaSource, eventos: agendaValidation.events }), [agendaValidation.events])
+  const agenda = useMemo(() => ({ ...agendaSource, eventos: expandRecurringEvents(agendaValidation.events) }), [agendaValidation.events])
 
   useEffect(() => {
     if (directoryErrors.length) console.error('Erros em iniciativas.json:', directoryErrors)

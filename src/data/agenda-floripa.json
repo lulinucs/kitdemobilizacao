@@ -2,7 +2,7 @@
   "schemaVersion": 3,
   "titulo": "Agenda de Mobilizações",
   "timezone": "America/Sao_Paulo",
-  "atualizadoEm": "2026-10-13",
+  "atualizadoEm": "2026-10-14",
   "aviso": "Programação recebida de divulgação comunitária. Confirme local e horário com a organização antes de sair.",
   "categorias": [
     {
@@ -46,30 +46,38 @@
       "nome": "Produção de materiais"
     },
     {
+      "id": "serigrafia",
+      "nome": "Oficina de serigrafia"
+    },
+    {
       "id": "pedalada",
       "nome": "Pedaladas"
+    },
+    {
+      "id": "pedalada_mobilizacao",
+      "nome": "Pedalada / Mobilização"
     }
   ],
   "eventos": [
     {
       "id": "serigrafia-centro",
       "titulo": "Serigrafia — adesivos e camisetas",
-      "categoria": "producao",
+      "categoria": "serigrafia",
       "data": null,
       "recorrencia": {
-        "tipo": "a_confirmar",
-        "texto": "Dias não informados; horário divulgado das 8h às 23h"
+        "tipo": "diaria",
+        "texto": "Todos os dias"
       },
       "inicio": "08:00",
+      "inicioRotulo": "08h às 23h",
       "fim": "23:00",
       "cidade": "Florianópolis",
       "uf": "SC",
-      "local": "Oficina de serigrafia",
+      "local": "Sede do PT",
       "endereco": "Rua Fernando Machado, 195",
       "bairro": "Centro",
-      "descricao": "Produção coletiva de adesivos e camisetas.",
-      "informacoesAdicionais": "A organização informou que precisa de ajuda na produção. A programação recebida associa a atividade a 11/10, mas essa data não foi explicitamente vinculada à serigrafia e precisa ser confirmada; o registro permanece com data pendente.",
-      "status": "data_pendente",
+      "descricao": "Produção de adesivos e camisetas para mobilização.",
+      "status": "confirmado",
       "coordenadas": {
         "latitude": -27.5977973,
         "longitude": -48.5469152,
@@ -10802,28 +10810,59 @@
     },
     {
       "id": "txt-2026-10-15-florianopolis-9c8fd66082",
-      "titulo": "Ato da Virada",
+      "titulo": "Ato de mobilização com Guilherme Boulos",
       "categoria": "ato",
       "data": "2026-10-15",
-      "inicio": null,
+      "inicio": "17:30",
+      "inicioRotulo": "A partir das 17h30",
       "fim": null,
       "cidade": "Florianópolis",
       "uf": "SC",
       "modalidade": "presencial",
-      "local": "Centro de Florianópolis",
-      "descricao": "Ato da Virada em Florianópolis, com movimentos sociais de Santa Catarina e participação anunciada de Guilherme Boulos. Ponto exato a confirmar.",
+      "local": "Largo da Alfândega",
+      "endereco": "Largo da Alfândega",
+      "bairro": "Centro",
+      "descricao": "Ato político de mobilização em apoio à reeleição de Luiz Inácio Lula da Silva no segundo turno das eleições de 2026.",
+      "informacoesAdicionais": "Participação de Guilherme Boulos (PSOL), ministro da Secretaria-Geral da Presidência, e lideranças da esquerda catarinense.",
       "fonte": {
         "rotulo": "Relação de mobilizações recebida pelo Kit"
       },
       "status": "divulgado",
       "coordenadas": {
-        "latitude": -27.4385984,
-        "longitude": -48.4029915,
-        "precisao": "local",
-        "rotulo": "Brasil Atacadista, 5890, Rodovia Armando Calil Bulos, Ingleses Centro, Ingleses, Ingleses do Rio Vermelho, Florianópolis, Santa Catarina, Região Sul, 88058-785, Brasil",
+        "latitude": -27.597897,
+        "longitude": -48.5518612,
+        "precisao": "endereco",
+        "rotulo": "Largo da Alfândega, Centro, Sede, Florianópolis, Santa Catarina, Região Sul, 88010-030, Brasil",
         "provedor": "nominatim",
-        "consulta": "Centro de Florianópolis, Florianópolis, SC, Brasil",
-        "geocodificadoEm": "2026-10-11"
+        "consulta": "Largo da Alfândega, Centro, Florianópolis, SC, Brasil",
+        "geocodificadoEm": "2026-10-14"
+      }
+    },
+    {
+      "id": "pedalula-da-virada-1710",
+      "titulo": "Pedalula da Virada",
+      "categoria": "pedalada_mobilizacao",
+      "data": "2026-10-17",
+      "inicio": "14:00",
+      "inicioRotulo": "14h — concentração; 15h — saída",
+      "fim": null,
+      "cidade": "Florianópolis",
+      "uf": "SC",
+      "modalidade": "presencial",
+      "local": "Parque Linear João Manoel Gomes",
+      "endereco": "Parque Linear João Manoel Gomes",
+      "bairro": "Ingleses",
+      "descricao": "Pedalada coletiva pela reeleição de Lula 13, pelo fim da escala 6x1, em defesa das universidades públicas, dos aposentados, do SUS, do PIX e da soberania nacional. Traga sua bandeira e chegue cedo para decorar a bicicleta! Haverá lanche coletivo, então leve algo para compartilhar. Quem puder pode emprestar uma bicicleta para quem não tem. Crianças são bem-vindas! Um encontro de alegria, diversidade e esperança.",
+      "informacoesAdicionais": "Local de saída e chegada: Parque Linear João Manoel Gomes.",
+      "status": "divulgado",
+      "coordenadas": {
+        "latitude": -27.4373482,
+        "longitude": -48.3958632,
+        "precisao": "endereco",
+        "rotulo": "Parque Linear João Manoel Gomes, Ingleses, Ingleses do Rio Vermelho, Florianópolis, Santa Catarina, Região Sul, Brasil",
+        "provedor": "nominatim",
+        "consulta": "Parque Linear João Manoel Gomes, Ingleses, Florianópolis, SC, Brasil",
+        "geocodificadoEm": "2026-10-14"
       }
     },
     {

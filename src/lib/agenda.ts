@@ -129,6 +129,23 @@ export function sortEvents(events: AgendaEvent[], _timezone: string): AgendaEven
   })
 }
 
+/**
+ * Materializa recorrencias sobre os dias que a agenda já cobre. O registro
+ * recorrente continua único no JSON; as ocorrências existem somente na camada
+ * de apresentação e acompanham automaticamente novos dias cadastrados.
+ */
+export function expandRecurringEvents(events: AgendaEvent[]): AgendaEvent[] {
+  const dates = [...new Set(events.flatMap((event) => event.data ? [event.data] : []))].sort()
+  return events.flatMap((event) => {
+    if (event.recorrencia?.tipo !== 'diaria') return [event]
+    return dates.map((date) => ({
+      ...event,
+      id: `${event.id}--${date}`,
+      data: date,
+    }))
+  })
+}
+
 export type AgendaDisplayItem =
   | { kind: 'event'; event: AgendaEvent }
   | { kind: 'mobilization'; id: string; events: AgendaEvent[] }
@@ -362,6 +379,8 @@ export function validateAgenda(data: AgendaData): { events: AgendaEvent[]; error
     }
     if (event.data) {
       if (!isValidDate(event.data)) recordErrors.push(`Data inválida em ${event.id}`)
+    } else if (event.recorrencia?.tipo === 'diaria') {
+      if (!event.recorrencia.texto.trim()) recordErrors.push(`Recorrência sem rótulo em ${event.id}`)
     } else if (event.status !== 'data_pendente') {
       recordErrors.push(`Evento sem data deve usar data_pendente: ${event.id}`)
     }

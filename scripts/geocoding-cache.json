@@ -22809,6 +22809,81 @@
           ]
         }
       ]
+    },
+    "largo da alfandega, centro, florianopolis, sc, brasil": {
+      "query": "Largo da Alfândega, Centro, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-14T13:12:34.403Z",
+      "results": [
+        {
+          "place_id": 7750438,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 454467255,
+          "lat": "-27.5978970",
+          "lon": "-48.5518612",
+          "category": "highway",
+          "type": "pedestrian",
+          "place_rank": 26,
+          "importance": 0.05339985580224304,
+          "addresstype": "road",
+          "name": "Largo da Alfândega",
+          "display_name": "Largo da Alfândega, Centro, Sede, Florianópolis, Santa Catarina, Região Sul, 88010-030, Brasil",
+          "address": {
+            "road": "Largo da Alfândega",
+            "suburb": "Centro",
+            "city": "Florianópolis",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "postcode": "88010-030",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-27.5985436",
+            "-27.5973051",
+            "-48.5525322",
+            "-48.5509226"
+          ]
+        }
+      ]
+    },
+    "parque linear joao manoel gomes, ingleses, florianopolis, sc, brasil": {
+      "query": "Parque Linear João Manoel Gomes, Ingleses, Florianópolis, SC, Brasil",
+      "fetchedAt": "2026-10-14T13:12:36.286Z",
+      "results": [
+        {
+          "place_id": 7588308,
+          "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+          "osm_type": "way",
+          "osm_id": 756275116,
+          "lat": "-27.4373482",
+          "lon": "-48.3958632",
+          "category": "leisure",
+          "type": "park",
+          "place_rank": 24,
+          "importance": 0.08006652246890972,
+          "addresstype": "park",
+          "name": "Parque Linear João Manoel Gomes",
+          "display_name": "Parque Linear João Manoel Gomes, Ingleses, Ingleses do Rio Vermelho, Florianópolis, Santa Catarina, Região Sul, Brasil",
+          "address": {
+            "park": "Parque Linear João Manoel Gomes",
+            "suburb": "Ingleses",
+            "city": "Florianópolis",
+            "state": "Santa Catarina",
+            "ISO3166-2-lvl4": "BR-SC",
+            "region": "Região Sul",
+            "country": "Brasil",
+            "country_code": "br"
+          },
+          "boundingbox": [
+            "-27.4380976",
+            "-27.4369945",
+            "-48.3960864",
+            "-48.3954753"
+          ]
+        }
+      ]
     }
   }
 }

@@ -1,9 +1,12 @@
 {
-  "generatedAt": "2026-10-13T13:57:28.321Z",
+  "generatedAt": "2026-10-14T13:12:36.330Z",
   "dryRun": false,
   "summary": {
     "pendingReview": 7,
-    "municipalityRecoveryRequests": 1
+    "municipalityRecoveryRequests": 1,
+    "lastRunUpdated": 2,
+    "lastRunCacheHits": 0,
+    "lastRunRequests": 2
   },
   "events": [
     {
